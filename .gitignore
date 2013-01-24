@@ -1,0 +1,20 @@
+# Android generated files #
+###########################
+android.keystore
+local.properties
+bin/
+gen/
+libs/
+obj/
+
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Eclipse generated files #
+###########################
+.settings/org.eclipse.jdt.core.prefs
+.classpath
