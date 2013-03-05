@@ -56,7 +56,7 @@ public class Constants {
 
 	public static final String GOOGLE_APP_ENGINE_URL = "timelinegamified.appspot.com";
 	
-	public static final String MEDIASTORE_URL = "http://folk.ntnu.no/andekr/upload/files/";
+	public static final String MEDIASTORE_URL = "http://folk.ntnu.no/bjornava/upload/files/";
 	
 	public static final HttpHost targetHost = new HttpHost(Constants.GOOGLE_APP_ENGINE_URL, 80, "http");
     
