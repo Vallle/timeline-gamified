@@ -4,7 +4,6 @@ android.keystore
 local.properties
 bin/
 gen/
-libs/
 obj/
 
 # OS generated files #
