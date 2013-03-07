@@ -7,6 +7,6 @@
           android:title="@string/email_title" />
     
     <item android:id="@+id/SWARM_MENU_BUTTON"
-          android:icon="@drawable/menu_cc"
+          android:icon="@android:drawable/ic_menu_myplaces"
           android:title="@string/swarm_menu" />
 </menu>
