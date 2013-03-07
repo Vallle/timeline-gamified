@@ -50,6 +50,8 @@ import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.MyLocation;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.Swarm;
+import com.swarmconnect.SwarmActivity;
 
 
 /**
@@ -68,7 +70,7 @@ import com.bjorsond.android.timeline.R;
  * @author andekr
  *
  */
-public class DashboardActivity extends Activity implements ProgressDialogActivity {
+public class DashboardActivity extends SwarmActivity implements ProgressDialogActivity {
 
 	private ImageButton newTimeLineButton;
 	private ImageButton browseMyTimelinesButton;
@@ -96,6 +98,8 @@ public class DashboardActivity extends Activity implements ProgressDialogActivit
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dashboard);
 		MyLocation.getInstance(this);//Starts the LocationManager right away so a location will be available as soon as possible
+		
+		Swarm.init(this, 4651, "6ef1c4f59752007d40bd3d8828f789f2");
 		
 		creator = Utilities.getUserAccount(this);
 		user = new User(creator.name);

@@ -57,9 +57,7 @@
          <activity android:label="@string/app_name"
             android:name="com.bjorsond.android.timeline.MyTagsActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        
-            
-            
+
            <provider
             android:authorities="com.bjorsond.android.timeline.database.providers.ExperienceProvider" android:name="com.bjorsond.android.timeline.database.providers.ExperienceProvider"/>
         <provider

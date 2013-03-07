@@ -48,6 +48,7 @@ import com.bjorsond.android.timeline.models.Experience;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.SwarmActivity;
 
 /**
  * The activity containg the tag management view
@@ -56,7 +57,7 @@ import com.bjorsond.android.timeline.R;
  * @author andekr
  *
  */
-public class MyTagsActivity extends Activity {
+public class MyTagsActivity extends SwarmActivity {
 
 	private Button addNewTagButton, showInTimelineButton;
 	private ImageButton homeButton;

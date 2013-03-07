@@ -49,6 +49,7 @@ import com.bjorsond.android.timeline.sync.GoogleAppEngineHandler;
 import com.bjorsond.android.timeline.sync.UserAndGroupServiceHandler;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.SwarmActivity;
 
 
 /**
@@ -58,7 +59,7 @@ import com.bjorsond.android.timeline.R;
  * @author andekr
  *
  */
-public class MyGroupsActivity extends Activity implements ProgressDialogActivity {
+public class MyGroupsActivity extends SwarmActivity implements ProgressDialogActivity {
 	
 	private Account userAccount;
 	private ImageButton addNewGroupButton, homeButton;

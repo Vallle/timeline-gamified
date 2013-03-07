@@ -78,6 +78,7 @@ import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.MyLocation;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.SwarmActivity;
 
 /**
  * 
@@ -90,7 +91,7 @@ import com.bjorsond.android.timeline.R;
  * @author andekr
  *
  */
-public class TimelineActivity extends Activity implements SimpleGestureListener {
+public class TimelineActivity extends SwarmActivity implements SimpleGestureListener {
 	
 	private LinearLayout cameraButton, videoCameraButton, audioRecorderButton, createNoteButton, attachmentButton, moodButton;
 	private TextView screenTitle, timelineTitleTextView;
