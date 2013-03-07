@@ -393,6 +393,9 @@ public class DashboardActivity extends Activity implements ProgressDialogActivit
 			Thread sendEmailThread = new Thread(sendEmailRunnable);
 			sendEmailThread.start();
 			return true;
+		case R.id.SWARM_MENU_BUTTON:
+			//ADD ACTION
+			
 		default:
 			break;
 		}
