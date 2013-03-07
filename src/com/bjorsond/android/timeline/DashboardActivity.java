@@ -51,6 +51,7 @@ import com.bjorsond.android.timeline.utilities.MyLocation;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
 import com.swarmconnect.Swarm;
+import com.swarmconnect.SwarmAchievement;
 import com.swarmconnect.SwarmActivity;
 
 
@@ -397,8 +398,11 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			Thread sendEmailThread = new Thread(sendEmailRunnable);
 			sendEmailThread.start();
 			return true;
+			
+		//Gamification: Swarm menu
 		case R.id.SWARM_MENU_BUTTON:
-			//ADD ACTION
+			Swarm.showDashboard();
+	        SwarmAchievement.unlock(10839);
 			
 		default:
 			break;
