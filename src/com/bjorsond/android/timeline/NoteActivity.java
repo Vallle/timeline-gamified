@@ -21,6 +21,7 @@ import android.widget.EditText;
 import com.bjorsond.android.timeline.models.SimpleNote;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.SwarmActivity;
 
 /**
  * The Activity for creation of a {@linkplain SimpleNote}.
@@ -30,7 +31,7 @@ import com.bjorsond.android.timeline.R;
  * @author andekr
  *
  */
-public class NoteActivity extends Activity {
+public class NoteActivity extends SwarmActivity {
 	
 	
 	private Button saveButton, discardButton;

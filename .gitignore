@@ -17,3 +17,4 @@ Thumbs.db
 ###########################
 .settings/org.eclipse.jdt.core.prefs
 .classpath
+/project.properties
