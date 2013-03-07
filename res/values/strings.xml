@@ -73,6 +73,7 @@
 	<string name="map_view">Open Map View</string>
 	<string name="average_timeline_mood">See average timeline mood</string>
 	<string name="email_title">Send activity report!</string>
+	<string name="swarm_menu">Swarm Menu</string>
 
 
 	<!-- Everything that follows is Swarm-related -->

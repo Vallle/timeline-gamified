@@ -406,7 +406,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		return super.onOptionsItemSelected(item);
 	}
 	
-	//LISTENERS
+	//LISTENERS 
 	
 	private OnClickListener newTimeLineListener = new OnClickListener() {
 		public void onClick(View v) {
