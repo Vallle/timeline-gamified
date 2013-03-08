@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@color/White" android:weightSum="100">
+
+
+
+	<TableRow android:id="@+id/dash_header_row"
+		android:layout_width="fill_parent" android:background="@color/Header" android:layout_weight="10" android:layout_height="0dip">
+		<ImageButton android:background="@drawable/header_home_button"
+			android:id="@+id/HeaderHomeButto"
+			android:focusable="false" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageButton>
+	</TableRow>
+
+
+
+	<TableRow android:id="@+id/DashTableRow01"
+		android:layout_width="fill_parent"
+		android:paddingTop="20dp" android:paddingBottom="20dp" android:layout_height="0dip" android:layout_weight="30">
+		<LinearLayout android:paddingTop="10dp"
+			android:layout_weight="1" android:paddingBottom="10dp" android:layout_width="fill_parent"
+			android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
+			<LinearLayout android:paddingRight="30dip"
+				android:layout_weight="2" android:layout_height="fill_parent"
+				android:layout_width="0dp" android:id="@+id/LinearLayout03"
+				android:paddingLeft="35dip">
+				<ImageButton 
+				    android:layout_width="fill_parent" 
+				    android:background="@drawable-xhdpi/swarm_profile_text" 
+				    android:id="@+id/dash_swarm_profile" 
+				    android:layout_height="fill_parent" 
+				    android:scaleType="centerInside"></ImageButton>
+			</LinearLayout>
+			<LinearLayout android:paddingRight="35dip"
+				android:layout_weight="2" android:layout_height="fill_parent"
+				android:paddingLeft="35dip" android:layout_width="0dp"
+				android:id="@+id/LinearLayout03">
+
+				<ImageButton
+				    android:id="@+id/dash_achievements"
+				    android:layout_width="fill_parent"
+				    android:layout_height="fill_parent"
+				    android:background="@drawable-xhdpi/swarm_trophy_text"
+				    android:scaleType="centerInside" />
+
+			</LinearLayout>
+		</LinearLayout>
+
+
+	</TableRow>
+	<TableRow android:id="@+id/DashTableRow02"
+		android:layout_width="fill_parent"
+		android:paddingTop="20dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="30">
+		<LinearLayout android:layout_weight="1"
+			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
+
+			<LinearLayout android:layout_width="0dp" android:id="@+id/LinearLayout03"
+				android:layout_height="fill_parent" android:layout_weight="2"
+				android:paddingLeft="20dip" android:paddingRight="25dip">
+
+				<ImageButton
+				    android:id="@+id/dash_messages"
+				    android:layout_width="fill_parent"
+				    android:layout_height="fill_parent"
+				    android:background="@drawable/swarm_messages_text"
+				    android:scaleType="centerInside" />
+
+			</LinearLayout>
+
+			<LinearLayout android:layout_width="0dp" android:id="@+id/LinearLayout03"
+				android:layout_height="fill_parent" android:layout_weight="2"
+				android:paddingLeft="20dip" android:paddingRight="20dip">
+				<ImageButton 
+				    android:scaleType="centerInside"
+					android:background="@drawable-xhdpi/swarm_friends_text"
+					android:layout_width="fill_parent" 
+					android:layout_height="fill_parent"
+					android:id="@+id/dash_friends"></ImageButton>
+			</LinearLayout>
+
+		</LinearLayout>
+	</TableRow>
+
+	<TableRow android:id="@+id/DashTableRow03"
+		android:layout_width="fill_parent"
+		android:paddingTop="20dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="25">
+		<LinearLayout android:layout_weight="1"
+			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
+
+			<LinearLayout android:layout_width="0dp" android:id="@+id/LinearLayout03"
+				android:layout_height="fill_parent" android:layout_weight="2"
+				android:paddingLeft="30dip" android:paddingRight="30dip">
+				<ImageButton 
+				    android:scaleType="centerInside"
+					android:layout_width="fill_parent" 
+					android:layout_height="fill_parent"
+					android:id="@+id/dash_leaderboard" 
+					android:background="@drawable-xhdpi/swarm_leaderboards:text"></ImageButton>
+			</LinearLayout>
+
+			<LinearLayout android:layout_width="0dp" android:id="@+id/LinearLayout03"
+				android:layout_height="fill_parent" android:layout_weight="2"
+				android:paddingLeft="20dip" android:paddingRight="20dip">
+
+				<ImageButton
+				    android:id="@+id/dash_store"
+				    android:layout_width="fill_parent"
+				    android:layout_height="fill_parent"
+				    android:background="@drawable-xhdpi/swarm_store_text"
+				    android:scaleType="centerInside" />
+
+			</LinearLayout>
+		</LinearLayout>
+
+	</TableRow>
+	<TableRow android:id="@+id/DashTableRow" android:layout_height="0dip" android:layout_weight="5" android:layout_width="fill_parent" android:gravity="center_horizontal">
+		<TextView android:layout_height="wrap_content" android:id="@+id/DashLastSyncedTextView"
+			android:gravity="center" android:layout_width="fill_parent"
+			android:text="@string/Last_synced_label" android:textSize="16dip"></TextView>
+	</TableRow>
+
+
+</TableLayout>
