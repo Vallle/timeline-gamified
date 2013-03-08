@@ -13,7 +13,6 @@ package com.bjorsond.android.timeline;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -48,6 +47,7 @@ import com.bjorsond.android.timeline.models.Experience;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
+
 import com.swarmconnect.SwarmActivity;
 
 /**

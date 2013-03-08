@@ -83,6 +83,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private Intent timelineIntent;
 	private Intent myGroupsIntent;
 	private Intent tagsIntent;
+	private Intent swarmIntent;
 	private ContentAdder contentAdder;
 	private ContentLoader contentLoader;
 	private Account creator;
@@ -399,10 +400,11 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			sendEmailThread.start();
 			return true;
 			
-		//Gamification: Swarm menu
+			
+		//GAMIFICATION: Swarm menu
 		case R.id.SWARM_MENU_BUTTON:
-			Swarm.showDashboard();
 	        SwarmAchievement.unlock(10839);
+	        startActivity(swarmIntent);
 			
 		default:
 			break;
@@ -485,6 +487,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		timelineIntent = new Intent(this, TimelineActivity.class);
 		timelineIntent.setAction(Constants.INTENT_ACTION_NEW_TIMELINE); //Default Intent action for TimelineActivity is to create/open a timeline.
 		tagsIntent = new Intent(this, MyTagsActivity.class);
+		
+		swarmIntent = new Intent(this, MySwarmActivity.class);
 	}
 
 	private void setupHelpers() {

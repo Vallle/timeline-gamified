@@ -13,7 +13,6 @@ package com.bjorsond.android.timeline;
 import java.util.ArrayList;
 
 import android.accounts.Account;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
