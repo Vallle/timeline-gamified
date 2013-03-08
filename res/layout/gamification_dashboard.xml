@@ -26,7 +26,7 @@
 				android:paddingLeft="35dip">
 				<ImageButton 
 				    android:layout_width="fill_parent" 
-				    android:background="@drawable-xhdpi/swarm_profile_text" 
+				    android:background="@drawable/swarm_profile_text" 
 				    android:id="@+id/dash_swarm_profile" 
 				    android:layout_height="fill_parent" 
 				    android:scaleType="centerInside"></ImageButton>
@@ -40,7 +40,7 @@
 				    android:id="@+id/dash_achievements"
 				    android:layout_width="fill_parent"
 				    android:layout_height="fill_parent"
-				    android:background="@drawable-xhdpi/swarm_trophy_text"
+				    android:background="@drawable/swarm_trophy_text"
 				    android:scaleType="centerInside" />
 
 			</LinearLayout>
@@ -72,7 +72,7 @@
 				android:paddingLeft="20dip" android:paddingRight="20dip">
 				<ImageButton 
 				    android:scaleType="centerInside"
-					android:background="@drawable-xhdpi/swarm_friends_text"
+					android:background="@drawable/swarm_friends_text"
 					android:layout_width="fill_parent" 
 					android:layout_height="fill_parent"
 					android:id="@+id/dash_friends"></ImageButton>
@@ -95,18 +95,19 @@
 					android:layout_width="fill_parent" 
 					android:layout_height="fill_parent"
 					android:id="@+id/dash_leaderboard" 
-					android:background="@drawable-xhdpi/swarm_leaderboards:text"></ImageButton>
+					android:background="@drawable/swarm_leaderboards_text"></ImageButton>
 			</LinearLayout>
 
-			<LinearLayout android:layout_width="0dp" android:id="@+id/LinearLayout03"
-				android:layout_height="fill_parent" android:layout_weight="2"
-				android:paddingLeft="20dip" android:paddingRight="20dip">
+			<LinearLayout android:paddingRight="35dip"
+				android:layout_weight="2" android:layout_height="fill_parent"
+				android:paddingLeft="35dip" android:layout_width="8dp"
+				android:id="@+id/LinearLayout03">
 
 				<ImageButton
 				    android:id="@+id/dash_store"
 				    android:layout_width="fill_parent"
 				    android:layout_height="fill_parent"
-				    android:background="@drawable-xhdpi/swarm_store_text"
+				    android:background="@drawable/swarm_store_text"
 				    android:scaleType="centerInside" />
 
 			</LinearLayout>
