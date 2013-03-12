@@ -33,6 +33,7 @@ import com.bjorsond.android.timeline.models.SimpleNote.NoteColumns;
 import com.bjorsond.android.timeline.models.SimplePicture.PictureColumns;
 import com.bjorsond.android.timeline.models.SimpleRecording.RecordingColumns;
 import com.bjorsond.android.timeline.models.SimpleVideo.VideoColumns;
+import com.swarmconnect.SwarmAchievement;
 
 /**
  * Helper class for adding different models to their respective ContentProviders (Saving them using SQLite)
@@ -42,6 +43,10 @@ import com.bjorsond.android.timeline.models.SimpleVideo.VideoColumns;
 public class ContentAdder {
 	
 	private Context context;
+	private int VideoAchievement = 10955;
+	private int AudioAchievement = 10957;
+	private int PictureAchievement = 10953;
+	private int NoteAchievement = 10951;
 
 	public ContentAdder(Context context) {
 		this.context = context;
@@ -91,18 +96,22 @@ public class ContentAdder {
 		if(item instanceof SimpleNote) {
 			SimpleNote note = (SimpleNote) item;
 			addNoteToNoteContentProvider(selectedEvent, note);
+			//SwarmAchievement.unlock(10951);
 		}
 		else if(item instanceof SimplePicture) {
 			SimplePicture picture = (SimplePicture) item;
 			addPictureToImageContentProvider(selectedEvent, picture);
+			//SwarmAchievement.unlock(10953);
 		}
 		else if(item instanceof SimpleRecording) {
 			SimpleRecording recording = (SimpleRecording) item;
 			addRecordingToRecordingContentProvider(selectedEvent, recording);
+			//SwarmAchievement.unlock(10957);
 		}
 		else if(item instanceof SimpleVideo) {
 			SimpleVideo video = (SimpleVideo) item;
 			addVideoToVideoContentProvider(selectedEvent, video);
+			//SwarmAchievement.unlock(10955);
 		}
 		
 //		Log.d("CONTENT ADDER", "Added eventitem to eventItemContentProvider: " + item.getId());
@@ -147,18 +156,22 @@ public class ContentAdder {
 			if(item instanceof SimpleNote) {
 				SimpleNote note = (SimpleNote) item;
 				addNoteToNoteContentProvider(event, note);
+				//SwarmAchievement.unlock(NoteAchievement);
 			}
 			else if(item instanceof SimplePicture) {
 				SimplePicture picture = (SimplePicture) item;
 				addPictureToImageContentProvider(event, picture);
+				//SwarmAchievement.unlock(PictureAchievement);
 			}
 			else if(item instanceof SimpleRecording) {
 				SimpleRecording recording = (SimpleRecording) item;
 				addRecordingToRecordingContentProvider(event, recording);
+				//SwarmAchievement.unlock(AudioAchievement);
 			}
 			else if(item instanceof SimpleVideo) {
 				SimpleVideo video = (SimpleVideo) item;
 				addVideoToVideoContentProvider(event, video);
+				//SwarmAchievement.unlock(VideoAchievement);				
 			}
 		}
 		}

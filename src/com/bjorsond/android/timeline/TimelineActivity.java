@@ -78,6 +78,7 @@ import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.MyLocation;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.SwarmAchievement;
 import com.swarmconnect.SwarmActivity;
 
 /**
@@ -126,6 +127,12 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	private EventDialog eventDialog;
 	private MoodDialog moodDialog;
 
+	//Achievements
+	private int VideoAchievement = 10955;
+	private int AudioAchievement = 10957;
+	private int PictureAchievement = 10953;
+	private int NoteAchievement = 10951;
+	
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -229,6 +236,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Log.i(this.getClass().getSimpleName(), "********* PICTURE CREATED **************");
 				   
 				   Toast.makeText(this, "Picture created", Toast.LENGTH_SHORT).show();
+				   //Adding achievement
+				   SwarmAchievement.unlock(PictureAchievement);
 
 	    	    	addPictureToTimeline(intentFilename);
 	    	    	intentFilename="";
@@ -244,6 +253,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Log.i(this.getClass().getSimpleName(), "********* VIDEO RECORDING CREATED **************");
 				   
 				Toast.makeText(this, "Video recording created", Toast.LENGTH_SHORT).show();
+				//Adding achievement
+				SwarmAchievement.unlock(VideoAchievement);
 				   
 	   	    	videoUri = data.getData();
     			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(videoUri, this));
@@ -261,6 +272,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Log.i(this.getClass().getSimpleName(), "********* AUDIO RECORDING CREATED **************");
 				   
 				   Toast.makeText(this, "Audio recording created", Toast.LENGTH_SHORT).show();
+				   //Adding achievement
+				   SwarmAchievement.unlock(AudioAchievement);
 				  
 				    audioUri = data.getData();
 	       			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(audioUri, this));
@@ -282,7 +295,9 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Log.i(this.getClass().getSimpleName(), "*************************************");
 				   
 				   Toast.makeText(this, "Note created", Toast.LENGTH_SHORT).show();
-				
+				   //Adding achievement
+				   SwarmAchievement.unlock(NoteAchievement);
+				   
 	    	    addNoteToTimeline(data);
 
 	    	    } else if (resultCode == RESULT_CANCELED) {
