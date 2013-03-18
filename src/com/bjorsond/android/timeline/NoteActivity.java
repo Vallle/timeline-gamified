@@ -21,6 +21,7 @@ import android.widget.EditText;
 import com.bjorsond.android.timeline.models.SimpleNote;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
 
 /**
@@ -41,7 +42,8 @@ public class NoteActivity extends SwarmActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.notescreen);
-		
+
+		Swarm.setActive(this);
 		setupViews();
 
 	}

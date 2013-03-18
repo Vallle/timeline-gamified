@@ -48,6 +48,7 @@ import com.bjorsond.android.timeline.sync.GoogleAppEngineHandler;
 import com.bjorsond.android.timeline.sync.UserAndGroupServiceHandler;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
 
 
@@ -77,7 +78,8 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.groupmenuscreen);
-		
+
+		Swarm.setActive(this);
 		setupHelpers();
 		
 		userAndGroupServiceHandler = new UserAndGroupServiceHandler(this, this);

@@ -10,12 +10,14 @@
  ******************************************************************************/
 package com.bjorsond.android.timeline.sync;
 
+import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -65,6 +67,7 @@ public class ServerDownloader {
 			Gson gson = gsonB.create();
 			
 			Reader r = new InputStreamReader(getJSONData("/rest/experiences/"+user.getUserName()+"/")); 
+
 			Experiences experiences = gson.fromJson(r, Experiences.class);
 			
 			if(experiences.getExperiences() != null) {
@@ -209,7 +212,6 @@ public class ServerDownloader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
         return data;
     }
 	

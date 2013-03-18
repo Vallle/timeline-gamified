@@ -78,6 +78,7 @@ import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.MyLocation;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmAchievement;
 import com.swarmconnect.SwarmActivity;
 
@@ -173,7 +174,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
         
         timeline.setEvents(loadedEvents);
         System.out.println("ANTALL HENTEDE EVENTS! : " + timeline.getEvents().size());
-        
+
+		Swarm.setActive(this);
         setupViews(); 
         setupMoodButtonQuickAction();
        

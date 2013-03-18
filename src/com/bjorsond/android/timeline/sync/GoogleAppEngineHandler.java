@@ -150,13 +150,18 @@ public class GoogleAppEngineHandler {
 	
 	private static void storeFilesOnServer(Object object) {
 		if(object instanceof Experiences){
+			Log.i("Første if", object.toString());
 			if(((Experiences) object).getExperiences()!=null){
+				Log.i("Andre if", object.toString());
 		    	for (Experience ex : ((Experiences) object).getExperiences()) {
 		    		if(((Experience) ex).getEvents()!=null){
+		    			Log.i("Tredje if", object.toString());
 			    		for (BaseEvent baseEvent : ex.getEvents()) {
 			    			if(baseEvent instanceof Event){
+			    				Log.i("Fjerde if", object.toString());
 			    				Event event = (Event)baseEvent;
 			    			if(event.getEventItems()!=null && event.isShared()){
+			    				Log.i("Femte if", object.toString());
 						    		for (EventItem eventI : event.getEventItems()) {
 								    	if(eventI instanceof SimplePicture){
 								    		ServerUploader.uploadFile(Constants.IMAGE_STORAGE_FILEPATH+((SimplePicture)eventI).getPictureFilename(), 

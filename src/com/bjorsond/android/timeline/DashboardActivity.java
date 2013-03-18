@@ -103,6 +103,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		
 		Swarm.init(this, 4651, "6ef1c4f59752007d40bd3d8828f789f2");
 		
+		Swarm.setActive(this);
+		
 		creator = Utilities.getUserAccount(this);
 		user = new User(creator.name);
 		
@@ -360,12 +362,14 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	@Override
 	protected void onPause() {
 		super.onPause();
+		Swarm.setInactive(this);
 		closeDatabaseHelpers();
 	}
 	
 	@Override
 	protected void onResume() {
 		super.onResume();
+		Swarm.setActive(this);
 		setupDatabaseHelpers();
 	}
 	

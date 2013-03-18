@@ -51,8 +51,8 @@ public class ServerUploader {
 			DataOutputStream outputStream = null;
 	
 			String pathToOurFile = locationFilename;
-//			String urlServer = "http://folk.ntnu.no/bjornava/upload/upload.php";
-			String urlServer = "http://timelinegamified.appspot.com/upload.php";
+			String urlServer = "http://folk.ntnu.no/bjornava/upload/upload.php";
+//			String urlServer = "http://timelinegamified.appspot.com/upload.php";
 			String lineEnd = "\r\n";
 			String twoHyphens = "--";
 			String boundary =  "*****";

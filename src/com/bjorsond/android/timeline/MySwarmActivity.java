@@ -24,7 +24,8 @@ public class MySwarmActivity extends SwarmActivity {
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gamification_dashboard);
-		
+
+		Swarm.setActive(this);
 		setupViews();
 	}
 	

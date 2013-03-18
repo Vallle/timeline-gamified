@@ -48,6 +48,7 @@ import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
 
+import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
 
 /**
@@ -70,7 +71,8 @@ public class MyTagsActivity extends SwarmActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tagactivitylayout);
-		
+
+		Swarm.setActive(this);
 		setupHelpers();
 		setupViews();
 		
