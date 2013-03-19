@@ -18,7 +18,7 @@
 	<LinearLayout android:layout_height="wrap_content" android:id="@+id/popupTagButtonBarLinearLayout" android:layout_alignParentBottom="true" android:layout_width="fill_parent" android:weightSum="100">
 		<Button android:layout_height="wrap_content" android:text="@string/OK_label" android:id="@+id/tagsOKButton" android:layout_width="0dip" android:layout_weight="33"></Button>
 		<Button android:layout_height="wrap_content" android:id="@+id/tagCancelButton" android:text="@string/Cancel_label" android:layout_width="0dip" android:layout_weight="33"></Button>
-		<Button android:layout_height="wrap_content" android:id="@+id/tagManageButton" android:layout_weight="33" android:layout_width="0dip" android:text="Create new tag"></Button>
+		<Button android:layout_height="wrap_content" android:id="@+id/tagManageButton" android:layout_weight="33" android:layout_width="0dip" android:text="@string/Create_tag_label"></Button>
 	</LinearLayout>
 
 </RelativeLayout>

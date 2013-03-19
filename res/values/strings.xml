@@ -49,6 +49,8 @@
 	<string name="Add_group_label">Add group</string>
 	<string name="Select_group_to_share_label">Select a group to share with</string>
 	<string name="Share_with_group_label">Share with group: </string>
+	<string name="Show_in_timeline_label">Show in a timeline</string>
+	<string name="My_groups_label">My Groups:</string>
 	
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>
