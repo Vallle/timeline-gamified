@@ -14,6 +14,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 
 import com.bjorsond.android.timeline.ProgressDialogActivity;
+import com.bjorsond.android.timeline.R;
 import com.bjorsond.android.timeline.database.contentmanagers.UserGroupManager;
 import com.bjorsond.android.timeline.models.Group;
 import com.bjorsond.android.timeline.models.Groups;
@@ -65,7 +66,7 @@ public class UserAndGroupServiceHandler {
 		activity.runOnUiThread(new Runnable() {
 			
 			public void run() {
-				progressDialog.setMessage("Loading all users ...");
+				progressDialog.setMessage(((Context) activity).getString(R.string.Loading_all_users));
 			}
 		});
 		
@@ -83,7 +84,7 @@ public class UserAndGroupServiceHandler {
 	private void getGroupsAndAddToDatabase() {
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
-				progressDialog.setMessage("Loading my groups ...");
+				progressDialog.setMessage(((Context) activity).getString(R.string.Loading_all_users));
 			}
 		});
 		downloadGroups();

@@ -21,6 +21,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.channels.FileChannel;
+import java.text.DateFormatSymbols;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -250,15 +251,16 @@ public class Utilities {
 	   * @return  Name of day.
 	   */
 	public static String getDayName(int dayInWeek){
-		 
+		String[] weekdays = new DateFormatSymbols().getWeekdays();
+		
 		    switch (dayInWeek) {
-		      case 0   : return "Monday";
-		      case 1   : return "Tuesday";
-		      case 2   : return "Wednesday";
-		      case 3   : return "Thursday";
-		      case 4   : return "Friday";
-		      case 5   : return "Saturday";
-		      case 6   : return "Sunday";
+		      case 0   : return weekdays[2];
+		      case 1   : return weekdays[3];
+		      case 2   : return weekdays[4];
+		      case 3   : return weekdays[5];
+		      case 4   : return weekdays[6];
+		      case 5   : return weekdays[7];
+		      case 6   : return weekdays[1];
 		      default :
 		        assert false : "Invalid day of week: " + dayInWeek;
 		    }

@@ -42,11 +42,15 @@
 	<string name="Tag_name_hint">Enter a tag name</string>
 	<string name="Tag_name_label">Enter a name for tag!</string>
 	<string name="Delete_tag_label">Do you really want to delete tag \"</string>
+	<string name="Note_title_hint">Enter note title</string>
+	<string name="Note_text_hint">Enter note text</string>
 	
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>
 	<string name="Could_not_sync">Couldn\'t retrieve last synced time</string>
 	<string name="Synchronizing">Synchronizing timelines</string>
+	<string name="Loading_all_users">Loading all users ...</string>
+	<string name="Loading_my_groups">Loading my groups ...</string>
 
 
     <string name="picture">Picture</string>
@@ -80,8 +84,24 @@
 	<string name="Created_tag_toast">You have created the tag: </string>
 	<string name="No_tag_selected_toast">No tag selected! Select one or more tags to use this functionality</string>
 	<string name="No_tag_events_toast">The tag(s) you have selected has no attached events!</string>
+	<string name="Mood_added_toast">Your mood is added to server!</string>
+	<string name="Note_not_created_toast">Note was not created</string>
+	<string name="Note_edited_toast">Note edited</string>
+	<string name="Note_not_edited_toast">Note was not edited</string>
+	<string name="Note_created_toast">Note created</string>
+	<string name="Audio_created_toast">Audio recording created</string>
+	<string name="Audio_not_created_toast">Audio was not recorded</string>
+	<string name="Video_created_toast">Video recording created</string>
+	<string name="Video_not_created_toast">Video was not taken</string>
+	<string name="Pic_created_toast">Picture created</string>
+	<string name="Pic_not_created_toast">Picture was not taken</string>
+	<string name="Tag_not_added_toast">Tag was not added</string>
+	<string name="Video_selected_toast">Video was selected</string>
+	<string name="Attach_not_toast">Attachment was not added</string>
+	<string name="SD_toast">SD card not available</string>
+	<string name="Zoomed_out_toast">You are max zoomed out</string>
+	<string name="Zoomed_out_back_toast">You are max zoomed out, press back once more to go exit timeline mode</string>
 	
-    
     <string name="new_timeline">Enter the name of your timeline</string>
       
     <string name="no_events_toast">You have no events this day</string>

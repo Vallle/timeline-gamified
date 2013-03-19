@@ -237,7 +237,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			  if (resultCode == RESULT_OK) {
 				   Log.i(this.getClass().getSimpleName(), "********* PICTURE CREATED **************");
 				   
-				   Toast.makeText(this, "Picture created", Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, R.string.Pic_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   SwarmAchievement.unlock(PictureAchievement);
 
@@ -245,16 +245,16 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	    	    	intentFilename="";
 
 	    	    } else if (resultCode == RESULT_CANCELED) {
-	    	        Toast.makeText(this, "Picture was not taken", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Pic_not_created_toast, Toast.LENGTH_SHORT).show();
 	    	    } else {
-	    	        Toast.makeText(this, "Picture was not taken", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Pic_not_created_toast, Toast.LENGTH_SHORT).show();
 	    	    }
 			break;
 		case Constants.CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE:
 			   if (resultCode == RESULT_OK) {
 				Log.i(this.getClass().getSimpleName(), "********* VIDEO RECORDING CREATED **************");
 				   
-				Toast.makeText(this, "Video recording created", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.Video_created_toast, Toast.LENGTH_SHORT).show();
 				//Adding achievement
 				SwarmAchievement.unlock(VideoAchievement);
 				//Adding to video count
@@ -265,16 +265,16 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				addVideoToTimeline(filename);
 	   	    	
 	    	    } else if (resultCode == RESULT_CANCELED) {
-	    	        Toast.makeText(this, "Video was not taken", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Video_not_created_toast, Toast.LENGTH_SHORT).show();
 	    	    } else {
-	    	        Toast.makeText(this, "Video was not taken", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Video_not_created_toast, Toast.LENGTH_SHORT).show();
 	    	    }
 			break;
 		case Constants.RECORD_AUDIO_ACTIVITY_REQUEST_CODE:
 			   if (resultCode == RESULT_OK) {
 				   Log.i(this.getClass().getSimpleName(), "********* AUDIO RECORDING CREATED **************");
 				   
-				   Toast.makeText(this, "Audio recording created", Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, R.string.Audio_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   SwarmAchievement.unlock(AudioAchievement);
 				  
@@ -284,9 +284,9 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	       			addAudioToTimeline(filename);
 
 	    	    } else if (resultCode == RESULT_CANCELED) {
-	    	        Toast.makeText(this, "Audio was not recorded", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Audio_not_created_toast, Toast.LENGTH_SHORT).show();
 	    	    } else {
-	    	        Toast.makeText(this, "Audio was not recorded", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Audio_not_created_toast, Toast.LENGTH_SHORT).show();
 	    	    }
 			break;
 			
@@ -297,29 +297,29 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
 				   Log.i(this.getClass().getSimpleName(), "*************************************");
 				   
-				   Toast.makeText(this, "Note created", Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   SwarmAchievement.unlock(NoteAchievement);
 				   
 	    	    addNoteToTimeline(data);
 
 	    	    } else if (resultCode == RESULT_CANCELED) {
-	    	        Toast.makeText(this, "Note was not created", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Note_not_created_toast, Toast.LENGTH_SHORT).show();
 	    	    } else {
-	    	        Toast.makeText(this, "Note was not created", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Note_not_created_toast, Toast.LENGTH_SHORT).show();
 	    	    }
 			break;
 			
 		case Constants.EDIT_NOTE:
 			   if (resultCode == RESULT_OK) {
-	    	    	Toast.makeText(this, "Note edited" , Toast.LENGTH_SHORT).show();
+	    	    	Toast.makeText(this, R.string.Note_edited_toast , Toast.LENGTH_SHORT).show();
 	    	    
 	    	    updateNote(data);
 
 	    	    } else if (resultCode == RESULT_CANCELED) {
-	    	        Toast.makeText(this, "Note was not edited", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Note_not_edited_toast, Toast.LENGTH_SHORT).show();
 	    	    } else {
-	    	        Toast.makeText(this, "Note was not edited", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Note_not_edited_toast, Toast.LENGTH_SHORT).show();
 	    	    }
 			break;
 			
@@ -329,9 +329,9 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	    	    updateTags();
 
 	    	    } else if (resultCode == RESULT_CANCELED) {
-	    	        Toast.makeText(this, "Tag was not added", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Tag_not_added_toast, Toast.LENGTH_SHORT).show();
 	    	    } else {
-	    	        Toast.makeText(this, "Tag was not added", Toast.LENGTH_SHORT).show();
+	    	        Toast.makeText(this, R.string.Tag_not_added_toast, Toast.LENGTH_SHORT).show();
 	    	    }
 			break;
 			case Constants.SELECT_PICTURE:
@@ -348,7 +348,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			case Constants.SELECT_VIDEO:
 			if(resultCode == Activity.RESULT_OK) {
 				Log.i(this.getClass().getSimpleName(), "********* VIDEO SELECTED **************");
-				Toast.makeText(this, "Video was selected", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.Video_selected_toast, Toast.LENGTH_SHORT).show();
 				videoUri = (Uri) data.getData();
     			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(videoUri, this));
 				Utilities.copyFile(Utilities.getRealPathFromURI(videoUri, this), Constants.VIDEO_STORAGE_FILEPATH, filename);
@@ -397,14 +397,14 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Log.i(this.getClass().getSimpleName(), "Text: "+intent.getExtras().getString(Intent.EXTRA_TEXT));
 				   Log.i(this.getClass().getSimpleName(), "*************************************");
 				   
-				   Toast.makeText(this, "Note created", Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
 			     addNoteToTimeline(intent);
 		    }
 		}
 		else if(resultCode == Activity.RESULT_CANCELED) {
-		    Toast.makeText(this, "Attachment was not added", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(this, R.string.Attach_not_toast, Toast.LENGTH_SHORT).show();
 		} else {
-		    Toast.makeText(this, "Attachment was not added", Toast.LENGTH_SHORT).show();
+		    Toast.makeText(this, R.string.Attach_not_toast, Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -443,7 +443,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			    startActivityForResult(intent, Constants.CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 		} catch (Exception e) {
 			Log.e("StartCamera", "Feil", e);
-			Toast.makeText(this, "SD card not availiable", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.SD_toast, Toast.LENGTH_LONG).show();
 		}
 		    
 	}
@@ -471,7 +471,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
       	    intent.putExtra("output", uri.getPath());
       	    startActivityForResult(intent, Constants.CAPTURE_VIDEO_ACTIVITY_REQUEST_CODE);
 		} catch (Exception e) {
-			Toast.makeText(this, "SD card not availiable", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.SD_toast, Toast.LENGTH_LONG).show();
 		}
       
 		
@@ -630,7 +630,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				try {
 					EventAdapter.zoomOut();
 				} catch (MaxZoomedOutException e) {
-					Toast.makeText(TimelineActivity.this, "You are max zoomed out", Toast.LENGTH_SHORT).show();
+					Toast.makeText(TimelineActivity.this, R.string.Zoomed_out_toast, Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -829,7 +829,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		contentAdder.addEventToEventContentProvider(moodEvent);
 		Thread sendMoodThread = new Thread(SendMoodEventRunnable, "shareThread");
 		sendMoodThread.start();
-		Toast.makeText(this, "Your mood is added to server!", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, R.string.Mood_added_toast, Toast.LENGTH_SHORT).show();
 	}
 	
 	/**
@@ -1045,7 +1045,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				super.onBackPressed();
 			}
 			else{
-				Toast.makeText(this, "You are max zoomed out, press back once more to go exit timeline mode", Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.Zoomed_out_back_toast, Toast.LENGTH_SHORT).show();
 				backCounter++;
 			}
 				
