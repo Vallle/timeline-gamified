@@ -84,7 +84,7 @@ public class UserAndGroupServiceHandler {
 	private void getGroupsAndAddToDatabase() {
 		activity.runOnUiThread(new Runnable() {
 			public void run() {
-				progressDialog.setMessage(((Context) activity).getString(R.string.Loading_all_users));
+				progressDialog.setMessage(((Context) activity).getString(R.string.Loading_my_groups));
 			}
 		});
 		downloadGroups();

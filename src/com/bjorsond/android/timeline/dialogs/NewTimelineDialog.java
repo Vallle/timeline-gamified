@@ -73,9 +73,9 @@ public class NewTimelineDialog extends Dialog {
 		contentAdder = new ContentAdder(context);
 		
 		if(experience!=null)
-			this.setTitle("Select a group to share with");
+			this.setTitle(R.string.Select_group_to_share_label);
 		else
-			this.setTitle("Create a new timeline");
+			this.setTitle(R.string.Enter_name_label);
 		uGManager = new UserGroupManager(this.context);
 		
 		groupList = (ListView) findViewById(R.id.sharedtimelinegroupslist);
@@ -93,7 +93,7 @@ public class NewTimelineDialog extends Dialog {
 
 		
 		selectedGroupText = (TextView) findViewById(R.id.selectedGroupText);
-		selectedGroupText.setText("Select a group to share with:");
+		selectedGroupText.setText(R.string.Select_group_to_share_label);
 		
 		inputTextField = (EditText)findViewById(R.id.TimelineNameEditText);
 		shareToggle = (ToggleButton)findViewById(R.id.ShareTimelineToggleButton);
@@ -113,7 +113,7 @@ public class NewTimelineDialog extends Dialog {
 					groupList.setVisibility(View.GONE);	
 					addGroupButton.setVisibility(View.INVISIBLE);
 					selectedGroup = null;
-					selectedGroupText.setText("Select a group to share with");
+					selectedGroupText.setText(R.string.Select_group_to_share_label);
 				}
 			}
 		});
@@ -129,7 +129,7 @@ public class NewTimelineDialog extends Dialog {
 
 			public void onItemClick(AdapterView<?> arg0, View view, int position,
 					long arg3) {
-				selectedGroupText.setText("Share with group: " + groupList.getAdapter().getItem(position));
+				selectedGroupText.setText(((Context) getOwnerActivity()).getString(R.string.Share_with_group_label) + groupList.getAdapter().getItem(position));
 				selectedGroup = (Group) groupList.getAdapter().getItem(position);
 			}
 		});
@@ -141,7 +141,7 @@ public class NewTimelineDialog extends Dialog {
 			
 			public void onClick(View arg0) {
 				if(shareToggle.isChecked() && selectedGroup == null) {
-					Toast.makeText(context, "You have to select a group to share the timeline with!", Toast.LENGTH_SHORT).show();
+					Toast.makeText(context, R.string.Select_group_toast, Toast.LENGTH_SHORT).show();
 				}
 				else {
 					String inputName = inputTextField.getText().toString().trim();
@@ -152,7 +152,7 @@ public class NewTimelineDialog extends Dialog {
 						ContentUpdater contentUpdater = new ContentUpdater(context);
 						contentUpdater.updateExperience(NewTimelineDialog.this.experience);
 						GoogleAppEngineHandler.persistTimelineObject(experience);
-						Toast.makeText(context, "Timeline: "+experience.toString()+" has been shared with "+selectedGroup.toString(), Toast.LENGTH_SHORT).show();
+						Toast.makeText(context, "Timeline: "+experience.toString()+R.string.Has_been_shared_toast+selectedGroup.toString(), Toast.LENGTH_SHORT).show();
 					}else
 						createNewTimeline(inputName, share, selectedGroup);
 					
@@ -182,8 +182,8 @@ public class NewTimelineDialog extends Dialog {
 		
 		final EditText inputTextField = (EditText)layout.findViewById(R.id.NewGroupeditText);
 
-		groupNameInputDialog.setTitle("Enter a name for your group!");
-		groupNameInputDialog.setPositiveButton("Ok",
+		groupNameInputDialog.setTitle(R.string.Group_name_label);
+		groupNameInputDialog.setPositiveButton(R.string.OK_label,
 				new DialogInterface.OnClickListener() {
 
 			public void onClick(DialogInterface dialog, int which) {
@@ -193,7 +193,7 @@ public class NewTimelineDialog extends Dialog {
 			}
 		});
 
-		groupNameInputDialog.setNegativeButton("Cancel",
+		groupNameInputDialog.setNegativeButton(R.string.Cancel_label,
 				new DialogInterface.OnClickListener() {
 
 			public void onClick(DialogInterface dialog, int which) {
@@ -222,7 +222,7 @@ public class NewTimelineDialog extends Dialog {
 		uGManager.addUserToAGroupInTheDatabase(group, user);
 		group.addMembers(user);
 		GoogleAppEngineHandler.addGroupToServer(group);
-		Toast.makeText(context, "You have created the group: " +group.toString() , Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, R.string.Created_group_toast +group.toString() , Toast.LENGTH_SHORT).show();
 	}
 
 	/**

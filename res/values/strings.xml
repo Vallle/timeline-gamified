@@ -44,6 +44,11 @@
 	<string name="Delete_tag_label">Do you really want to delete tag \"</string>
 	<string name="Note_title_hint">Enter note title</string>
 	<string name="Note_text_hint">Enter note text</string>
+	<string name="Create_tag_label">Create new tag</string>
+	<string name="Add_users_label">Add users</string>
+	<string name="Add_group_label">Add group</string>
+	<string name="Select_group_to_share_label">Select a group to share with</string>
+	<string name="Share_with_group_label">Share with group: </string>
 	
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>
@@ -101,6 +106,8 @@
 	<string name="SD_toast">SD card not available</string>
 	<string name="Zoomed_out_toast">You are max zoomed out</string>
 	<string name="Zoomed_out_back_toast">You are max zoomed out, press back once more to go exit timeline mode</string>
+	<string name="Select_group_toast">You have to select a group to share the timeline with!</string>
+	<string name="Has_been_shared_toast"> has been shared with </string>
 	
     <string name="new_timeline">Enter the name of your timeline</string>
       

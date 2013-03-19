@@ -4,8 +4,8 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
     <LinearLayout android:id="@+id/linearLayout1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="bottom" android:gravity="center_horizontal">
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/adduserbutton" android:text="Add users"></Button>
-        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/canceladduserbutton" android:text="Cancel"></Button>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/adduserbutton" android:text="@string/Add_users_label"></Button>
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/canceladduserbutton" android:text="@string/Cancel_label"></Button>
     </LinearLayout>
   
   

@@ -16,8 +16,8 @@
 	</RelativeLayout>
 	<ListView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@+id/PopupTitleRelativeLayout" android:id="@+id/tagListlistView" android:layout_above="@+id/popupTagButtonBarLinearLayout" android:cacheColorHint="#00000000"></ListView>
 	<LinearLayout android:layout_height="wrap_content" android:id="@+id/popupTagButtonBarLinearLayout" android:layout_alignParentBottom="true" android:layout_width="fill_parent" android:weightSum="100">
-		<Button android:layout_height="wrap_content" android:text="OK" android:id="@+id/tagsOKButton" android:layout_width="0dip" android:layout_weight="33"></Button>
-		<Button android:layout_height="wrap_content" android:id="@+id/tagCancelButton" android:text="Cancel" android:layout_width="0dip" android:layout_weight="33"></Button>
+		<Button android:layout_height="wrap_content" android:text="@string/OK_label" android:id="@+id/tagsOKButton" android:layout_width="0dip" android:layout_weight="33"></Button>
+		<Button android:layout_height="wrap_content" android:id="@+id/tagCancelButton" android:text="@string/Cancel_label" android:layout_width="0dip" android:layout_weight="33"></Button>
 		<Button android:layout_height="wrap_content" android:id="@+id/tagManageButton" android:layout_weight="33" android:layout_width="0dip" android:text="Create new tag"></Button>
 	</LinearLayout>
 
