@@ -133,6 +133,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	private int AudioAchievement = 10957;
 	private int PictureAchievement = 10953;
 	private int NoteAchievement = 10951;
+	private int NoteTenAchievement = 10969;
+	private int PictureTenAchievement = 10971;
+	private int AudioTenAchievement = 10975;
+	private int VideoTenAchievement = 10973;
 	
 	/** Called when the activity is first created. */
     @Override
@@ -239,8 +243,11 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   
 				   Toast.makeText(this, R.string.Pic_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
-				   SwarmAchievement.unlock(PictureAchievement);
-
+				   if (DashboardActivity.getPictureCounter() == 1)SwarmAchievement.unlock(PictureAchievement);
+				   if (DashboardActivity.getPictureCounter() == 10)SwarmAchievement.unlock(PictureTenAchievement);
+				   //Adding to picture count
+				   DashboardActivity.addPictureCounter();
+					
 	    	    	addPictureToTimeline(intentFilename);
 	    	    	intentFilename="";
 
@@ -256,9 +263,11 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   
 				Toast.makeText(this, R.string.Video_created_toast, Toast.LENGTH_SHORT).show();
 				//Adding achievement
-				SwarmAchievement.unlock(VideoAchievement);
+				if (DashboardActivity.getVideoCounter() == 1)SwarmAchievement.unlock(VideoAchievement);
+				if (DashboardActivity.getVideoCounter() == 10)SwarmAchievement.unlock(VideoTenAchievement);
 				//Adding to video count
 				DashboardActivity.addVideoCounter();
+				
 	   	    	videoUri = data.getData();
     			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(videoUri, this));
 				Utilities.copyFile(Utilities.getRealPathFromURI(videoUri, this), Constants.VIDEO_STORAGE_FILEPATH, filename);
@@ -276,8 +285,11 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   
 				   Toast.makeText(this, R.string.Audio_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
-				   SwarmAchievement.unlock(AudioAchievement);
-				  
+				   if (DashboardActivity.getAudioCounter() == 1)SwarmAchievement.unlock(AudioAchievement);
+				   if (DashboardActivity.getAudioCounter() == 10)SwarmAchievement.unlock(AudioTenAchievement);
+				   //Adding to audio count
+				   DashboardActivity.addAudioCounter();
+					
 				    audioUri = data.getData();
 	       			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(audioUri, this));
 	   				Utilities.copyFile(Utilities.getRealPathFromURI(audioUri, this), Constants.RECORDING_STORAGE_FILEPATH, filename);
@@ -299,8 +311,11 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   
 				   Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
-				   SwarmAchievement.unlock(NoteAchievement);
-				   
+				   if (DashboardActivity.getNoteCounter() == 1)SwarmAchievement.unlock(NoteAchievement);
+				   if (DashboardActivity.getNoteCounter() == 10)SwarmAchievement.unlock(NoteTenAchievement);
+				   //Adding to note count
+				   DashboardActivity.addNoteCounter();
+					
 	    	    addNoteToTimeline(data);
 
 	    	    } else if (resultCode == RESULT_CANCELED) {
