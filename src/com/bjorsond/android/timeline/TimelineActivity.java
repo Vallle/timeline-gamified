@@ -257,7 +257,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Toast.makeText(this, "Video recording created", Toast.LENGTH_SHORT).show();
 				//Adding achievement
 				SwarmAchievement.unlock(VideoAchievement);
-				   
+				//Adding to video count
+				DashboardActivity.addVideoCounter();
 	   	    	videoUri = data.getData();
     			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(videoUri, this));
 				Utilities.copyFile(Utilities.getRealPathFromURI(videoUri, this), Constants.VIDEO_STORAGE_FILEPATH, filename);

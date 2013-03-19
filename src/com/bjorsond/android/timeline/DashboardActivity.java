@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -95,11 +96,18 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private UserGroupManager uGManager;
 	private ProgressDialog progressDialog;
 	private TimelineDatabaseHelper timelineDatabaseHelper;
+	
+	// ADDING COUNTERS FOR ACHIEVEMENT UNLOCKING
+	private static int noteCounter, audioCounter, videoCounter, pictureCounter, moodCounter;
+	public static final String PREFS_NAME = "MyPreferencesFile";
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dashboard);
 		MyLocation.getInstance(this);//Starts the LocationManager right away so a location will be available as soon as possible
+		
+		// Restoring preferences - Achievement counters
+		restorePreferences();
 		
 		Swarm.init(this, 4651, "6ef1c4f59752007d40bd3d8828f789f2");
 		
@@ -164,6 +172,75 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		
 	}
 
+	/*
+	* COUNTER GETTERS, SETTERS AND ADDERS -- START
+	*/
+	//    NOTE
+	public static void addNoteCounter() {
+		noteCounter++;
+	}
+	
+	public void setNoteCounter(int number) {
+		noteCounter = number;
+	}
+	
+	public static int getNoteCounter() {
+		return noteCounter;
+	}
+	//  AUDIO
+	public static void addAudioCounter() {
+		audioCounter++;
+	}
+	
+	public void setAudioCounter(int number) {
+		audioCounter = number;
+	}
+	
+	public static int getAudioCounter() {
+		return audioCounter;
+	}
+	//  VIDEO
+	public static void addVideoCounter() {
+		videoCounter++;
+	}
+	
+	public void setVideoCounter(int number) {
+		videoCounter = number;
+	}
+	
+	public static int getVideoCounter() {
+		return videoCounter;
+	}
+	//  PICTURE
+	public static void addPictureCounter() {
+		pictureCounter++;
+	}
+	
+	public void setPictureCounter(int number) {
+		pictureCounter = number;
+	}
+	
+	public static int getPictureCounter() {
+		return pictureCounter;
+	}
+	
+	//  MOOD
+	public static void addMoodCounter() {
+		moodCounter++;
+	}
+	
+	public void setMoodCounter(int number) {
+		moodCounter = number;
+	}
+	
+	public static int getMoodCounter() {
+		return moodCounter;
+	}
+	/*
+	* COUNTER GETTERS AND SETTERS  -- END
+	*/
+	
+	
 	/**
 	 * 
 	 * Checks if user is registered on the Timeline server.
@@ -347,6 +424,18 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
         }
       };
     
+     private void restorePreferences() {
+    	// Restore preferences
+         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+         setNoteCounter(settings.getInt("noteCount", 0));
+         setAudioCounter(settings.getInt("audioCount", 0));
+         setVideoCounter(settings.getInt("videoCount", 0));
+         setPictureCounter(settings.getInt("pictureCount", 0));
+         setMoodCounter(settings.getInt("moodCount", 0));
+     }
+      
+      
+      
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -377,6 +466,20 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	protected void onStop() {
 		closeDatabaseHelpers();
 		super.onStop();
+		
+		
+		// We need an Editor object to make preference changes.
+	    // All objects are from android.context.Context
+	    SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+	    SharedPreferences.Editor editor = settings.edit();
+	    editor.putInt("noteCount", noteCounter);
+	    editor.putInt("videoCount", videoCounter);
+	    editor.putInt("audioCount", audioCounter);
+	    editor.putInt("pictureCount", pictureCounter);
+	    editor.putInt("moodCount", moodCounter);
+
+	    // Commit the edits!
+	    editor.commit();
 	}
 	
 	@Override
