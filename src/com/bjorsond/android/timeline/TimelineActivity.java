@@ -95,7 +95,7 @@ import com.swarmconnect.SwarmActivity;
  */
 public class TimelineActivity extends SwarmActivity implements SimpleGestureListener {
 	
-	private LinearLayout cameraButton, videoCameraButton, audioRecorderButton, createNoteButton, attachmentButton, moodButton;
+	private LinearLayout cameraButton, videoCameraButton, audioRecorderButton, createNoteButton, attachmentButton, moodButton, sumDayButton;
 	private TextView screenTitle, timelineTitleTextView;
 	private TimelineGridAdapter EventAdapter;
 	private Event selectedEvent;
@@ -521,6 +521,12 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	public void startAttachmentDialog() {
 		new AttachmentAdder(this, this, timeline);
 	}
+	
+	public void startDaySummary(){
+		Intent noteIntent = new Intent(this, NoteActivity.class);
+		noteIntent.putExtra(Constants.REQUEST_CODE, Constants.CREATE_NOTE_ACTIVITY_REQUEST_CODE);
+		startActivityForResult(noteIntent, Constants.CREATE_NOTE_ACTIVITY_REQUEST_CODE);
+	}
  
 	/**
 	 * When the Activity is destroyed(ended) the database will be backed up to the SD-card(if availiable), 
@@ -588,6 +594,9 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
     		
     	attachmentButton = (LinearLayout)findViewById(R.id.MenuAttachmentButton);
     	attachmentButton.setOnClickListener(addAttachmentListener);
+    	
+    	sumDayButton = (LinearLayout)findViewById(R.id.MenuSumDayButton);
+    	sumDayButton.setOnClickListener(startSumDayListener);
      	
     	scrollview = (HorizontalScrollView) findViewById(R.id.HorizontalScrollView01);
     	scrollview.setScrollContainer(true);
@@ -703,6 +712,14 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			startAttachmentDialog();
 		}
 	};
+	
+	private OnClickListener startSumDayListener = new OnClickListener() {
+		
+		public void onClick(View v) {
+			startDaySummary();
+		}
+	};
+	
 		
 	/**
 	 * Method that adds a picture to the timeline.
