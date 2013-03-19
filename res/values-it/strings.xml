@@ -11,14 +11,14 @@
 	<string name="Delete_tag_label">Elimina tag</string>
 	<string name="Delete_event_label">Elimina evento</string>
 	<string name="Delete_event_title">Eliminare?</string>
-	<string name="Delete_event_confirmation">Sei sicuro di voler eliminare l'evento intero?</string>
+	<string name="Delete_event_confirmation">Sei sicuro di voler eliminare l\'evento intero?</string>
 	<string name="yes_label">Sì</string>
 	<string name="no_label">No</string>
 	<string name="Delete_timeline_label">Elimina timeline</string>
 	<string name="Delete_timeline_title">Elimina timeline?</string>
 	<string name="Leave_group_label">Lascia il gruppo</string>
 	<string name="Leave_group_title">Lascia il gruppo?</string>
-	<string name="Delete_timeline_confirmation">Sei sicuro di voler cancellare l'intera timeline?</string>
+	<string name="Delete_timeline_confirmation">Sei sicuro di voler cancellare l\'intera timeline?</string>
 	<string name="Leave_group_confirmation">Sei sicuro di voler lasciare questo gruppo?</string>
 	<string name="Open_timeline_label">Aprire timeline</string>
 	<string name="Add_to_timeline_label">Aggiungete a questo timeline</string>
@@ -45,7 +45,7 @@
     
     <string name="play_label">Giocare</string>
     <string name="like_label">Piacere</string>
-    <string name="extract_item_label">Estrarre l'elemento ad un nuovo evento</string>
+    <string name="extract_item_label">Estrarre l\'elemento ad un nuovo evento</string>
     
     <string name="like_toast">Ti piace questo evento!</string>
     <string name="cool_toast">Pensi che questo evento è cool!</string>
