@@ -31,10 +31,9 @@ public class MySwarmActivity extends SwarmActivity {
 	
 	private void openSwarmProfile() {
 		Context context = getApplicationContext();
-		CharSequence text = "Not implemented yet.";
 		int duration = Toast.LENGTH_SHORT;
 
-		Toast toast = Toast.makeText(context, text, duration);
+		Toast toast = Toast.makeText(context, R.string.Not_implemented_toast, duration);
 		toast.show();
 	}	
 	

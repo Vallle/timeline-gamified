@@ -139,13 +139,13 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			progressDialog = ProgressDialog.show(DashboardActivity.this,    
 		              "", "", true);
 		}else{
-			Toast.makeText(this, "You are not connected to Internet. Some functions will not be availiable. But you can still collect your experiences!", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, R.string.No_connection_toast, Toast.LENGTH_LONG).show();
 		}
 		
 		try {
 			lastSynced = getLastSynced();
 		} catch (Exception e) {
-			Log.e(this.getClass().getSimpleName(), "Couldn't retrieve last synced time");
+			Log.e(this.getClass().getSimpleName(), getString(R.string.Could_not_sync));
 		}
 		
 		setupViews();
@@ -251,7 +251,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private void checkIfUserIsRegisteredOnServer() {
 		runOnUiThread(new Runnable() {
 			public void run() {
-				progressDialog.setMessage("Checking user against server ...");
+				progressDialog.setMessage(getString(R.string.Checking_user));
 			}
 		});
 		registered = GoogleAppEngineHandler.IsUserRegistered(user.getUserName());
@@ -260,13 +260,13 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			GoogleAppEngineHandler.addUserToServer(user);
 			runOnUiThread(new Runnable() {
 				public void run() {
-					progressDialog.setMessage("Not registered. Registering user.");
+					progressDialog.setMessage(getString(R.string.Not_registered));
 				}
 			});
 		}else{
 			runOnUiThread(new Runnable() {
 				public void run() {
-					Toast.makeText(DashboardActivity.this, "Already registered!", Toast.LENGTH_LONG).show();
+					Toast.makeText(DashboardActivity.this, R.string.Already_registered_toast, Toast.LENGTH_LONG).show();
 				}
 			});
 		}
@@ -308,17 +308,17 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			switch (shared) {
 			case Constants.SHARED_TRUE:
 				Toast.makeText(this,
-						"No shared timelines exists yet. Synchronize, create new or share a private timeline!",
+						R.string.No_shared_timelines_toast,
 						Toast.LENGTH_LONG).show();
 				break;
 			case Constants.SHARED_FALSE:
 				Toast.makeText(this,
-						"No private timelines exists yet. Create a new one first or look in \"my shared timelines\"",
+						R.string.No_private_timelines_toast,
 						Toast.LENGTH_LONG).show();
 				break;
 			default:
 				Toast.makeText(this,
-						"No timelines exists yet. Create a new one or synchronize!",
+						R.string.No_timelines_toast,
 						Toast.LENGTH_SHORT).show();
 				break;
 			}
@@ -418,7 +418,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
         	try {
         		storeLastSynced(new Date().getTime());
         		progressDialog.dismiss();
-        		Toast.makeText(DashboardActivity.this, "Timelines synced!",Toast.LENGTH_SHORT).show();
+        		Toast.makeText(DashboardActivity.this, R.string.Synced_toast, Toast.LENGTH_SHORT).show();
 			} catch (Exception e) {
 			}
         }
@@ -528,7 +528,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 					ugHandler.startDownloadUsersAndGroups();
 				}
 				else {
-					Toast.makeText(getApplicationContext(), "You can only create private timelines in offline mode", Toast.LENGTH_SHORT).show();
+					Toast.makeText(getApplicationContext(), R.string.Offline_toast, Toast.LENGTH_SHORT).show();
 					NewTimelineDialog newTimelineDialog = new NewTimelineDialog(DashboardActivity.this, null,timelineIntent);
 					newTimelineDialog.show();
 				}
@@ -558,7 +558,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 				closeDatabaseHelpers();
 			}
 			else {
-				Toast.makeText(getApplicationContext(), "You have to be connected to Internet to use this functionality", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), R.string.Online_functionality_toast, Toast.LENGTH_SHORT).show();
 			}
 		}
 	};
@@ -575,12 +575,12 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			if(Utilities.isConnectedToInternet(getApplicationContext())) {
 				progressDialog = ProgressDialog.show(DashboardActivity.this,    
 			              "", "", true);
-				progressDialog.setMessage("Syncronizing timelines");
+				progressDialog.setMessage(getString(R.string.Synchronizing));
 				Thread shareThread = new Thread(syncThread, "shareThread");
 				shareThread.start();
 			}
 			else {
-				Toast.makeText(getApplicationContext(), "You have to be connected to Internet to use this functionaltiy", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), R.string.Online_functionality_toast, Toast.LENGTH_SHORT).show();
 			}
 		}
 	};

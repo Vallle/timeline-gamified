@@ -97,7 +97,7 @@ public class MyTagsActivity extends SwarmActivity {
 	 */
 	protected void addNewTag(String tagName) {
 		tagManager.addTagToDatabase(tagName);
-		Toast.makeText(MyTagsActivity.this.getApplicationContext(), "You have created the tag: " +tagName , Toast.LENGTH_SHORT).show();
+		Toast.makeText(MyTagsActivity.this.getApplicationContext(), R.string.Created_tag_toast +tagName , Toast.LENGTH_SHORT).show();
 		if(isNewTagIntent()){
 	        setResult(RESULT_OK, getIntent());
 			finish();
@@ -120,10 +120,10 @@ public class MyTagsActivity extends SwarmActivity {
 		tagNameInputDialog.setView(layout);
 		
 		final EditText inputTextField = (EditText)layout.findViewById(R.id.NewGroupeditText);
-		inputTextField.setHint("Enter a tag name");
+		inputTextField.setHint(R.string.Tag_name_hint);
 
-		tagNameInputDialog.setTitle("Enter a name for tag!");
-		tagNameInputDialog.setPositiveButton("Ok",
+		tagNameInputDialog.setTitle(R.string.Tag_name_label);
+		tagNameInputDialog.setPositiveButton(R.string.OK_label,
 				new DialogInterface.OnClickListener() {
 
 			public void onClick(DialogInterface dialog, int which) {
@@ -133,7 +133,7 @@ public class MyTagsActivity extends SwarmActivity {
 			}
 		});
 
-		tagNameInputDialog.setNegativeButton("Cancel",
+		tagNameInputDialog.setNegativeButton(R.string.Cancel_label,
 				new DialogInterface.OnClickListener() {
 
 			public void onClick(DialogInterface dialog, int which) {
@@ -209,10 +209,10 @@ public class MyTagsActivity extends SwarmActivity {
 			finish();
 		}
 		else if(tagListAdapter.getCheckedTags().isEmpty()) {
-			Toast.makeText(getApplicationContext(), "No tag selected! Select one or more tags to use this functionality", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), R.string.No_tag_selected_toast, Toast.LENGTH_SHORT).show();
 		}
 		else if(eventsTaggedWithSelectedTags.isEmpty()) {
-			Toast.makeText(getApplicationContext(), "The tag(s) you have selected has no attached events!", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), R.string.No_tag_events_toast, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -282,7 +282,7 @@ public class MyTagsActivity extends SwarmActivity {
 	private void deleteTagConfirmationDialog(final String tagName) {
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Do you really want to delete tag \"" +tagName+"\"?")
+		builder.setMessage(R.string.Delete_tag_label+tagName+"\"?")
 		.setPositiveButton(R.string.yes_label, new OnClickListener() {
 			
 			public void onClick(DialogInterface arg0, int arg1) {
