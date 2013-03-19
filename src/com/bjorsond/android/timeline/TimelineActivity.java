@@ -510,7 +510,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			startActivityForResult(mapViewIntent, Constants.MAP_VIEW_ACTIVITY_REQUEST_CODE);
 		}
 		else {
-			Toast.makeText(getApplicationContext(), "You have to be connected to the internett to use this functionality", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), R.string.Online_functionality_toast, Toast.LENGTH_SHORT).show();
 		}
 	}
 

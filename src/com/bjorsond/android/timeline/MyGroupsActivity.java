@@ -98,7 +98,7 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 		group.addMembers(applicationUser);
 		connectedGroups.add(group);
 		groupListAdapter.notifyDataSetChanged();
-		Toast.makeText(MyGroupsActivity.this.getApplicationContext(), "You have created the group: " +group.toString() , Toast.LENGTH_SHORT).show();
+		Toast.makeText(MyGroupsActivity.this.getApplicationContext(), R.string.Created_group_toast +group.toString() , Toast.LENGTH_SHORT).show();
 		GoogleAppEngineHandler.addGroupToServer(group);
 		
 	}
@@ -113,7 +113,7 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 				GoogleAppEngineHandler.addUserToGroupOnServer(selectedGroup, user);
 				selectedGroup.addMembers(user);
 		}
-		Toast.makeText(this, "New users has been added to group "+selectedGroup+"!", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, getString(R.string.New_users_toast)+selectedGroup+"!", Toast.LENGTH_SHORT).show();
 		userlistAdapter.notifyDataSetChanged();
 	}
 	
@@ -253,7 +253,7 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 		if(userlistAdapter.getCount()>0)
 			confirmation.show();
 		else
-			Toast.makeText(this, "No more users to add", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, R.string.No_users_toast, Toast.LENGTH_SHORT).show();
 	}
 	
 	private ArrayList<User> getAllUsersNotInGroupAlready(Group selectedGroup) {
@@ -282,8 +282,8 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 		
 		final EditText inputTextField = (EditText)layout.findViewById(R.id.NewGroupeditText);
 
-		groupNameInputDialog.setTitle("Enter a name for your group!");
-		groupNameInputDialog.setPositiveButton("Ok",
+		groupNameInputDialog.setTitle(R.string.Group_name_label);
+		groupNameInputDialog.setPositiveButton(R.string.OK_label,
 				new DialogInterface.OnClickListener() {
 
 			public void onClick(DialogInterface dialog, int which) {
@@ -293,7 +293,7 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 			}
 		});
 
-		groupNameInputDialog.setNegativeButton("Cancel",
+		groupNameInputDialog.setNegativeButton(R.string.Cancel_label,
 				new DialogInterface.OnClickListener() {
 
 			public void onClick(DialogInterface dialog, int which) {
@@ -317,7 +317,7 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 	private void leaveGroupConfirmationDialog() {
 		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Do you really want to leave group " +selectedGroup.toString()+"?")
+		builder.setMessage(R.string.Really_leave_group_label +selectedGroup.toString()+"?")
 		.setPositiveButton(R.string.yes_label, leaveGroupConfirmationListener)
 		.setNegativeButton(R.string.no_label, new DialogInterface.OnClickListener() {
 		public void onClick(DialogInterface dialog, int which) {
@@ -356,7 +356,7 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 		public void onClick(DialogInterface dialog, int which) {
 			
 			leaveGroup();
-			Toast.makeText(MyGroupsActivity.this.getApplicationContext(), "You have left group: "+selectedGroup.toString() , Toast.LENGTH_SHORT).show();
+			Toast.makeText(MyGroupsActivity.this.getApplicationContext(), R.string.Left_group_label+selectedGroup.toString() , Toast.LENGTH_SHORT).show();
 			setSelectedGroup(null);
 			dialog.dismiss();
 		}

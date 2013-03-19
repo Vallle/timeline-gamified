@@ -34,6 +34,19 @@
 	<string name="Not_shared_label">Non condiviso</string>
 	<string name="Shared_label">Diviso</string>
 	<string name="Show_creator_label">Mostra creatore</string>
+	<string name="Group_name_label">Immettere un nome per il vostro gruppo!</string>
+	<string name="OK_label">Bene</string>
+	<string name="Cancel_label">Cancellare</string>
+	<string name="Really_leave_group_label">Vuoi davvero lasciare gruppo </string>
+	<string name="Left_group_label">Avete lasciato gruppo: </string>
+	<string name="Tag_name_hint">Immettere un nome di tag</string>
+	<string name="Tag_name_label">Immettere un nome per il tag!</string>
+	<string name="Delete_tag_label">Vuoi davvero eliminare tag \"</string>
+	
+	<string name="Not_registered">Non registrato. Registrazione utente.</string>
+	<string name="Checking_user">Controllo utente da server ...</string>
+	<string name="Could_not_sync">Impossibile recuperare l\'ultima volta sincronizzati</string>
+	<string name="Synchronizing">Sincronizzazione dei timeline</string>
 
 
     <string name="picture">Immagine</string>
@@ -51,6 +64,22 @@
     <string name="cool_toast">Pensi che questo evento è cool!</string>
     <string name="dislike_toast">Non ti piace questo evento.</string>
     <string name="sad_toast">Questo evento ti rende triste.</string>
+    
+    <string name="No_connection_toast">Non sei connesso a Internet. Alcune funzioni non saranno disponibili. Ma è ancora possibile raccogliere le vostre esperienze!</string>
+	<string name="Synced_toast">Timeline sincronizzati!</string>
+	<string name="Offline_toast">È possibile creare timeline private in modalità offline</string>
+	<string name="Online_functionality_toast">Devi essere collegato a Internet per utilizzare questa funzionalità</string>
+	<string name="No_shared_timelines_toast">Non ci sono timeline condivise esiste ancora. Sincronizza, creare nuovi o condividere una timeline privato!</string>
+	<string name="No_private_timelines_toast">Non ci sono timeline privati ​​esiste ancora. Creare un nuovo prima o guardare in \ "miei timeline condivisi \"</string>
+	<string name="No_timelines_toast">Non ci sono timeline esiste ancora. Creare una nuova o sincronizzare!</string>
+	<string name="Already_registered_toast">Se sei già registrato!</string>
+	<string name="Created_group_toast">È stato creato il gruppo: </string>
+	<string name="New_users_toast">Nuovi utenti è stato aggiunto al gruppo </string>
+	<string name="No_users_toast">Nessun utente in più per aggiungere</string>
+	<string name="Not_implemented_toast">Non ancora implementato.</string>
+	<string name="Created_tag_toast">È stato creato il tag: </string>
+	<string name="No_tag_selected_toast">Nessun tag selezionato! Selezionare uno o più tag per utilizzare questa funzionalità</string>
+	<string name="No_tag_events_toast">Il tag è stato selezionato non ci sono eventi associati!</string>
     
     <string name="new_timeline">Inserisci il nome della timeline</string>
       

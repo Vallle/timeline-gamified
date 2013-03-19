@@ -34,6 +34,19 @@
 	<string name="Not_shared_label">Not shared</string>
 	<string name="Shared_label">Shared</string>
 	<string name="Show_creator_label">Show creator</string>
+	<string name="Group_name_label">Enter a name for your group!</string>
+	<string name="OK_label">OK</string>
+	<string name="Cancel_label">Cancel</string>
+	<string name="Really_leave_group_label">Do you really want to leave group </string>
+	<string name="Left_group_label">You have left group: </string>
+	<string name="Tag_name_hint">Enter a tag name</string>
+	<string name="Tag_name_label">Enter a name for tag!</string>
+	<string name="Delete_tag_label">Do you really want to delete tag \"</string>
+	
+	<string name="Not_registered">Not registered. Registering user.</string>
+	<string name="Checking_user">Checking user against server ...</string>
+	<string name="Could_not_sync">Couldn\'t retrieve last synced time</string>
+	<string name="Synchronizing">Synchronizing timelines</string>
 
 
     <string name="picture">Picture</string>
@@ -51,6 +64,23 @@
     <string name="cool_toast">You think this event is cool!</string>
     <string name="dislike_toast">You dislike this event.</string>
     <string name="sad_toast">This event makes you sad.</string>
+    
+    <string name="No_connection_toast">You are not connected to Internet. Some functions will not be available. But you can still collect your experiences!</string>
+	<string name="Synced_toast">Timelines synced!</string>
+	<string name="Offline_toast">You can only create private timelines in offline mode</string>
+	<string name="Online_functionality_toast">You have to be connected to Internet to use this functionality</string>	
+	<string name="No_shared_timelines_toast">No shared timelines exists yet. Synchronize, create new or share a private timeline!</string>
+	<string name="No_private_timelines_toast">No private timelines exists yet. Create a new one first or look in \"my shared timelines\"</string>
+	<string name="No_timelines_toast">No timelines exists yet. Create a new one or synchronize!</string>
+	<string name="Already_registered_toast">Already registered!</string>
+	<string name="Created_group_toast">You have created the group: </string>
+	<string name="New_users_toast">New users has been added to group </string>
+	<string name="No_users_toast">No more users to add</string>
+	<string name="Not_implemented_toast">Not implemented yet.</string>
+	<string name="Created_tag_toast">You have created the tag: </string>
+	<string name="No_tag_selected_toast">No tag selected! Select one or more tags to use this functionality</string>
+	<string name="No_tag_events_toast">The tag(s) you have selected has no attached events!</string>
+	
     
     <string name="new_timeline">Enter the name of your timeline</string>
       
