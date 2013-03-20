@@ -35,7 +35,7 @@ import com.swarmconnect.SwarmActivity;
 public class NoteActivity extends SwarmActivity {
 	
 	
-	private Button saveButton, discardButton;
+	private Button saveButton, discardButton, shareButton;
 	private EditText noteTitle, noteText;
 	 
 	@Override
@@ -56,6 +56,7 @@ public class NoteActivity extends SwarmActivity {
 	private void setupViews() {
 		saveButton = (Button)findViewById(R.id.SaveNoteButton);
 		discardButton = (Button)findViewById(R.id.DiscardNoteButton);
+		shareButton = (Button)findViewById(R.id.ShareNoteButton);
 		
 		noteTitle = (EditText)findViewById(R.id.NoteTitleEditText);
 		noteText = (EditText)findViewById(R.id.NoteTextEditText);
@@ -67,6 +68,7 @@ public class NoteActivity extends SwarmActivity {
 		
 		saveButton.setOnClickListener(saveNoteListener);
 		discardButton.setOnClickListener(discardNoteListener);
+		shareButton.setOnClickListener(shareNoteListener);
 	}
 	
 	private OnClickListener saveNoteListener = new OnClickListener() {
@@ -86,6 +88,14 @@ public class NoteActivity extends SwarmActivity {
 		}
 	};
 	
+	private OnClickListener shareNoteListener = new OnClickListener() {
+		public void onClick(View v) {
+			saveNote();
+			shareNote();
+			finish();
+		}
+	};
+	
 	/**
 	 * Saves the note by putting the data in an Intent and sending back to the calling activity.
 	 * 
@@ -96,5 +106,29 @@ public class NoteActivity extends SwarmActivity {
         saveNoteIntent.putExtra(Intent.EXTRA_SUBJECT, noteTitle.getText().toString()); 
         saveNoteIntent.putExtra(Intent.EXTRA_TEXT, noteText.getText().toString()); 
         setResult(RESULT_OK, saveNoteIntent);
+	}
+	
+	private void shareNote() {
+		String message = "Text I wan't to share.";
+		Intent share = new Intent(Intent.ACTION_SEND);
+		share.setType("text/plain");
+		share.putExtra(Intent.EXTRA_TEXT, message);
+
+		startActivity(Intent.createChooser(share, "Title of the dialog the system will open"));
+	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+	    Swarm.setActive(this);
+		
+	}
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+	    Swarm.setInactive(this);
 	}
 }
