@@ -53,6 +53,7 @@
 	<string name="My_groups_label">My Groups:</string>
 	<string name="Shared_with_label">Shared with: </string>
 	<string name="Private_timeline_label">Private timeline</string>
+	<string name="Share_note_label">Share note</string>
 	
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>
