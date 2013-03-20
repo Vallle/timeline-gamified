@@ -79,7 +79,9 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.groupmenuscreen);
 
+		//Activation of Swarm
 		Swarm.setActive(this);
+		
 		setupHelpers();
 		
 		userAndGroupServiceHandler = new UserAndGroupServiceHandler(this, this);
@@ -441,4 +443,16 @@ public class MyGroupsActivity extends SwarmActivity implements ProgressDialogAct
 		
 	}
 
+	//Override to setActive/Inactive Swarm
+	@Override
+	public void onResume() {
+	    super.onResume();
+	    Swarm.setActive(this);
+	}
+	@Override
+	public void onPause() {
+	    super.onPause();
+	    Swarm.setInactive(this);
+	}
+	
 }

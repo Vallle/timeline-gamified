@@ -179,8 +179,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
         timeline.setEvents(loadedEvents);
         System.out.println("ANTALL HENTEDE EVENTS! : " + timeline.getEvents().size());
 
+        //setting this activity active -- swarm
 		Swarm.setActive(this);
-        setupViews(); 
+        
+		setupViews(); 
         setupMoodButtonQuickAction();
        
         //If the activity is started with a send-Intent(e.g. via share button in the Gallery), the item is added to the Timeline
@@ -1188,8 +1190,16 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		return contentLoader;
 	}	
 	
-	
-	
+	@Override
+	public void onResume() {
+	    super.onResume();
+	    Swarm.setActive(this);
+	}
+	@Override
+	public void onPause() {
+	    super.onPause();
+	    Swarm.setInactive(this);
+	}
   
 	
 }

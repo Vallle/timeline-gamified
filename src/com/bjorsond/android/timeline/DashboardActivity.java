@@ -109,8 +109,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		// Restoring preferences - Achievement counters
 		restorePreferences();
 		
+		//Activating swarm, and ID'ing our swarm application
 		Swarm.init(this, 4651, "6ef1c4f59752007d40bd3d8828f789f2");
-		
 		Swarm.setActive(this);
 		
 		creator = Utilities.getUserAccount(this);

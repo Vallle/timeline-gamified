@@ -72,7 +72,10 @@ public class MyTagsActivity extends SwarmActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.tagactivitylayout);
 
+		//Setting Swarm active
 		Swarm.setActive(this);
+		
+		
 		setupHelpers();
 		setupViews();
 		
@@ -304,4 +307,17 @@ public class MyTagsActivity extends SwarmActivity {
 		confirmation.show();
 	}
 
+	
+	//Override to setActive/Inactive Swarm
+		@Override
+		public void onResume() {
+		    super.onResume();
+		    Swarm.setActive(this);
+		}
+		@Override
+		public void onPause() {
+		    super.onPause();
+		    Swarm.setInactive(this);
+		}
+	
 }

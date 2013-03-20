@@ -25,7 +25,9 @@ public class MySwarmActivity extends SwarmActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gamification_dashboard);
 
+		//Setting Swarm active
 		Swarm.setActive(this);
+		
 		setupViews();
 	}
 	
@@ -126,5 +128,17 @@ public class MySwarmActivity extends SwarmActivity {
 		swarm_profile = (ImageButton) findViewById(R.id.dash_swarm_profile);
 		swarm_profile.setOnClickListener(profileButtonListener);
 	}
+		
+	//Override to setActive/Inactive Swarm
+		@Override
+		public void onResume() {
+		    super.onResume();
+		    Swarm.setActive(this);
+		}
+		@Override
+		public void onPause() {
+		    super.onPause();
+		    Swarm.setInactive(this);
+		}
 		
 }
