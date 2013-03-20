@@ -111,6 +111,15 @@
 	<string name="Zoomed_out_back_toast">Hai ingrandito max, premere indietro una volta di più per andare temporale uscire dalla modalità</string>
 	<string name="Select_group_toast">È necessario selezionare un gruppo per condividere la timeline con!</string>
 	<string name="Has_been_shared_toast"> è stata condivisa con </string>
+	<string name="Timeline_deleted_toast"> è stato eliminato dal telefono cellulare</string>
+	<string name="First_pic_achi_toast">Congratulazioni! Hai preso la tua foto prima Timeline!</string>
+	<string name="Tenth_pic_achi_toast">Hai preso dieci foto con Timeline! Continuate così!</string>
+	<string name="First_video_achi_toast">Congratulazioni! È stato registrato il primo video con Timeline!</string>
+	<string name="Tenth_video_achi_toast">E \'la tua registrazione video decimo! Tuo padre è il nome Steven Spielberg?</string>
+	<string name="First_audio_achi_toast">Congratulazioni! È stato registrato l\'audio prima Timeline!</string>
+	<string name="Tenth_audio_achi_toast">È stato registrato dieci clip audio! Devi amare il suono della tua voce!</string>
+	<string name="First_note_achi_toast">Congratulazioni! Lei ha scritto la tua prima nota nella Timeline!</string>
+	<string name="Tenth_note_achi_toast">Lei ha scritto dieci note! Speriamo che apprezzi di qualità tanto quanto te quantità.</string>
     
     <string name="new_timeline">Inserisci il nome della timeline</string>
       

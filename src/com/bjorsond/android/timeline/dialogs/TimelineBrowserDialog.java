@@ -128,7 +128,7 @@ public TimelineBrowserDialog(Context context, Intent receivedIntent, int shared)
 			ContentDeleter contentDeleter = new ContentDeleter(context);
 			contentDeleter.deleteExperienceFromDB(selectedTimeline);
 			
-			Toast.makeText(context, "Timeline: "+selectedTimeline.toString()+" has been deleted from the phone", Toast.LENGTH_SHORT);
+			Toast.makeText(context, "Timeline: "+selectedTimeline.toString()+R.string.Timeline_deleted_toast, Toast.LENGTH_SHORT).show();
 			selectedTimeline = null;
 			dialog.dismiss();
 		}

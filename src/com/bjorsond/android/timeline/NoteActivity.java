@@ -109,12 +109,15 @@ public class NoteActivity extends SwarmActivity {
 	}
 	
 	private void shareNote() {
-		String message = "Text I wan't to share.";
+		String note = noteTitle.getText().toString()+
+						System.getProperty("line.separator")+
+						System.getProperty("line.separator")+
+						noteText.getText().toString();
 		Intent share = new Intent(Intent.ACTION_SEND);
 		share.setType("text/plain");
-		share.putExtra(Intent.EXTRA_TEXT, message);
+		share.putExtra(Intent.EXTRA_TEXT, note);
 
-		startActivity(Intent.createChooser(share, "Title of the dialog the system will open"));
+		startActivity(Intent.createChooser(share, getString(R.string.Share_note_label)));
 	}
 	
 	@Override

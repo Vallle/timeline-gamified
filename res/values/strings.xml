@@ -113,6 +113,15 @@
 	<string name="Zoomed_out_back_toast">You are max zoomed out, press back once more to go exit timeline mode</string>
 	<string name="Select_group_toast">You have to select a group to share the timeline with!</string>
 	<string name="Has_been_shared_toast"> has been shared with </string>
+	<string name="Timeline_deleted_toast"> has been deleted from the phone</string>
+	<string name="First_pic_achi_toast">Congratulations! You have taken your first picture with Timeline!</string>
+	<string name="Tenth_pic_achi_toast">You have taken ten pictures with Timeline! If one picture is worth a thousand words, what\'s ten pictures worth?</string>
+	<string name="First_video_achi_toast">Congratulations! You have recorded your first video with Timeline!</string>
+	<string name="Tenth_video_achi_toast">That\'s your tenth video recording! Is your father\'s name Steven Spielberg?</string>
+	<string name="First_audio_achi_toast">Congratulations! You have recorded your first audio with Timeline!</string>
+	<string name="Tenth_audio_achi_toast">You have recorded ten audio clips! You must love the sound of your voice!</string>
+	<string name="First_note_achi_toast">Congratulations! You have written your first note in Timeline!</string>
+	<string name="Tenth_note_achi_toast">You have written ten notes! Let\'s hope you value quality as much as you do quantity.</string>
 	
     <string name="new_timeline">Enter the name of your timeline</string>
       
