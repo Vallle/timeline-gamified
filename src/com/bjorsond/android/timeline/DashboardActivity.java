@@ -98,7 +98,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private TimelineDatabaseHelper timelineDatabaseHelper;
 	
 	// ADDING COUNTERS FOR ACHIEVEMENT UNLOCKING
-	private static int noteCounter, audioCounter, videoCounter, pictureCounter, moodCounter;
+	private static int noteCounter, audioCounter, videoCounter, pictureCounter, moodCounter = 0;
 	public static final String PREFS_NAME = "MyPreferencesFile";
 
 	public void onCreate(Bundle savedInstanceState) {
