@@ -336,7 +336,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   //Adding achievement
 				   if (DashboardActivity.getNoteCounter() >= 1){
 					   SwarmAchievement.unlock(NoteAchievement);
-					   Toast.makeText(this, R.string.First_note_avhi_toast, Toast.LENGTH_LONG).show();
+					   Toast.makeText(this, R.string.First_note_achi_toast, Toast.LENGTH_LONG).show();
 				   }
 				   if (DashboardActivity.getNoteCounter() >= 10){
 					   SwarmAchievement.unlock(NoteTenAchievement);
