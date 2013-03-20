@@ -179,7 +179,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
         timeline.setEvents(loadedEvents);
         System.out.println("ANTALL HENTEDE EVENTS! : " + timeline.getEvents().size());
 
-        //setting this activity active -- swarm
+        //setting this activity active -- Swarm
 		Swarm.setActive(this);
         
 		setupViews(); 
