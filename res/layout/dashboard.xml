@@ -24,13 +24,23 @@
 				android:layout_weight="2" android:layout_height="fill_parent"
 				android:layout_width="0dp" android:id="@+id/LinearLayout03"
 				android:paddingLeft="35dip">
-				<ImageButton android:layout_width="fill_parent" android:background="@drawable/dash_new_button" android:id="@+id/dash_new_timeline" android:layout_height="fill_parent" android:scaleType="centerInside"></ImageButton>
+				<ImageButton android:layout_width="fill_parent" 
+				    android:background="@drawable/dash_new_button" 
+				    android:id="@+id/dash_new_timeline" 
+				    android:layout_height="fill_parent" 
+				    android:scaleType="centerInside">
+				</ImageButton>
 			</LinearLayout>
 			<LinearLayout android:paddingRight="35dip"
 				android:layout_weight="2" android:layout_height="fill_parent"
 				android:paddingLeft="35dip" android:layout_width="0dp"
 				android:id="@+id/LinearLayout03">
-				<ImageButton android:layout_width="fill_parent" android:background="@drawable/dash_my_timelines_button" android:id="@+id/dash_my_timelines" android:layout_height="fill_parent" android:scaleType="centerInside"></ImageButton>
+				<ImageButton android:layout_width="fill_parent" 
+				    android:background="@drawable/dash_my_timelines_button" 
+				    android:id="@+id/dash_my_timelines" 
+				    android:layout_height="fill_parent" 
+				    android:scaleType="centerInside">
+				</ImageButton>
 			</LinearLayout>
 		</LinearLayout>
 
@@ -46,18 +56,30 @@
 				android:layout_height="fill_parent" android:layout_weight="2"
 				android:paddingLeft="20dip" android:paddingRight="25dip">
 				<ImageButton android:scaleType="centerInside"
+					android:background="@drawable/messages"
+					android:layout_width="fill_parent" android:layout_height="fill_parent"
+					android:id="@+id/messages">
+				</ImageButton>
+<!-- 				<ImageButton android:scaleType="centerInside"
 					android:background="@drawable/dash_my_groups_button"
 					android:layout_width="fill_parent" android:layout_height="fill_parent"
-					android:id="@+id/dash_my_groups"></ImageButton>
+					android:id="@+id/dash_my_groups">
+				</ImageButton> -->
 			</LinearLayout>
 
 			<LinearLayout android:layout_width="0dp" android:id="@+id/LinearLayout03"
 				android:layout_height="fill_parent" android:layout_weight="2"
 				android:paddingLeft="20dip" android:paddingRight="20dip">
 				<ImageButton android:scaleType="centerInside"
+					android:background="@drawable/friends"
+					android:layout_width="fill_parent" android:layout_height="fill_parent"
+					android:id="@+id/friends">
+				</ImageButton>
+<!-- 				<ImageButton android:scaleType="centerInside"
 					android:background="@drawable/dash_shared_timelines_button"
 					android:layout_width="fill_parent" android:layout_height="fill_parent"
-					android:id="@+id/dash_shared_timelines"></ImageButton>
+					android:id="@+id/dash_shared_timelines">
+				</ImageButton> -->
 			</LinearLayout>
 
 		</LinearLayout>
@@ -80,15 +102,26 @@
 			<LinearLayout android:layout_width="0dp" android:id="@+id/LinearLayout03"
 				android:layout_height="fill_parent" android:layout_weight="2"
 				android:paddingLeft="20dip" android:paddingRight="20dip">
-				<ImageButton android:layout_width="fill_parent" android:background="@drawable/dash_sync_button" android:layout_height="fill_parent" android:id="@+id/dash_sync" android:scaleType="centerInside"></ImageButton>
+				<ImageButton android:layout_width="fill_parent" 
+				    android:background="@drawable/achievements" 
+				    android:layout_height="fill_parent" 
+				    android:id="@+id/achivements" 
+				    android:scaleType="centerInside">
+				</ImageButton>
+<!-- 				<ImageButton android:layout_width="fill_parent" 
+				    android:background="@drawable/dash_sync_button" 
+				    android:layout_height="fill_parent" 
+				    android:id="@+id/dash_sync" 
+				    android:scaleType="centerInside">
+				</ImageButton> -->
 			</LinearLayout>
 		</LinearLayout>
 
 	</TableRow>
 	<TableRow android:id="@+id/DashTableRow" android:layout_height="0dip" android:layout_weight="5" android:layout_width="fill_parent" android:gravity="center_horizontal">
-		<TextView android:layout_height="wrap_content" android:id="@+id/DashLastSyncedTextView"
+		<!-- <TextView android:layout_height="wrap_content" android:id="@+id/DashLastSyncedTextView"
 			android:gravity="center" android:layout_width="fill_parent"
-			android:text="@string/Last_synced_label" android:textSize="16dip"></TextView>
+			android:text="@string/Last_synced_label" android:textSize="16dip"></TextView> -->
 	</TableRow>
 
 

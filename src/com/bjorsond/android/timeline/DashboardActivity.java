@@ -370,7 +370,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		String FILENAME = "lastSynced";
 		String lastSynced = String.valueOf(lastSyncedInMillis);
 		this.lastSynced = lastSyncedInMillis;
-		setLastSyncedTextView();
+//		Commented out for test in Italy
+//		setLastSyncedTextView();
 		
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
@@ -546,7 +547,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private OnClickListener browseSharedTimeLinesListener = new OnClickListener() {
 
 		public void onClick(View v) {
-			browseAllTimelines(Constants.SHARED_TRUE);		
+//			Commented out due to test in Italy - replaced with "Swarm.show(5);"
+//			browseAllTimelines(Constants.SHARED_TRUE);		
+			Swarm.show(5);
 		}
 
 	};
@@ -554,7 +557,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private OnClickListener openMyGroupsListener = new OnClickListener() {
 		public void onClick(View v) {
 			if(Utilities.isConnectedToInternet(getApplicationContext())) {
-				startActivity(myGroupsIntent);
+//				Commented out for test in Italy  - replaced by "Swarm.show(3);"
+//				startActivity(myGroupsIntent);
+				Swarm.show(3);
 				closeDatabaseHelpers();
 			}
 			else {
@@ -571,17 +576,18 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	private OnClickListener syncListener = new OnClickListener() {
 		public void onClick(View v) {
-			
-			if(Utilities.isConnectedToInternet(getApplicationContext())) {
-				progressDialog = ProgressDialog.show(DashboardActivity.this,    
-			              "", "", true);
-				progressDialog.setMessage(getString(R.string.Synchronizing));
-				Thread shareThread = new Thread(syncThread, "shareThread");
-				shareThread.start();
-			}
-			else {
-				Toast.makeText(getApplicationContext(), R.string.Online_functionality_toast, Toast.LENGTH_SHORT).show();
-			}
+			Swarm.showAchievements();
+//			Commented out due to test in Italy -- replaced with "Swarm.showAchievements();"
+//			if(Utilities.isConnectedToInternet(getApplicationContext())) {
+//				progressDialog = ProgressDialog.show(DashboardActivity.this,    
+//			              "", "", true);
+//				progressDialog.setMessage(getString(R.string.Synchronizing));
+//				Thread shareThread = new Thread(syncThread, "shareThread");
+//				shareThread.start();
+//			}
+//			else {
+//				Toast.makeText(getApplicationContext(), R.string.Online_functionality_toast, Toast.LENGTH_SHORT).show();
+//			}
 		}
 	};
 	
@@ -630,16 +636,20 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		newTimeLineButton.setOnClickListener(newTimeLineListener);
 		browseMyTimelinesButton = (ImageButton) findViewById(R.id.dash_my_timelines);
 		browseMyTimelinesButton.setOnClickListener(browseTimeLineListener);
-		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.dash_shared_timelines);
+		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.messages);
+//		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.dash_shared_timelines);
 		browseSharedTimelinesButton.setOnClickListener(browseSharedTimeLinesListener);
-		myGroupsButton = (ImageButton) findViewById(R.id.dash_my_groups);
+		myGroupsButton = (ImageButton) findViewById(R.id.friends);
+//		myGroupsButton = (ImageButton) findViewById(R.id.dash_my_groups);
 		myGroupsButton.setOnClickListener(openMyGroupsListener);
 		profileButton = (ImageButton) findViewById(R.id.dash_profile);
 		profileButton.setOnClickListener(viewProfileListener);
-		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
+		syncronizeButton = (ImageButton)findViewById(R.id.achivements);
+//		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
 		syncronizeButton.setOnClickListener(syncListener);
-		lastSyncedTextView = (TextView)findViewById(R.id.DashLastSyncedTextView);
-		setLastSyncedTextView();	
+//		lastSyncedTextView = (TextView)findViewById(R.id.DashLastSyncedTextView);
+//		Commented out due to test in Italy
+//		setLastSyncedTextView();	
 	}
 	
 	@Override
