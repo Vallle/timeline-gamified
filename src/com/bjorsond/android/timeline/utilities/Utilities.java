@@ -42,6 +42,7 @@ import android.util.Log;
 
 import com.bjorsond.android.timeline.models.BaseEvent;
 import com.bjorsond.android.timeline.models.Event;
+import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.models.SimpleNote;
 import com.bjorsond.android.timeline.models.SimplePicture;
 import com.bjorsond.android.timeline.models.SimpleRecording;
@@ -91,6 +92,12 @@ public class Utilities {
 				}else{
 					return R.drawable.ic_menu_note_green;
 				}
+			}else if(ex.getEventItems().get(0) instanceof ReflectionNote){
+				if(!ex.isShared()) {
+					return R.drawable.ic_menu_sumday;
+				}else{
+					return R.drawable.ic_menu_sumday;
+				}
 			}
 		}
 		if(!ex.isShared()) {
@@ -114,7 +121,8 @@ public class Utilities {
 					return R.drawable.mapicon_video;
 				}else if(e.getEventItems().get(0) instanceof SimpleNote){
 					return R.drawable.mapicon_note;
-				}
+				}else if(e.getEventItems().get(0) instanceof ReflectionNote){
+					return R.drawable.mapicon_reflection_note;
 			}
 		}else {
 			return R.drawable.ic_menu_emoticons;

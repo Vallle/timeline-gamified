@@ -100,7 +100,7 @@ public class MyTagsActivity extends SwarmActivity {
 	 */
 	protected void addNewTag(String tagName) {
 		tagManager.addTagToDatabase(tagName);
-		Toast.makeText(MyTagsActivity.this.getApplicationContext(), R.string.Created_tag_toast +tagName , Toast.LENGTH_SHORT).show();
+		Toast.makeText(MyTagsActivity.this.getApplicationContext(), getString(R.string.Created_tag_toast) +tagName , Toast.LENGTH_SHORT).show();
 		if(isNewTagIntent()){
 	        setResult(RESULT_OK, getIntent());
 			finish();
