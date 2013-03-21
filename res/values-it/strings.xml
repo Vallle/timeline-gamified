@@ -35,8 +35,8 @@
 	<string name="Shared_label">Diviso</string>
 	<string name="Show_creator_label">Mostra creatore</string>
 	<string name="Group_name_label">Immettere un nome per il vostro gruppo!</string>
-	<string name="OK_label">Bene</string>
-	<string name="Cancel_label">Cancellare</string>
+	<string name="OK_label">OK</string>
+	<string name="Cancel_label">Cancel</string>
 	<string name="Really_leave_group_label">Vuoi davvero lasciare gruppo </string>
 	<string name="Left_group_label">Avete lasciato gruppo: </string>
 	<string name="Tag_name_hint">Immettere un nome di tag</string>
@@ -163,23 +163,23 @@
     <string name="coins_added_to_account">%1$d coins added to your account</string>
     <string name="score_submitted">Score submitted!</string>
     <string name="you_are_ranked_num">You are ranked #</string>
-    <string name="message_from_username">Message from %1$s</string>
+    <string name="message_from_username">Messaggio da %1$s</string>
     <string name="user_came_online">%1$s came online</string>
     <string name="went_offline">Went offline</string>
     <string name="playing_app_name">Playing %1$s</string>
     <string name="item_purchased">Item purchased!</string>
     <string name="facebook_error">Facebook error: </string> 						<!-- trailing space is intentional -->
-    <string name="one_new_message">1 new message</string>
-    <string name="num_new_messages">%1$d new messages</string>
+    <string name="one_new_message">1 nuovo messaggio</string>
+    <string name="num_new_messages">%1$d nuovi messaggi</string>
     <string name="x_of_y_completed">%1$d / %2$d completed</string>
-    <string name="one_friend_request">1 friend request</string>
+    <string name="one_friend_request">1 richiesta di amicizia</string>
     <string name="num_friend_requests">%1$d friend requests</string>
     <string name="username_required">Username required</string>
     <string name="account_creation_failed">Account creation failed</string>
     <string name="friend_request_sent">Friend request sent</string>
     <string name="error_adding_friend">Error when adding friend</string>
     <string name="user_not_found">User not found</string>
-    <string name="friends">Friends</string>
+    <string name="friends">Amici</string>
     <string name="friend_removed">Friend removed</string>
     <string name="friend_confirmed">Friend confirmed</string>
     <string name="request_failed">Request failed</string>
@@ -200,7 +200,7 @@
     <string name="your_score_string">Your score: %1$s</string>
     <string name="logging_in">Logging in...</string>
     <string name="loading">Loading...</string>
-    <string name="achievements">Achievements</string>
+    <string name="achievements">Realizzazioni</string>
     <string name="store">Store</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="leaderboards">Leaderboards</string>
@@ -224,16 +224,16 @@
     <string name="acc_claim">Claim your username!</string>
 
     <!-- Friends -->
-    <string name="fri_get_friends">\n\n\nYou don\'t have any Swarm friends yet! You can add them by name at the bottom.</string>
-    <string name="fri_add_a_friend">Add a Friend...</string>
+    <string name="fri_get_friends">\n\n\nNon hai ancora amici! È possibile aggiungere in base al nome nella parte inferiore.</string>
+    <string name="fri_add_a_friend">Aggiungi un amico ...</string>
     
     <!--  Inbox -->
-    <string name="inb_get_messages">\n\n\nYou don\'t have any Swarm messages yet!  Make some friends and start chatting.</string>
+    <string name="inb_get_messages">\n\n\nNon hai ancora nessun messaggio! Fai alcuni amici e iniziare a chattare.</string>
     <string name="inb_delete_thread">Delete Thread?</string>
     <string name="inb_delete_messages">Delete messages from %1$s?</string>
     <string name="inb_delete">Delete</string>
     <string name="inb_unable_to_send_message">Unable to send message.</string>
-    <string name="inb_conversation_with_username">Conversation with %1$s</string>
+    <string name="inb_conversation_with_username">Conversazione con %1$s</string>
     
     <!-- Coins -->
     <string name="coi_tapjoy">TapJoy</string>
