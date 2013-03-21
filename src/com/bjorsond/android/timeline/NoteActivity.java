@@ -109,15 +109,12 @@ public class NoteActivity extends SwarmActivity {
 	}
 	
 	private void shareNote() {
-		String note = noteTitle.getText().toString()+
-						System.getProperty("line.separator")+
-						System.getProperty("line.separator")+
-						noteText.getText().toString();
-		Intent share = new Intent(Intent.ACTION_SEND);
-		share.setType("text/plain");
-		share.putExtra(Intent.EXTRA_TEXT, note);
+		Intent shareNoteIntent = new Intent(Intent.ACTION_SEND);
+		shareNoteIntent.setType("text/plain");
+        shareNoteIntent.putExtra(Intent.EXTRA_SUBJECT, noteTitle.getText().toString()); 
+        shareNoteIntent.putExtra(Intent.EXTRA_TEXT, noteText.getText().toString()); 
 
-		startActivity(Intent.createChooser(share, getString(R.string.Share_note_label)));
+		startActivity(Intent.createChooser(shareNoteIntent, getString(R.string.Share_note_label)));
 	}
 	
 	@Override
