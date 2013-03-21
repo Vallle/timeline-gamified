@@ -80,6 +80,7 @@ import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
 import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmAchievement;
+import com.swarmconnect.SwarmAchievement.AchievementUnlockedCB;
 import com.swarmconnect.SwarmActivity;
 
 /**
@@ -248,11 +249,11 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   //Adding to picture count
 				   DashboardActivity.addPictureCounter();
 				   //Adding achievement
-				   if (DashboardActivity.getPictureCounter() >= 1){
+				   if (DashboardActivity.getPictureCounter() == 1){
 					   SwarmAchievement.unlock(PictureAchievement);
 					   Toast.makeText(this, R.string.First_pic_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				   if (DashboardActivity.getPictureCounter() >= 10){
+				   if (DashboardActivity.getPictureCounter() == 10){
 					   SwarmAchievement.unlock(PictureTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_pic_achi_toast, Toast.LENGTH_LONG).show();
 				   }
@@ -274,11 +275,11 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				//Adding to video count
 				DashboardActivity.addVideoCounter();
 				//Adding achievement
-				if (DashboardActivity.getVideoCounter() >= 1){
+				if (DashboardActivity.getVideoCounter() == 1){
 					SwarmAchievement.unlock(VideoAchievement);
 					   Toast.makeText(this, R.string.First_video_achi_toast, Toast.LENGTH_LONG).show();
 				}
-				if (DashboardActivity.getVideoCounter() >= 10){
+				if (DashboardActivity.getVideoCounter() == 10){
 					SwarmAchievement.unlock(VideoTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_video_achi_toast, Toast.LENGTH_LONG).show();
 				}
@@ -302,11 +303,11 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   //Adding to audio count
 				   DashboardActivity.addAudioCounter();
 				   //Adding achievement
-				   if (DashboardActivity.getAudioCounter() >= 1){
+				   if (DashboardActivity.getAudioCounter() == 1){
 					   SwarmAchievement.unlock(AudioAchievement);
 					   Toast.makeText(this, R.string.First_audio_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				   if (DashboardActivity.getAudioCounter() >= 10){
+				   if (DashboardActivity.getAudioCounter() == 10){
 					   SwarmAchievement.unlock(AudioTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_audio_achi_toast, Toast.LENGTH_LONG).show();
 				   }
@@ -334,11 +335,11 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   //Adding to note count
 				   DashboardActivity.addNoteCounter();
 				   //Adding achievement
-				   if (DashboardActivity.getNoteCounter() >= 1){
+				   if (DashboardActivity.getNoteCounter() == 1){
 					   SwarmAchievement.unlock(NoteAchievement);
 					   Toast.makeText(this, R.string.First_note_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				   if (DashboardActivity.getNoteCounter() >= 10){
+				   if (DashboardActivity.getNoteCounter() == 10){
 					   SwarmAchievement.unlock(NoteTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_note_achi_toast, Toast.LENGTH_LONG).show();
 				   }
