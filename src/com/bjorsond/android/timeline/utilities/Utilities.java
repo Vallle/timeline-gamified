@@ -123,6 +123,7 @@ public class Utilities {
 					return R.drawable.mapicon_note;
 				}else if(e.getEventItems().get(0) instanceof ReflectionNote){
 					return R.drawable.mapicon_reflection_note;
+				}
 			}
 		}else {
 			return R.drawable.ic_menu_emoticons;
