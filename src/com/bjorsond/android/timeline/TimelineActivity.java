@@ -68,6 +68,7 @@ import com.bjorsond.android.timeline.models.EventItem;
 import com.bjorsond.android.timeline.models.Experience;
 import com.bjorsond.android.timeline.models.MoodEvent;
 import com.bjorsond.android.timeline.models.SimpleNote;
+import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.models.SimplePicture;
 import com.bjorsond.android.timeline.models.SimpleRecording;
 import com.bjorsond.android.timeline.models.SimpleVideo;
@@ -134,7 +135,9 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	private int AudioAchievement = 10957;
 	private int PictureAchievement = 10953;
 	private int NoteAchievement = 10951;
+	private int ReflectionNoteAchievement = 11467;
 	private int NoteTenAchievement = 10969;
+	private int ReflectionNoteTenAchievement = 11469;
 	private int PictureTenAchievement = 10971;
 	private int AudioTenAchievement = 10975;
 	private int VideoTenAchievement = 10973;
@@ -353,6 +356,36 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	    	    }
 			break;
 			
+			// REFLECTION NOTE ADDED
+		case Constants.CREATE_REFLECTION_ACTIVITY_REQUEST_CODE:
+			if (resultCode == RESULT_OK) {
+				Log.i(this.getClass().getSimpleName(), "********* REFLECTION NOTE CREATED **************");
+				Log.i(this.getClass().getSimpleName(), "Title: "+data.getExtras().getString(Intent.EXTRA_SUBJECT));
+				Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
+				Log.i(this.getClass().getSimpleName(), "*************************************");
+				
+				Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
+				//Adding to reflection count
+				DashboardActivity.addReflectionCounter();
+				//Adding achievement
+				if (DashboardActivity.getReflectionCounter() == 1){
+					SwarmAchievement.unlock(ReflectionNoteAchievement);
+					Toast.makeText(this, R.string.First_note_achi_toast, Toast.LENGTH_LONG).show();
+				}
+				if (DashboardActivity.getReflectionCounter() == 10){
+					SwarmAchievement.unlock(ReflectionNoteTenAchievement);
+					Toast.makeText(this, R.string.Tenth_note_achi_toast, Toast.LENGTH_LONG).show();
+				}
+				
+				addNoteToTimeline(data);
+				
+			} else if (resultCode == RESULT_CANCELED) {
+				Toast.makeText(this, R.string.Note_not_created_toast, Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(this, R.string.Note_not_created_toast, Toast.LENGTH_SHORT).show();
+			}
+			break;
+			
 		case Constants.EDIT_NOTE:
 			   if (resultCode == RESULT_OK) {
 	    	    	Toast.makeText(this, R.string.Note_edited_toast , Toast.LENGTH_SHORT).show();
@@ -567,9 +600,9 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	}
 	
 	public void startDaySummary(){
-		Intent noteIntent = new Intent(this, NoteActivity.class);
-		noteIntent.putExtra(Constants.REQUEST_CODE, Constants.CREATE_NOTE_ACTIVITY_REQUEST_CODE);
-		startActivityForResult(noteIntent, Constants.CREATE_NOTE_ACTIVITY_REQUEST_CODE);
+		Intent reflectionIntent = new Intent(this, NoteActivity.class);
+		reflectionIntent.putExtra(Constants.REQUEST_CODE, Constants.CREATE_NOTE_ACTIVITY_REQUEST_CODE);
+		startActivityForResult(reflectionIntent, Constants.CREATE_NOTE_ACTIVITY_REQUEST_CODE);
 	}
  
 	/**
@@ -843,6 +876,23 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		}else{
 			createEventAndAddItem(note);
 		}
+	}
+		
+		//Add reflection note to timeline
+		private void addReflectionToTimeline(Intent data) {
+			ReflectionNote reflection = new ReflectionNote(this);
+			if(data.getExtras().getString(Intent.EXTRA_SUBJECT) != null)
+				reflection.setReflectionTitle(data.getExtras().getString(Intent.EXTRA_SUBJECT));
+			if(data.getExtras().getString(Intent.EXTRA_TEXT) != null)
+				reflection.setReflectionText(data.getExtras().getString(Intent.EXTRA_TEXT));
+			if(data.getExtras().getString(Intent.EXTRA_TITLE) != null)
+				reflection.setReflectionText(data.getExtras().getString(Intent.EXTRA_TITLE));
+			
+			if(selectedEvent!=null){
+				addItemToExistingEvent(reflection);
+			}else{
+				createEventAndAddItem(reflection);
+			}
 	}
 	
 	/**

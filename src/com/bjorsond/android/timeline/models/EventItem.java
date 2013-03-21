@@ -43,6 +43,8 @@ public abstract class EventItem {
 	String url;
 	String noteTitle;
 	String noteText;
+	String reflectionTitle;
+	String reflectionText;
 	
 	public EventItem(){
 	}
@@ -113,7 +115,7 @@ public abstract class EventItem {
 	}
 	
 	public enum EventItemTypes {
-		SimpleNote(1), SimplePicture(2), SimpleVideo(3), SimpleRecording(4), SimpleUrl(5);
+		SimpleNote(1), SimplePicture(2), SimpleVideo(3), SimpleRecording(4), SimpleUrl(5), ReflectionNote(10);
 		
 		private final int numberOfType;
 		
@@ -127,6 +129,9 @@ public abstract class EventItem {
 			
 			 if (item instanceof SimpleNote) {
 				return SimpleNote.numberOfType;
+			 }
+			 else if (item instanceof ReflectionNote) { //Reflection note added
+				 return ReflectionNote.numberOfType;
 			 }
 			 else if (item instanceof SimplePicture) {
 				 return SimplePicture.numberOfType;

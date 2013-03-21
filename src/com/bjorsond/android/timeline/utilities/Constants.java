@@ -30,6 +30,7 @@ public class Constants {
     public static final int RECORD_AUDIO_ACTIVITY_REQUEST_CODE = 2;
     public static final int CREATE_NOTE_ACTIVITY_REQUEST_CODE = 3;
     public static final int ATTACHMENT_ACTIVITY_REQUEST_CODE = 4;
+    public static final int CREATE_REFLECTION_ACTIVITY_REQUEST_CODE = 10; //added for reflection note
     public static final int MAP_VIEW_ACTIVITY_REQUEST_CODE = 14;
     public static final int ALL_EXPERIENCES_MAP_ACTIVITY_REQUEST_CODE = 15;
     

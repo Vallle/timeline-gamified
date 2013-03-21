@@ -98,7 +98,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private TimelineDatabaseHelper timelineDatabaseHelper;
 	
 	// ADDING COUNTERS FOR ACHIEVEMENT UNLOCKING
-	private static int noteCounter, audioCounter, videoCounter, pictureCounter, moodCounter = 0;
+	private static int noteCounter, audioCounter, videoCounter, pictureCounter, moodCounter, reflectionCounter = 0;
 	public static final String PREFS_NAME = "MyPreferencesFile";
 
 	public void onCreate(Bundle savedInstanceState) {
@@ -186,6 +186,18 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	public static int getNoteCounter() {
 		return noteCounter;
+	}
+	
+	public static void addReflectionCounter() {
+		reflectionCounter++;
+	}
+	
+	public void setReflectionCounter(int number) {
+		reflectionCounter = number;
+	}
+	
+	public static int getReflectionCounter() {
+		return reflectionCounter;
 	}
 	//  AUDIO
 	public static void addAudioCounter() {
@@ -433,6 +445,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
          setVideoCounter(settings.getInt("videoCount", 0));
          setPictureCounter(settings.getInt("pictureCount", 0));
          setMoodCounter(settings.getInt("moodCount", 0));
+         setReflectionCounter(settings.getInt("reflectionCount", 0));  //added for reflection note
      }
       
       
@@ -474,10 +487,12 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	    SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
 	    SharedPreferences.Editor editor = settings.edit();
 	    editor.putInt("noteCount", noteCounter);
+	    editor.putInt("reflectionCount", reflectionCounter);
 	    editor.putInt("videoCount", videoCounter);
 	    editor.putInt("audioCount", audioCounter);
 	    editor.putInt("pictureCount", pictureCounter);
 	    editor.putInt("moodCount", moodCounter);
+	    editor.putInt("reflectionCount", reflectionCounter);  //added to have reflection note counter
 
 	    // Commit the edits!
 	    editor.commit();

@@ -16,6 +16,7 @@ import com.bjorsond.android.timeline.models.EventItem.EventItemsColumns;
 import com.bjorsond.android.timeline.models.Experience.ExperienceColumns;
 import com.bjorsond.android.timeline.models.Experience.TagColumns;
 import com.bjorsond.android.timeline.models.Group.GroupColumns;
+import com.bjorsond.android.timeline.models.ReflectionNote.ReflectionColumns;
 import com.bjorsond.android.timeline.models.SimpleNote.NoteColumns;
 import com.bjorsond.android.timeline.models.SimplePicture.PictureColumns;
 import com.bjorsond.android.timeline.models.SimpleRecording.RecordingColumns;
@@ -32,6 +33,7 @@ public class SQLStatements {
 	
 	public static final String EVENT_DATABASE_TABLE_NAME = "events";
 	public static final String NOTE_DATABASE_TABLE_NAME = "notes";
+	public static final String REFLECTION_DATABASE_TABLE_NAME = "reflections"; //added to get reflection notes
 	public static final String EVENT_TO_EVENT_ITEM_DATABASE_TABLE_NAME = "event_to_event_items";
 	public static final String PICTURE_DATABASE_TABLE_NAME = "pictures";
 	public static final String RECORDINGS_DATABASE_TABLE_NAME ="recordings";
@@ -73,6 +75,14 @@ public class SQLStatements {
 		+ NoteColumns.CREATED_DATE + " LONG,"
 		+EventItemsColumns.USERNAME+" VARCHAR,"
 		+ NoteColumns.MODIFIED_DATE + " INTEGER"+");";
+    
+    public static final String REFLECTION_DATABASE_CREATE = "CREATE TABLE " + REFLECTION_DATABASE_TABLE_NAME + " ("
+    		+ ReflectionColumns._ID + " VARCHAR PRIMARY KEY,"
+    		+ ReflectionColumns.TITLE + " TEXT,"
+    		+ ReflectionColumns.REFLECTION + " TEXT,"
+    		+ ReflectionColumns.CREATED_DATE + " LONG,"
+    		+EventItemsColumns.USERNAME+" VARCHAR,"
+    		+ ReflectionColumns.MODIFIED_DATE + " INTEGER"+");";
     
 	public static final String PICTURE_DATABASE_CREATE = "CREATE TABLE " + PICTURE_DATABASE_TABLE_NAME + " ("
 		+PictureColumns._ID +" VARCHAR PRIMARY KEY,"
