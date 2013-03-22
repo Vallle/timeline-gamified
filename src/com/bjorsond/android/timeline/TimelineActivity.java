@@ -81,7 +81,6 @@ import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
 import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmAchievement;
-import com.swarmconnect.SwarmAchievement.AchievementUnlockedCB;
 import com.swarmconnect.SwarmActivity;
 
 /**
@@ -362,7 +361,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Log.i(this.getClass().getSimpleName(), "********* REFLECTION NOTE CREATED **************");
 				Log.i(this.getClass().getSimpleName(), "Title: "+data.getExtras().getString(Intent.EXTRA_SUBJECT));
 				Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
-				Log.i(this.getClass().getSimpleName(), "*************************************");
+				Log.i(this.getClass().getSimpleName(), "************************************************");
 				
 				Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
 				//Adding to reflection count
@@ -377,7 +376,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					Toast.makeText(this, R.string.Tenth_note_achi_toast, Toast.LENGTH_LONG).show();
 				}
 				
-				addNoteToTimeline(data);
+				addReflectionToTimeline(data);
 				
 			} else if (resultCode == RESULT_CANCELED) {
 				Toast.makeText(this, R.string.Note_not_created_toast, Toast.LENGTH_SHORT).show();
