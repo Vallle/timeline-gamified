@@ -65,12 +65,14 @@
             android:name="com.bjorsond.android.timeline.MySwarmActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar">
         </activity>
 
-           <provider
+        <provider
             android:authorities="com.bjorsond.android.timeline.database.providers.ExperienceProvider" android:name="com.bjorsond.android.timeline.database.providers.ExperienceProvider"/>
         <provider
             android:authorities="com.bjorsond.android.timeline.database.providers.EventProvider" android:name="com.bjorsond.android.timeline.database.providers.EventProvider"/>
         <provider
             android:authorities="com.bjorsond.android.timeline.database.providers.NoteProvider" android:name="com.bjorsond.android.timeline.database.providers.NoteProvider"/>
+        <provider
+            android:authorities="com.bjorsond.android.timeline.database.providers.ReflectionProvider" android:name="com.bjorsond.android.timeline.database.providers.ReflectionProvider"/>
         <provider
             android:authorities="com.bjorsond.android.timeline.database.providers.EventItemProvider" android:name="com.bjorsond.android.timeline.database.providers.EventItemProvider"/>
         <provider

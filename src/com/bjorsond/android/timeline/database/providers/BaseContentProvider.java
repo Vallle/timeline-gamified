@@ -25,6 +25,7 @@ import com.bjorsond.android.timeline.database.SQLStatements;
 import com.bjorsond.android.timeline.database.TimelineDatabaseHelper;
 import com.bjorsond.android.timeline.database.UserGroupDatabaseHelper;
 import com.bjorsond.android.timeline.models.EventItem.EventItemsColumns;
+import com.bjorsond.android.timeline.models.ReflectionNote.ReflectionColumns;
 import com.bjorsond.android.timeline.models.SimpleNote.NoteColumns;
 
 public class BaseContentProvider extends ContentProvider{
@@ -35,6 +36,7 @@ public class BaseContentProvider extends ContentProvider{
 	private static final int EVENT = 4;
 	private static final int RECORDING_ITEM = 5;
 	private static final int VIDEO_ITEM = 6;
+	private static final int REFLECTION_ITEM = 10;
 
 	private static final UriMatcher uriMatcher;
 	
@@ -62,6 +64,9 @@ public class BaseContentProvider extends ContentProvider{
 		switch (uriMatcher.match(uri)) {
 		case NOTE_ITEM:	
 			count = DatabaseHelper.getCurrentTimelineDatabase().delete(SQLStatements.NOTE_DATABASE_TABLE_NAME, BaseColumns._ID + "="+ itemID, whereArgs);
+			break;
+		case REFLECTION_ITEM:	
+			count = DatabaseHelper.getCurrentTimelineDatabase().delete(SQLStatements.REFLECTION_DATABASE_TABLE_NAME, BaseColumns._ID + "="+ itemID, whereArgs);
 			break;
 		case PICTURE_ITEM:
             count = DatabaseHelper.getCurrentTimelineDatabase().delete(SQLStatements.PICTURE_DATABASE_TABLE_NAME, BaseColumns._ID + "=" + itemID, whereArgs);
@@ -101,6 +106,10 @@ public class BaseContentProvider extends ContentProvider{
 			rowId = DatabaseHelper.getCurrentTimelineDatabase().insertWithOnConflict(SQLStatements.NOTE_DATABASE_TABLE_NAME, NoteColumns.NOTE, values, SQLiteDatabase.CONFLICT_REPLACE);
 	        return notifyContentResolver(uri, rowId);
 	        
+		case REFLECTION_ITEM:
+			rowId = DatabaseHelper.getCurrentTimelineDatabase().insertWithOnConflict(SQLStatements.REFLECTION_DATABASE_TABLE_NAME, ReflectionColumns.REFLECTION, values, SQLiteDatabase.CONFLICT_REPLACE);
+			return notifyContentResolver(uri, rowId);
+			
 		case PICTURE_ITEM:
 			rowId = DatabaseHelper.getCurrentTimelineDatabase().insertWithOnConflict(SQLStatements.PICTURE_DATABASE_TABLE_NAME,"", values, SQLiteDatabase.CONFLICT_REPLACE);
 			return notifyContentResolver(uri, rowId);
@@ -130,6 +139,7 @@ public class BaseContentProvider extends ContentProvider{
 		uriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 		uriMatcher.addURI(EventItemProvider.AUTHORITY, SQLStatements.EVENT_DATABASE_TABLE_NAME, EVENT_ITEM );
 		uriMatcher.addURI(NoteProvider.AUTHORITY, SQLStatements.NOTE_DATABASE_TABLE_NAME, NOTE_ITEM);
+		uriMatcher.addURI(ReflectionProvider.AUTHORITY, SQLStatements.REFLECTION_DATABASE_TABLE_NAME, REFLECTION_ITEM);
 		uriMatcher.addURI(PictureProvider.AUTHORITY, SQLStatements.PICTURE_DATABASE_TABLE_NAME, PICTURE_ITEM);
 		uriMatcher.addURI(EventProvider.AUTHORITY, SQLStatements.EVENT_DATABASE_TABLE_NAME, EVENT);
 		uriMatcher.addURI(RecordingProvider.AUTHORITY, SQLStatements.RECORDINGS_DATABASE_TABLE_NAME, RECORDING_ITEM);

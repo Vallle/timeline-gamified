@@ -71,10 +71,10 @@ public class ReflectionProvider extends BaseContentProvider {
 	public String getType(Uri uri) {
         switch (sUriMatcher.match(uri)) {
         case REFLECTIONS:
-            return NoteColumns.CONTENT_TYPE;
+            return ReflectionColumns.CONTENT_TYPE;
 
         case REFLECTION_ID:
-            return NoteColumns.CONTENT_ITEM_TYPE;
+            return ReflectionColumns.CONTENT_ITEM_TYPE;
 
         default:
             throw new IllegalArgumentException("Unknown URI " + uri);
@@ -88,12 +88,12 @@ public class ReflectionProvider extends BaseContentProvider {
 	        int count;
 	        switch (sUriMatcher.match(uri)) {
 	        case REFLECTIONS:
-	            count = super.getDatabase().update(SQLStatements.NOTE_DATABASE_TABLE_NAME, values, where, whereArgs);
+	            count = super.getDatabase().update(SQLStatements.REFLECTION_DATABASE_TABLE_NAME, values, where, whereArgs);
 	            break;
 
 	        case REFLECTION_ID:
-	            String noteId = uri.getPathSegments().get(1);
-	            count = super.getDatabase().update(SQLStatements.NOTE_DATABASE_TABLE_NAME, values, NoteColumns._ID + "=" + noteId
+	            String reflectionId = uri.getPathSegments().get(1);
+	            count = super.getDatabase().update(SQLStatements.REFLECTION_DATABASE_TABLE_NAME, values, ReflectionColumns._ID + "=" + reflectionId
 	                    + (!TextUtils.isEmpty(where) ? " AND (" + where + ')' : ""), whereArgs);
 	            break;
 
@@ -111,11 +111,11 @@ public class ReflectionProvider extends BaseContentProvider {
         sUriMatcher.addURI(AUTHORITY, SQLStatements.REFLECTION_DATABASE_TABLE_NAME+"/#", REFLECTION_ID);
         
         sReflectionsProjectionMap = new HashMap<String, String>();
-        sReflectionsProjectionMap.put(NoteColumns._ID, NoteColumns._ID);
-        sReflectionsProjectionMap.put(NoteColumns.TITLE, NoteColumns.TITLE);
-        sReflectionsProjectionMap.put(NoteColumns.NOTE, NoteColumns.NOTE);
-        sReflectionsProjectionMap.put(NoteColumns.CREATED_DATE, NoteColumns.CREATED_DATE);
-        sReflectionsProjectionMap.put(NoteColumns.MODIFIED_DATE, NoteColumns.MODIFIED_DATE);
+        sReflectionsProjectionMap.put(ReflectionColumns._ID, ReflectionColumns._ID);
+        sReflectionsProjectionMap.put(ReflectionColumns.TITLE, ReflectionColumns.TITLE);
+        sReflectionsProjectionMap.put(ReflectionColumns.REFLECTION, ReflectionColumns.REFLECTION);
+        sReflectionsProjectionMap.put(ReflectionColumns.CREATED_DATE, ReflectionColumns.CREATED_DATE);
+        sReflectionsProjectionMap.put(ReflectionColumns.MODIFIED_DATE, ReflectionColumns.MODIFIED_DATE);
         sReflectionsProjectionMap.put(EventItemsColumns.USERNAME, EventItemsColumns.USERNAME);
     }
 }

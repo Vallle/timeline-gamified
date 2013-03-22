@@ -165,6 +165,10 @@ public class ContentAdder {
 				addNoteToNoteContentProvider(event, note);
 				//SwarmAchievement.unlock(NoteAchievement);
 			}
+			else if(item instanceof ReflectionNote) {
+				ReflectionNote reflection = (ReflectionNote) item;
+				addReflectionToReflectionContentProvider(event, reflection);
+			}
 			else if(item instanceof SimplePicture) {
 				SimplePicture picture = (SimplePicture) item;
 				addPictureToImageContentProvider(event, picture);
@@ -224,7 +228,10 @@ public class ContentAdder {
 		values.put(EventItemsColumns.USERNAME, reflection.getCreator());
 		values.put(ReflectionColumns.CREATED_DATE, event.getDatetimemillis());
 		
+		Log.i("MONSTERBUG", ReflectionColumns.CONTENT_URI.toString());
+		Log.i("MONSTERBUG", values.toString());
 		context.getContentResolver().insert(ReflectionColumns.CONTENT_URI, values);
+		Log.i("MONSTERBUG", "2");
 	}
 	
 	

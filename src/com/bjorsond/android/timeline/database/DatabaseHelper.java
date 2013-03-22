@@ -57,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL(SQLStatements.EVENT_DATABASE_CREATE);
 		db.execSQL(SQLStatements.EVENT_TO_EVENT_ITEM_DATABASE_CREATE);
 		db.execSQL(SQLStatements.NOTES_DATABASE_CREATE);
+		db.execSQL(SQLStatements.REFLECTION_DATABASE_CREATE); //added for reflection notes to be stored
 		db.execSQL(SQLStatements.PICTURE_DATABASE_CREATE);
 		db.execSQL(SQLStatements.RECORDING_DATABASE_CREATE);	
 		db.execSQL(SQLStatements.VIDEO_DATABASE_CREATE);
@@ -102,6 +103,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS " + SQLStatements.EVENT_DATABASE_TABLE_NAME);
 		db.execSQL("DROP TABLE IF EXISTS " + SQLStatements.EVENT_TO_EVENT_ITEM_DATABASE_TABLE_NAME);
 		db.execSQL("DROP TABLE IF EXISTS " + SQLStatements.NOTE_DATABASE_TABLE_NAME);
+		db.execSQL("DROP TABLE IF EXISTS " + SQLStatements.REFLECTION_DATABASE_TABLE_NAME); //ADDED FOR REF NOTES
 		db.execSQL("DROP TABLE IF EXISTS " + SQLStatements.PICTURE_DATABASE_TABLE_NAME);
 		db.execSQL("DROP TABLE IF EXISTS " + SQLStatements.RECORDINGS_DATABASE_TABLE_NAME);
 		db.execSQL("DROP TABLE IF EXISTS " + SQLStatements.VIDEO_DATABASE_TABLE_NAME);
