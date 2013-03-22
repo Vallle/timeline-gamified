@@ -385,7 +385,7 @@ public class ContentLoader {
 		
 		if(listOfReflectionsBelongingToEvent.moveToFirst()) {
 			do{
-				SimpleNote reflection = new SimpleNote(
+				ReflectionNote reflection = new ReflectionNote(
 						listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(ReflectionColumns._ID)), 
 						listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(ReflectionColumns.TITLE)), 
 						listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(ReflectionColumns.REFLECTION)), 

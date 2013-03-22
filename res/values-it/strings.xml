@@ -4,6 +4,7 @@
     <string name="app_name">Timeline 2</string>
 
     <string name="create_note_name">Creare una nuova nota</string>
+    <string name="create_reflection_name">Invia una nuova riflessione</string>
 	<string name="save_label">Salvare</string>
 	<string name="discard_label">Scartare</string>
 	<string name="Edit_label">Modifica</string>
@@ -52,6 +53,9 @@
 	<string name="Show_in_timeline_label">Mostra in una timeline</string>
 	<string name="My_groups_label">I miei gruppi:</string>
 	<string name="Share_note_label">Condividi nota</string>
+	<string name="Share_reflection_label">Condividi riflessione</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Reflection_title_hint">Inserisci titolo riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Reflection_text_hint">Inserire il testo di riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	
 	<string name="Not_registered">Non registrato. Registrazione utente.</string>
 	<string name="Checking_user">Controllo utente da server ...</string>
@@ -112,6 +116,8 @@
 	<string name="Select_group_toast">È necessario selezionare un gruppo per condividere la timeline con!</string>
 	<string name="Has_been_shared_toast"> è stata condivisa con </string>
 	<string name="Timeline_deleted_toast"> è stato eliminato dal telefono cellulare</string>
+	<string name="Reflection_added_toast">Riflessione aggiunto</string>
+	
 	<string name="First_pic_achi_toast">Congratulazioni! Hai preso la tua foto prima Timeline!</string>
 	<string name="Tenth_pic_achi_toast">Hai preso dieci foto con Timeline! Continuate così!</string>
 	<string name="First_video_achi_toast">Congratulazioni! È stato registrato il primo video con Timeline!</string>
@@ -120,6 +126,8 @@
 	<string name="Tenth_audio_achi_toast">È stato registrato dieci clip audio! Devi amare il suono della tua voce!</string>
 	<string name="First_note_achi_toast">Congratulazioni! Lei ha scritto la tua prima nota nella Timeline!</string>
 	<string name="Tenth_note_achi_toast">Lei ha scritto dieci note! Speriamo che apprezzi di qualità tanto quanto te quantità.</string>
+	<string name="First_reflection_achi_toast">Congratulazioni! Hai aggiunto il tuo riflesso prima Timeline!</string>
+	<string name="Tenth_reflection_achi_toast">Quello era il tuo riflesso decimo! L\'apprendimento è un tesoro che seguirà il suo proprietario ovunque.</string>
     
     <string name="new_timeline">Inserisci il nome della timeline</string>
       

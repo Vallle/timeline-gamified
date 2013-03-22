@@ -4,6 +4,7 @@
     <string name="app_name">Timeline 2</string>
 
     <string name="create_note_name">Create a new note</string>
+    <string name="create_reflection_name">Submit a new reflection</string>
 	<string name="save_label">Save</string>
 	<string name="discard_label">Discard</string>
 	<string name="Edit_label">Edit</string>
@@ -56,7 +57,7 @@
 	<string name="Share_note_label">Share note</string>
 	<string name="Share_reflection_label">Share reflection</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_title_hint">Enter reflection title</string>  <!-- ADDED FOR REFLECTION NOTE -->
-	<string name="Reflection_text_hint">Enter recflection text</string>  <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Reflection_text_hint">Enter reflection text</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>
@@ -117,6 +118,9 @@
 	<string name="Select_group_toast">You have to select a group to share the timeline with!</string>
 	<string name="Has_been_shared_toast"> has been shared with </string>
 	<string name="Timeline_deleted_toast"> has been deleted from the phone</string>
+	<string name="Reflection_added_toast">Reflection added</string>
+	<string name="Reflection_not_added_toast">Reflection was not added</string>
+	
 	<string name="First_pic_achi_toast">Congratulations! You have taken your first picture with Timeline!</string>
 	<string name="Tenth_pic_achi_toast">You have taken ten pictures with Timeline! If one picture is worth a thousand words, what\'s ten pictures worth?</string>
 	<string name="First_video_achi_toast">Congratulations! You have recorded your first video with Timeline!</string>
@@ -125,6 +129,8 @@
 	<string name="Tenth_audio_achi_toast">You have recorded ten audio clips! You must love the sound of your voice!</string>
 	<string name="First_note_achi_toast">Congratulations! You have written your first note in Timeline!</string>
 	<string name="Tenth_note_achi_toast">You have written ten notes! Let\'s hope you value quality as much as you do quantity.</string>
+	<string name="First_note_achi_toast">Congratulations! You have written your first note in Timeline!</string>
+	<string name="Tenth_note_achi_toast">That was your tenth reflection! Learning is a treasure that will follow its owner everywhere.</string>
 	
     <string name="new_timeline">Enter the name of your timeline</string>
       

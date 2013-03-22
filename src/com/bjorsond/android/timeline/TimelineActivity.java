@@ -363,25 +363,25 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
 				Log.i(this.getClass().getSimpleName(), "************************************************");
 				
-				Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.Reflection_added_toast, Toast.LENGTH_SHORT).show();
 				//Adding to reflection count
 				DashboardActivity.addReflectionCounter();
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){
 					SwarmAchievement.unlock(ReflectionNoteAchievement);
-					Toast.makeText(this, R.string.First_note_achi_toast, Toast.LENGTH_LONG).show();
+					Toast.makeText(this, R.string.First_reflection_achi_toast, Toast.LENGTH_LONG).show();
 				}
 				if (DashboardActivity.getReflectionCounter() == 10){
 					SwarmAchievement.unlock(ReflectionNoteTenAchievement);
-					Toast.makeText(this, R.string.Tenth_note_achi_toast, Toast.LENGTH_LONG).show();
+					Toast.makeText(this, R.string.Tenth_reflection_achi_toast, Toast.LENGTH_LONG).show();
 				}
 				
 				addReflectionToTimeline(data);
 				
 			} else if (resultCode == RESULT_CANCELED) {
-				Toast.makeText(this, R.string.Note_not_created_toast, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.Reflection_not_added_toast, Toast.LENGTH_SHORT).show();
 			} else {
-				Toast.makeText(this, R.string.Note_not_created_toast, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, R.string.Reflection_not_added_toast, Toast.LENGTH_SHORT).show();
 			}
 			break;
 			
@@ -598,10 +598,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		new AttachmentAdder(this, this, timeline);
 	}
 	
-	public void startDaySummary(){
-		Intent reflectionIntent = new Intent(this, NoteActivity.class);
-		reflectionIntent.putExtra(Constants.REQUEST_CODE, Constants.CREATE_NOTE_ACTIVITY_REQUEST_CODE);
-		startActivityForResult(reflectionIntent, Constants.CREATE_NOTE_ACTIVITY_REQUEST_CODE);
+	public void createReflection(){
+		Intent reflectionIntent = new Intent(this, ReflectionActivity.class);
+		reflectionIntent.putExtra(Constants.REQUEST_CODE, Constants.CREATE_REFLECTION_ACTIVITY_REQUEST_CODE);
+		startActivityForResult(reflectionIntent, Constants.CREATE_REFLECTION_ACTIVITY_REQUEST_CODE);
 	}
  
 	/**
@@ -792,7 +792,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	private OnClickListener startSumDayListener = new OnClickListener() {
 		
 		public void onClick(View v) {
-			startDaySummary();
+			createReflection();
 		}
 	};
 	

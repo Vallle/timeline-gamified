@@ -41,6 +41,9 @@
          
         <activity android:label="@string/create_note_name"
             android:name="com.bjorsond.android.timeline.NoteActivity" android:screenOrientation="landscape"/>
+        
+        <activity android:label="@string/create_reflection_name"
+            android:name="com.bjorsond.android.timeline.ReflectionActivity" android:screenOrientation="landscape"/>
             
         <activity android:label="@string/app_name"
             android:name="com.bjorsond.android.timeline.ProfileActivity" android:screenOrientation="portrait">
