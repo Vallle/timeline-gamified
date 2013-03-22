@@ -13,9 +13,11 @@ package com.bjorsond.android.timeline.database.contentmanagers;
 import com.bjorsond.android.timeline.models.Event;
 import com.bjorsond.android.timeline.models.Experience;
 import com.bjorsond.android.timeline.models.SimpleNote;
+import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.models.Event.EventColumns;
 import com.bjorsond.android.timeline.models.Experience.ExperienceColumns;
 import com.bjorsond.android.timeline.models.SimpleNote.NoteColumns;
+import com.bjorsond.android.timeline.models.ReflectionNote.ReflectionColumns;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -46,6 +48,18 @@ public class ContentUpdater {
 		  context.getContentResolver().update(NoteColumns.CONTENT_URI, values, NoteColumns._ID+"=+'"+updatedNote.getId()+"'", null);
 		
 		  Log.i("CONTENT UPDATE NOTE", "Updated Note in DB: ID: " +updatedNote.getId()+ " Title: "+ updatedNote.getNoteTitle() );
+	}
+	
+	//Added for reflection note
+	public void updateReflectionInDB(ReflectionNote updatedReflection){
+		ContentValues values = new ContentValues();
+		values.put(ReflectionColumns.TITLE, updatedReflection.getReflectionTitle());
+		values.put(ReflectionColumns.REFLECTION, updatedReflection.getReflectionText()); 
+		values.put(ReflectionColumns.MODIFIED_DATE, System.currentTimeMillis());
+		
+		context.getContentResolver().update(NoteColumns.CONTENT_URI, values, NoteColumns._ID+"=+'"+updatedReflection.getId()+"'", null);
+		
+		Log.i("CONTENT UPDATE NOTE", "Updated Note in DB: ID: " +updatedReflection.getId()+ " Title: "+ updatedReflection.getReflectionTitle() );
 	}
 	
 	public void setEventShared(Event event) {

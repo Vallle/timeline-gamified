@@ -29,6 +29,7 @@ import com.bjorsond.android.timeline.models.Group;
 import com.bjorsond.android.timeline.models.ModelType;
 import com.bjorsond.android.timeline.models.MoodEvent;
 import com.bjorsond.android.timeline.models.SimpleNote;
+import com.bjorsond.android.timeline.models.ReflectionNote; //added to get reflection note
 import com.bjorsond.android.timeline.models.SimplePicture;
 import com.bjorsond.android.timeline.models.SimpleRecording;
 import com.bjorsond.android.timeline.models.SimpleVideo;
@@ -40,6 +41,7 @@ import com.bjorsond.android.timeline.models.Experience.ExperienceColumns;
 import com.bjorsond.android.timeline.models.Group.GroupColumns;
 import com.bjorsond.android.timeline.models.MoodEvent.MoodEnum;
 import com.bjorsond.android.timeline.models.SimpleNote.NoteColumns;
+import com.bjorsond.android.timeline.models.ReflectionNote.ReflectionColumns; //added for reflection note
 import com.bjorsond.android.timeline.models.SimplePicture.PictureColumns;
 import com.bjorsond.android.timeline.models.SimpleRecording.RecordingColumns;
 import com.bjorsond.android.timeline.models.SimpleVideo.VideoColumns;
@@ -261,8 +263,10 @@ public class ContentLoader {
 					int itemType = listOfEventItems.getInt(listOfEventItems.getColumnIndex(EventItemsColumns.EVENT_ITEM_TYPE));
 					
 					if(itemType == ModelType.SimpleNote.numberOfType()) {
-
 						addNoteItemToEvent(event, eventItemID);
+					}
+					if(itemType == ModelType.ReflectionNote.numberOfType()) {
+						addReflectionItemToEvent(event, eventItemID);
 					}
 					if(itemType == ModelType.SimplePicture.numberOfType()) {
 						addPictureItemToEvent(event, eventItemID);
@@ -370,6 +374,28 @@ public class ContentLoader {
 			}while(listOfNotesBelongingToEvent.moveToNext());
 		
 		listOfNotesBelongingToEvent.close();
+		}
+	}
+	
+	private void addReflectionItemToEvent(Event event, String eventItemID) {
+		
+		String [] columns = new String[] {ReflectionColumns._ID, ReflectionColumns.TITLE, ReflectionColumns.REFLECTION, ReflectionColumns.CREATED_DATE, ReflectionColumns.MODIFIED_DATE, EventItemsColumns.USERNAME};
+		String whereStatement = ReflectionColumns._ID+"='"+eventItemID+"'";
+		Cursor listOfReflectionsBelongingToEvent = context.getContentResolver().query(ReflectionColumns.CONTENT_URI, columns, whereStatement, null, null);
+		
+		if(listOfReflectionsBelongingToEvent.moveToFirst()) {
+			do{
+				SimpleNote reflection = new SimpleNote(
+						listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(ReflectionColumns._ID)), 
+						listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(ReflectionColumns.TITLE)), 
+						listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(ReflectionColumns.REFLECTION)), 
+						new Account(listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(EventItemsColumns.USERNAME)), "com.google"));
+				
+				event.getEventItems().add(reflection);
+				
+			}while(listOfReflectionsBelongingToEvent.moveToNext());
+			
+			listOfReflectionsBelongingToEvent.close();
 		}
 	}
 	

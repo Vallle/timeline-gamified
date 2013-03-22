@@ -39,6 +39,7 @@ public class Constants {
     public static final int CAPTURE_BARCODE = 0x0ba7c0de;
     public static final int BROWSE_FILES = 8;
     public static final int EDIT_NOTE = 9;
+    public static final int EDIT_REFLECTION = 11;
     
     
     public static final String REQUEST_CODE = "REQUEST_CODE";

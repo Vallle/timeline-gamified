@@ -54,6 +54,9 @@
 	<string name="Shared_with_label">Shared with: </string>
 	<string name="Private_timeline_label">Private timeline</string>
 	<string name="Share_note_label">Share note</string>
+	<string name="Share_reflection_label">Share reflection</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Reflection_title_hint">Enter reflection title</string>  <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Reflection_text_hint">Enter recflection text</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>

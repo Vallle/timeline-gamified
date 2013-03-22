@@ -11,7 +11,7 @@
 package com.bjorsond.android.timeline.models;
 
 public enum ModelType {
-	SimpleNote(1), SimplePicture(2), SimpleVideo(3), SimpleRecording(4);
+	SimpleNote(1), SimplePicture(2), SimpleVideo(3), SimpleRecording(4), ReflectionNote(10);
 	
 	private final int numberOfType;
 	

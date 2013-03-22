@@ -22,6 +22,7 @@ import com.bjorsond.android.timeline.models.EventItem;
 import com.bjorsond.android.timeline.models.Experience;
 import com.bjorsond.android.timeline.models.MoodEvent;
 import com.bjorsond.android.timeline.models.SimpleNote;
+import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.models.SimplePicture;
 import com.bjorsond.android.timeline.models.SimpleRecording;
 import com.bjorsond.android.timeline.models.SimpleVideo;
@@ -30,6 +31,7 @@ import com.bjorsond.android.timeline.models.Event.EventColumns;
 import com.bjorsond.android.timeline.models.EventItem.EventItemsColumns;
 import com.bjorsond.android.timeline.models.Experience.ExperienceColumns;
 import com.bjorsond.android.timeline.models.SimpleNote.NoteColumns;
+import com.bjorsond.android.timeline.models.ReflectionNote.ReflectionColumns;
 import com.bjorsond.android.timeline.models.SimplePicture.PictureColumns;
 import com.bjorsond.android.timeline.models.SimpleRecording.RecordingColumns;
 import com.bjorsond.android.timeline.models.SimpleVideo.VideoColumns;
@@ -43,10 +45,10 @@ import com.swarmconnect.SwarmAchievement;
 public class ContentAdder {
 	
 	private Context context;
-	private int VideoAchievement = 10955;
-	private int AudioAchievement = 10957;
-	private int PictureAchievement = 10953;
-	private int NoteAchievement = 10951;
+//	private int VideoAchievement = 10955;
+//	private int AudioAchievement = 10957;
+//	private int PictureAchievement = 10953;
+//	private int NoteAchievement = 10951;
 
 	public ContentAdder(Context context) {
 		this.context = context;
@@ -96,6 +98,11 @@ public class ContentAdder {
 		if(item instanceof SimpleNote) {
 			SimpleNote note = (SimpleNote) item;
 			addNoteToNoteContentProvider(selectedEvent, note);
+			//SwarmAchievement.unlock(10951);
+		}
+		if(item instanceof ReflectionNote) {
+			ReflectionNote reflection = (ReflectionNote) item;
+			addReflectionToReflectionContentProvider(selectedEvent, reflection);
 			//SwarmAchievement.unlock(10951);
 		}
 		else if(item instanceof SimplePicture) {
@@ -206,7 +213,20 @@ public class ContentAdder {
 		  		  
 		  context.getContentResolver().insert(NoteColumns.CONTENT_URI, values);
 	}
-
+	
+	private void addReflectionToReflectionContentProvider(Event event, ReflectionNote reflection) {
+		
+		ContentValues values = new ContentValues();
+		
+		values.put(ReflectionColumns._ID, reflection.getId());
+		values.put(ReflectionColumns.TITLE, reflection.getReflectionTitle());
+		values.put(ReflectionColumns.REFLECTION, reflection.getReflectionText()); 
+		values.put(EventItemsColumns.USERNAME, reflection.getCreator());
+		values.put(ReflectionColumns.CREATED_DATE, event.getDatetimemillis());
+		
+		context.getContentResolver().insert(ReflectionColumns.CONTENT_URI, values);
+	}
+	
 	
 	private void addPictureToImageContentProvider(Event event, SimplePicture picture) {
 		
