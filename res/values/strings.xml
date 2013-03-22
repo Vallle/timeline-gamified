@@ -129,8 +129,8 @@
 	<string name="Tenth_audio_achi_toast">You have recorded ten audio clips! You must love the sound of your voice!</string>
 	<string name="First_note_achi_toast">Congratulations! You have written your first note in Timeline!</string>
 	<string name="Tenth_note_achi_toast">You have written ten notes! Let\'s hope you value quality as much as you do quantity.</string>
-	<string name="First_note_achi_toast">Congratulations! You have written your first note in Timeline!</string>
-	<string name="Tenth_note_achi_toast">That was your tenth reflection! Learning is a treasure that will follow its owner everywhere.</string>
+	<string name="First_reflection_achi_toast">Congratulations! You have added your first reflection in Timeline!</string>
+	<string name="Tenth_reflection_achi_toast">That was your tenth reflection! Learning is a treasure that will follow its owner everywhere.</string>
 	
     <string name="new_timeline">Enter the name of your timeline</string>
       

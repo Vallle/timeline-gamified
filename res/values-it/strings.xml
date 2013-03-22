@@ -48,12 +48,12 @@
 	<string name="Create_tag_label">Crea nuovo tag</string>
 	<string name="Add_users_label">Aggiungere utenti</string>
 	<string name="Add_group_label">Aggiungi gruppo</string>
-	<string name="Select_group_to_share_label">Select a group to share with</string>
+	<string name="Select_group_to_share_label">Selezionare un gruppo di condividere con</string>
 	<string name="Share_with_group_label">Condividere con il gruppo: </string>
 	<string name="Show_in_timeline_label">Mostra in una timeline</string>
 	<string name="My_groups_label">I miei gruppi:</string>
-	<string name="Share_note_label">Condividi nota</string>
-	<string name="Share_reflection_label">Condividi riflessione</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Share_note_label">Distribuire</string>
+	<string name="Share_reflection_label">Distribuire</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_title_hint">Inserisci titolo riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_text_hint">Inserire il testo di riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	
