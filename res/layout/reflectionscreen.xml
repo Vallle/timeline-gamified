@@ -25,12 +25,6 @@
             android:hint="@string/Reflection_text_hint" 
             android:layout_below="@+id/ReflectionTitleEditText">
         </EditText>
-        <EditText android:layout_height="wrap_content" 
-            android:layout_width="fill_parent" 
-            android:id="@+id/ReflectionText2EditText" 
-            android:hint="@string/Reflection_text_hint" 
-            android:layout_below="@+id/ReflectionTextEditText">
-        </EditText>
     </RelativeLayout>
 </ScrollView>
 
