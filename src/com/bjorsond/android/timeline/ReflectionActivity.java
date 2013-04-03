@@ -65,7 +65,7 @@ public class ReflectionActivity extends SwarmActivity {
 		reflectionTitle = (EditText)findViewById(R.id.ReflectionTitleEditText);
 		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
 		
-		reflectionText.setText(getString(R.string.Refleqtion_question_one) + "\n" + R.string.Refleqtion_question_two + "\n");
+		reflectionText.setText(getString(R.string.Refleqtion_question_one) + "\n" + getString(R.string.Refleqtion_question_two) + "\n");
 		
 		if(Constants.EDIT_REFLECTION == getIntent().getExtras().getInt(Constants.REQUEST_CODE)){
 			reflectionTitle.setText(getIntent().getExtras().getString(Intent.EXTRA_SUBJECT));
