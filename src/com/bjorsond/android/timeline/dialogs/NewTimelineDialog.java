@@ -78,9 +78,9 @@ public class NewTimelineDialog extends Dialog {
 			this.setTitle(R.string.Enter_name_label);
 		uGManager = new UserGroupManager(this.context);
 		
-		groupList = (ListView) findViewById(R.id.sharedtimelinegroupslist);
+//		groupList = (ListView) findViewById(R.id.sharedtimelinegroupslist);
 		groupListAdapter = new GroupListAdapter(this.context, uGManager.getAllGroupsConnectedToAUser(user));
-		groupList.setAdapter(groupListAdapter);
+//		groupList.setAdapter(groupListAdapter);
 		
 		addGroupButton = (Button) findViewById(R.id.newgroupbutton_in_timelinedialog);
 		addGroupButton.setOnClickListener(new View.OnClickListener() {
@@ -92,31 +92,31 @@ public class NewTimelineDialog extends Dialog {
 		
 
 		
-		selectedGroupText = (TextView) findViewById(R.id.selectedGroupText);
-		selectedGroupText.setText(R.string.Select_group_to_share_label);
+//		selectedGroupText = (TextView) findViewById(R.id.selectedGroupText);
+//		selectedGroupText.setText(R.string.Select_group_to_share_label);
 		
 		inputTextField = (EditText)findViewById(R.id.TimelineNameEditText);
-		shareToggle = (ToggleButton)findViewById(R.id.ShareTimelineToggleButton);
-		shareToggle.setEnabled(Utilities.isConnectedToInternet(context));
+//		shareToggle = (ToggleButton)findViewById(R.id.ShareTimelineToggleButton);
+//		shareToggle.setEnabled(Utilities.isConnectedToInternet(context));
 		
-		shareToggle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked) {
-					selectedGroupText.setVisibility(View.VISIBLE);
-					groupList.setVisibility(View.VISIBLE);
-					addGroupButton.setVisibility(View.VISIBLE);
-				}
-				
-				else {
-					selectedGroupText.setVisibility(View.GONE);
-					groupList.setVisibility(View.GONE);	
-					addGroupButton.setVisibility(View.INVISIBLE);
-					selectedGroup = null;
-					selectedGroupText.setText(R.string.Select_group_to_share_label);
-				}
-			}
-		});
+//		shareToggle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+//			
+//			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//				if(isChecked) {
+//					selectedGroupText.setVisibility(View.VISIBLE);
+//					groupList.setVisibility(View.VISIBLE);
+//					addGroupButton.setVisibility(View.VISIBLE);
+//				}
+//				
+//				else {
+//					selectedGroupText.setVisibility(View.GONE);
+//					groupList.setVisibility(View.GONE);	
+//					addGroupButton.setVisibility(View.INVISIBLE);
+//					selectedGroup = null;
+//					selectedGroupText.setText(R.string.Select_group_to_share_label);
+//				}
+//			}
+//		});
 		
 		if(this.experience!=null){
 			shareToggle.setChecked(true);
@@ -125,14 +125,14 @@ public class NewTimelineDialog extends Dialog {
 			inputTextField.setEnabled(false);
 		}
 		
-		groupList.setOnItemClickListener(new OnItemClickListener() {
-
-			public void onItemClick(AdapterView<?> arg0, View view, int position,
-					long arg3) {
-				selectedGroupText.setText(((Context) getOwnerActivity()).getString(R.string.Share_with_group_label) + groupList.getAdapter().getItem(position));
-				selectedGroup = (Group) groupList.getAdapter().getItem(position);
-			}
-		});
+//		groupList.setOnItemClickListener(new OnItemClickListener() {
+//
+//			public void onItemClick(AdapterView<?> arg0, View view, int position,
+//					long arg3) {
+//				selectedGroupText.setText(((Context) getOwnerActivity()).getString(R.string.Share_with_group_label) + groupList.getAdapter().getItem(position));
+//				selectedGroup = (Group) groupList.getAdapter().getItem(position);
+//			}
+//		});
 				
 
 		
@@ -140,12 +140,15 @@ public class NewTimelineDialog extends Dialog {
 		okButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View arg0) {
-				if(shareToggle.isChecked() && selectedGroup == null) {
-					Toast.makeText(context, R.string.Select_group_toast, Toast.LENGTH_SHORT).show();
-				}
-				else {
+//				if(shareToggle.isChecked() && selectedGroup == null) {
+//					Toast.makeText(context, R.string.Select_group_toast, Toast.LENGTH_SHORT).show();
+//				}
+//				else {
+				if(true){
 					String inputName = inputTextField.getText().toString().trim();
-					boolean share = shareToggle.isChecked();
+//					boolean share = shareToggle.isChecked();
+					boolean share = false;
+//					above - new line to quickfix share toggling
 					if(experience!=null){
 						experience.setShared(true);
 						experience.setSharingGroupObject(selectedGroup);
