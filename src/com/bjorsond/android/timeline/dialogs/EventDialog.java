@@ -45,6 +45,7 @@ import android.widget.LinearLayout.LayoutParams;
 
 import com.bjorsond.android.timeline.MyTagsActivity;
 import com.bjorsond.android.timeline.NoteActivity;
+import com.bjorsond.android.timeline.ReflectionActivity;
 import com.bjorsond.android.timeline.TimelineActivity;
 import com.bjorsond.android.timeline.adapters.TagListAdapter;
 import com.bjorsond.android.timeline.database.TimelineDatabaseHelper;
@@ -53,6 +54,7 @@ import com.bjorsond.android.timeline.database.contentmanagers.TagManager;
 import com.bjorsond.android.timeline.models.Emotion;
 import com.bjorsond.android.timeline.models.Event;
 import com.bjorsond.android.timeline.models.EventItem;
+import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.models.SimpleNote;
 import com.bjorsond.android.timeline.models.Emotion.EmotionEnum;
 import com.bjorsond.android.timeline.sync.GoogleAppEngineHandler;
@@ -267,6 +269,9 @@ public class EventDialog extends Dialog {
 					if(v.getTag() instanceof SimpleNote){
 						menu.add(R.id.MENU_EDIT_NOTE, v.getId(), 0, R.string.Edit_label);
 					}
+					else if(v.getTag() instanceof ReflectionNote){
+						menu.add(R.id.MENU_EDIT_REFLECTION, v.getId(), 0, R.string.Edit_label);
+					}
 					menu.add(R.id.MENU_DELETE_ITEM, v.getId(), 0, R.string.Delete_item_label);
 					menu.add(R.id.MENU_SHOW_CREATOR, v.getId(), 0, R.string.Show_creator_label);
 				}
@@ -314,6 +319,17 @@ public class EventDialog extends Dialog {
 			noteIntent.putExtra(Constants.REQUEST_CODE, Constants.EDIT_NOTE);
 			
 			mActivity.startActivityForResult(noteIntent, Constants.EDIT_NOTE); 
+			return true;
+			
+		case R.id.MENU_EDIT_REFLECTION:
+			Log.v("LONG-CLICK", "Edit: "+item.getItemId());
+			Intent reflectionIntent = new Intent(mActivity.getBaseContext(), ReflectionActivity.class);
+			reflectionIntent.putExtra("REFLECTION_ID", item.getItemId());//TODO: Ikke bra å bruke denne ID'en. Må tenke på bedre løsninger her...
+			reflectionIntent.putExtra(Intent.EXTRA_SUBJECT, ((ReflectionNote)items.get(item.getItemId())).getReflectionTitle()); 
+			reflectionIntent.putExtra(Intent.EXTRA_TEXT, ((ReflectionNote)items.get(item.getItemId())).getReflectionText());
+			reflectionIntent.putExtra(Constants.REQUEST_CODE, Constants.EDIT_REFLECTION);
+			
+			mActivity.startActivityForResult(reflectionIntent, Constants.EDIT_REFLECTION); 
 			return true;
 			
 		case R.id.MENU_DELETE_ITEM:
