@@ -59,6 +59,10 @@
 	<string name="Reflection_title_hint">Enter reflection title</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_text_hint">Enter reflection text</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	
+	<string name="Refleqtion_question_one">Write a short summary of your day:</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Refleqtion_question_two">After reflecting over today\'s incidents, would you have done anything differently?</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Refleqtion_question_three">Share reflection</string> <!-- ADDED FOR REFLECTION NOTE -->
+	
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>
 	<string name="Could_not_sync">Couldn\'t retrieve last synced time</string>
