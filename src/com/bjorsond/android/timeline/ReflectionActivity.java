@@ -40,7 +40,8 @@ public class ReflectionActivity extends SwarmActivity {
 	
 	
 	private Button saveButton, discardButton, shareButton;
-	private EditText reflectionTitle, reflectionText;
+	private EditText reflectionTitle;
+//	private EditText reflectionText;
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,13 +64,13 @@ public class ReflectionActivity extends SwarmActivity {
 		shareButton = (Button)findViewById(R.id.ShareReflectionButton);
 		
 		reflectionTitle = (EditText)findViewById(R.id.ReflectionTitleEditText);
-		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
+//		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
 		
-		reflectionText.setText(getString(R.string.Refleqtion_question_one) + "\n" + getString(R.string.Refleqtion_question_two) + "\n");
+		reflectionTitle.setText(getString(R.string.Refleqtion_question_one) + "\n\n" + getString(R.string.Refleqtion_question_two) + "\n");
 		
 		if(Constants.EDIT_REFLECTION == getIntent().getExtras().getInt(Constants.REQUEST_CODE)){
 			reflectionTitle.setText(getIntent().getExtras().getString(Intent.EXTRA_SUBJECT));
-			reflectionText.setText(getIntent().getExtras().getString(Intent.EXTRA_TEXT));
+//			reflectionText.setText(getIntent().getExtras().getString(Intent.EXTRA_TEXT));
 		}
 		
 		saveButton.setOnClickListener(saveReflectionListener);
@@ -110,18 +111,17 @@ public class ReflectionActivity extends SwarmActivity {
 		Intent saveReflectionIntent = new Intent();
 		saveReflectionIntent.putExtra("REFLECTION_ID", getIntent().getExtras().getInt("REFLECTION_ID")); 
         saveReflectionIntent.putExtra(Intent.EXTRA_SUBJECT, reflectionTitle.getText().toString()); 
-        saveReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString());
+//        saveReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString());
         setResult(RESULT_OK, saveReflectionIntent);
 	}
 	
 	private void shareReflection() {
 		Intent shareReflectionIntent = new Intent(Intent.ACTION_SEND);
 		shareReflectionIntent.setType("text/plain");
-        shareReflectionIntent.putExtra(Intent.EXTRA_SUBJECT, reflectionTitle.getText().toString()); 
-        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString()); 
+        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionTitle.getText().toString()); 
+//        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString()); 
 
-        String clip = reflectionTitle.getText().toString() + "\n" + 
-        				reflectionText.getText().toString();
+        String clip = reflectionTitle.getText().toString();
         
         ClipboardManager clipBoard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
         clipBoard.setText(clip);		//Horrible workaround for sharing to Facebook. These lines of code copy the text to clipboard, so that the user can manually paste his text after having chosen Facebook from the chooser.
