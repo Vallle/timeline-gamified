@@ -11,8 +11,10 @@
 package com.bjorsond.android.timeline;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -37,7 +39,7 @@ public class ReflectionActivity extends SwarmActivity {
 	
 	
 	private Button saveButton, discardButton, shareButton;
-	private EditText reflectionTitle, reflectionText;
+	private EditText reflectionTitle, reflectionText, reflectionText2;
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +63,10 @@ public class ReflectionActivity extends SwarmActivity {
 		
 		reflectionTitle = (EditText)findViewById(R.id.ReflectionTitleEditText);
 		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
+		reflectionText2 = (EditText)findViewById(R.id.ReflectionText2EditText);
+		
+		reflectionText.setText(getString(R.string.Refleqtion_question_one) + "\n");
+		reflectionText2.setText(getString(R.string.Refleqtion_question_two) + "\n");
 		
 		if(Constants.EDIT_REFLECTION == getIntent().getExtras().getInt(Constants.REQUEST_CODE)){
 			reflectionTitle.setText(getIntent().getExtras().getString(Intent.EXTRA_SUBJECT));
@@ -114,7 +120,15 @@ public class ReflectionActivity extends SwarmActivity {
 		shareReflectionIntent.setType("text/plain");
         shareReflectionIntent.putExtra(Intent.EXTRA_SUBJECT, reflectionTitle.getText().toString()); 
         shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString()); 
+        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText2.getText().toString()); 
 
+        String clip = reflectionTitle.getText().toString() + "\n" + 
+        				reflectionText.getText().toString() + "\n" +
+        				reflectionText2.getText().toString();
+        
+        ClipboardManager clipBoard = (ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
+        clipBoard.setText(clip);		//Horrible workaround for sharing to Facebook. These lines of code copy the text to clipboard, so that the user can manually paste his text after having chosen Facebook from the chooser.
+        
 		startActivity(Intent.createChooser(shareReflectionIntent, getString(R.string.Share_reflection_label)));
 	}
 	
