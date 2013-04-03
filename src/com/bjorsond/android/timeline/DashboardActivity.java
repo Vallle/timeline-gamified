@@ -591,6 +591,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	private OnClickListener syncListener = new OnClickListener() {
 		public void onClick(View v) {
+			SwarmAchievement.unlock(10839);
 			Swarm.showAchievements();
 //			Commented out due to test in Italy -- replaced with "Swarm.showAchievements();"
 //			if(Utilities.isConnectedToInternet(getApplicationContext())) {
