@@ -15,6 +15,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.ClipboardManager;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -111,7 +112,7 @@ public class ReflectionActivity extends SwarmActivity {
 		Intent saveReflectionIntent = new Intent();
 		saveReflectionIntent.putExtra("REFLECTION_ID", getIntent().getExtras().getInt("REFLECTION_ID")); 
         saveReflectionIntent.putExtra(Intent.EXTRA_SUBJECT, reflectionTitle.getText().toString()); 
-        saveReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString()); 
+        saveReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString() + "\n" + reflectionText2.getText().toString());
         setResult(RESULT_OK, saveReflectionIntent);
 	}
 	
@@ -119,8 +120,7 @@ public class ReflectionActivity extends SwarmActivity {
 		Intent shareReflectionIntent = new Intent(Intent.ACTION_SEND);
 		shareReflectionIntent.setType("text/plain");
         shareReflectionIntent.putExtra(Intent.EXTRA_SUBJECT, reflectionTitle.getText().toString()); 
-        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString()); 
-        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText2.getText().toString()); 
+        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString() + "\n" + reflectionText2.getText().toString()); 
 
         String clip = reflectionTitle.getText().toString() + "\n" + 
         				reflectionText.getText().toString() + "\n" +

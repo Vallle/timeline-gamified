@@ -121,6 +121,9 @@
 	<string name="Has_been_shared_toast"> è stata condivisa con </string>
 	<string name="Timeline_deleted_toast"> è stato eliminato dal telefono cellulare</string>
 	<string name="Reflection_added_toast">Riflessione aggiunto</string>
+	<string name="Reflection_not_added_toast">Riflessione non aggiunto</string>
+	<string name="Reflection_edited_toast">Riflessione modificato</string>
+	<string name="Reflection_not_edited_toast">Riflessione non modificato</string>
 	
 	<string name="First_pic_achi_toast">Congratulazioni! Hai preso la tua foto prima Timeline!</string>
 	<string name="Tenth_pic_achi_toast">Hai preso dieci foto con Timeline! Continuate così!</string>

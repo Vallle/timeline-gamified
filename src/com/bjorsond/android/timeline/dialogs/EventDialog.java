@@ -389,6 +389,17 @@ public class EventDialog extends Dialog {
 
 		});
 		
+		final ActionItem reflection = new ActionItem();
+		
+		reflection.setIcon(mContext.getResources().getDrawable(R.drawable.ic_menu_sumday));
+		reflection.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				((TimelineActivity)mActivity).createReflection();
+			}
+
+		});
+		
 		final ActionItem attachment = new ActionItem();
 		
 		attachment.setIcon(mContext.getResources().getDrawable(R.drawable.ic_menu_attachment));
@@ -410,6 +421,7 @@ public class EventDialog extends Dialog {
 				qa.addActionItem(video);
 				qa.addActionItem(audio);
 				qa.addActionItem(note);
+				qa.addActionItem(reflection);
 				qa.addActionItem(attachment);
 				qa.setAnimStyle(QuickAction.ANIM_AUTO);
 				qa.show();

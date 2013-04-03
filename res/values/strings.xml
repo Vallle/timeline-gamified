@@ -60,8 +60,8 @@
 	<string name="Reflection_text_hint">Enter reflection text</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	
 	<string name="Refleqtion_question_one">Write a short summary of your day:</string> <!-- ADDED FOR REFLECTION NOTE -->
-	<string name="Refleqtion_question_two">After reflecting over today\'s incidents, would you have done anything differently?</string> <!-- ADDED FOR REFLECTION NOTE -->
-	<string name="Refleqtion_question_three">Share reflection</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Refleqtion_question_two">After</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Refleqtion_question_three"> reflecting over today\'s incidents, would you have done anything differently?</string> <!-- ADDED FOR REFLECTION NOTE -->
 	
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>
@@ -124,6 +124,8 @@
 	<string name="Timeline_deleted_toast"> has been deleted from the phone</string>
 	<string name="Reflection_added_toast">Reflection added</string>
 	<string name="Reflection_not_added_toast">Reflection was not added</string>
+	<string name="Reflection_edited_toast">Reflection edited</string>
+	<string name="Reflection_not_edited_toast">Reflection not edited</string>
 	
 	<string name="First_pic_achi_toast">Congratulations! You have taken your first picture with Timeline!</string>
 	<string name="Tenth_pic_achi_toast">You have taken ten pictures with Timeline! If one picture is worth a thousand words, what\'s ten pictures worth?</string>
