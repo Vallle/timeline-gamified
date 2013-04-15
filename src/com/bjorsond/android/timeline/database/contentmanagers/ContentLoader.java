@@ -382,7 +382,7 @@ public class ContentLoader {
 		String [] columns = new String[] {ReflectionColumns._ID, ReflectionColumns.TITLE, ReflectionColumns.REFLECTION, ReflectionColumns.CREATED_DATE, ReflectionColumns.MODIFIED_DATE, EventItemsColumns.USERNAME};
 		String whereStatement = ReflectionColumns._ID+"='"+eventItemID+"'";
 		Cursor listOfReflectionsBelongingToEvent = context.getContentResolver().query(ReflectionColumns.CONTENT_URI, columns, whereStatement, null, null);
-		Log.i("MOSTERBUG", listOfReflectionsBelongingToEvent.toString());
+		Log.i("CONTENTLOADER METODE", listOfReflectionsBelongingToEvent.toString());
 		if(listOfReflectionsBelongingToEvent.moveToFirst()) {
 			do{
 				ReflectionNote reflection = new ReflectionNote(
@@ -392,7 +392,7 @@ public class ContentLoader {
 						new Account(listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(EventItemsColumns.USERNAME)), "com.google"));
 				
 				event.getEventItems().add(reflection);
-				
+				Log.i("CONTENTLOADER TEXT", reflection.getReflectionText());
 			}while(listOfReflectionsBelongingToEvent.moveToNext());
 			
 			listOfReflectionsBelongingToEvent.close();

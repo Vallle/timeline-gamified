@@ -4,6 +4,7 @@
     <string name="app_name">Diario</string>
 
     <string name="create_note_name">Creare una nuova nota</string>
+    <string name="create_reflection_name">Invia una nuova riflessione</string>
 	<string name="save_label">Salvare</string>
 	<string name="discard_label">Annulla</string>
 	<string name="Edit_label">Modifica</string>
@@ -35,8 +36,8 @@
 	<string name="Shared_label">Condiviso</string>
 	<string name="Show_creator_label">Mostra creatore</string>
 	<string name="Group_name_label">Immettere un nome per il vostro gruppo!</string>
-	<string name="OK_label">Ok</string>
-	<string name="Cancel_label">Cancellare</string>
+	<string name="OK_label">OK</string>
+	<string name="Cancel_label">Cancel</string>
 	<string name="Really_leave_group_label">Vuoi davvero lasciare gruppo </string>
 	<string name="Left_group_label">Avete lasciato gruppo: </string>
 	<string name="Tag_name_hint">Immettere un nome per l\'etichetta</string>
@@ -47,7 +48,7 @@
 	<string name="Create_tag_label">Crea una nuova etichetta</string>
 	<string name="Add_users_label">Aggiungere utenti</string>
 	<string name="Add_group_label">Aggiungi gruppo</string>
-	<string name="Select_group_to_share_label">Selexionare un gruppo con cui condividere</string>
+	<string name="Select_group_to_share_label">Selezionare un gruppo con cui condividere</string>
 	<string name="Share_with_group_label">Condividere con il gruppo: </string>
 	<string name="Show_in_timeline_label">Mostra in un diario</string>
 	<string name="My_groups_label">I miei gruppi:</string>
@@ -55,6 +56,10 @@
 	<string name="Share_reflection_label">Condividi riflessione</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_title_hint">Inserisci titolo riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_text_hint">Inserire il testo di riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
+		
+	<string name="Refleqtion_question_one">Scrivi un breve riassunto della giornata:</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Refleqtion_question_two">Dopo aver riflettuto su incidenti di oggi, avrebbe fatto qualcosa di diverso?</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Refleqtion_question_three">Share reflection</string> <!-- ADDED FOR REFLECTION NOTE -->
 	
 	<string name="Not_registered">Non registrato. Registrazione utente.</string>
 	<string name="Checking_user">Controllo utente da server ...</string>
@@ -116,19 +121,21 @@
 	<string name="Has_been_shared_toast"> E\' stata condivisa con </string>
 	<string name="Timeline_deleted_toast"> E\' stato eliminato dal telefono cellulare</string>
 	<string name="Reflection_added_toast">Riflessione aggiunto</string>
-	<string name="Reflection_not_added_toast">La riflessione non è stato aggiunto</string>
+	<string name="Reflection_not_added_toast">Riflessione non aggiunto</string>
+	<string name="Reflection_edited_toast">Riflessione modificato</string>
+	<string name="Reflection_not_edited_toast">Riflessione non modificato</string>
 	
-	<string name="First_pic_achi_toast">Congratulazioni! Hai registrato nel diario la tua prima foto!</string>
-	<string name="Tenth_pic_achi_toast">Hai catturato dieci foto nei tuoi diari! Continua così!</string>
-	<string name="First_video_achi_toast">Congratulazioni! Hai registrato nel diario il tuo primo video!</string>
-	<string name="Tenth_video_achi_toast">Hai registrato il tuo decimo video! Meglio di Steven Spielberg!</string>
-	<string name="First_audio_achi_toast">Congratulazioni! Hai registrato nel diario il tuo primo clip audio</string>
-	<string name="Tenth_audio_achi_toast">Hai registrato 10 clip audio!</string>
-	<string name="First_note_achi_toast">Congratulazioni! Hai scritto la tua prima nota nel diario!</string>
-	<string name="Tenth_note_achi_toast">Hai scritto dieci note!</string>
-	<string name="First_reflection_achi_toast">Congratulazioni! Hai aggiunto il tuo riflesso prima Timeline!</string>
+	<string name="First_pic_achi_toast">Congratulazioni! Hai preso la tua foto prima diario!</string>
+	<string name="Tenth_pic_achi_toast">Hai preso dieci foto con diario! Continuate così!</string>
+	<string name="First_video_achi_toast">Congratulazioni! È stato registrato il primo video con diario!</string>
+	<string name="Tenth_video_achi_toast">E \'la tua registrazione video decimo! Tuo padre è il nome Steven Spielberg?</string>
+	<string name="First_audio_achi_toast">Congratulazioni! È stato registrato l\'audio prima diario!</string>
+	<string name="Tenth_audio_achi_toast">È stato registrato dieci clip audio! Devi amare il suono della tua voce!</string>
+	<string name="First_note_achi_toast">Congratulazioni! Lei ha scritto la tua prima nota nel diario!</string>
+	<string name="Tenth_note_achi_toast">Lei ha scritto dieci note! Speriamo che apprezzi di qualità tanto quanto te quantità.</string>
+	<string name="First_reflection_achi_toast">Congratulazioni! Hai aggiunto il tuo riflesso prima diario!</string>
 	<string name="Tenth_reflection_achi_toast">Quello era il tuo riflesso decimo! L\'apprendimento è un tesoro che seguirà il suo proprietario ovunque.</string>
-    
+
     <string name="new_timeline">Inserisci il nome della timeline</string>
       
     <string name="no_events_toast">Non ci sono eventi in questo giorno</string>

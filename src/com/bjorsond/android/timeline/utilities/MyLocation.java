@@ -66,7 +66,7 @@ public class MyLocation {
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
 		// Register the listener with the Location Manager to receive location updates
-		locationManager.requestLocationUpdates(locationProvider, 0, 0, locationListener);
+		try{locationManager.requestLocationUpdates(locationProvider, 0, 0, locationListener);}catch(Exception ex){}
 	}
 	
 	 public static MyLocation getInstance(Context c) {

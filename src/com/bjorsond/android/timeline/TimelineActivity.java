@@ -209,7 +209,12 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
         			addAudioToTimeline(filename);
         	}
         	else if(getIntent().getType().contains("text/plain")){
+        		if(getIntent().getExtras().containsKey("NOTE_ID")){
         			addNoteToTimeline(getIntent());
+        		}
+        		else if(getIntent().getExtras().containsKey("REFLECTION_ID")){
+        			addReflectionToTimeline(getIntent());
+        		}
         	}
         }
         
@@ -395,6 +400,19 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	    	        Toast.makeText(this, R.string.Note_not_edited_toast, Toast.LENGTH_SHORT).show();
 	    	    } else {
 	    	        Toast.makeText(this, R.string.Note_not_edited_toast, Toast.LENGTH_SHORT).show();
+	    	    }
+			break;
+			
+		case Constants.EDIT_REFLECTION:
+			   if (resultCode == RESULT_OK) {
+	    	    	Toast.makeText(this, R.string.Reflection_edited_toast , Toast.LENGTH_SHORT).show();
+	    	    
+	    	    updateReflection(data);
+
+	    	    } else if (resultCode == RESULT_CANCELED) {
+	    	        Toast.makeText(this, R.string.Reflection_not_edited_toast, Toast.LENGTH_SHORT).show();
+	    	    } else {
+	    	        Toast.makeText(this, R.string.Reflection_not_edited_toast, Toast.LENGTH_SHORT).show();
 	    	    }
 			break;
 			
@@ -598,6 +616,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		new AttachmentAdder(this, this, timeline);
 	}
 	
+	/**
+	 * The method that starts the Reflection creation activity.
+	 * 
+	 */
 	public void createReflection(){
 		Intent reflectionIntent = new Intent(this, ReflectionActivity.class);
 		reflectionIntent.putExtra(Constants.REQUEST_CODE, Constants.CREATE_REFLECTION_ACTIVITY_REQUEST_CODE);
@@ -878,20 +900,20 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	}
 		
 		//Add reflection note to timeline
-		private void addReflectionToTimeline(Intent data) {
-			ReflectionNote reflection = new ReflectionNote(this);
-			if(data.getExtras().getString(Intent.EXTRA_SUBJECT) != null)
-				reflection.setReflectionTitle(data.getExtras().getString(Intent.EXTRA_SUBJECT));
-			if(data.getExtras().getString(Intent.EXTRA_TEXT) != null)
-				reflection.setReflectionText(data.getExtras().getString(Intent.EXTRA_TEXT));
-			if(data.getExtras().getString(Intent.EXTRA_TITLE) != null)
-				reflection.setReflectionText(data.getExtras().getString(Intent.EXTRA_TITLE));
-			
-			if(selectedEvent!=null){
-				addItemToExistingEvent(reflection);
-			}else{
-				createEventAndAddItem(reflection);
-			}
+	private void addReflectionToTimeline(Intent data) {
+		ReflectionNote reflection = new ReflectionNote(this);
+		if(data.getExtras().getString(Intent.EXTRA_SUBJECT) != null)
+			reflection.setReflectionTitle(data.getExtras().getString(Intent.EXTRA_SUBJECT));
+		if(data.getExtras().getString(Intent.EXTRA_TEXT) != null)
+			reflection.setReflectionText(data.getExtras().getString(Intent.EXTRA_TEXT));
+		if(data.getExtras().getString(Intent.EXTRA_TITLE) != null)
+			reflection.setReflectionText(data.getExtras().getString(Intent.EXTRA_TITLE));
+		
+		if(selectedEvent!=null){
+			addItemToExistingEvent(reflection);
+		}else{
+			createEventAndAddItem(reflection);
+		}
 	}
 	
 	/**
@@ -953,6 +975,20 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		selectedEvent.getEventItems().set(data.getExtras().getInt("NOTE_ID"), note); 
 		
 		contentUpdater.updateNoteInDB(note);
+		EventAdapter.updateDialog();
+	}
+	private void updateReflection(Intent data){
+		 Log.i(this.getClass().getSimpleName(), "********* OPPDATERER REFLEKSJON **************");
+		 Log.i(this.getClass().getSimpleName(), "Note item plass: "+data.getExtras().getInt("REFLECTION_ID"));
+		 Log.i(this.getClass().getSimpleName(), "Title: "+data.getExtras().getString(Intent.EXTRA_SUBJECT));
+		 Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
+		 Log.i(this.getClass().getSimpleName(), "*************************************");
+		ReflectionNote ref = (ReflectionNote) selectedEvent.getEventItems().get(data.getExtras().getInt("REFLECTION_ID"));
+		ref.setReflectionTitle(data.getExtras().getString(Intent.EXTRA_SUBJECT));
+		ref.setReflectionText(data.getExtras().getString(Intent.EXTRA_TEXT));
+		selectedEvent.getEventItems().set(data.getExtras().getInt("REFLECTION_ID"), ref); 
+		
+		contentUpdater.updateReflectionInDB(ref);
 		EventAdapter.updateDialog();
 }
 	private void updateTags(){
