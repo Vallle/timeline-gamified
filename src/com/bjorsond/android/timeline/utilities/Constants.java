@@ -56,7 +56,8 @@ public class Constants {
 
 	public static final String USER_GROUP_DATABASE_NAME = "user_group_database.db";
 
-	public static final String GOOGLE_APP_ENGINE_URL = "timelinegamified.appspot.com";
+//	public static final String GOOGLE_APP_ENGINE_URL = "timelinegamified.appspot.com";
+	public static final String GOOGLE_APP_ENGINE_URL = "reflectapp.appspot.com";
 	
 	public static final String MEDIASTORE_URL = "http://folk.ntnu.no/bjornava/upload/files/";
 //	public static final String MEDIASTORE_URL = "http://timelinegamified.appspot.com/files/";
