@@ -73,7 +73,7 @@ public class ReflectionNote extends EventItem{
 		LinearLayout textLayout = new LinearLayout(context);
         TextView reflectionTextView = new TextView(context);
         reflectionTextView.setTag(this);
-        reflectionTextView.setText(noteText);
+        reflectionTextView.setText(reflectionText);
         reflectionTextView.setTextSize(20);
         reflectionTextView.setTextColor(context.getResources().getColor(R.color.Black));
         reflectionTextView.setLinkTextColor(context.getResources().getColor(R.color.Black));
