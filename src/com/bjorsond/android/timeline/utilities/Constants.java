@@ -83,4 +83,14 @@ public class Constants {
     public static String VIDEO_STORAGE_FILEPATH = sdCardDirectory.getPath()+"/data/com.bjorsond.android.timeline/videos/";
     public static String RECORDING_STORAGE_FILEPATH = sdCardDirectory.getPath()+"/data/com.bjorsond.android.timeline/recordings/";
 
+    //LEVELS AND SCALEING
+    final public static int LEVEL_ONE = 100;
+    final public static int LEVEL_TWO = 150;
+    final public static int LEVEL_THREE = 225;
+    final public static int LEVEL_FOUR = 340;
+    final public static int LEVEL_FIVE = 500;
+    final public static int LEVEL_SIX = 760;
+    
+    
+    
 }

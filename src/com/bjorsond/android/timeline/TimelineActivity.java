@@ -79,6 +79,7 @@ import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.MyLocation;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
+import com.bjorsond.android.timeline.DashboardActivity;
 import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmAchievement;
 import com.swarmconnect.SwarmActivity;
@@ -140,6 +141,16 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	private int PictureTenAchievement = 10971;
 	private int AudioTenAchievement = 10975;
 	private int VideoTenAchievement = 10973;
+	
+	//Points
+	private int VideoPoints = 20;
+	private int NotePoints = 10;
+	private int AudioPoints = 15;
+	private int ReflectionPoints = 100;
+	private int PicturePoints = 20;
+	private int MoodPoints = 5;
+	
+	
 	
 	/** Called when the activity is first created. */
     @Override
@@ -255,6 +266,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Toast.makeText(this, R.string.Pic_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding to picture count
 				   DashboardActivity.addPictureCounter();
+				   //Adding points for picture
+				   DashboardActivity.addPointsCounter(PicturePoints);
 				   //Adding achievement
 				   if (DashboardActivity.getPictureCounter() == 1){
 					   SwarmAchievement.unlock(PictureAchievement);
@@ -281,6 +294,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Toast.makeText(this, R.string.Video_created_toast, Toast.LENGTH_SHORT).show();
 				//Adding to video count
 				DashboardActivity.addVideoCounter();
+				//Adding points
+				DashboardActivity.addPointsCounter(VideoPoints);
 				//Adding achievement
 				if (DashboardActivity.getVideoCounter() == 1){
 					SwarmAchievement.unlock(VideoAchievement);
@@ -309,6 +324,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Toast.makeText(this, R.string.Audio_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding to audio count
 				   DashboardActivity.addAudioCounter();
+				   //Adding points
+				   DashboardActivity.addPointsCounter(AudioPoints);
 				   //Adding achievement
 				   if (DashboardActivity.getAudioCounter() == 1){
 					   SwarmAchievement.unlock(AudioAchievement);
@@ -341,6 +358,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
 				   //Adding to note count
 				   DashboardActivity.addNoteCounter();
+				   //Adding points
+				   DashboardActivity.addPointsCounter(NotePoints);
 				   //Adding achievement
 				   if (DashboardActivity.getNoteCounter() == 1){
 					   SwarmAchievement.unlock(NoteAchievement);
@@ -371,6 +390,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Toast.makeText(this, R.string.Reflection_added_toast, Toast.LENGTH_SHORT).show();
 				//Adding to reflection count
 				DashboardActivity.addReflectionCounter();
+				//Adding points
+				DashboardActivity.addPointsCounter(ReflectionPoints);
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){
 					SwarmAchievement.unlock(ReflectionNoteAchievement);
@@ -944,6 +965,8 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		Thread sendMoodThread = new Thread(SendMoodEventRunnable, "shareThread");
 		sendMoodThread.start();
 		Toast.makeText(this, R.string.Mood_added_toast, Toast.LENGTH_SHORT).show();
+		//Adding points
+		DashboardActivity.addPointsCounter(MoodPoints);
 	}
 	
 	/**

@@ -251,8 +251,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		return moodCounter;
 	}
 	//  POINTS
-	public static void addPointsCounter() {
-		pointsCounter++;
+	public static void addPointsCounter(int number) {
+		pointsCounter = pointsCounter + number;
 	}
 	
 	public void setPointsCounter(int number) {
