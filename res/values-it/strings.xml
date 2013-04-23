@@ -56,6 +56,7 @@
 	<string name="Share_reflection_label">Condividi riflessione</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_title_hint">Inserisci titolo riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_text_hint">Inserire il testo di riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Profile_user_name_label">User name</string>
 		
 	<string name="Refleqtion_question_one">Scrivi un breve riassunto della giornata:</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Refleqtion_question_two">Dopo aver riflettuto su incidenti di oggi, avrebbe fatto qualcosa di diverso?</string> <!-- ADDED FOR REFLECTION NOTE -->

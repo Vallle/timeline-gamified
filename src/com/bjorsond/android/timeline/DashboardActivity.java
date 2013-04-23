@@ -84,7 +84,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private Intent timelineIntent;
 	private Intent myGroupsIntent;
 	private Intent tagsIntent;
-	private Intent swarmIntent;
+	private Intent swarmIntent, profileIntent;
 	private ContentAdder contentAdder;
 	private ContentLoader contentLoader;
 	private Account creator;
@@ -636,7 +636,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	private OnClickListener viewProfileListener = new OnClickListener() {
 		public void onClick(View v) {
-			startActivity(tagsIntent);
+			startActivity(profileIntent);
 		}
 	};
 	
@@ -667,6 +667,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		timelineIntent = new Intent(this, TimelineActivity.class);
 		timelineIntent.setAction(Constants.INTENT_ACTION_NEW_TIMELINE); //Default Intent action for TimelineActivity is to create/open a timeline.
 		tagsIntent = new Intent(this, MyTagsActivity.class);
+		profileIntent = new Intent(this, ProfileActivity.class);
 		
 		swarmIntent = new Intent(this, MySwarmActivity.class);
 	}
@@ -709,7 +710,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		myGroupsButton = (ImageButton) findViewById(R.id.friends);
 //		myGroupsButton = (ImageButton) findViewById(R.id.dash_my_groups);
 		myGroupsButton.setOnClickListener(openMyGroupsListener);
-		profileButton = (ImageButton) findViewById(R.id.dash_profile);
+		profileButton = (ImageButton) findViewById(R.id.profile);
 		profileButton.setOnClickListener(viewProfileListener);
 		syncronizeButton = (ImageButton)findViewById(R.id.achivements);
 //		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);

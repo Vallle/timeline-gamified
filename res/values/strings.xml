@@ -58,6 +58,9 @@
 	<string name="Share_reflection_label">Share reflection</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_title_hint">Enter reflection title</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_text_hint">Enter reflection text</string>  <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Profile_user_name_label">User name</string>
+	<string name="Profile_achievement_points_label">Achievement points:</string>
+	<string name="Profile_achievement_count_label">Number of achievements:</string>
 	
 	<string name="Refleqtion_question_one">Write a short summary of your day:</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Refleqtion_question_two">After reflecting over today\'s incidents, would you have done anything differently?</string> <!-- ADDED FOR REFLECTION NOTE -->
