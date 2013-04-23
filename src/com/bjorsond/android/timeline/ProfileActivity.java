@@ -105,7 +105,7 @@ public class ProfileActivity extends SwarmActivity{
 	 * This method is called when the user wants to choose a new profile picture from the phone gallery
 	 */
 	public void openGallery(){
-		profilePicture.setImageBitmap(null);
+		profilePicture.setImageBitmap(null);  //TODO --> Picture disappears once the open gallery button is pressed.
 		
 		if(Image != null) Image.recycle();
 		Intent intent = new Intent();
