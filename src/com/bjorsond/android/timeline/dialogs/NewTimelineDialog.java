@@ -15,6 +15,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -129,7 +130,8 @@ public class NewTimelineDialog extends Dialog {
 
 			public void onItemClick(AdapterView<?> arg0, View view, int position,
 					long arg3) {
-				selectedGroupText.setText(((Context) getOwnerActivity()).getString(R.string.Share_with_group_label) + groupList.getAdapter().getItem(position));
+				String shareWithGroupText = getContext().getString(R.string.Share_with_group_label);
+				selectedGroupText.setText(shareWithGroupText + groupList.getAdapter().getItem(position));
 				selectedGroup = (Group) groupList.getAdapter().getItem(position);
 			}
 		});
@@ -146,14 +148,14 @@ public class NewTimelineDialog extends Dialog {
 				else {
 					String inputName = inputTextField.getText().toString().trim();
 					boolean share = shareToggle.isChecked();
-//					above - new line to quickfix share toggling
+
 					if(experience!=null){
 						experience.setShared(true);
 						experience.setSharingGroupObject(selectedGroup);
 						ContentUpdater contentUpdater = new ContentUpdater(context);
 						contentUpdater.updateExperience(NewTimelineDialog.this.experience);
 						GoogleAppEngineHandler.persistTimelineObject(experience);
-						Toast.makeText(context, "Timeline: "+experience.toString()+R.string.Has_been_shared_toast+selectedGroup.toString(), Toast.LENGTH_SHORT).show();
+						Toast.makeText(context, "Timeline: "+experience.toString()+context.getString(R.string.Has_been_shared_toast)+selectedGroup.toString(), Toast.LENGTH_SHORT).show();
 						}
 						else{
 							createNewTimeline(inputName, share, selectedGroup);
@@ -225,7 +227,7 @@ public class NewTimelineDialog extends Dialog {
 		uGManager.addUserToAGroupInTheDatabase(group, user);
 		group.addMembers(user);
 		GoogleAppEngineHandler.addGroupToServer(group);
-		Toast.makeText(context, R.string.Created_group_toast +group.toString() , Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, context.getString(R.string.Created_group_toast) +group.toString() , Toast.LENGTH_SHORT).show();
 	}
 
 	/**
