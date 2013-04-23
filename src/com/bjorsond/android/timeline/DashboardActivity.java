@@ -174,6 +174,37 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		
 	}
 
+	/**
+	 * Level calculation method
+	 * Returns an array with level and remaining points.
+	 * slot 0 = level
+	 * slot 1 = points
+	 */
+	/*
+	* METHOD FOR LEVEL CALCULATION --- START
+	*/
+	
+	public static int[] getLevelAndPoints(){
+		int temp = pointsCounter;
+		int level = 1;
+		int[] array = new int[] {0, 0};
+		for (int i = 1; i < 7; i++) {
+			if ((temp - Constants.LEVEL[i]) > 0) {
+				temp = temp - Constants.LEVEL[i];
+				level++;
+			}
+		}
+		array[0] = level;  	//GIVES THE LEVEL OF THE USER
+		array[1] = temp;	//GIVES THE REMAINING POINTS OF THE USER
+		return array;
+	}
+	
+	
+	/*
+	* METHOD FOR LEVEL CALCULATION --- END
+	*/
+	
+	
 	/*
 	* COUNTER GETTERS, SETTERS AND ADDERS -- START
 	*/
