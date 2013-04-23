@@ -100,7 +100,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	// ADDING COUNTERS FOR ACHIEVEMENT UNLOCKING
 	private static int noteCounter, audioCounter, videoCounter, pictureCounter, moodCounter, reflectionCounter = 0;
 	public static final String PREFS_NAME = "MyPreferencesFile";
-
+	// VARIABLES FOR POINT SYSTEM
+	private static int pointsCounter = 0;
+	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.dashboard);
@@ -247,6 +249,18 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	public static int getMoodCounter() {
 		return moodCounter;
+	}
+	//  POINTS
+	public static void addPointsCounter() {
+		pointsCounter++;
+	}
+	
+	public void setPointsCounter(int number) {
+		pointsCounter = number;
+	}
+	
+	public static int getPointsCounter() {
+		return pointsCounter;
 	}
 	/*
 	* COUNTER GETTERS AND SETTERS  -- END
@@ -446,6 +460,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
          setPictureCounter(settings.getInt("pictureCount", 0));
          setMoodCounter(settings.getInt("moodCount", 0));
          setReflectionCounter(settings.getInt("reflectionCount", 0));  //added for reflection note
+         setPointsCounter(settings.getInt("pointsCount", 0));  //added for point system
      }
       
       
@@ -493,6 +508,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	    editor.putInt("pictureCount", pictureCounter);
 	    editor.putInt("moodCount", moodCounter);
 	    editor.putInt("reflectionCount", reflectionCounter);  //added to have reflection note counter
+	    editor.putInt("pointsCount", pointsCounter);  //added for points system
 
 	    // Commit the edits!
 	    editor.commit();
