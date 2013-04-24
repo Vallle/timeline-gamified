@@ -185,6 +185,38 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		
 	}
 
+	
+	/**
+	 * This method checks if lastReflectionDate is one work day before todays date.
+	 * It returns an integer, which specifies if it is in the weekend, the next work day, or "out of bounds" for consecutive bonus.
+	 * 0 = out of bounds
+	 * 1 = weekend
+	 * 2 = next work day 
+	 */
+	public static int checkReflectionDate() {
+				Calendar c = Calendar.getInstance();
+		if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SATURDAY))||(c.get(Calendar.DAY_OF_WEEK) == (Calendar.SUNDAY))){
+			return 1;
+		}
+		else if (
+				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.MONDAY))&&
+				(lastReflectionDate.get(Calendar.DAY_OF_MONTH) == (c.get(Calendar.DAY_OF_MONTH)-3))&&
+				(lastReflectionDate.get(Calendar.MONTH)) == (c.get(Calendar.MONTH))
+				){
+			return 2;
+		}
+		else if (
+				(lastReflectionDate.get(Calendar.DAY_OF_MONTH) == (c.get(Calendar.DAY_OF_MONTH)-1))&&
+				(lastReflectionDate.get(Calendar.MONTH)) == (c.get(Calendar.MONTH))
+				){
+			return 2;
+		}
+		else return 0;
+	}
+	
+	
+	
+	
 	/**
 	 * Level calculation method
 	 * Returns an array with level and remaining points, and points needed for current level.
