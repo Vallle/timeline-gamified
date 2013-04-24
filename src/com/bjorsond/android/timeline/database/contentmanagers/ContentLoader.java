@@ -392,7 +392,7 @@ public class ContentLoader {
 						new Account(listOfReflectionsBelongingToEvent.getString(listOfReflectionsBelongingToEvent.getColumnIndex(EventItemsColumns.USERNAME)), "com.google"));
 				
 				event.getEventItems().add(reflection);
-				Log.i("CONTENTLOADER TEXT", reflection.getReflectionText());
+//				Log.i("CONTENTLOADER TEXT", reflection.getReflectionText());    Commented out because of not using the text field in Italy
 			}while(listOfReflectionsBelongingToEvent.moveToNext());
 			
 			listOfReflectionsBelongingToEvent.close();

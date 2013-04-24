@@ -12,10 +12,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images.Media;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
@@ -29,8 +31,9 @@ import com.swarmconnect.SwarmActivity;
 
 public class ProfileActivity extends SwarmActivity{
 
-	private ImageView changePictureButton, profilePicture;
+	private ImageView changePictureButton, profilePicture, levelImage;
 	private EditText userNameField;
+	private ProgressBar levelProgressBar;
 	private Bitmap Image = null;
 	private Bitmap rotateImage = null;
 	private static final int GALLERY = 1;
@@ -44,6 +47,7 @@ public class ProfileActivity extends SwarmActivity{
 		Swarm.setActive(this);
 		
 		setupViews();
+		setupLevelAndPoints();
 	}
 	
 	
@@ -114,6 +118,37 @@ public class ProfileActivity extends SwarmActivity{
 		startActivityForResult(Intent.createChooser(intent, "Select picture"), GALLERY);
 	}
 	
+	/**
+	 * The method that updates levels and points according to what the user has acquired
+	 */
+	public void setupLevelAndPoints(){
+		int[] levelAndPoints = new int[]{0, 0, 0};
+		levelAndPoints = DashboardActivity.getLevelAndPoints();
+		Log.i("levelAndPoints content", levelAndPoints.toString());
+		
+		//Setting up level
+		levelImage = (ImageView) findViewById(R.id.levelImageView);
+		if(levelAndPoints[0] == 1){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_one));
+		}else if(levelAndPoints[0] == 2){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_two));
+		}else if(levelAndPoints[0] == 3){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_three));
+		}else if(levelAndPoints[0] == 4){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_four));
+		}else if(levelAndPoints[0] == 5){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_five));
+		}else if(levelAndPoints[0] == 6){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_six));
+		}
+		
+		//Setting up progressbar
+		levelProgressBar = (ProgressBar) findViewById(R.id.levelProgressBar);
+		levelProgressBar.setVisibility(ProgressBar.VISIBLE);
+		levelProgressBar.setMax(levelAndPoints[2]);
+		levelProgressBar.setProgress(levelAndPoints[1]);
+		
+	}
 	
 	
 	
