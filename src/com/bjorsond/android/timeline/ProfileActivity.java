@@ -176,8 +176,6 @@ public class ProfileActivity extends SwarmActivity{
 		userNameField.setText(Swarm.user.username);
 		
 		numberOfAchievements = (TextView) findViewById(R.id.ProfileAchievementCountNumber);
-		Log.i(".toString", Integer.valueOf(Swarm.user.points).toString());
-		Log.i("fnutter + ", "" + Swarm.user.points);
 		numberOfAchievements.setText("" + Swarm.user.points);
 	}
 }
