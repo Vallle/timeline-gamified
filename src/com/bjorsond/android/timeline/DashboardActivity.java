@@ -682,6 +682,12 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		}
 	};
 	
+	private OnClickListener leaderboardListener = new OnClickListener() {
+		public void onClick(View v) {
+			Swarm.show(7);
+		}
+	};
+	
 	private OnClickListener friendsListener = new OnClickListener() {
 		public void onClick(View v) {
 			Swarm.show(3);
@@ -758,8 +764,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		profileButton.setOnClickListener(viewProfileListener);
 		achievementsButton = (ImageButton)findViewById(R.id.achivements);
 		achievementsButton.setOnClickListener(achievementsListener);
-		leaderboardButton = (ImageButton)findViewById(R.id.achivements);
-		leaderboardButton.setOnClickListener(achievementsListener);
+		leaderboardButton = (ImageButton)findViewById(R.id.leaderboard);
+		leaderboardButton.setOnClickListener(leaderboardListener);
 		blueButton = (ImageButton)findViewById(R.id.blue_button);
 		blueButton.setOnClickListener(blueListener);
 //		lastSyncedTextView = (TextView)findViewById(R.id.DashLastSyncedTextView);
