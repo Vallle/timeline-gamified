@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import android.accounts.Account;
@@ -76,14 +77,21 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 
 	private ImageButton newTimeLineButton;
 	private ImageButton browseMyTimelinesButton;
-	private ImageButton profileButton;
 	private ImageButton browseSharedTimelinesButton;
-	private ImageButton syncronizeButton;
+	private ImageButton tagsButton;
 	private ImageButton myGroupsButton;
+	private ImageButton syncronizeButton;
+	private ImageButton blueButton;
+	private ImageButton achievementsButton;
+	private ImageButton friendsButton;
+	private ImageButton messagesButton;
+	private ImageButton leaderboardButton;
+	private ImageButton profileButton;
 	private TextView lastSyncedTextView;
 	private Intent timelineIntent;
 	private Intent myGroupsIntent;
 	private Intent tagsIntent;
+	private Intent blueIntent;
 	private Intent swarmIntent, profileIntent;
 	private ContentAdder contentAdder;
 	private ContentLoader contentLoader;
@@ -102,6 +110,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	public static final String PREFS_NAME = "MyPreferencesFile";
 	// VARIABLES FOR POINT SYSTEM
 	private static int pointsCounter = 0;
+	// VARIABLE FOR CONSECUTIVE REFLECTION NOTE BONUS
+	private static Calendar lastReflectionDate = null;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -613,9 +623,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private OnClickListener browseSharedTimeLinesListener = new OnClickListener() {
 
 		public void onClick(View v) {
-//			Commented out due to test in Italy - replaced with "Swarm.show(5);"
-//			browseAllTimelines(Constants.SHARED_TRUE);		
-			Swarm.show(5);
+			browseAllTimelines(Constants.SHARED_TRUE);		
 		}
 
 	};
@@ -623,9 +631,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private OnClickListener openMyGroupsListener = new OnClickListener() {
 		public void onClick(View v) {
 			if(Utilities.isConnectedToInternet(getApplicationContext())) {
-//				Commented out for test in Italy  - replaced by "Swarm.show(3);"
-//				startActivity(myGroupsIntent);
-				Swarm.show(3);
+				startActivity(myGroupsIntent);
 				closeDatabaseHelpers();
 			}
 			else {
@@ -634,29 +640,60 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		}
 	};
 	
+	private OnClickListener tagsListener = new OnClickListener() {
+		public void onClick(View v) {
+			startActivity(tagsIntent);
+		}
+	};
+
+	
+	private OnClickListener syncListener = new OnClickListener() {
+		public void onClick(View v) {
+			if(Utilities.isConnectedToInternet(getApplicationContext())) {
+				progressDialog = ProgressDialog.show(DashboardActivity.this,    
+			              "", "", true);
+				progressDialog.setMessage(getString(R.string.Synchronizing));
+				Thread shareThread = new Thread(syncThread, "shareThread");
+				shareThread.start();
+			}
+			else {
+				Toast.makeText(getApplicationContext(), R.string.Online_functionality_toast, Toast.LENGTH_SHORT).show();
+			}
+		}
+	};
+	
+	
 	private OnClickListener viewProfileListener = new OnClickListener() {
 		public void onClick(View v) {
 			startActivity(profileIntent);
 		}
 	};
 	
-	private OnClickListener syncListener = new OnClickListener() {
+	private OnClickListener messagesListener = new OnClickListener() {
+		public void onClick(View v) {
+			Swarm.show(5);
+		}
+	};
+	
+	private OnClickListener achievementsListener = new OnClickListener() {
 		public void onClick(View v) {
 			SwarmAchievement.unlock(10839);
 			Swarm.showAchievements();
-//			Commented out due to test in Italy -- replaced with "Swarm.showAchievements();"
-//			if(Utilities.isConnectedToInternet(getApplicationContext())) {
-//				progressDialog = ProgressDialog.show(DashboardActivity.this,    
-//			              "", "", true);
-//				progressDialog.setMessage(getString(R.string.Synchronizing));
-//				Thread shareThread = new Thread(syncThread, "shareThread");
-//				shareThread.start();
-//			}
-//			else {
-//				Toast.makeText(getApplicationContext(), R.string.Online_functionality_toast, Toast.LENGTH_SHORT).show();
-//			}
 		}
 	};
+	
+	private OnClickListener friendsListener = new OnClickListener() {
+		public void onClick(View v) {
+			Swarm.show(3);
+		}
+	};
+	
+	private OnClickListener blueListener = new OnClickListener() {
+		public void onClick(View v) {
+			startActivity(blueIntent);
+		}
+	};
+	
 	
 	//SETUP HELPERS
 	
@@ -668,6 +705,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		timelineIntent.setAction(Constants.INTENT_ACTION_NEW_TIMELINE); //Default Intent action for TimelineActivity is to create/open a timeline.
 		tagsIntent = new Intent(this, MyTagsActivity.class);
 		profileIntent = new Intent(this, ProfileActivity.class);
+		blueIntent = new Intent(this, ProfileActivity.class);
 		
 		swarmIntent = new Intent(this, MySwarmActivity.class);
 	}
@@ -704,17 +742,26 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		newTimeLineButton.setOnClickListener(newTimeLineListener);
 		browseMyTimelinesButton = (ImageButton) findViewById(R.id.dash_my_timelines);
 		browseMyTimelinesButton.setOnClickListener(browseTimeLineListener);
-		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.messages);
 //		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.dash_shared_timelines);
-		browseSharedTimelinesButton.setOnClickListener(browseSharedTimeLinesListener);
-		myGroupsButton = (ImageButton) findViewById(R.id.friends);
+//		browseSharedTimelinesButton.setOnClickListener(browseSharedTimeLinesListener);
+//		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
+//		syncronizeButton.setOnClickListener(syncListener);
 //		myGroupsButton = (ImageButton) findViewById(R.id.dash_my_groups);
-		myGroupsButton.setOnClickListener(openMyGroupsListener);
+//		myGroupsButton.setOnClickListener(openMyGroupsListener);
+		tagsButton = (ImageButton) findViewById(R.id.dash_my_tags);
+		tagsButton.setOnClickListener(tagsListener);
+		friendsButton = (ImageButton) findViewById(R.id.friends);
+		friendsButton.setOnClickListener(friendsListener);
+		messagesButton = (ImageButton) findViewById(R.id.messages);
+		messagesButton.setOnClickListener(messagesListener);
 		profileButton = (ImageButton) findViewById(R.id.profile);
 		profileButton.setOnClickListener(viewProfileListener);
-		syncronizeButton = (ImageButton)findViewById(R.id.achivements);
-//		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
-		syncronizeButton.setOnClickListener(syncListener);
+		achievementsButton = (ImageButton)findViewById(R.id.achivements);
+		achievementsButton.setOnClickListener(achievementsListener);
+		leaderboardButton = (ImageButton)findViewById(R.id.achivements);
+		leaderboardButton.setOnClickListener(achievementsListener);
+		blueButton = (ImageButton)findViewById(R.id.blue_button);
+		blueButton.setOnClickListener(blueListener);
 //		lastSyncedTextView = (TextView)findViewById(R.id.DashLastSyncedTextView);
 //		Commented out due to test in Italy
 //		setLastSyncedTextView();	
