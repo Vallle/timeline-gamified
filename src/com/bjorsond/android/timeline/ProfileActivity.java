@@ -18,6 +18,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
@@ -32,7 +33,7 @@ import com.swarmconnect.SwarmActivity;
 public class ProfileActivity extends SwarmActivity{
 
 	private ImageView changePictureButton, profilePicture, levelImage;
-	private EditText userNameField;
+	private TextView showPointsAboveProgressBar, userNameField, numberOfAchievements;
 	private ProgressBar levelProgressBar;
 	private Bitmap Image = null;
 	private Bitmap rotateImage = null;
@@ -142,31 +143,19 @@ public class ProfileActivity extends SwarmActivity{
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_six));
 		}
 		
-		//Setting up progressbar
+		//Setting up progressbar and points above bar
 		levelProgressBar = (ProgressBar) findViewById(R.id.levelProgressBar);
 		levelProgressBar.setVisibility(ProgressBar.VISIBLE);
 		levelProgressBar.setMax(levelAndPoints[2]);
 		levelProgressBar.setProgress(levelAndPoints[1]);
-		
+
+		showPointsAboveProgressBar = (TextView) findViewById(R.id.pointsInProgressBar);
+		showPointsAboveProgressBar.setText(levelAndPoints[1] + "/" + levelAndPoints[2]);
 	}
 	
 	
 	
 	//LISTENERS
-	
-	private OnClickListener changePictureButtonListener = new View.OnClickListener() {
-		
-		public void onClick(View v) {
-			openChangePictureDialog();
-		}
-	};
-	
-	private OnClickListener userNameFieldListener = new View.OnClickListener() {
-		
-		public void onClick(View v) {
-			changeUserName();
-		}	
-	};
 	
 	private OnClickListener openGalleryListener = new OnClickListener() {
 		
@@ -181,9 +170,14 @@ public class ProfileActivity extends SwarmActivity{
 		changePictureButton = (ImageView) findViewById(R.id.setPictureImageView);
 		changePictureButton.setOnClickListener(openGalleryListener);
 		
-		userNameField = (EditText) findViewById(R.id.ProfileName);
-		userNameField.setOnClickListener(userNameFieldListener);
-		
 		profilePicture = (ImageView) findViewById(R.id.profilePicture);
+		
+		userNameField = (TextView) findViewById(R.id.ProfileName);
+		userNameField.setText(Swarm.user.username);
+		
+		numberOfAchievements = (TextView) findViewById(R.id.ProfileAchievementCountNumber);
+		Log.i(".toString", Integer.valueOf(Swarm.user.points).toString());
+		Log.i("fnutter + ", "" + Swarm.user.points);
+		numberOfAchievements.setText("" + Swarm.user.points);
 	}
 }
