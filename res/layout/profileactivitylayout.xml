@@ -18,7 +18,7 @@
 		android:paddingTop="1dp" android:paddingBottom="0dp" android:layout_height="0dip" android:layout_weight="0">
 		
 	    <LinearLayout
-		    android:id="@+id/LinearLayout01"
+		    android:id="@+id/LinearLayout00"
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"
 		    android:layout_weight="0"
@@ -26,8 +26,8 @@
 		    android:paddingTop="0dp" >
 		    
 	        <TextView android:layout_height="wrap_content" android:id="@+id/pointsInProgressBar"
-					android:gravity="center" android:layout_width="wrap_content"
-					android:text="0/100" android:textSize="16dip"/>
+					android:gravity="center" android:layout_width="fill_parent"
+					android:text="0/100" android:textSize="16dip" android:paddingLeft="30dip"/>
 	            
 	    </LinearLayout>
 	    
@@ -81,13 +81,12 @@
 			    android:paddingLeft="20dip"
 			    android:paddingRight="25dip" >
 
-			    <EditText
+			    <TextView
 			        android:id="@+id/ProfileName"
 			        android:layout_width="match_parent"
 			        android:layout_height="wrap_content"
 			        android:hint="@string/Profile_user_name_label"
 				    android:ems="10"
-				    android:inputType="textPersonName"
 			        android:textAppearance="?android:attr/textAppearanceLarge" />
 			    
 			</LinearLayout>
@@ -165,7 +164,7 @@
 		    
 				<TextView android:layout_height="wrap_content" android:id="@+id/ProfileAchievementCountText"
 					android:gravity="left" android:layout_width="wrap_content"
-					android:hint="@string/Profile_achievement_count_label" android:textSize="16dip"></TextView>
+					android:text="@string/Profile_achievement_count_label" android:textSize="16dip"></TextView>
 			</LinearLayout>
 			
 		    <LinearLayout
@@ -178,7 +177,7 @@
 		    
 				<TextView android:layout_height="wrap_content" android:id="@+id/ProfileAchievementCountNumber"
 					android:gravity="left" android:layout_width="wrap_content"
-					android:hint="0" android:textSize="16dip" android:paddingLeft="1dip"></TextView>
+					android:hint="0" android:textSize="16dip" android:paddingLeft="3dip"></TextView>
 			</LinearLayout>
 		</LinearLayout>
 	</TableRow>
