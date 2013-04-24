@@ -83,7 +83,11 @@ public class Constants {
     public static String VIDEO_STORAGE_FILEPATH = sdCardDirectory.getPath()+"/data/com.bjorsond.android.timeline/videos/";
     public static String RECORDING_STORAGE_FILEPATH = sdCardDirectory.getPath()+"/data/com.bjorsond.android.timeline/recordings/";
 
-    //LEVELS AND SCALEING
+    
+    /**
+     * Gamification constants
+     */
+    //LEVELS AND SCALING
     final public static int[] LEVEL = new int[] {0, 100, 150, 225, 340, 500, 760};
 //    final public static int LEVEL_1 = 100;
 //    final public static int LEVEL_2 = 150;
@@ -92,6 +96,27 @@ public class Constants {
 //    final public static int LEVEL_5 = 500;
 //    final public static int LEVEL_6 = 760;
     
-    
+	
+	final public static int leaderboardID = 8629;
+	
+	//Achievements
+	final public static int VideoAchievement = 10955;
+	final public static int AudioAchievement = 10957;
+	final public static int PictureAchievement = 10953;
+	final public static int NoteAchievement = 10951;
+	final public static int ReflectionNoteAchievement = 11467;
+	final public static int NoteTenAchievement = 10969;
+	final public static int ReflectionNoteTenAchievement = 11469;
+	final public static int PictureTenAchievement = 10971;
+	final public static int AudioTenAchievement = 10975;
+	final public static int VideoTenAchievement = 10973;
+	
+	//Points
+	final public static int VideoPoints = 20;
+	final public static int NotePoints = 10;
+	final public static int AudioPoints = 15;
+	final public static int ReflectionPoints = 100;
+	final public static int PicturePoints = 20;
+	final public static int MoodPoints = 5;
     
 }
