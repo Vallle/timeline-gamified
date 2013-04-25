@@ -19,6 +19,8 @@ import java.util.Date;
 
 import android.accounts.Account;
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -186,35 +188,89 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 
 	
 	/**
-	 * This method checks if lastReflectionDate is one work day before todays date.
-	 * It returns an integer, which specifies if it is in the weekend, the next work day, or "out of bounds" for consecutive bonus.
-	 * 0 = out of bounds
-	 * 1 = weekend
-	 * 2 = next work day 
+	 * This method checks when/if lastReflectionDate makes it possible to get consecutive bonus.
+	 * It returns an integer, which specifies how many days until the consecutive bonus is lost. 
+	 * -1 means that consecutive bonus is impossible at this time.
 	 */
 	public static int checkReflectionDate() {
-				Calendar c = Calendar.getInstance();
-		if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SATURDAY))||(c.get(Calendar.DAY_OF_WEEK) == (Calendar.SUNDAY))){
-			return 1;
-		}
-		else if (
-				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.MONDAY))&&
-				(lastReflectionDate.get(Calendar.DAY_OF_MONTH) == (c.get(Calendar.DAY_OF_MONTH)-3))&&
-				(lastReflectionDate.get(Calendar.MONTH)) == (c.get(Calendar.MONTH))
-				){
-			return 2;
-		}
-		else if (
-				(lastReflectionDate.get(Calendar.DAY_OF_MONTH) == (c.get(Calendar.DAY_OF_MONTH)-1))&&
-				(lastReflectionDate.get(Calendar.MONTH)) == (c.get(Calendar.MONTH))
-				){
-			return 2;
-		}
-		else return 0;
-	}
+		Calendar c = Calendar.getInstance();
+		if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.FRIDAY))) return 3;
+		else if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SATURDAY))) return 2;
+		else if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SUNDAY)) || 
+				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.MONDAY)) || 
+				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.TUESDAY)) || 
+				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.WEDNESDAY)) || 
+				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.THURSDAY))
+				) return 1;
+		else return -1;
+	}	
 	
+	/*
+	 *  It returns an integer, which specifies if it is in the weekend, the next work day, or "out of bounds" for consecutive bonus.
+	 * 0 = out of bounds
+	 * 1 = weekend
+	 * 2 = next work day
+	 */
+//				Calendar c = Calendar.getInstance();
+//		if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SATURDAY))||(c.get(Calendar.DAY_OF_WEEK) == (Calendar.SUNDAY))){
+//			return 1;
+//		}
+//		else if (
+//				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.MONDAY))&&
+//				(lastReflectionDate.get(Calendar.DAY_OF_MONTH) == (c.get(Calendar.DAY_OF_MONTH)-3))&&
+//				(lastReflectionDate.get(Calendar.MONTH)) == (c.get(Calendar.MONTH))
+//				){
+//			return 2;
+//		}
+//		else if (
+//				(lastReflectionDate.get(Calendar.DAY_OF_MONTH) == (c.get(Calendar.DAY_OF_MONTH)-1))&&
+//				(lastReflectionDate.get(Calendar.MONTH)) == (c.get(Calendar.MONTH))
+//				){
+//			return 2;
+//		}
+//		else return 0;
+//	}
 	
-	
+//	/**
+//	 * This method sets the notification to pop up
+//	 */
+//	public void createScheduledNotification(int days){
+//	
+//		int hour = -1;
+//		
+//		// Get new calendar object and set the date to now	
+//		Calendar calendar = Calendar.getInstance();
+//		calendar.setTimeInMillis(System.currentTimeMillis());
+//		
+//		//setting current day, hour, minute
+//		hour = calendar.get(Calendar.HOUR_OF_DAY);
+//		
+//		// Setting time for alarm/notification
+//		calendar.add(Calendar.DAY_OF_MONTH, days);
+//		calendar.set(Calendar.MINUTE, 0);
+//		calendar.set(Calendar.SECOND, 0);
+//		if (hour < 12 && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 12);
+//		else if (hour < 14 && 12 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 14);
+//		else if (hour < 16 && 14 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 16);
+//		else if (hour < 18 && 16 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 18);
+//		else calendar.add(Calendar.MINUTE, 3);
+//	
+//		// Retrieve alarm manager from the system
+//		AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(getBaseContext().ALARM_SERVICE);
+//	
+//		// Every scheduled intent needs a different ID, else it is just executed once
+//		int id = (int) System.currentTimeMillis();
+//	 
+//		// Prepare the intent which should be launched at the date
+//		Intent intent = new Intent(this, TimeAlarm.class);
+//	
+//		// Prepare the pending intent
+//		PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//	
+//		// Register the alert in the system. You have the option to define if the device has to wake up on the alert or not
+//		alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+//	 }
+
 	
 	/**
 	 * Level calculation method

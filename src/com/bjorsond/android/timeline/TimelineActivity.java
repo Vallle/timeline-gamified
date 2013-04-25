@@ -12,13 +12,16 @@ package com.bjorsond.android.timeline;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import net.sondbjor.android.ActionItem;
 import net.sondbjor.android.QuickAction;
 import android.accounts.Account;
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -255,6 +258,50 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		return contentLoader.LoadAllEventsFromDatabase();
 	}
 
+	/**
+	 * This method sets the notification to pop up
+	 */
+	public void createScheduledNotification(int days){
+	
+		if (days != -1) {
+			
+			int hour = -1;
+			
+			// Get new calendar object and set the date to now	
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTimeInMillis(System.currentTimeMillis());
+			
+			//setting current day, hour, minute
+			hour = calendar.get(Calendar.HOUR_OF_DAY);
+			
+			// Setting time for alarm/notification
+			calendar.add(Calendar.DAY_OF_MONTH, days);
+			calendar.set(Calendar.MINUTE, 0);
+			calendar.set(Calendar.SECOND, 0);
+			if (hour < 12 && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 12);
+			else if (hour < 14 && 12 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 14);
+			else if (hour < 16 && 14 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 16);
+			else if (hour < 18 && 16 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 18);
+			else calendar.add(Calendar.MINUTE, 3);
+		
+			// Retrieve alarm manager from the system
+			AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(getBaseContext().ALARM_SERVICE);
+		
+			// Every scheduled intent needs a different ID, else it is just executed once
+			int id = (int) System.currentTimeMillis();
+		 
+			// Prepare the intent which should be launched at the date
+			Intent intent = new Intent(this, TimeAlarm.class);
+		
+			// Prepare the pending intent
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+		
+			// Register the alert in the system. You have the option to define if the device has to wake up on the alert or not
+			alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+		}
+	 }
+	
+	
 	@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
     	
@@ -392,6 +439,9 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				DashboardActivity.addReflectionCounter();
 				//Adding points
 				DashboardActivity.addPointsCounter(ReflectionPoints);
+				//Setting alarm for notification			
+				createScheduledNotification(DashboardActivity.checkReflectionDate());
+				
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){
 					SwarmAchievement.unlock(ReflectionNoteAchievement);
