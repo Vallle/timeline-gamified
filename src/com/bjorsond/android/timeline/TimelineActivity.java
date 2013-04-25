@@ -133,27 +133,6 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	private EventDialog eventDialog;
 	private MoodDialog moodDialog;
 
-	//Achievements
-	private int VideoAchievement = 10955;
-	private int AudioAchievement = 10957;
-	private int PictureAchievement = 10953;
-	private int NoteAchievement = 10951;
-	private int ReflectionNoteAchievement = 11467;
-	private int NoteTenAchievement = 10969;
-	private int ReflectionNoteTenAchievement = 11469;
-	private int PictureTenAchievement = 10971;
-	private int AudioTenAchievement = 10975;
-	private int VideoTenAchievement = 10973;
-	
-	//Points
-	private int VideoPoints = 20;
-	private int NotePoints = 10;
-	private int AudioPoints = 15;
-	private int ReflectionPoints = 100;
-	private int PicturePoints = 20;
-	private int MoodPoints = 5;
-	
-	
 	
 	/** Called when the activity is first created. */
     @Override
@@ -314,14 +293,14 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   //Adding to picture count
 				   DashboardActivity.addPictureCounter();
 				   //Adding points for picture
-				   DashboardActivity.addPointsCounter(PicturePoints);
+				   DashboardActivity.addPointsCounter(Constants.PicturePoints);
 				   //Adding achievement
 				   if (DashboardActivity.getPictureCounter() == 1){
-					   SwarmAchievement.unlock(PictureAchievement);
+					   SwarmAchievement.unlock(Constants.PictureAchievement);
 					   Toast.makeText(this, R.string.First_pic_achi_toast, Toast.LENGTH_LONG).show();
 				   }
 				   if (DashboardActivity.getPictureCounter() == 10){
-					   SwarmAchievement.unlock(PictureTenAchievement);
+					   SwarmAchievement.unlock(Constants.PictureTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_pic_achi_toast, Toast.LENGTH_LONG).show();
 				   }
 					
@@ -342,14 +321,14 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				//Adding to video count
 				DashboardActivity.addVideoCounter();
 				//Adding points
-				DashboardActivity.addPointsCounter(VideoPoints);
+				DashboardActivity.addPointsCounter(Constants.VideoPoints);
 				//Adding achievement
 				if (DashboardActivity.getVideoCounter() == 1){
-					SwarmAchievement.unlock(VideoAchievement);
+					SwarmAchievement.unlock(Constants.VideoAchievement);
 					   Toast.makeText(this, R.string.First_video_achi_toast, Toast.LENGTH_LONG).show();
 				}
 				if (DashboardActivity.getVideoCounter() == 10){
-					SwarmAchievement.unlock(VideoTenAchievement);
+					SwarmAchievement.unlock(Constants.VideoTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_video_achi_toast, Toast.LENGTH_LONG).show();
 				}
 				
@@ -372,14 +351,14 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   //Adding to audio count
 				   DashboardActivity.addAudioCounter();
 				   //Adding points
-				   DashboardActivity.addPointsCounter(AudioPoints);
+				   DashboardActivity.addPointsCounter(Constants.AudioPoints);
 				   //Adding achievement
 				   if (DashboardActivity.getAudioCounter() == 1){
-					   SwarmAchievement.unlock(AudioAchievement);
+					   SwarmAchievement.unlock(Constants.AudioAchievement);
 					   Toast.makeText(this, R.string.First_audio_achi_toast, Toast.LENGTH_LONG).show();
 				   }
 				   if (DashboardActivity.getAudioCounter() == 10){
-					   SwarmAchievement.unlock(AudioTenAchievement);
+					   SwarmAchievement.unlock(Constants.AudioTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_audio_achi_toast, Toast.LENGTH_LONG).show();
 				   }
 					
@@ -406,14 +385,14 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   //Adding to note count
 				   DashboardActivity.addNoteCounter();
 				   //Adding points
-				   DashboardActivity.addPointsCounter(NotePoints);
+				   DashboardActivity.addPointsCounter(Constants.NotePoints);
 				   //Adding achievement
 				   if (DashboardActivity.getNoteCounter() == 1){
-					   SwarmAchievement.unlock(NoteAchievement);
+					   SwarmAchievement.unlock(Constants.NoteAchievement);
 					   Toast.makeText(this, R.string.First_note_achi_toast, Toast.LENGTH_LONG).show();
 				   }
 				   if (DashboardActivity.getNoteCounter() == 10){
-					   SwarmAchievement.unlock(NoteTenAchievement);
+					   SwarmAchievement.unlock(Constants.NoteTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_note_achi_toast, Toast.LENGTH_LONG).show();
 				   }
 					
@@ -438,17 +417,17 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				//Adding to reflection count
 				DashboardActivity.addReflectionCounter();
 				//Adding points
-				DashboardActivity.addPointsCounter(ReflectionPoints);
+				DashboardActivity.addPointsCounter(Constants.ReflectionPoints);
 				//Setting alarm for notification			
 				createScheduledNotification(DashboardActivity.checkReflectionDate());
 				
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){
-					SwarmAchievement.unlock(ReflectionNoteAchievement);
+					SwarmAchievement.unlock(Constants.ReflectionNoteAchievement);
 					Toast.makeText(this, R.string.First_reflection_achi_toast, Toast.LENGTH_LONG).show();
 				}
 				if (DashboardActivity.getReflectionCounter() == 10){
-					SwarmAchievement.unlock(ReflectionNoteTenAchievement);
+					SwarmAchievement.unlock(Constants.ReflectionNoteTenAchievement);
 					Toast.makeText(this, R.string.Tenth_reflection_achi_toast, Toast.LENGTH_LONG).show();
 				}
 				
@@ -1016,7 +995,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		sendMoodThread.start();
 		Toast.makeText(this, R.string.Mood_added_toast, Toast.LENGTH_SHORT).show();
 		//Adding points
-		DashboardActivity.addPointsCounter(MoodPoints);
+		DashboardActivity.addPointsCounter(Constants.MoodPoints);
 	}
 	
 	/**

@@ -57,6 +57,7 @@ import com.bjorsond.android.timeline.R;
 import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmAchievement;
 import com.swarmconnect.SwarmActivity;
+import com.swarmconnect.SwarmLeaderboard;
 
 
 /**
@@ -386,6 +387,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	//  POINTS
 	public static void addPointsCounter(int number) {
 		pointsCounter = pointsCounter + number;
+		SwarmLeaderboard.submitScore(Constants.leaderboardID, pointsCounter);
 	}
 	
 	public void setPointsCounter(int number) {
@@ -772,7 +774,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	private OnClickListener leaderboardListener = new OnClickListener() {
 		public void onClick(View v) {
-			Swarm.show(7);
+			SwarmLeaderboard.showLeaderboard(Constants.leaderboardID);
 		}
 	};
 	
