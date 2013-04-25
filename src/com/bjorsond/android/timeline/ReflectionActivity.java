@@ -10,6 +10,8 @@
  ******************************************************************************/
 package com.bjorsond.android.timeline;
 
+import net.sondbjor.android.ActionItem;
+import net.sondbjor.android.QuickAction;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.utilities.Constants;
@@ -41,6 +44,7 @@ public class ReflectionActivity extends SwarmActivity {
 	
 	private Button saveButton, discardButton, shareButton;
 	private EditText reflectionTitle;
+	private QuickAction qa;
 //	private EditText reflectionText;
 	 
 	@Override
@@ -50,7 +54,7 @@ public class ReflectionActivity extends SwarmActivity {
 
 		Swarm.setActive(this);
 		setupViews();
-
+		setupAddButtonQuickAction();
 	}
 
 	/**
@@ -61,7 +65,6 @@ public class ReflectionActivity extends SwarmActivity {
 	private void setupViews() {
 		saveButton = (Button)findViewById(R.id.SaveReflectionButton);
 		discardButton = (Button)findViewById(R.id.DiscardReflectionButton);
-		shareButton = (Button)findViewById(R.id.ShareReflectionButton);
 		
 		reflectionTitle = (EditText)findViewById(R.id.ReflectionTitleEditText);
 //		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
@@ -75,9 +78,45 @@ public class ReflectionActivity extends SwarmActivity {
 		
 		saveButton.setOnClickListener(saveReflectionListener);
 		discardButton.setOnClickListener(discardReflectionListener);
-		shareButton.setOnClickListener(shareReflectionListener);
 	}
 	
+	
+	private void setupAddButtonQuickAction() {
+		final ActionItem facebook = new ActionItem();
+		
+		facebook.setIcon(getResources().getDrawable(R.drawable.com_facebook_icon));
+		facebook.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		final ActionItem other = new ActionItem();
+		
+		other.setIcon(getResources().getDrawable(R.drawable.share_to_other));
+		other.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				
+			}
+		});
+		
+		shareButton = (Button)findViewById(R.id.ShareReflectionButton);
+		shareButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				qa = new QuickAction(v);
+				
+				qa.addActionItem(facebook);
+				qa.addActionItem(other);
+				qa.setAnimStyle(QuickAction.ANIM_AUTO);
+				qa.show();
+			}
+		});
+		
+	}
+	
+	
+	
+	//LISTENERS
 	private OnClickListener saveReflectionListener = new OnClickListener() {
 		
 		public void onClick(View v) {
@@ -102,6 +141,7 @@ public class ReflectionActivity extends SwarmActivity {
 			finish();
 		}
 	};
+	
 	
 	/**
 	 * Saves the note by putting the data in an Intent and sending back to the calling activity.
