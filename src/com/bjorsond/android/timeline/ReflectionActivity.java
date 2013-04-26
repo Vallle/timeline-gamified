@@ -84,7 +84,7 @@ public class ReflectionActivity extends SwarmActivity {
 	private void setupAddButtonQuickAction() {
 		final ActionItem facebook = new ActionItem();
 		
-		facebook.setIcon(getResources().getDrawable(R.drawable.com_facebook_icon));
+		facebook.setIcon(getResources().getDrawable(R.drawable.swarm_facebook));
 		facebook.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				
@@ -96,7 +96,9 @@ public class ReflectionActivity extends SwarmActivity {
 		other.setIcon(getResources().getDrawable(R.drawable.share_to_other));
 		other.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				
+				saveReflection();
+				shareReflection();
+				finish();
 			}
 		});
 		
@@ -131,14 +133,6 @@ public class ReflectionActivity extends SwarmActivity {
 			Intent discardReflectionIntent = new Intent();
             setResult(RESULT_CANCELED, discardReflectionIntent);
             finish();					
-		}
-	};
-	
-	private OnClickListener shareReflectionListener = new OnClickListener() {
-		public void onClick(View v) {
-			saveReflection();
-			shareReflection();
-			finish();
 		}
 	};
 	
