@@ -187,7 +187,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		
 	}
 
-	
+	//TODO Here is checkReflectionDate()
 	/**
 	 * This method checks when/if lastReflectionDate makes it possible to get consecutive bonus.
 	 * It returns an integer, which specifies how many days until the consecutive bonus is lost. 
@@ -283,7 +283,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	/*
 	* METHOD FOR LEVEL CALCULATION --- START
 	*/
-	
+	//TODO Here is getLevelAndPoints()
 	public static int[] getLevelAndPoints(){
 		int temp = pointsCounter;
 		int level = 0;

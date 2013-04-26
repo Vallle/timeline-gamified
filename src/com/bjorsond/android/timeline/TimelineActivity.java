@@ -237,6 +237,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		return contentLoader.LoadAllEventsFromDatabase();
 	}
 
+	//TODO wanted to see createScheduleNotification method in the side bar...
 	/**
 	 * This method sets the notification to pop up
 	 */
@@ -405,6 +406,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	    	    }
 			break;
 			
+			//TODO To see REF NOTE place in code...
 			// REFLECTION NOTE ADDED
 		case Constants.CREATE_REFLECTION_ACTIVITY_REQUEST_CODE:
 			if (resultCode == RESULT_OK) {
