@@ -91,4 +91,14 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		dataHandler.addDataObjectListener(myListener);
 	}
 	
+	
+	/**
+	 * Uses plugin documentet at http://www.igniterealtime.org/projects/openfire/plugins/userservice/readme.html
+	 */
+	public void createUserOnServer(){
+		//get user & pw from textfields
+		//send httprequest to create user
+		//connect to server for posting ref note with user and pw
+		//handle creation of new users and login
+	}
 }
