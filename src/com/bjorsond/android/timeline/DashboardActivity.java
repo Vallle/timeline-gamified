@@ -48,6 +48,7 @@ import com.bjorsond.android.timeline.dialogs.TimelineBrowserDialog;
 import com.bjorsond.android.timeline.models.Experience;
 import com.bjorsond.android.timeline.models.Experiences;
 import com.bjorsond.android.timeline.models.User;
+import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceHandler;
 import com.bjorsond.android.timeline.sync.GoogleAppEngineHandler;
 import com.bjorsond.android.timeline.sync.UserAndGroupServiceHandler;
 import com.bjorsond.android.timeline.utilities.Constants;
@@ -185,6 +186,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			}
 		};
 		
+		ReflectionSpaceHandler.insertToReflectionSpace(this.getApplicationContext());
 	}
 
 	//TODO Here is checkReflectionDate()
@@ -838,12 +840,12 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		newTimeLineButton.setOnClickListener(newTimeLineListener);
 		browseMyTimelinesButton = (ImageButton) findViewById(R.id.dash_my_timelines);
 		browseMyTimelinesButton.setOnClickListener(browseTimeLineListener);
-//		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.dash_shared_timelines);
-//		browseSharedTimelinesButton.setOnClickListener(browseSharedTimeLinesListener);
-//		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
-//		syncronizeButton.setOnClickListener(syncListener);
-//		myGroupsButton = (ImageButton) findViewById(R.id.dash_my_groups);
-//		myGroupsButton.setOnClickListener(openMyGroupsListener);
+		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.dash_shared_timelines);
+		browseSharedTimelinesButton.setOnClickListener(browseSharedTimeLinesListener);
+		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
+		syncronizeButton.setOnClickListener(syncListener);
+		myGroupsButton = (ImageButton) findViewById(R.id.dash_my_groups);
+		myGroupsButton.setOnClickListener(openMyGroupsListener);
 		tagsButton = (ImageButton) findViewById(R.id.dash_my_tags);
 		tagsButton.setOnClickListener(tagsListener);
 		friendsButton = (ImageButton) findViewById(R.id.friends);
