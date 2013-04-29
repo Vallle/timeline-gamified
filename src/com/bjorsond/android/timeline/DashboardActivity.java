@@ -198,7 +198,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	public static int checkReflectionDate() {
 		Calendar c = Calendar.getInstance();
 		if (
-			(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && 
+			(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && //NULL POINTER PÅ DENNE LINJA med feilmelding ResultInfo{who=null, request=10, result=-1, data=intent}
 			(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK)-1)) &&
 			(c.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY || 
 				c.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)
@@ -844,7 +844,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		timelineIntent.setAction(Constants.INTENT_ACTION_NEW_TIMELINE); //Default Intent action for TimelineActivity is to create/open a timeline.
 		tagsIntent = new Intent(this, MyTagsActivity.class);
 		profileIntent = new Intent(this, ProfileActivity.class);
-		blueIntent = new Intent(this, ProfileActivity.class);
+		blueIntent = new Intent(this, ReflectionSpaceUserActivity.class);
 		
 		swarmIntent = new Intent(this, MySwarmActivity.class);
 	}

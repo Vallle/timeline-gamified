@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:background="@color/White" android:weightSum="100">
+
+
+
+	<TableRow android:id="@+id/dash_header_row"
+		android:layout_width="fill_parent" android:background="@color/Header" android:layout_weight="10" android:layout_height="0dip">
+		<ImageButton android:background="@drawable/header_home_button"
+			android:id="@+id/HeaderHomeButto"
+			android:focusable="false" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageButton>
+	</TableRow>
+
+
+
+	<TableRow android:id="@+id/DashTableRow01"
+		android:layout_width="fill_parent"
+		android:paddingTop="20dp" android:paddingBottom="20dp" android:layout_height="0dip" android:layout_weight="30">
+		<LinearLayout android:paddingTop="10dp"
+			android:layout_weight="1" android:paddingBottom="10dp" android:layout_width="fill_parent"
+			android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
+
+			<EditText
+			    android:id="@+id/reflectionUsername"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:ems="10"
+			    android:inputType="textPersonName" 
+				android:hint="@string/Username_label">
+			    <requestFocus />
+			</EditText>
+
+		</LinearLayout>
+
+
+	</TableRow>
+	<TableRow android:id="@+id/DashTableRow02"
+		android:layout_width="fill_parent"
+		android:paddingTop="0dip" android:paddingBottom="0dip" android:layout_height="0dip" android:layout_weight="30">
+		<LinearLayout android:layout_weight="1"
+			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
+
+			<EditText
+			    android:id="@+id/reflectionPassword"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:ems="10"
+			    android:inputType="textPassword" 
+				android:hint="@string/password"/>
+
+		</LinearLayout>
+	</TableRow>
+
+	<EditText
+	    android:id="@+id/reflectionMail"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:ems="10"
+	    android:inputType="textEmailAddress" 
+		android:hint="@string/email"/>
+
+</TableLayout>
