@@ -197,14 +197,47 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	 */
 	public static int checkReflectionDate() {
 		Calendar c = Calendar.getInstance();
-		if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.FRIDAY))) return 3;
-		else if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SATURDAY))) return 2;
-		else if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SUNDAY)) || 
-				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.MONDAY)) || 
-				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.TUESDAY)) || 
-				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.WEDNESDAY)) || 
-				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.THURSDAY))
+		if (
+			(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && 
+			(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK)-1)) &&
+			(c.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY || 
+				c.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)
+			) return 0;
+	
+		else if (
+				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == (c.get(Calendar.WEEK_OF_YEAR)-1)) && 
+				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK)+4)) &&
+				(c.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) &&
+				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)			
+				) return 0;
+			 
+		else if (
+				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && 
+				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK))) &&
+				((c.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) ||
+						(c.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) ||
+						(c.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) ||
+						(c.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY))
 				) return 1;
+		
+		
+		else if (
+				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && 
+				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK))) &&
+				((c.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY))
+				) return 3;
+		
+		
+		
+			 
+//		if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.FRIDAY))) return 3;
+//		else if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SATURDAY))) return 2;
+//		else if ((c.get(Calendar.DAY_OF_WEEK) == (Calendar.SUNDAY)) || 
+//				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.MONDAY)) || 
+//				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.TUESDAY)) || 
+//				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.WEDNESDAY)) || 
+//				(c.get(Calendar.DAY_OF_WEEK) == (Calendar.THURSDAY))
+//				) return 1;
 		else return -1;
 	}	
 	
@@ -398,6 +431,14 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	public static int getPointsCounter() {
 		return pointsCounter;
+	}
+	//  LAST REF NOTE
+	public static void setLastRefDate(Calendar c) {
+		lastReflectionDate = c;
+	}
+	
+	public static Calendar getLastRefDate() {
+		return lastReflectionDate;
 	}
 	/*
 	* COUNTER GETTERS AND SETTERS  -- END

@@ -21,8 +21,10 @@ import android.accounts.Account;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.DialogInterface.OnCancelListener;
@@ -237,41 +239,51 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		return contentLoader.LoadAllEventsFromDatabase();
 	}
 
-	//TODO wanted to see createScheduleNotification method in the side bar...
+	private void cancelNotifications(){
+		getBaseContext();
+////		AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+		NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+//		
+//		Intent intent = new Intent(this, TimeAlarm.class);
+//		intent.setAction("notify");
+		
+		notificationManager.cancel(1);
+		notificationManager.cancel(2);
+		notificationManager.cancel(3);
+		notificationManager.cancel(4);
+	}
+	
+	//TODO createScheduleNotification method 
 	/**
 	 * This method sets the notification to pop up
 	 */
-	public void createScheduledNotification(int days){
+	public void createScheduledNotification(int days, String intentAction, int hourOfDay, int id){
 	
 		if (days != -1) {
-			
-			int hour = -1;
 			
 			// Get new calendar object and set the date to now	
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTimeInMillis(System.currentTimeMillis());
 			
-			//setting current day, hour, minute
-			hour = calendar.get(Calendar.HOUR_OF_DAY);
-			
 			// Setting time for alarm/notification
 			calendar.add(Calendar.DAY_OF_MONTH, days);
 			calendar.set(Calendar.MINUTE, 0);
 			calendar.set(Calendar.SECOND, 0);
-			if (hour < 12 && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 12);
-			else if (hour < 14 && 12 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 14);
-			else if (hour < 16 && 14 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 16);
-			else if (hour < 18 && 16 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 18);
-			else calendar.add(Calendar.MINUTE, 3);
+			calendar.set(Calendar.MILLISECOND, 0);
+			calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+		
+			//	else calendar.add(Calendar.MINUTE, 3);
 		
 			// Retrieve alarm manager from the system
-			AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(getBaseContext().ALARM_SERVICE);
-		
+			getBaseContext();
+			AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+			
 			// Every scheduled intent needs a different ID, else it is just executed once
-			int id = (int) System.currentTimeMillis();
+//			int id = (int) System.currentTimeMillis();
 		 
 			// Prepare the intent which should be launched at the date
 			Intent intent = new Intent(this, TimeAlarm.class);
+			intent.setAction(intentAction);
 		
 			// Prepare the pending intent
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -280,6 +292,50 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 		}
 	 }
+	
+//	public void createScheduledNotification(int days, String intentAction){
+//		
+//		if (days != -1) {
+//			
+//			int hour = -1;
+//			
+//			// Get new calendar object and set the date to now	
+//			Calendar calendar = Calendar.getInstance();
+//			calendar.setTimeInMillis(System.currentTimeMillis());
+//			
+//			//setting current day, hour, minute
+//			hour = calendar.get(Calendar.HOUR_OF_DAY);
+//			
+//			// Setting time for alarm/notification
+//			calendar.add(Calendar.DAY_OF_MONTH, days);
+//			calendar.set(Calendar.MINUTE, 0);
+//			calendar.set(Calendar.SECOND, 0);
+//			if (hour < 12 && hour != -1)	calendar.set(Calendar.HOUR_OF_DAY, 12);
+//			else if (hour < 14 && 12 >= hour && hour != -1)	calendar.set(Calendar.HOUR_OF_DAY, 14);
+//			else if (hour < 16 && 14 >= hour && hour != -1)	calendar.set(Calendar.HOUR_OF_DAY, 16);
+//			else if (hour < 18 && 16 >= hour && hour != -1) calendar.set(Calendar.HOUR_OF_DAY, 18);
+//			
+//			//	else calendar.add(Calendar.MINUTE, 3);
+//			
+//			// Retrieve alarm manager from the system
+//			getBaseContext();
+//			AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+//			
+//			// Every scheduled intent needs a different ID, else it is just executed once
+//			int id = (int) System.currentTimeMillis();
+//			
+//			// Prepare the intent which should be launched at the date
+//			Intent intent = new Intent(this, TimeAlarm.class);
+//			intent.setAction(intentAction);
+//			
+//			// Prepare the pending intent
+//			PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+//			
+//			// Register the alert in the system. You have the option to define if the device has to wake up on the alert or not
+//			alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+//		}
+//	}
+//	
 	
 	
 	@Override
@@ -420,8 +476,17 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				DashboardActivity.addReflectionCounter();
 				//Adding points
 				DashboardActivity.addPointsCounter(Constants.ReflectionPoints);
+				//Canceling former notifications
+				cancelNotifications();
 				//Setting alarm for notification			
-				createScheduledNotification(DashboardActivity.checkReflectionDate());
+				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 12, 1);
+				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 14, 2);
+				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 16, 3);
+				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 18, 4);
+				//Setting date and time for ref note
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTimeInMillis(System.currentTimeMillis());
+				DashboardActivity.setLastRefDate(calendar);
 				
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){
