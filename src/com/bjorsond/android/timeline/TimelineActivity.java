@@ -214,7 +214,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
         }
         
     }
-
+    
 	private void setupZoom() {
 		Zoom.WEEK.setNext(Zoom.DAY);
     	Zoom.DAY.setNext(Zoom.HOUR);
@@ -263,34 +263,36 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			
 			// Get new calendar object and set the date to now	
 			Calendar calendar = Calendar.getInstance();
-			calendar.setTimeInMillis(System.currentTimeMillis());
 			
 			// Setting time for alarm/notification
 			calendar.add(Calendar.DAY_OF_MONTH, days);
-			calendar.set(Calendar.MINUTE, 0);
-			calendar.set(Calendar.SECOND, 0);
-			calendar.set(Calendar.MILLISECOND, 0);
-			calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+			calendar.add(Calendar.MINUTE, -1);
+//			calendar.set(Calendar.MINUTE, 0);
+//			calendar.set(Calendar.SECOND, 0);
+//			calendar.set(Calendar.MILLISECOND, 0);
+//			calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
 			Log.i("CALENDAR TESTING", "day of month: " + calendar.get(Calendar.DAY_OF_MONTH) +" hour of day: " + calendar.get(Calendar.HOUR_OF_DAY));
 			Log.i("CALENDAR TESTING", "month: " + calendar.get(Calendar.MONTH) +" year: " + calendar.get(Calendar.YEAR));
 			//	else calendar.add(Calendar.MINUTE, 3);
 		
 			// Retrieve alarm manager from the system
-			getBaseContext();
-			AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-			
+			AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //getApplicationContext()
+			Log.i("CALENDAR TESTING", "Made alarmManager");
 			// Every scheduled intent needs a different ID, else it is just executed once
 //			int id = (int) System.currentTimeMillis();
 		 
 			// Prepare the intent which should be launched at the date
 			Intent intent = new Intent(this, TimeAlarm.class);
 			intent.setAction(intentAction);
-		
+			Log.i("CALENDAR TESTING", "Made intent");
 			// Prepare the pending intent
-			PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-		
+			PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent, PendingIntent.FLAG_UPDATE_CURRENT); //getApplicationContext()
+			Log.i("CALENDAR TESTING", "Made pendingIntent");
 			// Register the alert in the system. You have the option to define if the device has to wake up on the alert or not
 			alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+			Log.i("CALENDAR TESTING", "Set alarmManager");
+			
+			Log.i("CALENDAR TESTING", "" + new Date(calendar.getTimeInMillis()));
 		}
 	 }
 	
@@ -347,7 +349,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			  if (resultCode == RESULT_OK) {
 				   Log.i(this.getClass().getSimpleName(), "********* PICTURE CREATED **************");
 				   
-				   Toast.makeText(this, R.string.Pic_created_toast, Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, getString(R.string.Pic_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.PicturePoints, Toast.LENGTH_SHORT).show();
 				   //Adding to picture count
 				   DashboardActivity.addPictureCounter();
 				   //Adding points for picture
@@ -375,7 +377,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			   if (resultCode == RESULT_OK) {
 				Log.i(this.getClass().getSimpleName(), "********* VIDEO RECORDING CREATED **************");
 				   
-				Toast.makeText(this, R.string.Video_created_toast, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, getString(R.string.Video_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.VideoPoints, Toast.LENGTH_SHORT).show();
 				//Adding to video count
 				DashboardActivity.addVideoCounter();
 				//Adding points
@@ -405,7 +407,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			   if (resultCode == RESULT_OK) {
 				   Log.i(this.getClass().getSimpleName(), "********* AUDIO RECORDING CREATED **************");
 				   
-				   Toast.makeText(this, R.string.Audio_created_toast, Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, getString(R.string.Audio_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.AudioPoints, Toast.LENGTH_SHORT).show();
 				   //Adding to audio count
 				   DashboardActivity.addAudioCounter();
 				   //Adding points
@@ -439,7 +441,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
 				   Log.i(this.getClass().getSimpleName(), "*************************************");
 				   
-				   Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, getString(R.string.Note_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.NotePoints, Toast.LENGTH_SHORT).show();
 				   //Adding to note count
 				   DashboardActivity.addNoteCounter();
 				   //Adding points
@@ -472,11 +474,12 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
 				Log.i(this.getClass().getSimpleName(), "************************************************");
 				
-				Toast.makeText(this, R.string.Reflection_added_toast, Toast.LENGTH_SHORT).show();
 				//Adding to reflection count
 				DashboardActivity.addReflectionCounter();
 				//Adding points
-				DashboardActivity.addPointsCounter(Constants.ReflectionPoints);
+				int points = DashboardActivity.checkAndSetRefNotePoints();
+								
+				Toast.makeText(this, getString(R.string.Reflection_added_toast) + " " + getString(R.string.Points_rewarded_toast)+points, Toast.LENGTH_SHORT).show();
 				//Setting date and time for ref note
 				Calendar calendar = Calendar.getInstance();
 				calendar.setTimeInMillis(System.currentTimeMillis());
