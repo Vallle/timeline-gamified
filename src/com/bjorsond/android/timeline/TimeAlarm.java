@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 // The class has to extend the BroadcastReceiver to get the notification from the system
 public class TimeAlarm extends BroadcastReceiver {
@@ -18,10 +19,9 @@ public class TimeAlarm extends BroadcastReceiver {
 	@Override
 	public void onReceive(Context context, Intent paramIntent) {
 		Calendar c = Calendar.getInstance();
-		c.setTimeInMillis(System.currentTimeMillis()); 
-		
-		if (	(paramIntent.getAction().equals("notify")) &&
-				c.get(Calendar.DAY_OF_WEEK) != DashboardActivity.getLastRefDate().get(Calendar.DAY_OF_WEEK)
+		Log.i("CALENDAR TESTING", "in TimeAlarm");
+		if (	(paramIntent.getAction().equals("notify"))// &&
+				//c.get(Calendar.DAY_OF_WEEK) != DashboardActivity.getLastRefDate().get(Calendar.DAY_OF_WEEK)
 			) notification(context, paramIntent);
 		
 		

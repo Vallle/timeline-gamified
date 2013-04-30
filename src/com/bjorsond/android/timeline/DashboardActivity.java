@@ -18,6 +18,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.jivesoftware.smack.util.collections.ResettableIterator;
+
 import android.accounts.Account;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -120,6 +122,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	// REFLECTION SPACE 
 	private static String reflectionSpaceUserName;
 	private static String reflectionSpacePassword;
+	// CONSEQUTIVE REF NOTE BONUS
+	private static int consRefNotes = 0;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -426,7 +430,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	}
 	//  POINTS
 	public static void addPointsCounter(int number) {
-		pointsCounter = pointsCounter + number;
+		pointsCounter += number;
 		SwarmLeaderboard.submitScore(Constants.leaderboardID, pointsCounter);
 	}
 	
@@ -436,6 +440,22 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	public static int getPointsCounter() {
 		return pointsCounter;
+	}
+	//  CONSEQUTIVE REF NOTE POINTS
+	public static void addConsRefNoteCounter() {
+		consRefNotes++;
+	}
+	
+	public static void setConsRefNoteCounter(int number) {
+		consRefNotes += number;
+	}
+	
+	public static void resetConsRefNoteCounter() {
+		consRefNotes = 0;
+	}
+	
+	public static int getConsRefNoteCounter() {
+		return consRefNotes;
 	}
 	//  LAST REF NOTE
 	public static void setLastRefDate(Calendar c) {
@@ -650,6 +670,51 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
         }
       };
     
+      private static boolean wasLastWorkDay(){
+    	  Calendar c = Calendar.getInstance();
+    	  
+    	  if ( lastReflectionDate.get(Calendar.DAY_OF_WEEK) == c.get(Calendar.DAY_OF_WEEK)-1 &&
+    			 (lastReflectionDate.get(Calendar.DAY_OF_WEEK) ==  Calendar.SUNDAY) ||
+    			 (lastReflectionDate.get(Calendar.DAY_OF_WEEK) ==  Calendar.MONDAY) ||
+    			 (lastReflectionDate.get(Calendar.DAY_OF_WEEK) ==  Calendar.TUESDAY) ||
+    			 (lastReflectionDate.get(Calendar.DAY_OF_WEEK) ==  Calendar.WEDNESDAY) ||
+    			 (lastReflectionDate.get(Calendar.DAY_OF_WEEK) ==  Calendar.THURSDAY)
+    			  ) return true;
+    	  
+    	  else if (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == c.get(Calendar.DAY_OF_WEEK)-3 &&
+    			  (lastReflectionDate.get(Calendar.DAY_OF_WEEK) ==  Calendar.FRIDAY)
+    			  ) return true;
+    	  
+    	  else if (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == c.get(Calendar.DAY_OF_WEEK)-2 &&
+    			  (lastReflectionDate.get(Calendar.DAY_OF_WEEK) ==  Calendar.SATURDAY)
+    			  ) return true;
+    	  
+    	  else return false;
+      }
+      
+      public static int checkAndSetRefNotePoints(){
+    	  if (wasLastWorkDay()) {
+    		  int i = Constants.ReflectionPoints+(getConsRefNoteCounter()*10);
+    		  if (i == 0) {
+    			  addPointsCounter(Constants.ReflectionPoints);
+        		  addConsRefNoteCounter();
+        		  return Constants.ReflectionPoints;
+    		  }
+    		  else {
+    			  addPointsCounter(i);
+    			  addConsRefNoteCounter();
+    			  return i;
+    		  }
+    	  }
+    	  else {
+    		  addPointsCounter(Constants.ReflectionPoints);
+    		  resetConsRefNoteCounter();
+    		  return Constants.ReflectionPoints;
+    	  }
+      }
+      
+     //TODO restorePreferences()
+      
      private void restorePreferences() {
     	// Restore preferences
          SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -660,6 +725,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
          setMoodCounter(settings.getInt("moodCount", 0));
          setReflectionCounter(settings.getInt("reflectionCount", 0));  //added for reflection note
          setPointsCounter(settings.getInt("pointsCount", 0));  //added for point system
+         
+         setConsRefNoteCounter(settings.getInt("consRef", 0));
          
          Calendar c = new GregorianCalendar();
          c.setTimeInMillis(settings.getLong("refDate", 0));
@@ -701,7 +768,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		closeDatabaseHelpers();
 		super.onStop();
 		
-		
+		//TODO shared pref putting
 		// We need an Editor object to make preference changes.
 	    // All objects are from android.context.Context
 	    SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -714,6 +781,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	    editor.putInt("moodCount", moodCounter);
 	    editor.putInt("reflectionCount", reflectionCounter);  //added to have reflection note counter
 	    editor.putInt("pointsCount", pointsCounter);  //added for points system
+	    
+	    editor.putInt("consRef", consRefNotes);
 
 	    editor.putLong("refDate", lastReflectionDate.getTimeInMillis());
 	    editor.putString("refSpaceUserName", reflectionSpaceUserName);
