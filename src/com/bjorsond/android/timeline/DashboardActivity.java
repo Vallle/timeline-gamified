@@ -116,6 +116,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private static int pointsCounter = 0;
 	// VARIABLE FOR CONSECUTIVE REFLECTION NOTE BONUS
 	private static Calendar lastReflectionDate = null;
+	// REFLECTION SPACE 
+	private static String reflectionSpaceUserName;
+	private static String reflectionSpacePassword;
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -441,8 +444,24 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	public static Calendar getLastRefDate() {
 		return lastReflectionDate;
 	}
+	//  REFLECTION SPACE USERNAME
+	public static void setReflectionSpaceUserName(String name) {
+		reflectionSpaceUserName = name;
+	}
+	
+	public static String getReflectionSpaceUserName() {
+		return reflectionSpaceUserName;
+	}
+	//  REFLECTION SPACE PASSWORD
+	public static void setReflectionSpacePassword(String pw) {
+		reflectionSpacePassword = pw;
+	}
+	
+	public static String getReflectionSpacePassword() {
+		return reflectionSpacePassword;
+	}
 	/*
-	* COUNTER GETTERS AND SETTERS  -- END
+	* COUNTER GETTERS AND SETTERS  --  END
 	*/
 	
 	
@@ -640,6 +659,10 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
          setMoodCounter(settings.getInt("moodCount", 0));
          setReflectionCounter(settings.getInt("reflectionCount", 0));  //added for reflection note
          setPointsCounter(settings.getInt("pointsCount", 0));  //added for point system
+         
+//         setLastRefDate(settings.
+         setReflectionSpaceUserName(settings.getString("refSpaceUserName", ""));
+         setReflectionSpacePassword(settings.getString("refSpacePasword", ""));
      }
       
       
@@ -689,6 +712,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	    editor.putInt("reflectionCount", reflectionCounter);  //added to have reflection note counter
 	    editor.putInt("pointsCount", pointsCounter);  //added for points system
 
+	    editor.putString("refSpaceUserName", reflectionSpaceUserName);
+	    editor.putString("refSpacePassword", reflectionSpacePassword);
 	    // Commit the edits!
 	    editor.commit();
 	}
