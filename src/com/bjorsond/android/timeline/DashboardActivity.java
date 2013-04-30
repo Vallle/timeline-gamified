@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.accounts.Account;
 import android.app.Activity;
@@ -658,7 +659,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
          setReflectionCounter(settings.getInt("reflectionCount", 0));  //added for reflection note
          setPointsCounter(settings.getInt("pointsCount", 0));  //added for point system
          
-//         setLastRefDate(settings.
+         Calendar c = new GregorianCalendar();
+         c.setTimeInMillis(settings.getLong("refDate", 0));
+         setLastRefDate(c);
          setReflectionSpaceUserName(settings.getString("refSpaceUserName", ""));
          setReflectionSpacePassword(settings.getString("refSpacePasword", ""));
      }
@@ -710,6 +713,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	    editor.putInt("reflectionCount", reflectionCounter);  //added to have reflection note counter
 	    editor.putInt("pointsCount", pointsCounter);  //added for points system
 
+	    editor.putLong("refDate", lastReflectionDate.getTimeInMillis());
 	    editor.putString("refSpaceUserName", reflectionSpaceUserName);
 	    editor.putString("refSpacePassword", reflectionSpacePassword);
 	    // Commit the edits!
