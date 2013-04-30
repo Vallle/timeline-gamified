@@ -349,7 +349,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			  if (resultCode == RESULT_OK) {
 				   Log.i(this.getClass().getSimpleName(), "********* PICTURE CREATED **************");
 				   
-				   Toast.makeText(this, R.string.Pic_created_toast, Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, getString(R.string.Pic_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.PicturePoints, Toast.LENGTH_SHORT).show();
 				   //Adding to picture count
 				   DashboardActivity.addPictureCounter();
 				   //Adding points for picture
@@ -377,7 +377,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			   if (resultCode == RESULT_OK) {
 				Log.i(this.getClass().getSimpleName(), "********* VIDEO RECORDING CREATED **************");
 				   
-				Toast.makeText(this, R.string.Video_created_toast, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, getString(R.string.Video_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.VideoPoints, Toast.LENGTH_SHORT).show();
 				//Adding to video count
 				DashboardActivity.addVideoCounter();
 				//Adding points
@@ -407,7 +407,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			   if (resultCode == RESULT_OK) {
 				   Log.i(this.getClass().getSimpleName(), "********* AUDIO RECORDING CREATED **************");
 				   
-				   Toast.makeText(this, R.string.Audio_created_toast, Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, getString(R.string.Audio_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.AudioPoints, Toast.LENGTH_SHORT).show();
 				   //Adding to audio count
 				   DashboardActivity.addAudioCounter();
 				   //Adding points
@@ -441,7 +441,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
 				   Log.i(this.getClass().getSimpleName(), "*************************************");
 				   
-				   Toast.makeText(this, R.string.Note_created_toast, Toast.LENGTH_SHORT).show();
+				   Toast.makeText(this, getString(R.string.Note_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.NotePoints, Toast.LENGTH_SHORT).show();
 				   //Adding to note count
 				   DashboardActivity.addNoteCounter();
 				   //Adding points
@@ -479,7 +479,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				//Adding points
 				int points = DashboardActivity.checkAndSetRefNotePoints();
 								
-				Toast.makeText(this, getString(R.string.Reflection_added_toast) + " Points rewarded for Reflection note is: "+points, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, getString(R.string.Reflection_added_toast) + " " + getString(R.string.Points_rewarded_toast)+points, Toast.LENGTH_SHORT).show();
 				//Setting date and time for ref note
 				Calendar calendar = Calendar.getInstance();
 				calendar.setTimeInMillis(System.currentTimeMillis());
