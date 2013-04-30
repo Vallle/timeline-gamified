@@ -105,8 +105,8 @@ public class ReflectionActivity extends SwarmActivity {
 		
 		final ActionItem reflectionSpace = new ActionItem();
 		
-		other.setIcon(getResources().getDrawable(R.drawable.share_to_other));
-		other.setOnClickListener(new View.OnClickListener() {
+		reflectionSpace.setIcon(getResources().getDrawable(R.drawable.share_to_other));
+		reflectionSpace.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				saveReflection();
 				ReflectionSpaceHandler.insertToReflectionSpace(getApplicationContext());
