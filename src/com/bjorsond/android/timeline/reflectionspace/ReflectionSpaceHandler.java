@@ -95,7 +95,7 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	/**
 	 * Uses plugin documentet at http://www.igniterealtime.org/projects/openfire/plugins/userservice/readme.html
 	 */
-	public void createUserOnServer(){
+	public static void createUserOnServer(String username, String password, String email){
 		//get user & pw from textfields
 		//send httprequest to create user
 		//connect to server for posting ref note with user and pw
