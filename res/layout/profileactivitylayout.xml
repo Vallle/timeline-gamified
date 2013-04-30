@@ -8,7 +8,7 @@
 	<TableRow android:id="@+id/dash_header_row"
 		android:layout_width="fill_parent" android:background="@color/Header" android:layout_weight="10" android:layout_height="0dip">
 		<ImageButton android:background="@drawable/header_home_button"
-			android:id="@+id/HeaderHomeButto"
+			android:id="@+id/profileHeaderHomeButton"
 			android:focusable="false" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageButton>
 	</TableRow>
 

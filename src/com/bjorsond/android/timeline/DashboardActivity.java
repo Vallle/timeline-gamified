@@ -193,8 +193,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 				syncTimelines();
 			}
 		};
-		
-		ReflectionSpaceHandler.insertToReflectionSpace(this.getApplicationContext());
 	}
 
 	//TODO Here is checkReflectionDate()

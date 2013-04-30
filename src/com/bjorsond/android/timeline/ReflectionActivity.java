@@ -25,6 +25,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 
 import com.bjorsond.android.timeline.models.ReflectionNote;
+import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceHandler;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.R;
 import com.swarmconnect.Swarm;
@@ -102,6 +103,17 @@ public class ReflectionActivity extends SwarmActivity {
 			}
 		});
 		
+		final ActionItem reflectionSpace = new ActionItem();
+		
+		other.setIcon(getResources().getDrawable(R.drawable.share_to_other));
+		other.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				saveReflection();
+				ReflectionSpaceHandler.insertToReflectionSpace(getApplicationContext());
+				finish();
+			}
+		});
+		
 		shareButton = (Button)findViewById(R.id.ShareReflectionButton);
 		shareButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
@@ -109,6 +121,7 @@ public class ReflectionActivity extends SwarmActivity {
 				
 				qa.addActionItem(facebook);
 				qa.addActionItem(other);
+				qa.addActionItem(reflectionSpace);
 				qa.setAnimStyle(QuickAction.ANIM_AUTO);
 				qa.show();
 			}

@@ -54,6 +54,10 @@
         </activity>
         
         <activity android:label="@string/app_name"
+            android:name="com.bjorsond.android.timeline.ReflectionSpaceNewUserActivity" android:screenOrientation="portrait">
+        </activity>
+        
+        <activity android:label="@string/app_name"
             android:name="com.bjorsond.android.timeline.map.TimelineMapView" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         
