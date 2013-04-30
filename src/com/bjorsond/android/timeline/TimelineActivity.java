@@ -476,6 +476,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				DashboardActivity.addReflectionCounter();
 				//Adding points
 				DashboardActivity.addPointsCounter(Constants.ReflectionPoints);
+				//Setting date and time for ref note
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTimeInMillis(System.currentTimeMillis());
+				DashboardActivity.setLastRefDate(calendar);
 				//Canceling former notifications
 				cancelNotifications();
 				//Setting alarm for notification			
@@ -483,10 +487,6 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 14, 2);
 				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 16, 3);
 				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 18, 4);
-				//Setting date and time for ref note
-				Calendar calendar = Calendar.getInstance();
-				calendar.setTimeInMillis(System.currentTimeMillis());
-				DashboardActivity.setLastRefDate(calendar);
 				
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){
