@@ -22,7 +22,7 @@
 			android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 
 			<EditText
-			    android:id="@+id/reflectionUsername"
+			    android:id="@+id/newReflectionUsername"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -43,7 +43,7 @@
 			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 
 			<EditText
-			    android:id="@+id/reflectionPassword"
+			    android:id="@+id/newReflectionUserPassword"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:layout_weight="1"
@@ -55,18 +55,29 @@
 	</TableRow>
 
 	
-	
 	<TableRow android:id="@+id/DashTableRow03"
 		android:layout_width="fill_parent"
 		android:paddingTop="0dip" android:paddingBottom="5dip" android:layout_height="0dip" android:layout_weight="0">
 		<LinearLayout android:layout_weight="1"
 			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 
-			<Button
-			    android:id="@+id/loginRefSpaceButton"
+			<EditText
+			    android:id="@+id/newReflectionUserMail"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:text="@string/login" />
+			    android:layout_weight="1"
+			    android:ems="10"
+			    android:inputType="textEmailAddress" 
+				android:hint="@string/email"/>
+
+		</LinearLayout>
+	</TableRow>
+	
+	<TableRow android:id="@+id/DashTableRow04"
+		android:layout_width="fill_parent"
+		android:paddingTop="0dip" android:paddingBottom="5dip" android:layout_height="0dip" android:layout_weight="0">
+		<LinearLayout android:layout_weight="1"
+			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 
 			<Button
 			    android:id="@+id/newRefSpaceUserButton"

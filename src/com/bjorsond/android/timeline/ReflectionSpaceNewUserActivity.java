@@ -5,7 +5,7 @@ import android.widget.EditText;
 
 import com.swarmconnect.SwarmActivity;
 
-public class ReflectionSpaceUserActivity extends SwarmActivity{
+public class ReflectionSpaceNewUserActivity extends SwarmActivity{
 	
 	private EditText userName, password;
 	
