@@ -6,9 +6,9 @@
 
 
 	<TableRow android:id="@+id/dash_header_row"
-		android:layout_width="fill_parent" android:background="@color/Header" android:layout_weight="10" android:layout_height="0dip">
+		android:layout_width="fill_parent" android:background="@color/Header" android:layout_weight="0" android:layout_height="0dip">
 		<ImageButton android:background="@drawable/header_home_button"
-			android:id="@+id/HeaderHomeButto"
+			android:id="@+id/refSpaceCreateUserHeaderHomeButton"
 			android:focusable="false" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageButton>
 	</TableRow>
 
@@ -62,6 +62,24 @@
 			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 
 			<EditText
+			    android:id="@+id/newReflectionUserYourName"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:ems="10"
+			    android:inputType="textPersonName"
+			    android:hint="@string/Create_new_reflection_space_user_your_name_label" />
+
+		</LinearLayout>
+	</TableRow>
+	
+	<TableRow android:id="@+id/DashTableRow04"
+		android:layout_width="fill_parent"
+		android:paddingTop="0dip" android:paddingBottom="5dip" android:layout_height="0dip" android:layout_weight="0">
+		<LinearLayout android:layout_weight="1"
+			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
+
+			<EditText
 			    android:id="@+id/newReflectionUserMail"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
@@ -73,7 +91,7 @@
 		</LinearLayout>
 	</TableRow>
 	
-	<TableRow android:id="@+id/DashTableRow04"
+	<TableRow android:id="@+id/DashTableRow05"
 		android:layout_width="fill_parent"
 		android:paddingTop="0dip" android:paddingBottom="5dip" android:layout_height="0dip" android:layout_weight="0">
 		<LinearLayout android:layout_weight="1"

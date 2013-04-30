@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,6 +34,7 @@ import com.swarmconnect.SwarmActivity;
 public class ProfileActivity extends SwarmActivity{
 
 	private ImageView changePictureButton, profilePicture, levelImage;
+	private ImageButton homeButton;
 	private TextView showPointsAboveProgressBar, userNameField, numberOfAchievements;
 	private ProgressBar levelProgressBar;
 	private Bitmap Image = null;
@@ -177,5 +179,13 @@ public class ProfileActivity extends SwarmActivity{
 		
 		numberOfAchievements = (TextView) findViewById(R.id.ProfileAchievementCountNumber);
 		numberOfAchievements.setText("" + Swarm.user.points);
+		
+		homeButton = (ImageButton) findViewById(R.id.refSpaceLoginHeaderHomeButton);
+		homeButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				finish();
+			}
+		});
 	}
 }

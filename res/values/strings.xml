@@ -62,6 +62,7 @@
 	<string name="Profile_achievement_points_label">Achievement points:</string>
 	<string name="Profile_achievement_count_label">Number of achievements:</string>
 	<string name="Create_new_reflection_space_user_label">Create new user</string>
+	<string name="Create_new_reflection_space_user_your_name_label">Your name:</string>
 	
 	<string name="Refleqtion_question_one">Write a short summary of your day:</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Refleqtion_question_two">After reflecting over today\'s incidents, would you have done anything differently?</string> <!-- ADDED FOR REFLECTION NOTE -->
@@ -131,6 +132,7 @@
 	<string name="Reflection_edited_toast">Reflection edited</string>
 	<string name="Reflection_not_edited_toast">Reflection not edited</string>
 	<string name="User_created_toast">The user was created! Please log in.</string>
+	<string name="User_logged_in_toast">You are now logged into the reflection space server</string>
 	
 	<string name="First_pic_achi_toast">Congratulations! You have taken your first picture with Timeline!</string>
 	<string name="Tenth_pic_achi_toast">You have taken ten pictures with Timeline! If one picture is worth a thousand words, what\'s ten pictures worth?</string>
