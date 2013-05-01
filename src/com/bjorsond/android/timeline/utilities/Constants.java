@@ -95,6 +95,8 @@ public class Constants {
     final public static int VIDEO_BONUS_NUMBER = 4;    
     final public static int MOOD_BONUS_NUMBER = 5;    
     
+    final public static int BONUS_MULTIPLIER = 3;
+    
 	
 	final public static int leaderboardID = 8629;
 	
