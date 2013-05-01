@@ -119,9 +119,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private static int pointsCounter = 0;
 	// VARIABLE FOR CONSECUTIVE REFLECTION NOTE BONUS
 	private static Calendar lastReflectionDate = null;
-	// REFLECTION SPACE 
-	private static String reflectionSpaceUserName;
-	private static String reflectionSpacePassword;
 	// CONSEQUTIVE REF NOTE BONUS
 	private static int consRefNotes = 0;
 	// int[] TO SAVE BONUS POINTS "SCHEDULE"
@@ -465,22 +462,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	public static Calendar getLastRefDate() {
 		return lastReflectionDate;
 	}
-	//  REFLECTION SPACE USERNAME
-	public static void setReflectionSpaceUserName(String name) {
-		reflectionSpaceUserName = name;
-	}
-	
-	public static String getReflectionSpaceUserName() {
-		return reflectionSpaceUserName;
-	}
-	//  REFLECTION SPACE PASSWORD
-	public static void setReflectionSpacePassword(String pw) {
-		reflectionSpacePassword = pw;
-	}
-	
-	public static String getReflectionSpacePassword() {
-		return reflectionSpacePassword;
-	}
 	/*
 	* COUNTER GETTERS AND SETTERS  --  END
 	*/
@@ -773,8 +754,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
          Calendar c = new GregorianCalendar();
          c.setTimeInMillis(settings.getLong("refDate", 0));
          setLastRefDate(c);
-         setReflectionSpaceUserName(settings.getString("refSpaceUserName", ""));
-         setReflectionSpacePassword(settings.getString("refSpacePassword", ""));
          
          bonusPoints[0] = settings.getInt("spot0", 0);
          bonusPoints[1] = settings.getInt("spot1", 0);
@@ -833,8 +812,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	    editor.putInt("consRef", consRefNotes);
 
 	    editor.putLong("refDate", lastReflectionDate.getTimeInMillis());
-	    editor.putString("refSpaceUserName", reflectionSpaceUserName);
-	    editor.putString("refSpacePassword", reflectionSpacePassword);
 	    
 	    //bonus points for adding "more seldom" used input
 	    editor.putInt("spot0", bonusPoints[0]);
