@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceUserPreferences;
 import com.swarmconnect.SwarmActivity;
 
 public class ReflectionSpaceUserActivity extends SwarmActivity{
@@ -36,11 +37,10 @@ public class ReflectionSpaceUserActivity extends SwarmActivity{
 	};
 	private OnClickListener loginUserListener = new OnClickListener() {
 		public void onClick(View v) {
-			Log.i("USER+PASS FROM TEXTFIELD", userName.getText().toString()+"+"+password.getText().toString());
-			DashboardActivity.setReflectionSpaceUserName(userName.getText().toString());
-			DashboardActivity.setReflectionSpacePassword(password.getText().toString());
+			ReflectionSpaceUserPreferences userPrefs = ReflectionSpaceUserPreferences.load(getApplicationContext());
 			
-			Log.i("USER+PW FROM GETTERS", DashboardActivity.getReflectionSpaceUserName()+"+"+DashboardActivity.getReflectionSpacePassword());
+			userPrefs.putString(ReflectionSpaceUserPreferences.PREF_USER_NAME, userName.getText().toString());
+			userPrefs.putString(ReflectionSpaceUserPreferences.PREF_PASSWORD, password.getText().toString());
 			
 			Toast.makeText(ReflectionSpaceUserActivity.this, R.string.User_logged_in_toast, Toast.LENGTH_SHORT).show();
 			

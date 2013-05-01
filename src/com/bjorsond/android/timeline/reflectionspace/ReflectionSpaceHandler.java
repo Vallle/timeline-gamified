@@ -1,63 +1,39 @@
 package com.bjorsond.android.timeline.reflectionspace;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.datatype.Duration;
-
 import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.NameValuePair;
-import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.ResponseHandler;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.jivesoftware.smack.SmackConfiguration;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import com.bjorsond.android.timeline.DashboardActivity;
 import com.swarmconnect.SwarmActivity;
 
 import android.content.Context;
 import android.util.Log;
 import de.imc.mirror.sdk.DataObject;
-import de.imc.mirror.sdk.DataObjectListener;
 import de.imc.mirror.sdk.OfflineModeHandler.Mode;
-import de.imc.mirror.sdk.Space.PersistenceType;
 import de.imc.mirror.sdk.android.ConnectionConfiguration;
 import de.imc.mirror.sdk.android.ConnectionConfigurationBuilder;
 import de.imc.mirror.sdk.android.ConnectionHandler;
 import de.imc.mirror.sdk.android.DataHandler;
 import de.imc.mirror.sdk.android.DataObjectBuilder;
 import de.imc.mirror.sdk.android.Space;
-import de.imc.mirror.sdk.android.SpaceConfiguration;
 import de.imc.mirror.sdk.android.SpaceHandler;
-import de.imc.mirror.sdk.android.SpaceMember;
 import de.imc.mirror.sdk.exceptions.ConnectionStatusException;
 import de.imc.mirror.sdk.exceptions.SpaceManagementException;
 import de.imc.mirror.sdk.exceptions.UnknownEntityException;
 
 public class ReflectionSpaceHandler extends SwarmActivity{
 
-//	String userName = "admin";
-//	String userPassword = "mirror";
-	static String userName = "timelinetester";
-	static String userPassword = "timetest";
+//	static String userName = "timelinetester";
+//	static String userPassword = "timetest";
 	static String domain = "mirror-server-ntnu";
 	static String appID = "TimelineApplication";
 	static String serverIP = "129.241.103.122";
@@ -69,8 +45,9 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		builder.setHost(serverIP);
 		builder.setPort(port);
 		ConnectionConfiguration connectionConfig = builder.build();
-		Log.i("USER+PW", DashboardActivity.getReflectionSpaceUserName()+"+"+DashboardActivity.getReflectionSpacePassword());
-		ConnectionHandler connectionHandler = new ConnectionHandler(DashboardActivity.getReflectionSpaceUserName(), DashboardActivity.getReflectionSpacePassword(), connectionConfig);
+
+		ReflectionSpaceUserPreferences loginInfo = ReflectionSpaceUserPreferences.load(context);
+		ConnectionHandler connectionHandler = new ConnectionHandler(loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), connectionConfig);
 		
 		try{
 			connectionHandler.connect();
