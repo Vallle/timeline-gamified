@@ -88,12 +88,12 @@ public class Constants {
      */
     //LEVELS AND SCALING
     final public static int[] LEVEL = new int[] {0, 100, 150, 225, 340, 500, 760};
-//    final public static int LEVEL_1 = 100;
-//    final public static int LEVEL_2 = 150;
-//    final public static int LEVEL_3 = 225;
-//    final public static int LEVEL_4 = 340;
-//    final public static int LEVEL_5 = 500;
-//    final public static int LEVEL_6 = 760;
+
+    final public static int NOTE_BONUS_NUMBER = 1;    
+    final public static int PICTURE_BONUS_NUMBER = 2;    
+    final public static int AUDIO_BONUS_NUMBER = 3;    
+    final public static int VIDEO_BONUS_NUMBER = 4;    
+    final public static int MOOD_BONUS_NUMBER = 5;    
     
 	
 	final public static int leaderboardID = 8629;
