@@ -2,6 +2,7 @@ package com.bjorsond.android.timeline;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -35,8 +36,11 @@ public class ReflectionSpaceUserActivity extends SwarmActivity{
 	};
 	private OnClickListener loginUserListener = new OnClickListener() {
 		public void onClick(View v) {
+			Log.i("USER+PASS FROM TEXTFIELD", userName.getText().toString()+"+"+password.getText().toString());
 			DashboardActivity.setReflectionSpaceUserName(userName.getText().toString());
 			DashboardActivity.setReflectionSpacePassword(password.getText().toString());
+			
+			Log.i("USER+PW FROM GETTERS", DashboardActivity.getReflectionSpaceUserName()+"+"+DashboardActivity.getReflectionSpacePassword());
 			
 			Toast.makeText(ReflectionSpaceUserActivity.this, R.string.User_logged_in_toast, Toast.LENGTH_SHORT).show();
 			

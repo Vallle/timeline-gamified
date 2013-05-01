@@ -26,6 +26,7 @@ import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.jivesoftware.smack.SmackConfiguration;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -63,16 +64,18 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	static int port = 5222;
 	
 	public static void insertToReflectionSpace(Context context){
+		SmackConfiguration.setPacketReplyTimeout(10000);
 		ConnectionConfigurationBuilder builder = new ConnectionConfigurationBuilder(domain, appID);
 		builder.setHost(serverIP);
 		builder.setPort(port);
 		ConnectionConfiguration connectionConfig = builder.build();
+		Log.i("USER+PW", DashboardActivity.getReflectionSpaceUserName()+"+"+DashboardActivity.getReflectionSpacePassword());
 		ConnectionHandler connectionHandler = new ConnectionHandler(DashboardActivity.getReflectionSpaceUserName(), DashboardActivity.getReflectionSpacePassword(), connectionConfig);
 		
 		try{
 			connectionHandler.connect();
 		} catch(ConnectionStatusException e){
-			// add proper exception handling
+			Log.w("COULDN'T CONNECT", e);
 		}
 		
 		
