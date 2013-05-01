@@ -349,11 +349,15 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			  if (resultCode == RESULT_OK) {
 				   Log.i(this.getClass().getSimpleName(), "********* PICTURE CREATED **************");
 				   
-				   Toast.makeText(this, getString(R.string.Pic_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.PicturePoints, Toast.LENGTH_SHORT).show();
 				   //Adding to picture count
 				   DashboardActivity.addPictureCounter();
 				   //Adding points for picture
-				   DashboardActivity.addPointsCounter(Constants.PicturePoints);
+				   int points = (
+						   (DashboardActivity.getAndSetBonusPoints(Constants.PICTURE_BONUS_NUMBER)*Constants.BONUS_MULTIPLIER)
+						   + Constants.PicturePoints
+								   );
+				   DashboardActivity.addPointsCounter(points);
+				   Toast.makeText(this, getString(R.string.Pic_created_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   if (DashboardActivity.getPictureCounter() == 1){
 					   SwarmAchievement.unlock(Constants.PictureAchievement);
@@ -377,11 +381,15 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			   if (resultCode == RESULT_OK) {
 				Log.i(this.getClass().getSimpleName(), "********* VIDEO RECORDING CREATED **************");
 				   
-				Toast.makeText(this, getString(R.string.Video_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.VideoPoints, Toast.LENGTH_SHORT).show();
 				//Adding to video count
 				DashboardActivity.addVideoCounter();
 				//Adding points
-				DashboardActivity.addPointsCounter(Constants.VideoPoints);
+				int points = (
+						   (DashboardActivity.getAndSetBonusPoints(Constants.VIDEO_BONUS_NUMBER)*Constants.BONUS_MULTIPLIER)
+						   + Constants.VideoPoints
+								   );
+				DashboardActivity.addPointsCounter(points);
+				Toast.makeText(this, getString(R.string.Video_created_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 				//Adding achievement
 				if (DashboardActivity.getVideoCounter() == 1){
 					SwarmAchievement.unlock(Constants.VideoAchievement);
@@ -407,11 +415,15 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			   if (resultCode == RESULT_OK) {
 				   Log.i(this.getClass().getSimpleName(), "********* AUDIO RECORDING CREATED **************");
 				   
-				   Toast.makeText(this, getString(R.string.Audio_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.AudioPoints, Toast.LENGTH_SHORT).show();
 				   //Adding to audio count
 				   DashboardActivity.addAudioCounter();
 				   //Adding points
-				   DashboardActivity.addPointsCounter(Constants.AudioPoints);
+				   int points = (
+						   (DashboardActivity.getAndSetBonusPoints(Constants.AUDIO_BONUS_NUMBER)*Constants.BONUS_MULTIPLIER)
+						   + Constants.AudioPoints
+								   );
+				   DashboardActivity.addPointsCounter(points);
+				   Toast.makeText(this, getString(R.string.Audio_created_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   if (DashboardActivity.getAudioCounter() == 1){
 					   SwarmAchievement.unlock(Constants.AudioAchievement);
@@ -441,11 +453,15 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   Log.i(this.getClass().getSimpleName(), "Text: "+data.getExtras().getString(Intent.EXTRA_TEXT));
 				   Log.i(this.getClass().getSimpleName(), "*************************************");
 				   
-				   Toast.makeText(this, getString(R.string.Note_created_toast) + " " + getString(R.string.Points_rewarded_toast) + Constants.NotePoints, Toast.LENGTH_SHORT).show();
 				   //Adding to note count
 				   DashboardActivity.addNoteCounter();
 				   //Adding points
-				   DashboardActivity.addPointsCounter(Constants.NotePoints);
+				   int points = (
+						   (DashboardActivity.getAndSetBonusPoints(Constants.NOTE_BONUS_NUMBER)*Constants.BONUS_MULTIPLIER)
+						   + Constants.NotePoints
+								   );
+				   DashboardActivity.addPointsCounter(points);
+				   Toast.makeText(this, getString(R.string.Note_created_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   if (DashboardActivity.getNoteCounter() == 1){
 					   SwarmAchievement.unlock(Constants.NoteAchievement);
