@@ -91,10 +91,11 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 				myPrivateSpace = spaceHandler.createDefaultSpace();
 			} catch (SpaceManagementException e){
 				//failed to create space
-				//add proper exception handling
+				Log.wtf("Failed to create space", e);
 			} catch (ConnectionStatusException e){
 				//cannot create a space when offline
-				//add proper exception handling
+				Log.e("Space offline", "Cannot create a space when offline");
+				Log.w("Space offline", e);
 			}
 		}
 		System.out.print(myPrivateSpace.getMembers().iterator().next().getJID());

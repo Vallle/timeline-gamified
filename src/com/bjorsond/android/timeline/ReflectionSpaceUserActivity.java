@@ -15,7 +15,7 @@ public class ReflectionSpaceUserActivity extends SwarmActivity{
 	
 	private EditText userName, password;
 	private Button login, createNew;
-	private Intent createUserIntent;
+	private Intent createUserIntent, dashboardIntent;
 	private ImageButton homeButton;
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class ReflectionSpaceUserActivity extends SwarmActivity{
 		setContentView(R.layout.reflectionspacelogin);
 		
 		createUserIntent = new Intent(this, ReflectionSpaceNewUserActivity.class);
+		dashboardIntent = new Intent(this, DashboardActivity.class);
 		setupViews();
 	}
 	
@@ -39,7 +40,8 @@ public class ReflectionSpaceUserActivity extends SwarmActivity{
 			
 			Toast.makeText(ReflectionSpaceUserActivity.this, R.string.User_logged_in_toast, Toast.LENGTH_SHORT).show();
 			
-			finish();
+			dashboardIntent.setAction(Intent.ACTION_MAIN);
+			startActivity(dashboardIntent);
 		}
 	};
 	
