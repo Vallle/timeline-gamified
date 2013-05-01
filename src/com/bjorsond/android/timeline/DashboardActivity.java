@@ -124,6 +124,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private static String reflectionSpacePassword;
 	// CONSEQUTIVE REF NOTE BONUS
 	private static int consRefNotes = 0;
+	// int[] TO SAVE BONUS POINTS "SCHEDULE"
+	private static int[] bonusPoints = new int[] {0, 0, 0, 0, 0};
 	
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -349,7 +351,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	* METHOD FOR LEVEL CALCULATION --- END
 	*/
 	
-	
+	//TODO GETTERS AND SETTERS
 	/*
 	* COUNTER GETTERS, SETTERS AND ADDERS -- START
 	*/
@@ -483,6 +485,48 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	* COUNTER GETTERS AND SETTERS  --  END
 	*/
 	
+	
+	/**
+	 * method that gets, sets and returns bonus points for 
+	 * notes, pictures, audio, video and mood 
+	 */
+	public static int getAndSetBonusPoints (int type){
+		int temp = -1;
+		for (int i = 0; i < bonusPoints.length; i++) {
+			if (bonusPoints[i] == type) temp = i;
+		}
+		if (temp == -1) {
+			simplePushRight(type);
+			return 0;
+		}
+		else if(temp != 0 && temp != -1) {
+			return pushRight(type);
+		}
+		
+		else return 0;
+	}
+		
+	private static int pushRight(int type){
+		int temp = -1; 
+		int spot = -1;
+		for (int i = 0; i < bonusPoints.length; i++) {
+			if (bonusPoints[i] == type) temp = i;
+		}
+		
+		for (int i = spot-1; i >= 0; i--) {
+			if (bonusPoints[i] != 0) bonusPoints[i+1] = bonusPoints[i];
+		}
+		bonusPoints[0] = type;
+		
+		return temp;
+	}
+	
+	private static void simplePushRight(int type){
+		for (int i = 3; i >= 0; i--) {
+			if (bonusPoints[i] != 0) bonusPoints[i+1] = bonusPoints[i];
+		}
+		bonusPoints[0] = type;
+	}
 	
 	/**
 	 * 
@@ -730,11 +774,17 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
          c.setTimeInMillis(settings.getLong("refDate", 0));
          setLastRefDate(c);
          setReflectionSpaceUserName(settings.getString("refSpaceUserName", ""));
-         setReflectionSpacePassword(settings.getString("refSpacePasword", ""));
+         setReflectionSpacePassword(settings.getString("refSpacePassword", ""));
+         
+         bonusPoints[0] = settings.getInt("spot0", 0);
+         bonusPoints[1] = settings.getInt("spot1", 0);
+         bonusPoints[2] = settings.getInt("spot2", 0);
+         bonusPoints[3] = settings.getInt("spot3", 0);
+         bonusPoints[4] = settings.getInt("spot4", 0);
+         
      }
       
-      
-      
+          
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -785,6 +835,13 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	    editor.putLong("refDate", lastReflectionDate.getTimeInMillis());
 	    editor.putString("refSpaceUserName", reflectionSpaceUserName);
 	    editor.putString("refSpacePassword", reflectionSpacePassword);
+	    
+	    //bonus points for adding "more seldom" used input
+	    editor.putInt("spot0", bonusPoints[0]);
+	    editor.putInt("spot1", bonusPoints[1]);
+	    editor.putInt("spot2", bonusPoints[2]);
+	    editor.putInt("spot3", bonusPoints[3]);
+	    editor.putInt("spot4", bonusPoints[4]);
 	    // Commit the edits!
 	    editor.commit();
 	}
