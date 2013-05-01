@@ -1080,9 +1080,13 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		contentAdder.addEventToEventContentProvider(moodEvent);
 		Thread sendMoodThread = new Thread(SendMoodEventRunnable, "shareThread");
 		sendMoodThread.start();
-		Toast.makeText(this, R.string.Mood_added_toast, Toast.LENGTH_SHORT).show();
 		//Adding points
-		DashboardActivity.addPointsCounter(Constants.MoodPoints);
+		int points = (
+			   (DashboardActivity.getAndSetBonusPoints(Constants.MOOD_BONUS_NUMBER)*Constants.BONUS_MULTIPLIER)
+			   + Constants.MoodPoints
+					   );
+		DashboardActivity.addPointsCounter(points);
+		Toast.makeText(this, getString(R.string.Mood_added_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 	}
 	
 	/**
