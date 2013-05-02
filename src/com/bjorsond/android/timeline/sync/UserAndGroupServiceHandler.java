@@ -52,8 +52,8 @@ public class UserAndGroupServiceHandler {
 	
 	private void getUsersAndGroupsAddToDatabase() {
 		uGManager.truncateUserGroupDatabase();
-		getUsersAndAddToDatabase();
-    	getGroupsAndAddToDatabase();
+//		getUsersAndAddToDatabase();
+//    	getGroupsAndAddToDatabase();
     	activity.runOnUiThread(new Runnable() {
 			public void run() {
 				progressDialog.dismiss();
