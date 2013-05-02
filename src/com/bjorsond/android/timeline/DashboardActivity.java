@@ -187,11 +187,11 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		}
 		
 		//Prepares the sync thread
- 		syncThread = new Runnable() {
-			public void run() {
-				syncTimelines();
-			}
-		};
+// 		syncThread = new Runnable() {
+//			public void run() {
+//				syncTimelines();
+//			}
+//		};
 	}
 
 	//TODO Here is checkReflectionDate()
@@ -605,33 +605,33 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	 * TODO: This should be refactored into a new class, and be optimized to help poor run time.
 	 * 
 	 */
-	private void syncTimelines() {
-		UserAndGroupServiceHandler ugHandler =  new UserAndGroupServiceHandler(this, this);
-		ugHandler.downloadUsersAndGroups();
-		ArrayList<Experience> sharedExperiences = contentLoader.LoadAllSharedExperiencesFromDatabase();
-		for (Experience experience : sharedExperiences) {
-			new DatabaseHelper(this, experience.getTitle()+".db");
-			DatabaseHelper.getCurrentTimelineDatabase().beginTransaction();
-			experience.setEvents(contentLoader.LoadAllEventsFromDatabase());
-			DatabaseHelper.getCurrentTimelineDatabase().setTransactionSuccessful();
-			DatabaseHelper.getCurrentTimelineDatabase().endTransaction();
-			DatabaseHelper.getCurrentTimelineDatabase().close();
-		}
-		
-		Experiences experiences = new Experiences(sharedExperiences);
-		GoogleAppEngineHandler.persistTimelineObject(experiences);
-		
-		Experiences exps = GoogleAppEngineHandler.getAllSharedExperiences(user);
-		if(exps!=null){
-			for (Experience e : exps.getExperiences()) {
-				e.setSharingGroupObject(uGManager.getGroupFromDatabase(e.getSharingGroup()));
-				contentAdder.addExperienceToTimelineContentProvider(e);
-				addNewTimelineToTimelineDatabase(e);
-
-			}
-		}
-		runOnUiThread(confirmSync);
-	}
+//	private void syncTimelines() {
+//		UserAndGroupServiceHandler ugHandler =  new UserAndGroupServiceHandler(this, this);
+//		ugHandler.downloadUsersAndGroups();
+//		ArrayList<Experience> sharedExperiences = contentLoader.LoadAllSharedExperiencesFromDatabase();
+//		for (Experience experience : sharedExperiences) {
+//			new DatabaseHelper(this, experience.getTitle()+".db");
+//			DatabaseHelper.getCurrentTimelineDatabase().beginTransaction();
+//			experience.setEvents(contentLoader.LoadAllEventsFromDatabase());
+//			DatabaseHelper.getCurrentTimelineDatabase().setTransactionSuccessful();
+//			DatabaseHelper.getCurrentTimelineDatabase().endTransaction();
+//			DatabaseHelper.getCurrentTimelineDatabase().close();
+//		}
+//		
+//		Experiences experiences = new Experiences(sharedExperiences);
+//		GoogleAppEngineHandler.persistTimelineObject(experiences);
+//		
+//		Experiences exps = GoogleAppEngineHandler.getAllSharedExperiences(user);
+//		if(exps!=null){
+//			for (Experience e : exps.getExperiences()) {
+//				e.setSharingGroupObject(uGManager.getGroupFromDatabase(e.getSharingGroup()));
+//				contentAdder.addExperienceToTimelineContentProvider(e);
+//				addNewTimelineToTimelineDatabase(e);
+//
+//			}
+//		}
+//		runOnUiThread(confirmSync);
+//	}
 	
 	/**
 	 * Stores the time of the last sync in a local file.
