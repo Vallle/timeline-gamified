@@ -130,8 +130,8 @@
 				<ImageButton android:scaleType="centerInside"
 					android:layout_width="fill_parent" 
 					android:layout_height="fill_parent"
-					android:id="@+id/blue_button" 
-					android:background="@drawable/blue_button">
+					android:id="@+id/spaces_login_button" 
+					android:background="@drawable/spaces_login">
 				</ImageButton>
 			</LinearLayout>
 

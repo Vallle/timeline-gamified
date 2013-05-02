@@ -88,7 +88,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private ImageButton tagsButton;
 	private ImageButton myGroupsButton;
 	private ImageButton syncronizeButton;
-	private ImageButton blueButton;
+	private ImageButton spacesButton;
 	private ImageButton achievementsButton;
 	private ImageButton friendsButton;
 	private ImageButton messagesButton;
@@ -98,7 +98,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private Intent timelineIntent;
 	private Intent myGroupsIntent;
 	private Intent tagsIntent;
-	private Intent blueIntent;
+	private Intent spacesIntent;
 	private Intent swarmIntent, profileIntent;
 	private ContentAdder contentAdder;
 	private ContentLoader contentLoader;
@@ -962,9 +962,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		}
 	};
 	
-	private OnClickListener blueListener = new OnClickListener() {
+	private OnClickListener spacesListener = new OnClickListener() {
 		public void onClick(View v) {
-			startActivity(blueIntent);
+			startActivity(spacesIntent);
 		}
 	};
 	
@@ -979,7 +979,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		timelineIntent.setAction(Constants.INTENT_ACTION_NEW_TIMELINE); //Default Intent action for TimelineActivity is to create/open a timeline.
 		tagsIntent = new Intent(this, MyTagsActivity.class);
 		profileIntent = new Intent(this, ProfileActivity.class);
-		blueIntent = new Intent(this, ReflectionSpaceUserActivity.class);
+		spacesIntent = new Intent(this, ReflectionSpaceUserActivity.class);
 		
 		swarmIntent = new Intent(this, MySwarmActivity.class);
 	}
@@ -1034,8 +1034,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		achievementsButton.setOnClickListener(achievementsListener);
 		leaderboardButton = (ImageButton)findViewById(R.id.leaderboard);
 		leaderboardButton.setOnClickListener(leaderboardListener);
-		blueButton = (ImageButton)findViewById(R.id.blue_button);
-		blueButton.setOnClickListener(blueListener);
+		spacesButton = (ImageButton)findViewById(R.id.spaces_login_button);
+		spacesButton.setOnClickListener(spacesListener);
 //		lastSyncedTextView = (TextView)findViewById(R.id.DashLastSyncedTextView);
 //		Commented out due to test in Italy
 //		setLastSyncedTextView();	

@@ -119,15 +119,8 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		
 		publishElementToSpace(dataObject, reflectionSpace, dataHandler, context);
 		
-		List<DataObject> allObjectsFromSpace = null;
-		try {
-			allObjectsFromSpace = dataHandler.retrieveDataObjects(testSpaceID);
-		} catch (UnknownEntityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-//		List<DataObject> allObjectsFromSpace = getAllObjectsFromSpace(testSpaceID, dataHandler);
-		System.out.println(allObjectsFromSpace.iterator().next().getCDMData().toString());
+		List<DataObject> allObjectsFromSpace = getAllObjectsFromSpace(reflectionSpace.getId(), dataHandler);
+		Log.i("SIZE OF LIST WITH OBJECTS FROM SPACE",allObjectsFromSpace.iterator().next()+"");
 	}
 	
 	
@@ -142,8 +135,8 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	public static void publishElementToSpace(DataObject dataObject, Space space, DataHandler dataHandler, Context context){
 		try{
 			dataHandler.publishDataObject(dataObject, space.getId());
-			Log.i("Object published", "Object successfully published on space "+space.getName());
-			Toast.makeText(context, "Object successfully published on space "+space.getName(), Toast.LENGTH_SHORT).show();
+			Log.i("Object published", "Object published on space "+space.getName());
+			Toast.makeText(context, "Object published on space "+space.getName(), Toast.LENGTH_SHORT).show();
 		} catch(UnknownEntityException e){
 			Log.e("Space does not exist or is not acessible", e.getMessage());
 		}
@@ -158,13 +151,14 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	 * @return
 	 */
 	public static List<DataObject> getAllObjectsFromSpace(String spaceID, DataHandler dataHandler){
+		List<DataObject> allObjectsFromSpace = null;
 		try {
-			return dataHandler.retrieveDataObjects(spaceID);
+			allObjectsFromSpace = dataHandler.retrieveDataObjects(testSpaceID);
 		} catch (UnknownEntityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			return null;
 		}
+		return allObjectsFromSpace;
 	}
 	
 	

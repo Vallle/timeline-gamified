@@ -105,7 +105,7 @@ public class ReflectionActivity extends SwarmActivity {
 		
 		final ActionItem reflectionSpace = new ActionItem();
 		
-		reflectionSpace.setIcon(getResources().getDrawable(R.drawable.share_to_other));
+		reflectionSpace.setIcon(getResources().getDrawable(R.drawable.share_to_spaces));
 		reflectionSpace.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Log.i("BUTTON PRESSED", "");
