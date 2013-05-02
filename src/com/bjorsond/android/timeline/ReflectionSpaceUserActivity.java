@@ -39,8 +39,12 @@ public class ReflectionSpaceUserActivity extends SwarmActivity{
 		public void onClick(View v) {
 			ReflectionSpaceUserPreferences userPrefs = ReflectionSpaceUserPreferences.load(getApplicationContext());
 			
+			Log.i("GET USER+PW BEFORE SET", userPrefs.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null)+"+"+userPrefs.getString(ReflectionSpaceUserPreferences.PREF_PASSWORD, null));
+			
 			userPrefs.putString(ReflectionSpaceUserPreferences.PREF_USER_NAME, userName.getText().toString());
 			userPrefs.putString(ReflectionSpaceUserPreferences.PREF_PASSWORD, password.getText().toString());
+			
+			Log.i("GET USER+PW", userPrefs.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null)+"+"+userPrefs.getString(ReflectionSpaceUserPreferences.PREF_PASSWORD, null));
 			
 			Toast.makeText(ReflectionSpaceUserActivity.this, R.string.User_logged_in_toast, Toast.LENGTH_SHORT).show();
 			

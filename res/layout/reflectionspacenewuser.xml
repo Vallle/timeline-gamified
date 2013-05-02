@@ -12,7 +12,24 @@
 			android:focusable="false" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageButton>
 	</TableRow>
 
+	<TableRow android:id="@+id/DashTableRow00"
+		android:layout_width="fill_parent"
+		android:paddingTop="1dp" android:paddingBottom="0dp" android:layout_height="0dip" android:layout_weight="0">
+		<LinearLayout android:paddingTop="0dp"
+			android:layout_weight="1" android:paddingBottom="0dp" android:layout_width="fill_parent"
+			android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 
+			<TextView
+			    android:id="@+id/createUserSpacesTextView"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:text="@string/Create_new_reflection_space_user_text_label" />
+
+		</LinearLayout>
+
+
+	</TableRow>
 
 	<TableRow android:id="@+id/DashTableRow01"
 		android:layout_width="fill_parent"
