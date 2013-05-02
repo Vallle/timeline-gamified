@@ -63,6 +63,8 @@
 	<string name="Profile_achievement_count_label">Number of achievements:</string>
 	<string name="Create_new_reflection_space_user_label">Create new user</string>
 	<string name="Create_new_reflection_space_user_your_name_label">Your name:</string>
+	<string name="Create_new_reflection_space_user_text_label">Create new user on the reflection space</string>
+	<string name="Login_reflection_space_user_text_label">Login to the reflection space</string>
 	
 	<string name="Refleqtion_question_one">Write a short summary of your day:</string> <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Refleqtion_question_two">After reflecting over today\'s incidents, would you have done anything differently?</string> <!-- ADDED FOR REFLECTION NOTE -->
