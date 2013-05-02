@@ -142,7 +142,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		//Initializes the content managers
 		setupHelpers();
 		
-		uGManager.addUserToUserDatabase(user);
+		//uGManager.addUserToUserDatabase(user);
 		
 		setupIntents();
 
