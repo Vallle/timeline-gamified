@@ -13,6 +13,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.jivesoftware.smack.SmackAndroid;
 import org.jivesoftware.smack.SmackConfiguration;
+import org.jivesoftware.smack.XMPPConnection;
 
 import com.bjorsond.android.timeline.R;
 import com.swarmconnect.SwarmActivity;
@@ -49,6 +50,8 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	static String testSpaceID = "team#67";
 	
 	public static void insertToReflectionSpace(Context context, String content){
+		System.setProperty("smack.debugEnabled", "true");
+		XMPPConnection.DEBUG_ENABLED = true;
 		SmackConfiguration.setPacketReplyTimeout(10000);
 		ConnectionConfigurationBuilder builder = new ConnectionConfigurationBuilder(domain, appID);
 		builder.setHost(serverIP);
@@ -56,36 +59,27 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		ConnectionConfiguration connectionConfig = builder.build();
 
 		ReflectionSpaceUserPreferences loginInfo = ReflectionSpaceUserPreferences.load(context);
+		String userName = loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null);
+		String password = loginInfo.getString(ReflectionSpaceUserPreferences.PREF_PASSWORD, null);
+		
 		Log.i("GET USER+PW", loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null)+
 				"+"+loginInfo.getString(ReflectionSpaceUserPreferences.PREF_PASSWORD, null));
+//		ConnectionHandler connectionHandler = 
+//			new ConnectionHandler(loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), 
+//								loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), connectionConfig);
 		ConnectionHandler connectionHandler = 
-			new ConnectionHandler(loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), 
-								loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), connectionConfig);
+				new ConnectionHandler(userName, password, connectionConfig);
 		
 		try{
 			connectionHandler.connect();
 		} catch(ConnectionStatusException e){
-			Log.w("COULDN'T CONNECT", e);
+			Log.w("COULD NOT CONNECT", e);
 		}
 		
 		
 		SpaceHandler spaceHandler = new SpaceHandler(context, connectionHandler, "offlineDB");
 		spaceHandler.setMode(Mode.ONLINE);
 		
-		
-		//Request the private space of the current user. If the space doesn't exist, it is created.
-		Space myPrivateSpace = spaceHandler.getDefaultSpace();
-		if(myPrivateSpace == null){
-			try{
-				myPrivateSpace = spaceHandler.createDefaultSpace();
-			} catch (SpaceManagementException e){
-				Log.wtf("Failed to create space", e);
-			} catch (ConnectionStatusException e){
-				Log.e("Space offline", "Cannot create a space when offline");
-				Log.w("Space offline", e);
-			}
-		}
-		Log.i("Members of user's private space", myPrivateSpace.getMembers().iterator().next().getJID());
 		
 		String userJID = loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null)
 										+ "@" + connectionHandler.getConfiguration().getDomain();
@@ -98,29 +92,30 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		DataHandler dataHandler = new DataHandler(connectionHandler, spaceHandler);
 		dataHandler.setMode(Mode.ONLINE);
 		
-		try {
-			dataHandler.registerSpace(reflectionSpace.getId());
-		} catch (UnknownEntityException e) {
-			e.printStackTrace();
-		}
-		DataObjectListener myListener = new DataObjectListener() {
-			public void handleDataObject(DataObject dataObject, String spaceId) {
-				String objectId = dataObject.getId();
-				Log.i("Received object ", objectId + " from space " + spaceId);
-			}
-		};
-		dataHandler.addDataObjectListener(myListener);
+		
+//		try {
+//			dataHandler.registerSpace(testSpaceID);
+//		} catch (UnknownEntityException e) {
+//			e.printStackTrace();
+//		}
+//		DataObjectListener myListener = new DataObjectListener() {
+//			public void handleDataObject(DataObject dataObject, String spaceId) {
+//				String objectId = dataObject.getId();
+//				Log.i("Received object ", objectId + " from space " + spaceId);
+//			}
+//		};
+//		dataHandler.addDataObjectListener(myListener);
 		
 		
 		//Create the data object using the object builder
-		DataObjectBuilder dataObjectBuilder = new DataObjectBuilder("foo", "mirror:application:"+appID+":foo");
+		DataObjectBuilder dataObjectBuilder = new DataObjectBuilder("foo", "mirror:application:"+appID+":fuu");
 		dataObjectBuilder.addElement("bar", content, false);
 		DataObject dataObject = dataObjectBuilder.build();
-		
+
 		publishElementToSpace(dataObject, reflectionSpace, dataHandler, context);
 		
 		List<DataObject> allObjectsFromSpace = getAllObjectsFromSpace(reflectionSpace.getId(), dataHandler);
-		Log.i("SIZE OF LIST WITH OBJECTS FROM SPACE",allObjectsFromSpace.iterator().next()+"");
+		Log.i("SIZE OF LIST WITH OBJECTS FROM SPACE",allObjectsFromSpace.size()+"");
 	}
 	
 	
@@ -280,5 +275,20 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 //		Log.i("MEMBER OF SPACES",space.getName());
 //	}
 	
+
+
+	//Request the private space of the current user. If the space doesn't exist, it is created.
+//	Space myPrivateSpace = spaceHandler.getDefaultSpace();
+//	if(myPrivateSpace == null){
+//		try{
+//			myPrivateSpace = spaceHandler.createDefaultSpace();
+//		} catch (SpaceManagementException e){
+//			Log.wtf("Failed to create space", e);
+//		} catch (ConnectionStatusException e){
+//			Log.e("Space offline", "Cannot create a space when offline");
+//			Log.w("Space offline", e);
+//		}
+//	}
+//	Log.i("Members of user's private space", myPrivateSpace.getMembers().iterator().next().getJID());
 	
 }
