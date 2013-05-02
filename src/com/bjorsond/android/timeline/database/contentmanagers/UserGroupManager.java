@@ -39,18 +39,19 @@ public class UserGroupManager {
 	 * @param user The user to be added
 	 */
 	public void addUserToUserDatabase(User user) {
-		ContentValues values = new ContentValues();
-		
-		values.put(UserColumns._ID, user.getId());
-		values.put(UserColumns.USER_NAME, user.getUserName());
-		
-		if (!userExists(user)) {
-			context.getContentResolver().insert(UserColumns.CONTENT_URI, values);
-			Log.i("USER GROUP MANAGER", "User: "+ user.getUserName()+ " added to the database");
-		}
-		else {
-			Log.i("USER GROUP MANAGER", "User: "+ user.getUserName()+ " already exists");
-		}
+		//commented out due to no use of users 
+//		ContentValues values = new ContentValues();
+//		
+//		values.put(UserColumns._ID, user.getId());
+//		values.put(UserColumns.USER_NAME, user.getUserName());
+//		
+//		if (!userExists(user)) {
+//			context.getContentResolver().insert(UserColumns.CONTENT_URI, values);
+//			Log.i("USER GROUP MANAGER", "User: "+ user.getUserName()+ " added to the database");
+//		}
+//		else {
+//			Log.i("USER GROUP MANAGER", "User: "+ user.getUserName()+ " already exists");
+//		}
 	}
 	
 	/**

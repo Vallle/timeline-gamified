@@ -560,9 +560,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		contentAdder.addExperienceToTimelineContentProvider(experience);
 		TimelineBrowserDialog dialog = new TimelineBrowserDialog(this,
 				timelineIntent, 1); //TODO timeline achi : 1 was shared from method below
-		if (dialog.getNumberOfTimelinesSaved() == 0) {
-			SwarmAchievement.unlock(10983);
-		}
 	}
 
 
@@ -576,6 +573,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 
 		if (dialog.getNumberOfTimelinesSaved() != 0) {
 			dialog.show();
+			SwarmAchievement.unlock(10983);
 		} else {
 			switch (shared) {
 			case Constants.SHARED_TRUE:
@@ -864,6 +862,20 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		return super.onOptionsItemSelected(item);
 	}
 	
+	//TODO oneOfEach()
+	public static boolean onOfEach(){
+		if(noteCounter > 0 &&
+				audioCounter > 0 &&
+				pictureCounter > 0 &&
+				reflectionCounter > 0 && 
+				videoCounter > 0 && 
+				moodCounter > 0
+				){
+			return true;
+		}
+		else return false;
+	}
+	
 	//LISTENERS 
 	
 	private OnClickListener newTimeLineListener = new OnClickListener() {
@@ -1016,12 +1028,12 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		newTimeLineButton.setOnClickListener(newTimeLineListener);
 		browseMyTimelinesButton = (ImageButton) findViewById(R.id.dash_my_timelines);
 		browseMyTimelinesButton.setOnClickListener(browseTimeLineListener);
-		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.dash_shared_timelines);
-		browseSharedTimelinesButton.setOnClickListener(browseSharedTimeLinesListener);
-		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
-		syncronizeButton.setOnClickListener(syncListener);
-		myGroupsButton = (ImageButton) findViewById(R.id.dash_my_groups);
-		myGroupsButton.setOnClickListener(openMyGroupsListener);
+//		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.dash_shared_timelines);
+//		browseSharedTimelinesButton.setOnClickListener(browseSharedTimeLinesListener);
+//		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
+//		syncronizeButton.setOnClickListener(syncListener);
+//		myGroupsButton = (ImageButton) findViewById(R.id.dash_my_groups);
+//		myGroupsButton.setOnClickListener(openMyGroupsListener);
 		tagsButton = (ImageButton) findViewById(R.id.dash_my_tags);
 		tagsButton.setOnClickListener(tagsListener);
 		friendsButton = (ImageButton) findViewById(R.id.friends);
