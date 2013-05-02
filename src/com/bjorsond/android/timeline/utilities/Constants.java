@@ -115,6 +115,7 @@ public class Constants {
 	final public static int FirstMoodAchievement = 10959;
 	final public static int TenthMoodAchievement = 10977;
 	
+	
 	//Points
 	final public static int VideoPoints = 20;
 	final public static int NotePoints = 10;

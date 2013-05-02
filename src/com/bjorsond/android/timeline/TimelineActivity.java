@@ -239,20 +239,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		return contentLoader.LoadAllEventsFromDatabase();
 	}
 
-	private void cancelNotifications(){
-		getBaseContext();
-////		AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-		NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-//		
-//		Intent intent = new Intent(this, TimeAlarm.class);
-//		intent.setAction("notify");
 		
-		notificationManager.cancel(1);
-		notificationManager.cancel(2);
-		notificationManager.cancel(3);
-		notificationManager.cancel(4);
-	}
-	
 	//TODO createScheduleNotification method 
 	/**
 	 * This method sets the notification to pop up
@@ -365,7 +352,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				   
+				   if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
 				   
 	    	    	addPictureToTimeline(intentFilename);
 	    	    	intentFilename="";
@@ -402,6 +389,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
+				if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
 				
 	   	    	videoUri = data.getData();
     			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(videoUri, this));
@@ -440,6 +428,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
+				   if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
 					
 				    audioUri = data.getData();
 	       			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(audioUri, this));
@@ -482,6 +471,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
+				   if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
 					
 	    	    addNoteToTimeline(data);
 
@@ -511,8 +501,6 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Calendar calendar = Calendar.getInstance();
 				calendar.setTimeInMillis(System.currentTimeMillis());
 				DashboardActivity.setLastRefDate(calendar);
-				//Canceling former notifications
-				cancelNotifications();
 				//Setting alarm for notification			
 				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 12, 1);
 //				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 14, 2);
@@ -532,6 +520,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
+				if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
 				
 				addReflectionToTimeline(data);
 				
@@ -1115,6 +1104,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			SwarmAchievement.unlock(Constants.TenthMoodAchievement);
 			Toast.makeText(this, R.string.Tenth_mood_achi_toast, Toast.LENGTH_LONG).show();
 		}
+		if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
 	}
 	
 	/**
