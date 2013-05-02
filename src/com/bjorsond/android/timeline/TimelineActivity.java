@@ -271,29 +271,23 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 //			calendar.set(Calendar.SECOND, 0);
 //			calendar.set(Calendar.MILLISECOND, 0);
 //			calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-			Log.i("CALENDAR TESTING", "day of month: " + calendar.get(Calendar.DAY_OF_MONTH) +" hour of day: " + calendar.get(Calendar.HOUR_OF_DAY));
-			Log.i("CALENDAR TESTING", "month: " + calendar.get(Calendar.MONTH) +" year: " + calendar.get(Calendar.YEAR));
+
 			//	else calendar.add(Calendar.MINUTE, 3);
 		
 			// Retrieve alarm manager from the system
 			AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //getApplicationContext()
-			Log.i("CALENDAR TESTING", "Made alarmManager");
+			
 			// Every scheduled intent needs a different ID, else it is just executed once
 //			int id = (int) System.currentTimeMillis();
 		 
 			// Prepare the intent which should be launched at the date
 			Intent intent = new Intent(this, TimeAlarm.class);
 			intent.setAction(intentAction);
-			Log.i("CALENDAR TESTING", "Made intent");
 			// Prepare the pending intent
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent, PendingIntent.FLAG_UPDATE_CURRENT); //getApplicationContext()
-			Log.i("CALENDAR TESTING", "Made pendingIntent");
 			// Register the alert in the system. You have the option to define if the device has to wake up on the alert or not
 			alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-			Log.i("CALENDAR TESTING", "Set alarmManager");
-			
-			Log.i("CALENDAR TESTING", "" + new Date(calendar.getTimeInMillis()));
-		}
+			}
 	 }
 	
 //	public void createScheduledNotification(int days, String intentAction){
