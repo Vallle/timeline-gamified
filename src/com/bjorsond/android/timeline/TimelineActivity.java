@@ -271,29 +271,23 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 //			calendar.set(Calendar.SECOND, 0);
 //			calendar.set(Calendar.MILLISECOND, 0);
 //			calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-			Log.i("CALENDAR TESTING", "day of month: " + calendar.get(Calendar.DAY_OF_MONTH) +" hour of day: " + calendar.get(Calendar.HOUR_OF_DAY));
-			Log.i("CALENDAR TESTING", "month: " + calendar.get(Calendar.MONTH) +" year: " + calendar.get(Calendar.YEAR));
+
 			//	else calendar.add(Calendar.MINUTE, 3);
 		
 			// Retrieve alarm manager from the system
 			AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //getApplicationContext()
-			Log.i("CALENDAR TESTING", "Made alarmManager");
+			
 			// Every scheduled intent needs a different ID, else it is just executed once
 //			int id = (int) System.currentTimeMillis();
 		 
 			// Prepare the intent which should be launched at the date
 			Intent intent = new Intent(this, TimeAlarm.class);
 			intent.setAction(intentAction);
-			Log.i("CALENDAR TESTING", "Made intent");
 			// Prepare the pending intent
 			PendingIntent pendingIntent = PendingIntent.getBroadcast(this, id, intent, PendingIntent.FLAG_UPDATE_CURRENT); //getApplicationContext()
-			Log.i("CALENDAR TESTING", "Made pendingIntent");
 			// Register the alert in the system. You have the option to define if the device has to wake up on the alert or not
 			alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-			Log.i("CALENDAR TESTING", "Set alarmManager");
-			
-			Log.i("CALENDAR TESTING", "" + new Date(calendar.getTimeInMillis()));
-		}
+			}
 	 }
 	
 //	public void createScheduledNotification(int days, String intentAction){
@@ -367,7 +361,12 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.PictureTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_pic_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-					
+				   if (DashboardActivity.getPointsCounter() == points){
+					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
+					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
+				   }
+				   
+				   
 	    	    	addPictureToTimeline(intentFilename);
 	    	    	intentFilename="";
 
@@ -399,6 +398,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					SwarmAchievement.unlock(Constants.VideoTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_video_achi_toast, Toast.LENGTH_LONG).show();
 				}
+				if (DashboardActivity.getPointsCounter() == points){
+					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
+					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
+				   }
 				
 	   	    	videoUri = data.getData();
     			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(videoUri, this));
@@ -432,6 +435,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				   if (DashboardActivity.getAudioCounter() == 10){
 					   SwarmAchievement.unlock(Constants.AudioTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_audio_achi_toast, Toast.LENGTH_LONG).show();
+				   }
+				   if (DashboardActivity.getPointsCounter() == points){
+					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
+					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
 					
 				    audioUri = data.getData();
@@ -471,6 +478,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.NoteTenAchievement);
 					   Toast.makeText(this, R.string.Tenth_note_achi_toast, Toast.LENGTH_LONG).show();
 				   }
+				   if (DashboardActivity.getPointsCounter() == points){
+					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
+					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
+				   }
 					
 	    	    addNoteToTimeline(data);
 
@@ -504,9 +515,9 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				cancelNotifications();
 				//Setting alarm for notification			
 				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 12, 1);
-				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 14, 2);
-				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 16, 3);
-				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 18, 4);
+//				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 14, 2);
+//				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 16, 3);
+//				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 18, 4);
 				
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){
@@ -517,6 +528,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					SwarmAchievement.unlock(Constants.ReflectionNoteTenAchievement);
 					Toast.makeText(this, R.string.Tenth_reflection_achi_toast, Toast.LENGTH_LONG).show();
 				}
+				if (DashboardActivity.getPointsCounter() == points){
+					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
+					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
+				   }
 				
 				addReflectionToTimeline(data);
 				
@@ -1066,6 +1081,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
     	contentAdder.addEventToEventContentProvider(ev);
 	}
 	
+	//TODO MOOD stuff
 	private void addMoodEventToTimeline(final MoodEvent moodEvent) {
 		
  		Runnable SendMoodEventRunnable = new Runnable() {
@@ -1080,9 +1096,25 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 		contentAdder.addEventToEventContentProvider(moodEvent);
 		Thread sendMoodThread = new Thread(SendMoodEventRunnable, "shareThread");
 		sendMoodThread.start();
-		Toast.makeText(this, R.string.Mood_added_toast, Toast.LENGTH_SHORT).show();
 		//Adding points
-		DashboardActivity.addPointsCounter(Constants.MoodPoints);
+		int points = (
+			   (DashboardActivity.getAndSetBonusPoints(Constants.MOOD_BONUS_NUMBER)*Constants.BONUS_MULTIPLIER)
+			   + Constants.MoodPoints
+					   );
+		DashboardActivity.addPointsCounter(points);
+		Toast.makeText(this, getString(R.string.Mood_added_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
+		if (DashboardActivity.getPointsCounter() == points){
+			   SwarmAchievement.unlock(Constants.FirstElementAchievement);
+			   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
+		   }
+		if (DashboardActivity.getMoodCounter() == 1){
+			SwarmAchievement.unlock(Constants.FirstMoodAchievement);
+			Toast.makeText(this, R.string.First_mood_achi_toast, Toast.LENGTH_LONG).show();
+		}
+		if (DashboardActivity.getMoodCounter() == 10){
+			SwarmAchievement.unlock(Constants.TenthMoodAchievement);
+			Toast.makeText(this, R.string.Tenth_mood_achi_toast, Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	/**

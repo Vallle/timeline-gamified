@@ -111,6 +111,9 @@ public class Constants {
 	final public static int PictureTenAchievement = 10971;
 	final public static int AudioTenAchievement = 10975;
 	final public static int VideoTenAchievement = 10973;
+	final public static int FirstElementAchievement = 10987;
+	final public static int FirstMoodAchievement = 10959;
+	final public static int TenthMoodAchievement = 10977;
 	
 	//Points
 	final public static int VideoPoints = 20;

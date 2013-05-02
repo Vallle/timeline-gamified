@@ -489,13 +489,12 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		
 	private static int pushRight(int type){
 		int temp = -1; 
-		int spot = -1;
 		for (int i = 0; i < bonusPoints.length; i++) {
 			if (bonusPoints[i] == type) temp = i;
 		}
 		
-		for (int i = spot-1; i >= 0; i--) {
-			if (bonusPoints[i] != 0) bonusPoints[i+1] = bonusPoints[i];
+		for (int i = temp; i > 0; i--) {
+			bonusPoints[i] = bonusPoints[i-1];
 		}
 		bonusPoints[0] = type;
 		
@@ -559,6 +558,11 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	 */
 	private void addNewTimelineToTimelineDatabase(Experience experience) {
 		contentAdder.addExperienceToTimelineContentProvider(experience);
+		TimelineBrowserDialog dialog = new TimelineBrowserDialog(this,
+				timelineIntent, 1); //TODO timeline achi : 1 was shared from method below
+		if (dialog.getNumberOfTimelinesSaved() == 0) {
+			SwarmAchievement.unlock(10983);
+		}
 	}
 
 

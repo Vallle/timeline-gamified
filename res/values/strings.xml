@@ -147,6 +147,9 @@
 	<string name="Tenth_note_achi_toast">You have written ten notes! Let\'s hope you value quality as much as you do quantity.</string>
 	<string name="First_reflection_achi_toast">Congratulations! You have added your first reflection in Timeline!</string>
 	<string name="Tenth_reflection_achi_toast">That was your tenth reflection! Learning is a treasure that will follow its owner everywhere.</string>
+	<string name="First_mood_achi_toast">Congratulations! You have added your first mood in Timeline!</string>
+	<string name="Tenth_mood_achi_toast">You have added your mood for the tenth time! You must have many mood rings..</string>
+	<string name="Element_added_achi_toast">You just added your first element!</string>
 	
     <string name="new_timeline">Enter the name of your timeline</string>
       
