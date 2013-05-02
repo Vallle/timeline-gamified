@@ -110,7 +110,7 @@ public class ReflectionActivity extends SwarmActivity {
 			public void onClick(View v) {
 				Log.i("BUTTON PRESSED", "");
 				saveReflection();
-				ReflectionSpaceHandler.insertToReflectionSpace(getApplicationContext());
+				ReflectionSpaceHandler.insertToReflectionSpace(getApplicationContext(), reflectionTitle.getText().toString());
 				finish();
 			}
 		});

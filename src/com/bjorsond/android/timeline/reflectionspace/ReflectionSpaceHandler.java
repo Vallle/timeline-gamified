@@ -11,6 +11,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
+import org.jivesoftware.smack.SmackAndroid;
 import org.jivesoftware.smack.SmackConfiguration;
 
 import com.bjorsond.android.timeline.R;
@@ -47,7 +48,7 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	
 	static String testSpaceID = "team#67";
 	
-	public static void insertToReflectionSpace(Context context){
+	public static void insertToReflectionSpace(Context context, String content){
 		SmackConfiguration.setPacketReplyTimeout(10000);
 		ConnectionConfigurationBuilder builder = new ConnectionConfigurationBuilder(domain, appID);
 		builder.setHost(serverIP);
@@ -57,10 +58,9 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		ReflectionSpaceUserPreferences loginInfo = ReflectionSpaceUserPreferences.load(context);
 		Log.i("GET USER+PW", loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null)+
 				"+"+loginInfo.getString(ReflectionSpaceUserPreferences.PREF_PASSWORD, null));
-//		ConnectionHandler connectionHandler = 
-//			new ConnectionHandler(loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), 
-//								loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), connectionConfig);
-		ConnectionHandler connectionHandler = new ConnectionHandler("taimlain", "timetest", connectionConfig);
+		ConnectionHandler connectionHandler = 
+			new ConnectionHandler(loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), 
+								loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), connectionConfig);
 		
 		try{
 			connectionHandler.connect();
@@ -72,10 +72,6 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		SpaceHandler spaceHandler = new SpaceHandler(context, connectionHandler, "offlineDB");
 		spaceHandler.setMode(Mode.ONLINE);
 		
-		List<de.imc.mirror.sdk.Space> spaces = spaceHandler.getAllSpaces();
-		for(de.imc.mirror.sdk.Space space : spaces){
-			Log.i("MEMBER OF SPACES",space.getName());
-		}
 		
 		//Request the private space of the current user. If the space doesn't exist, it is created.
 		Space myPrivateSpace = spaceHandler.getDefaultSpace();
@@ -118,19 +114,16 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		
 		//Create the data object using the object builder
 		DataObjectBuilder dataObjectBuilder = new DataObjectBuilder("foo", "mirror:application:"+appID+":foo");
-		dataObjectBuilder.addElement("bar", "Some Content", false);
+		dataObjectBuilder.addElement("bar", content, false);
 		DataObject dataObject = dataObjectBuilder.build();
 		
-		Log.i("Koden kjører1", "Koden kjører1");
+		publishElementToSpace(dataObject, reflectionSpace, dataHandler, context);
+		
 		List<DataObject> allObjectsFromSpace = null;
-		Log.i("Koden kjører2", "Koden kjører2");
 		try {
-			Log.i("Koden kjører3", "Koden kjører3");
 			allObjectsFromSpace = dataHandler.retrieveDataObjects(testSpaceID);
-			Log.i("Koden kjører4", "Koden kjører4");
 		} catch (UnknownEntityException e) {
 			// TODO Auto-generated catch block
-			Log.i("Koden kjører5", "Koden kjører5");
 			e.printStackTrace();
 		}
 //		List<DataObject> allObjectsFromSpace = getAllObjectsFromSpace(testSpaceID, dataHandler);
@@ -285,6 +278,13 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 //	// add proper exception handling
 //	}
 //	Log.i("DREAM TEAM SPACE ID", myNewTeamSpace.getId());
+	
+	
+
+//	List<de.imc.mirror.sdk.Space> spaces = spaceHandler.getAllSpaces();
+//	for(de.imc.mirror.sdk.Space space : spaces){
+//		Log.i("MEMBER OF SPACES",space.getName());
+//	}
 	
 	
 }
