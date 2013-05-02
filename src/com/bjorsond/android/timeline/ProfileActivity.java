@@ -180,7 +180,7 @@ public class ProfileActivity extends SwarmActivity{
 		numberOfAchievements = (TextView) findViewById(R.id.ProfileAchievementCountNumber);
 		numberOfAchievements.setText("" + Swarm.user.points);
 		
-		homeButton = (ImageButton) findViewById(R.id.refSpaceLoginHeaderHomeButton);
+		homeButton = (ImageButton) findViewById(R.id.profileHeaderHomeButton);
 		homeButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {

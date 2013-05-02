@@ -558,6 +558,11 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	 */
 	private void addNewTimelineToTimelineDatabase(Experience experience) {
 		contentAdder.addExperienceToTimelineContentProvider(experience);
+		TimelineBrowserDialog dialog = new TimelineBrowserDialog(this,
+				timelineIntent, 1); //TODO timeline achi : 1 was shared from method below
+		if (dialog.getNumberOfTimelinesSaved() == 0) {
+			SwarmAchievement.unlock(10983);
+		}
 	}
 
 
