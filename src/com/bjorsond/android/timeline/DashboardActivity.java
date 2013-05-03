@@ -149,27 +149,27 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		progressDialog = new ProgressDialog(this);
 		
 		//Check if user is registered
-		checkUserRunnable = new Runnable() {
-			public void run() {
-				checkIfUserIsRegisteredOnServer();
-			}
-		};
+//		checkUserRunnable = new Runnable() {
+//			public void run() {
+//				checkIfUserIsRegisteredOnServer();
+//			}
+//		};
 		
 		//Checks for Internet connection
-		if(Utilities.isConnectedToInternet(this)){
-			Thread checkUserThread = new Thread(checkUserRunnable, "checkUserThread");
-			checkUserThread.start();
-			progressDialog = ProgressDialog.show(DashboardActivity.this,    
-		              "", "", true);
-		}else{
-			Toast.makeText(this, R.string.No_connection_toast, Toast.LENGTH_LONG).show();
-		}
-		
-		try {
-			lastSynced = getLastSynced();
-		} catch (Exception e) {
-			Log.e(this.getClass().getSimpleName(), getString(R.string.Could_not_sync));
-		}
+//		if(Utilities.isConnectedToInternet(this)){
+//			Thread checkUserThread = new Thread(checkUserRunnable, "checkUserThread");
+//			checkUserThread.start();
+//			progressDialog = ProgressDialog.show(DashboardActivity.this,    
+//		              "", "", true);
+//		}else{
+//			Toast.makeText(this, R.string.No_connection_toast, Toast.LENGTH_LONG).show();
+//		}
+//		
+//		try {
+//			lastSynced = getLastSynced();
+//		} catch (Exception e) {
+//			Log.e(this.getClass().getSimpleName(), getString(R.string.Could_not_sync));
+//		}
 		
 		setupViews();
 		
@@ -541,13 +541,13 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	}
 	
 	private void setLastSyncedTextView() {
-		if(lastSynced!=0){
-			String lastSyncedFormattedString = DateFormat.format
-   		 ("dd MMMM yyyy "+DateFormat.HOUR_OF_DAY+":mm:ss", new Date(lastSynced)).toString();
-			lastSyncedTextView.setText(getResources().getString(R.string.Last_synced_label).toString()+" "+lastSyncedFormattedString);
-		}else{
-			lastSyncedTextView.setText(getResources().getString(R.string.Last_synced_label).toString()+" Never");
-		}
+//		if(lastSynced!=0){
+//			String lastSyncedFormattedString = DateFormat.format
+//   		 ("dd MMMM yyyy "+DateFormat.HOUR_OF_DAY+":mm:ss", new Date(lastSynced)).toString();
+//			lastSyncedTextView.setText(getResources().getString(R.string.Last_synced_label).toString()+" "+lastSyncedFormattedString);
+//		}else{
+//			lastSyncedTextView.setText(getResources().getString(R.string.Last_synced_label).toString()+" Never");
+//		}
 	}
 
 	/**
@@ -645,7 +645,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		
 		try {
 			FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-			fos.write(lastSynced.getBytes());
+//			fos.write(lastSynced.getBytes());
 			fos.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -663,22 +663,22 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	 * 
 	 * @return Time of last sync in milliseconds
 	 */
-	private long getLastSynced(){
-		final String FILENAME = "lastSynced";
-		int ch;
-	    StringBuffer strContent = new StringBuffer("");
-		
-		try {
-			FileInputStream fis = openFileInput(FILENAME);
-			while( (ch = fis.read()) != -1)
-		        strContent.append((char)ch);
-			fis.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return Long.valueOf(strContent.toString());
-	}
+//	private long getLastSynced(){
+//		final String FILENAME = "lastSynced";
+//		int ch;
+//	    StringBuffer strContent = new StringBuffer("");
+//		
+//		try {
+//			FileInputStream fis = openFileInput(FILENAME);
+//			while( (ch = fis.read()) != -1)
+//		        strContent.append((char)ch);
+//			fis.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return Long.valueOf(strContent.toString());
+//	}
 	
 	/**
 	 * Thread to notify user that timelines have been synced. Intended run on UI thread.

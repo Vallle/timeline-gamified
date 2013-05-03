@@ -244,7 +244,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	/**
 	 * This method sets the notification to pop up
 	 */
-	public void createScheduledNotification(int days, String intentAction, int hourOfDay, int id){
+	public void createScheduledNotification(int days, String intentAction, int hourOfDay){
 	
 		if (days != -1) {
 			
@@ -265,7 +265,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //getApplicationContext()
 			
 			// Every scheduled intent needs a different ID, else it is just executed once
-//			int id = (int) System.currentTimeMillis();
+			int id = (int) System.currentTimeMillis();
 		 
 			// Prepare the intent which should be launched at the date
 			Intent intent = new Intent(this, TimeAlarm.class);
@@ -502,10 +502,10 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				calendar.setTimeInMillis(System.currentTimeMillis());
 				DashboardActivity.setLastRefDate(calendar);
 				//Setting alarm for notification			
-				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 12, 1);
-//				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 14, 2);
-//				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 16, 3);
-//				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 18, 4);
+				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 12);
+				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 14);
+				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 16);
+				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 18);
 				
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){

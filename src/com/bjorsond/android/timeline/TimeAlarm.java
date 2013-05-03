@@ -20,8 +20,8 @@ public class TimeAlarm extends BroadcastReceiver {
 	public void onReceive(Context context, Intent paramIntent) {
 		Calendar c = Calendar.getInstance();
 		Log.i("CALENDAR TESTING", "in TimeAlarm");
-		if (	(paramIntent.getAction().equals("notify"))// &&
-				//c.get(Calendar.DAY_OF_WEEK) != DashboardActivity.getLastRefDate().get(Calendar.DAY_OF_WEEK)
+		if (	(paramIntent.getAction().equals("notify")) //&&
+//				c.get(Calendar.DAY_OF_WEEK) != DashboardActivity.getLastRefDate().get(Calendar.DAY_OF_WEEK)
 			) notification(context, paramIntent);
 		
 		
@@ -34,7 +34,8 @@ public class TimeAlarm extends BroadcastReceiver {
 		NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 		  
 		// Create a new intent which will be fired if you click on the notification
-		Intent intent = new Intent(context, TimeAlarm.class);
+		Intent intent = new Intent(context, DashboardActivity.class);
+		intent.setAction("start");
 		
 		// Attach the intent to a pending intent
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -46,6 +47,7 @@ public class TimeAlarm extends BroadcastReceiver {
 	    notification.flags |= Notification.FLAG_AUTO_CANCEL;
 		// Fire the notification
 		notificationManager.notify(1, notification);
+		
 	}
 
 	
