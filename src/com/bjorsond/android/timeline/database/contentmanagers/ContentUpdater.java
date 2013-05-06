@@ -57,7 +57,7 @@ public class ContentUpdater {
 		values.put(ReflectionColumns.REFLECTION, updatedReflection.getReflectionText()); 
 		values.put(ReflectionColumns.MODIFIED_DATE, System.currentTimeMillis());
 		
-		context.getContentResolver().update(NoteColumns.CONTENT_URI, values, NoteColumns._ID+"=+'"+updatedReflection.getId()+"'", null);
+		context.getContentResolver().update(ReflectionColumns.CONTENT_URI, values, ReflectionColumns._ID+"=+'"+updatedReflection.getId()+"'", null);
 		
 		Log.i("CONTENT UPDATE NOTE", "Updated Note in DB: ID: " +updatedReflection.getId()+ " Title: "+ updatedReflection.getReflectionTitle() );
 	}
