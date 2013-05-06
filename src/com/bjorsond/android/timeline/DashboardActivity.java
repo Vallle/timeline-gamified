@@ -328,7 +328,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	public static int[] getLevelAndPoints(){
 		int temp = pointsCounter;
 		int level = 0;
-		int levelPoints = 0;
+		int levelPoints = 100;
 		int[] array = new int[] {0, 0, 0};
 		for (int i = 0; i < 7; i++) {
 			if ((temp - Constants.LEVEL[i]) > 0) {

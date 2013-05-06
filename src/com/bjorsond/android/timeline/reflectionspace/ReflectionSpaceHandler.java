@@ -5,6 +5,8 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.List;
 
+import javax.xml.datatype.Duration;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -47,7 +49,7 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	static String serverIP = "129.241.103.122";
 	static int port = 5222;
 	
-	static String testSpaceID = "team#67";
+	static String testSpaceID = "team#68";
 	
 	public static void insertToReflectionSpace(Context context, String content){
 		System.setProperty("smack.debugEnabled", "true");
@@ -62,13 +64,9 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		String userName = loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null);
 		String password = loginInfo.getString(ReflectionSpaceUserPreferences.PREF_PASSWORD, null);
 		
-		Log.i("GET USER+PW", loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null)+
-				"+"+loginInfo.getString(ReflectionSpaceUserPreferences.PREF_PASSWORD, null));
-//		ConnectionHandler connectionHandler = 
-//			new ConnectionHandler(loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), 
-//								loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null), connectionConfig);
-		ConnectionHandler connectionHandler = 
-				new ConnectionHandler(userName, password, connectionConfig);
+		Log.i("GET USER+PW", userName+"+"+password);
+
+		ConnectionHandler connectionHandler = new ConnectionHandler(userName, password, connectionConfig);
 		
 		try{
 			connectionHandler.connect();
@@ -81,12 +79,33 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		spaceHandler.setMode(Mode.ONLINE);
 		
 		
-		String userJID = loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null)
-										+ "@" + connectionHandler.getConfiguration().getDomain();
+		String userJID = userName + "@" + connectionHandler.getConfiguration().getDomain();
 		registerUserOnReflectionSpace(testSpaceID, userJID, context);
 		
-		Space reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
-		
+//		Space reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
+		Space.Type type = Space.Type.TEAM;
+		String name = "Dream Team";
+		String owner = connectionHandler.getCurrentUser().getBareJID();
+		PersistenceType isPersistent = PersistenceType.ON;
+		Duration persistenceDuration = null;
+		SpaceConfiguration spaceConfig = new SpaceConfiguration(type, name, owner, isPersistent, persistenceDuration);
+		Space reflectionSpace = null;
+		try {
+//			reflectionSpace = (Space) spaceHandler.createSpace(spaceConfig);
+			reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
+			DataHandler dataHandler = new DataHandler(connectionHandler, spaceHandler);
+			dataHandler.setMode(Mode.ONLINE);
+//			dataHandler.registerSpace(reflectionSpace.getId());
+//		} catch (SpaceManagementException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (ConnectionStatusException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (UnknownEntityException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+		}finally{}
 		
 		//Data handler
 		DataHandler dataHandler = new DataHandler(connectionHandler, spaceHandler);
@@ -94,28 +113,28 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		
 		
 //		try {
-//			dataHandler.registerSpace(testSpaceID);
+//			dataHandler.registerSpace(reflectionSpace.getId());
 //		} catch (UnknownEntityException e) {
 //			e.printStackTrace();
 //		}
-//		DataObjectListener myListener = new DataObjectListener() {
-//			public void handleDataObject(DataObject dataObject, String spaceId) {
-//				String objectId = dataObject.getId();
-//				Log.i("Received object ", objectId + " from space " + spaceId);
-//			}
-//		};
-//		dataHandler.addDataObjectListener(myListener);
+		DataObjectListener myListener = new DataObjectListener() {
+			public void handleDataObject(DataObject dataObject, String spaceId) {
+				String objectId = dataObject.getId();
+				Log.i("Received object ", objectId + " from space " + spaceId);
+			}
+		};
+		dataHandler.addDataObjectListener(myListener);
 		
 		
 		//Create the data object using the object builder
-		DataObjectBuilder dataObjectBuilder = new DataObjectBuilder("foo", "mirror:application:"+appID+":fuu");
+		DataObjectBuilder dataObjectBuilder = new DataObjectBuilder("foo", "mirror:application:"+appID+":foo");
 		dataObjectBuilder.addElement("bar", content, false);
 		DataObject dataObject = dataObjectBuilder.build();
 
 		publishElementToSpace(dataObject, reflectionSpace, dataHandler, context);
 		
 		List<DataObject> allObjectsFromSpace = getAllObjectsFromSpace(reflectionSpace.getId(), dataHandler);
-		Log.i("SIZE OF LIST WITH OBJECTS FROM SPACE",allObjectsFromSpace.size()+"");
+		Log.i("SIZE OF LIST WITH OBJECTS FROM SPACE",allObjectsFromSpace.iterator().next()+"");
 	}
 	
 	
