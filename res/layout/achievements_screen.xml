@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@color/White"
+	>
+	
+		<View 
+		    android:id="@+id/header"
+	    	android:layout_width="fill_parent"
+		    android:layout_height="63dip"
+		    android:background="@color/Green"
+		    />
+		
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/header_text"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="5dip"
+	        />
+	    
+	    <ListView 
+	        android:id="@+id/achievements_items_list"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/header"
+	        android:cacheColorHint="@android:color/transparent"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp"
+	        android:layout_marginTop="15dp"
+	        android:layout_marginBottom="15dp"
+	        android:padding="2dp"
+	        />
+	    
+</RelativeLayout>

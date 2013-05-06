@@ -4,4 +4,10 @@
     <color name="error_text">#8f1a2d</color>
 	<color name="popup_background">#ffffff</color>
 	
+	<color name="list_labels_color">#FFFFFF</color>
+	<color name="list_labels_color_outline">#FFFFFF</color>
+	
+	<color name="list_item_color1">#FFFFFF</color>
+	<color name="list_item_color2">#FFFFFF</color>
+	
 </resources>

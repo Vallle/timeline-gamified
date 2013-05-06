@@ -154,6 +154,9 @@
     <string name="new_timeline">Enter the name of your timeline</string>
       
     <string name="no_events_toast">You have no events this day</string>
+
+    <string name="connection_to_swarm_failed_check_your_network_connection">Connection to swarm failed. Check your internet connection.</string>
+    <string name="no_achievements_found">No achievements found.</string>
     
 <color name="Grey">#666666</color>
 <color name="White">#FFF</color>
