@@ -56,6 +56,7 @@ import com.bjorsond.android.timeline.models.Event;
 import com.bjorsond.android.timeline.models.EventItem;
 import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.models.SimpleNote;
+import com.bjorsond.android.timeline.models.SimplePicture;
 import com.bjorsond.android.timeline.models.Emotion.EmotionEnum;
 import com.bjorsond.android.timeline.sync.GoogleAppEngineHandler;
 import com.bjorsond.android.timeline.utilities.Constants;
@@ -132,49 +133,56 @@ public class EventDialog extends Dialog {
  		setupAddButtonQuickAction();
  		setupEmotionButtonQuickAction();
  		
- 		final ToggleButton shareButton = (ToggleButton)findViewById(R.id.PopupShareButton);
- 		shareButton.setTag(this.mEvent);
- 		shareButton.setChecked(mEvent.isShared());
- 		
- 		if(((TimelineActivity)activity).getTimeline().isShared() && Utilities.isConnectedToInternet(mContext)) {
- 			shareButton.setEnabled(!mEvent.isShared());
- 		}
- 		else {
- 			shareButton.setEnabled(false);
- 		}
-
- 		shareButton.setOnClickListener(new View.OnClickListener() {
+// 		final ToggleButton shareButton = (ToggleButton)findViewById(R.id.PopupShareButton);
+// 		shareButton.setTag(this.mEvent);
+// 		shareButton.setChecked(mEvent.isShared());
+// 		
+// 		if(((TimelineActivity)activity).getTimeline().isShared() && Utilities.isConnectedToInternet(mContext)) {
+// 			shareButton.setEnabled(!mEvent.isShared());
+// 		}
+// 		else {
+// 			shareButton.setEnabled(false);
+// 		}
+//
+// 		shareButton.setOnClickListener(new View.OnClickListener() {
+//			
+//			public void onClick(View v) {
+//				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+//				builder.setMessage("Do you really want to share this event to all group members? You won't be able to undo this later.")
+//				.setPositiveButton(R.string.yes_label, new DialogInterface.OnClickListener() {
+//					
+//					public void onClick(DialogInterface dialog, int which) {
+//						mEvent.setShared(true);
+//						shareButton.setEnabled(!mEvent.isShared());
+//						Thread shareThread = new Thread(shareEventThread, "shareThread");
+//		 				shareThread.start();
+//		 				dialog.dismiss();
+//					}
+//				})
+//				.setNegativeButton(R.string.no_label, new DialogInterface.OnClickListener() {
+//				public void onClick(DialogInterface dialog, int which) {
+//					shareButton.setChecked(mEvent.isShared());
+//					dialog.dismiss();
+//				}
+//			})
+//				.setOnCancelListener(new OnCancelListener() {
+//				public void onCancel(DialogInterface dialog) {
+//					shareButton.setChecked(mEvent.isShared());
+//					dialog.dismiss();					
+//				}
+//			});
+//				AlertDialog confirmation = builder.create();
+//				confirmation.show();	
+//			}
+//		});
 			
-			public void onClick(View v) {
-				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-				builder.setMessage("Do you really want to share this event to all group members? You won't be able to undo this later.")
-				.setPositiveButton(R.string.yes_label, new DialogInterface.OnClickListener() {
-					
-					public void onClick(DialogInterface dialog, int which) {
-						mEvent.setShared(true);
-						shareButton.setEnabled(!mEvent.isShared());
-						Thread shareThread = new Thread(shareEventThread, "shareThread");
-		 				shareThread.start();
-		 				dialog.dismiss();
-					}
-				})
-				.setNegativeButton(R.string.no_label, new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					shareButton.setChecked(mEvent.isShared());
-					dialog.dismiss();
-				}
-			})
-				.setOnCancelListener(new OnCancelListener() {
-				public void onCancel(DialogInterface dialog) {
-					shareButton.setChecked(mEvent.isShared());
-					dialog.dismiss();					
-				}
-			});
-				AlertDialog confirmation = builder.create();
-				confirmation.show();	
+ 		final Button shareButton = (Button) findViewById(R.id.PopupShareButton);
+ 		if(mEvent.getEventItems().size()==1){
+			if(mEvent.getEventItems().get(0) instanceof SimpleNote || mEvent.getEventItems().get(0) instanceof ReflectionNote){
+				shareButton.setVisibility(View.VISIBLE);
 			}
-		});
-			
+ 		}
+ 		
  		ImageButton deleteButton = (ImageButton)findViewById(R.id.popupDeleteButton);
  		deleteButton.setTag(event);
  		deleteButton.setOnClickListener(new View.OnClickListener() {
