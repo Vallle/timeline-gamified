@@ -101,21 +101,39 @@ public class ProfileActivity extends SwarmActivity{
 		int[] levelAndPoints = new int[]{0, 0, 0};
 		levelAndPoints = DashboardActivity.getLevelAndPoints();
 		Log.i("levelAndPoints content", levelAndPoints.toString());
-		
+		profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_start));
 		//Setting up level
 		levelImage = (ImageView) findViewById(R.id.levelImageView);
 		if(levelAndPoints[0] == 1){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_one));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_start));
 		}else if(levelAndPoints[0] == 2){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_two));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_one));
 		}else if(levelAndPoints[0] == 3){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_three));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_one));
 		}else if(levelAndPoints[0] == 4){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_four));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_two));
 		}else if(levelAndPoints[0] == 5){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_five));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_two));
 		}else if(levelAndPoints[0] == 6){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_six));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_three));
+		}else if(levelAndPoints[0] == 7){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_seven));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_three));
+		}else if(levelAndPoints[0] == 8){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_eight));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_four));
+		}else if(levelAndPoints[0] == 9){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_nine));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_four));
+		}else if(levelAndPoints[0] == 10){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_ten));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_five));
 		}
 		
 		//Setting up progressbar and points above bar
