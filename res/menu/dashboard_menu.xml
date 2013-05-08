@@ -6,7 +6,7 @@
           android:icon="@android:drawable/ic_menu_send"
           android:title="@string/email_title" />
     
-<!--     <item android:id="@+id/SWARM_MENU_BUTTON" -->
-<!--           android:icon="@android:drawable/ic_menu_myplaces" -->
-<!--           android:title="@string/swarm_menu" /> -->
+    <item android:id="@+id/TUTORIAL"
+          android:icon="@android:drawable/ic_menu_help"
+          android:title="@string/tutorial" />
 </menu>
