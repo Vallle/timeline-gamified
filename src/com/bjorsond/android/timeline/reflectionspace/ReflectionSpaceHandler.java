@@ -49,11 +49,11 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	static String serverIP = "129.241.103.122";
 	static int port = 5222;
 	
-	static String testSpaceID = "orga#1";
+	static String testSpaceID = "team#74";
 	
 	public static void insertToReflectionSpace(Context context, String content){
-		System.setProperty("smack.debugEnabled", "true");
-		XMPPConnection.DEBUG_ENABLED = true;
+//		System.setProperty("smack.debugEnabled", "true");
+//		XMPPConnection.DEBUG_ENABLED = true;
 		SmackConfiguration.setPacketReplyTimeout(10000);
 		ConnectionConfigurationBuilder builder = new ConnectionConfigurationBuilder(domain, appID);
 		builder.setHost(serverIP);
@@ -63,6 +63,10 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		ReflectionSpaceUserPreferences loginInfo = ReflectionSpaceUserPreferences.load(context);
 		String userName = loginInfo.getString(ReflectionSpaceUserPreferences.PREF_USER_NAME, null);
 		String password = loginInfo.getString(ReflectionSpaceUserPreferences.PREF_PASSWORD, null);
+		if(userName == null || password == null){
+			Toast.makeText(context, "Login failed, please login to the reflection space again", Toast.LENGTH_SHORT).show();
+			return;
+		}
 		
 		Log.i("GET USER+PW", userName+"+"+password);
 
@@ -82,22 +86,13 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		String userJID = userName + "@" + connectionHandler.getConfiguration().getDomain();
 		registerUserOnReflectionSpace(testSpaceID, userJID, context);
 		
-//		Space reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
-//		Space.Type type = Space.Type.TEAM;
-//		String name = "Dream Team";
-//		String owner = connectionHandler.getCurrentUser().getBareJID();
-//		PersistenceType isPersistent = PersistenceType.ON;
-//		Duration persistenceDuration = null;
-//		SpaceConfiguration spaceConfig = new SpaceConfiguration(type, name, owner, isPersistent, persistenceDuration);
-//		reflectionSpace = (Space) spaceHandler.createSpace(spaceConfig);
+		Space reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
 		
 
 		//Data handler
 		DataHandler dataHandler = new DataHandler(connectionHandler, spaceHandler);
 		dataHandler.setMode(Mode.ONLINE);
-		
-		Space reflectionSpace = null;
-		reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
+		dataHandler.clear();
 		
 		try {
 			dataHandler.registerSpace(reflectionSpace.getId());
@@ -121,8 +116,13 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		publishElementToSpace(dataObject, reflectionSpace, dataHandler, context);
 		
 		List<DataObject> allObjectsFromSpace = getAllObjectsFromSpace(reflectionSpace.getId(), dataHandler);
-		Log.i("FIRST OBJECT FROM SPACE",allObjectsFromSpace.iterator().next()+"");
 		Log.i("SIZE OF LIST WITH OBJECTS FROM SPACE",allObjectsFromSpace.size()+"");
+		if(!allObjectsFromSpace.isEmpty())
+			for (int j = 0; j < allObjectsFromSpace.size(); j++) {
+				Log.i("Object number "+j+" from list",allObjectsFromSpace.iterator().next()+"");
+			}
+		else
+			Log.i("List is empty","List is empty");
 	}
 	
 	

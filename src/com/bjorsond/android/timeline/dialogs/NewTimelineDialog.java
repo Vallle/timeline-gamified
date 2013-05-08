@@ -97,31 +97,31 @@ public class NewTimelineDialog extends Dialog {
 		selectedGroupText.setText(R.string.Select_group_to_share_label);
 		
 		inputTextField = (EditText)findViewById(R.id.TimelineNameEditText);
-		shareToggle = (ToggleButton)findViewById(R.id.ShareTimelineToggleButton);
-		shareToggle.setEnabled(Utilities.isConnectedToInternet(context));
-		
-		shareToggle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-				if(isChecked) {
-					selectedGroupText.setVisibility(View.VISIBLE);
-					groupList.setVisibility(View.VISIBLE);
-					addGroupButton.setVisibility(View.VISIBLE);
-				}
-				
-				else {
-					selectedGroupText.setVisibility(View.GONE);
-					groupList.setVisibility(View.GONE);	
-					addGroupButton.setVisibility(View.INVISIBLE);
-					selectedGroup = null;
-					selectedGroupText.setText(R.string.Select_group_to_share_label);
-				}
-			}
-		});
+//		shareToggle = (ToggleButton)findViewById(R.id.ShareTimelineToggleButton);
+//		shareToggle.setEnabled(Utilities.isConnectedToInternet(context));
+//		
+//		shareToggle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+//			
+//			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//				if(isChecked) {
+//					selectedGroupText.setVisibility(View.VISIBLE);
+//					groupList.setVisibility(View.VISIBLE);
+//					addGroupButton.setVisibility(View.VISIBLE);
+//				}
+//				
+//				else {
+//					selectedGroupText.setVisibility(View.GONE);
+//					groupList.setVisibility(View.GONE);	
+//					addGroupButton.setVisibility(View.INVISIBLE);
+//					selectedGroup = null;
+//					selectedGroupText.setText(R.string.Select_group_to_share_label);
+//				}
+//			}
+//		});
 		
 		if(this.experience!=null){
-			shareToggle.setChecked(true);
-			shareToggle.setEnabled(false);
+//			shareToggle.setChecked(true);
+//			shareToggle.setEnabled(false);
 			inputTextField.setText(this.experience.getTitle());
 			inputTextField.setEnabled(false);
 		}
@@ -142,12 +142,8 @@ public class NewTimelineDialog extends Dialog {
 		okButton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View arg0) {
-				if(shareToggle.isChecked() && selectedGroup == null) {
-					Toast.makeText(context, R.string.Select_group_toast, Toast.LENGTH_SHORT).show();
-				}
-				else {
 					String inputName = inputTextField.getText().toString().trim();
-					boolean share = shareToggle.isChecked();
+					boolean share = false;
 
 					if(experience!=null){
 						experience.setShared(true);
@@ -162,7 +158,6 @@ public class NewTimelineDialog extends Dialog {
 					
 							NewTimelineDialog.this.dismiss();
 						}
-				}
 			}
 		});
 		

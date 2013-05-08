@@ -33,7 +33,7 @@ import com.swarmconnect.SwarmActivity;
 
 public class ProfileActivity extends SwarmActivity{
 
-	private ImageView changePictureButton, profilePicture, levelImage;
+	private ImageView profilePicture, levelImage;
 	private ImageButton homeButton;
 	private TextView showPointsAboveProgressBar, userNameField, numberOfAchievements;
 	private ProgressBar levelProgressBar;
@@ -95,54 +95,45 @@ public class ProfileActivity extends SwarmActivity{
 	
 	
 	/**
-	 * This method is called when the change picture button is clicked
-	 */
-	public void openChangePictureDialog(){
-		
-	}
-	
-	/**
-	 * This method is called when the user name field is clicked
-	 */
-	public void changeUserName(){
-		
-	}
-	
-	/**
-	 * This method is called when the user wants to choose a new profile picture from the phone gallery
-	 */
-	public void openGallery(){
-		profilePicture.setImageBitmap(null);  //TODO --> Picture disappears once the open gallery button is pressed.
-		
-		if(Image != null) Image.recycle();
-		Intent intent = new Intent();
-		intent.setType("image/*");
-		intent.setAction(Intent.ACTION_GET_CONTENT);
-		startActivityForResult(Intent.createChooser(intent, "Select picture"), GALLERY);
-	}
-	
-	/**
 	 * The method that updates levels and points according to what the user has acquired
 	 */
 	public void setupLevelAndPoints(){
 		int[] levelAndPoints = new int[]{0, 0, 0};
 		levelAndPoints = DashboardActivity.getLevelAndPoints();
 		Log.i("levelAndPoints content", levelAndPoints.toString());
-		
+		profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_start));
 		//Setting up level
 		levelImage = (ImageView) findViewById(R.id.levelImageView);
 		if(levelAndPoints[0] == 1){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_one));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_start));
 		}else if(levelAndPoints[0] == 2){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_two));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_one));
 		}else if(levelAndPoints[0] == 3){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_three));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_one));
 		}else if(levelAndPoints[0] == 4){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_four));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_two));
 		}else if(levelAndPoints[0] == 5){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_five));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_two));
 		}else if(levelAndPoints[0] == 6){
 			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_six));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_three));
+		}else if(levelAndPoints[0] == 7){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_seven));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_three));
+		}else if(levelAndPoints[0] == 8){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_eight));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_four));
+		}else if(levelAndPoints[0] == 9){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_nine));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_four));
+		}else if(levelAndPoints[0] == 10){
+			levelImage.setImageDrawable(getResources().getDrawable(R.drawable.profile_level_ten));
+			profilePicture.setImageDrawable(getResources().getDrawable(R.drawable.profile_picture_five));
 		}
 		
 		//Setting up progressbar and points above bar
@@ -157,21 +148,8 @@ public class ProfileActivity extends SwarmActivity{
 	
 	
 	
-	//LISTENERS
-	
-	private OnClickListener openGalleryListener = new OnClickListener() {
-		
-		public void onClick(View v){
-			openGallery();
-		}
-	};
-	
-	
 	
 	private void setupViews() {
-		changePictureButton = (ImageView) findViewById(R.id.setPictureImageView);
-		changePictureButton.setOnClickListener(openGalleryListener);
-		
 		profilePicture = (ImageView) findViewById(R.id.profilePicture);
 		
 		userNameField = (TextView) findViewById(R.id.ProfileName);

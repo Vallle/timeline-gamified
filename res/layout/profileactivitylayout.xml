@@ -43,7 +43,7 @@
 		    android:layout_width="fill_parent"
 		    android:layout_height="fill_parent"
 		    android:layout_weight="1"
-		    android:paddingBottom="10dp"
+		    android:paddingBottom="5dp"
 		    android:paddingTop="0dp" >
 
 		    <ImageView
@@ -69,7 +69,7 @@
 	</TableRow>
 	<TableRow android:id="@+id/DashTableRow02"
 		android:layout_width="fill_parent"
-		android:paddingTop="5dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="0">
+		android:paddingTop="5dip" android:paddingBottom="5dip" android:layout_height="0dip" android:layout_weight="0">
 		<LinearLayout android:layout_weight="1"
 			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 
@@ -104,7 +104,7 @@
 
 	<TableRow android:id="@+id/DashTableRow03"
 		android:layout_width="fill_parent"
-		android:paddingTop="0dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="25">
+		android:paddingTop="0dip" android:paddingBottom="10dip" android:layout_height="0dip" android:layout_weight="25">
 
 		<LinearLayout
 		    android:id="@+id/LinearLayout01"
@@ -112,37 +112,23 @@
 		    android:layout_height="fill_parent"
 		    android:layout_weight="1" >
 
-		    <LinearLayout
-		        android:id="@+id/LinearLayout03"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:layout_weight="0.37"
-		        android:paddingLeft="80dip"
-		        android:paddingRight="30dip" >
+			<LinearLayout
+			    android:id="@+id/LinearLayout03"
+			    android:layout_width="wrap_content"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="0.37"
+			    android:paddingLeft="50dip" >
 
-		        <ImageView
-		            android:id="@+id/profilePicture"
-		            android:layout_width="140dip"
-		            android:layout_height="200dip"
-		            android:layout_weight="0"
-		            android:background="@drawable/profile_picture_background"
-		            android:src="@drawable/profile_default_picture" />
-		    </LinearLayout>
+				<ImageView
+				    android:id="@+id/profilePicture"
+				    android:layout_width="200dip"
+				    android:layout_height="300dip"
+				    android:layout_weight="0"
+				    android:background="@drawable/profile_picture_background"
+				    android:src="@drawable/profile_default_picture" />
 
-		    <LinearLayout
-		        android:id="@+id/LinearLayout03"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:paddingLeft="20dip"
-		        android:paddingRight="20dip" >
+			</LinearLayout>
 
-		        <ImageView
-		            android:id="@+id/setPictureImageView"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:paddingTop="80dip"
-		            android:src="@drawable/profile_picture_settings" />
-		    </LinearLayout>
 		</LinearLayout>
 
 	</TableRow>
@@ -161,10 +147,15 @@
 			    android:paddingLeft="20dip"
 			    android:paddingRight="0dip"
 	    		android:orientation="vertical" >
-		    
-				<TextView android:layout_height="wrap_content" android:id="@+id/ProfileAchievementCountText"
-					android:gravity="left" android:layout_width="wrap_content"
-					android:text="@string/Profile_achievement_count_label" android:textSize="16dip"></TextView>
+
+		        <TextView
+		            android:id="@+id/ProfileAchievementCountText"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="left"
+		            android:text="@string/Profile_achievement_count_label"
+		            android:textSize="16dip" />
+
 			</LinearLayout>
 			
 		    <LinearLayout

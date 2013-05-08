@@ -100,6 +100,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private Intent tagsIntent;
 	private Intent spacesIntent;
 	private Intent swarmIntent, profileIntent;
+	private Intent achievementsIntent;
 	private ContentAdder contentAdder;
 	private ContentLoader contentLoader;
 	private Account creator;
@@ -958,7 +959,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private OnClickListener achievementsListener = new OnClickListener() {
 		public void onClick(View v) {
 			SwarmAchievement.unlock(10839);
-			Swarm.showAchievements();
+			startActivity(achievementsIntent);
+//			Swarm.showAchievements();
 		}
 	};
 	
@@ -992,6 +994,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		tagsIntent = new Intent(this, MyTagsActivity.class);
 		profileIntent = new Intent(this, ProfileActivity.class);
 		spacesIntent = new Intent(this, ReflectionSpaceUserActivity.class);
+		achievementsIntent = new Intent(this, AchievementsScreen.class);
 		
 		swarmIntent = new Intent(this, MySwarmActivity.class);
 	}
