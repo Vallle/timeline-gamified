@@ -87,7 +87,7 @@ public class Constants {
      * Gamification constants
      */
     //LEVELS AND SCALING
-    final public static int[] LEVEL = new int[] {0, 100, 150, 225, 340, 500, 760};
+    final public static int[] LEVEL = new int[] {0, 100, 150, 225, 340, 500, 760, 1140, 1700, 2560, 3840};
 
     final public static int NOTE_BONUS_NUMBER = 1;    
     final public static int PICTURE_BONUS_NUMBER = 2;    
