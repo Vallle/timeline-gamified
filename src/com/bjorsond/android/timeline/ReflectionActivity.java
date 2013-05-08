@@ -10,22 +10,8 @@
  ******************************************************************************/
 package com.bjorsond.android.timeline;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-import org.jivesoftware.smack.SmackConfiguration;
-
 import net.sondbjor.android.ActionItem;
 import net.sondbjor.android.QuickAction;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,33 +21,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
-import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceHandler;
-import com.bjorsond.android.timeline.reflectionspace.TestFuck;
-import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceUserPreferences;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.R;
 import com.swarmconnect.Swarm;
 import com.swarmconnect.SwarmActivity;
-
-import de.imc.mirror.sdk.DataObject;
-import de.imc.mirror.sdk.DataObjectListener;
-import de.imc.mirror.sdk.OfflineModeHandler.Mode;
-import de.imc.mirror.sdk.android.ConnectionConfiguration;
-import de.imc.mirror.sdk.android.ConnectionConfigurationBuilder;
-import de.imc.mirror.sdk.android.ConnectionHandler;
-import de.imc.mirror.sdk.android.DataHandler;
-import de.imc.mirror.sdk.android.DataObjectBuilder;
-import de.imc.mirror.sdk.android.Space;
-import de.imc.mirror.sdk.android.SpaceConfiguration;
-import de.imc.mirror.sdk.android.SpaceHandler;
-import de.imc.mirror.sdk.android.SpaceMember;
-import de.imc.mirror.sdk.exceptions.ConnectionStatusException;
-import de.imc.mirror.sdk.exceptions.SpaceManagementException;
-import de.imc.mirror.sdk.exceptions.UnknownEntityException;
 
 /**
  * The Activity for creation of a {@linkplain NoteActivity.javaNote}.  -- now reflection note
