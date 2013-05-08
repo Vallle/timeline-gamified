@@ -23,9 +23,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceHandler;
+import com.bjorsond.android.timeline.reflectionspace.TestFuck;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.R;
 import com.swarmconnect.Swarm;
@@ -110,7 +112,7 @@ public class ReflectionActivity extends SwarmActivity {
 			public void onClick(View v) {
 				Log.i("BUTTON PRESSED", "");
 				saveReflection();
-				ReflectionSpaceHandler.insertToReflectionSpace(getApplicationContext(), reflectionTitle.getText().toString());
+				TestFuck.connectToServer(getBaseContext());
 				finish();
 			}
 		});

@@ -49,7 +49,7 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	static String serverIP = "129.241.103.122";
 	static int port = 5222;
 	
-	static String testSpaceID = "team#68";
+	static String testSpaceID = "orga#1";
 	
 	public static void insertToReflectionSpace(Context context, String content){
 		System.setProperty("smack.debugEnabled", "true");
@@ -83,40 +83,27 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		registerUserOnReflectionSpace(testSpaceID, userJID, context);
 		
 //		Space reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
-		Space.Type type = Space.Type.TEAM;
-		String name = "Dream Team";
-		String owner = connectionHandler.getCurrentUser().getBareJID();
-		PersistenceType isPersistent = PersistenceType.ON;
-		Duration persistenceDuration = null;
-		SpaceConfiguration spaceConfig = new SpaceConfiguration(type, name, owner, isPersistent, persistenceDuration);
-		Space reflectionSpace = null;
-		try {
-//			reflectionSpace = (Space) spaceHandler.createSpace(spaceConfig);
-			reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
-			DataHandler dataHandler = new DataHandler(connectionHandler, spaceHandler);
-			dataHandler.setMode(Mode.ONLINE);
-//			dataHandler.registerSpace(reflectionSpace.getId());
-//		} catch (SpaceManagementException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (ConnectionStatusException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		} catch (UnknownEntityException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-		}finally{}
+//		Space.Type type = Space.Type.TEAM;
+//		String name = "Dream Team";
+//		String owner = connectionHandler.getCurrentUser().getBareJID();
+//		PersistenceType isPersistent = PersistenceType.ON;
+//		Duration persistenceDuration = null;
+//		SpaceConfiguration spaceConfig = new SpaceConfiguration(type, name, owner, isPersistent, persistenceDuration);
+//		reflectionSpace = (Space) spaceHandler.createSpace(spaceConfig);
 		
+
 		//Data handler
 		DataHandler dataHandler = new DataHandler(connectionHandler, spaceHandler);
 		dataHandler.setMode(Mode.ONLINE);
 		
+		Space reflectionSpace = null;
+		reflectionSpace = (Space) spaceHandler.getSpace(testSpaceID);
 		
-//		try {
-//			dataHandler.registerSpace(reflectionSpace.getId());
-//		} catch (UnknownEntityException e) {
-//			e.printStackTrace();
-//		}
+		try {
+			dataHandler.registerSpace(reflectionSpace.getId());
+		} catch (UnknownEntityException e) {
+			e.printStackTrace();
+		}
 		DataObjectListener myListener = new DataObjectListener() {
 			public void handleDataObject(DataObject dataObject, String spaceId) {
 				String objectId = dataObject.getId();
@@ -134,7 +121,8 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		publishElementToSpace(dataObject, reflectionSpace, dataHandler, context);
 		
 		List<DataObject> allObjectsFromSpace = getAllObjectsFromSpace(reflectionSpace.getId(), dataHandler);
-		Log.i("SIZE OF LIST WITH OBJECTS FROM SPACE",allObjectsFromSpace.iterator().next()+"");
+		Log.i("FIRST OBJECT FROM SPACE",allObjectsFromSpace.iterator().next()+"");
+		Log.i("SIZE OF LIST WITH OBJECTS FROM SPACE",allObjectsFromSpace.size()+"");
 	}
 	
 	
@@ -149,7 +137,7 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 	public static void publishElementToSpace(DataObject dataObject, Space space, DataHandler dataHandler, Context context){
 		try{
 			dataHandler.publishDataObject(dataObject, space.getId());
-			Log.i("Object published", "Object published on space "+space.getName());
+			Log.i("Publish object", "Attempted to published on space "+space.getName()+", no exceptions cathed.");
 			Toast.makeText(context, "Object published on space "+space.getName(), Toast.LENGTH_SHORT).show();
 		} catch(UnknownEntityException e){
 			Log.e("Space does not exist or is not acessible", e.getMessage());
@@ -168,10 +156,22 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		List<DataObject> allObjectsFromSpace = null;
 		try {
 			allObjectsFromSpace = dataHandler.retrieveDataObjects(testSpaceID);
+			
+			
+			//Logging things for debugging purposes
+			List<de.imc.mirror.sdk.Space> handledSpaces = dataHandler.getHandledSpaces();
+			if(!handledSpaces.isEmpty()){
+				Log.i("Size of handledSpaces", handledSpaces.size()+"");
+				for(int i=0; i<handledSpaces.size(); i++){
+					Log.i("Spaces handled by datahandler", handledSpaces.get(i).toString());
+				}
+			}else Log.i("NO SPACES HANDLED BY DATAHANDLER LOL", "WTF");
+			Log.i("Mode of dataHandler", dataHandler.getMode().toString());
 		} catch (UnknownEntityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		Log.i("Size of all objects gotten from space before return", allObjectsFromSpace.size()+"");
 		return allObjectsFromSpace;
 	}
 	
@@ -207,7 +207,7 @@ public class ReflectionSpaceHandler extends SwarmActivity{
 		try {
 			spaceHandler.configureSpace(spaceID, spaceConfig);
 		} catch (SpaceManagementException e) {
-			Log.w("Failed to create space", e);
+			Log.w("Failed to configure space", e);
 			e.printStackTrace();
 		} catch (ConnectionStatusException e) {
 			Log.w("Cannot create space when offline", e);
