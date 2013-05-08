@@ -142,7 +142,7 @@ public class ReflectionActivity extends SwarmActivity {
 			public void onClick(View v) {
 				Log.i("BUTTON PRESSED", "");
 				saveReflection();
-				TestFuck.connectToServer(getBaseContext());
+				ReflectionSpaceHandler.insertToReflectionSpace(getBaseContext(), reflectionTitle.getText().toString());
 				finish();
 			}
 		});
