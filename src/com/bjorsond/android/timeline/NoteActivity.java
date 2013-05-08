@@ -10,15 +10,19 @@
  ******************************************************************************/
 package com.bjorsond.android.timeline;
 
+import net.sondbjor.android.ActionItem;
+import net.sondbjor.android.QuickAction;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.bjorsond.android.timeline.models.SimpleNote;
+import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceHandler;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.R;
 import com.swarmconnect.Swarm;
@@ -37,6 +41,7 @@ public class NoteActivity extends SwarmActivity {
 	
 	private Button saveButton, discardButton, shareButton;
 	private EditText noteTitle, noteText;
+	private QuickAction qa;
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +50,7 @@ public class NoteActivity extends SwarmActivity {
 
 		Swarm.setActive(this);
 		setupViews();
-
+		setupAddButtonQuickAction();
 	}
 
 	/**
@@ -56,7 +61,6 @@ public class NoteActivity extends SwarmActivity {
 	private void setupViews() {
 		saveButton = (Button)findViewById(R.id.SaveNoteButton);
 		discardButton = (Button)findViewById(R.id.DiscardNoteButton);
-		shareButton = (Button)findViewById(R.id.ShareNoteButton);
 		
 		noteTitle = (EditText)findViewById(R.id.NoteTitleEditText);
 		noteText = (EditText)findViewById(R.id.NoteTextEditText);
@@ -68,8 +72,48 @@ public class NoteActivity extends SwarmActivity {
 		
 		saveButton.setOnClickListener(saveNoteListener);
 		discardButton.setOnClickListener(discardNoteListener);
-		shareButton.setOnClickListener(shareNoteListener);
 	}
+	
+	
+	private void setupAddButtonQuickAction() {
+		final ActionItem other = new ActionItem();
+		
+		other.setIcon(getResources().getDrawable(R.drawable.share_to_other));
+		other.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				saveNote();
+				shareNote();
+				finish();
+			}
+		});
+		
+		final ActionItem reflectionSpace = new ActionItem();
+		
+		reflectionSpace.setIcon(getResources().getDrawable(R.drawable.share_to_spaces));
+		reflectionSpace.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.i("BUTTON PRESSED", "");
+				saveNote();
+				ReflectionSpaceHandler.insertToReflectionSpace(getBaseContext(), noteTitle.getText().toString() + "\n"
+																				+noteText.getText().toString());
+				finish();
+			}
+		});
+		
+		shareButton = (Button)findViewById(R.id.ShareNoteButton);
+		shareButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				qa = new QuickAction(v);
+				
+				qa.addActionItem(other);
+				qa.addActionItem(reflectionSpace);
+				qa.setAnimStyle(QuickAction.ANIM_AUTO);
+				qa.show();
+			}
+		});
+		
+	}
+	
 	
 	private OnClickListener saveNoteListener = new OnClickListener() {
 		

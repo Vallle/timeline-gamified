@@ -58,6 +58,7 @@ import com.bjorsond.android.timeline.models.ReflectionNote;
 import com.bjorsond.android.timeline.models.SimpleNote;
 import com.bjorsond.android.timeline.models.SimplePicture;
 import com.bjorsond.android.timeline.models.Emotion.EmotionEnum;
+import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceHandler;
 import com.bjorsond.android.timeline.sync.GoogleAppEngineHandler;
 import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.MyLocation;
@@ -77,7 +78,7 @@ public class EventDialog extends Dialog {
 	private final Activity mActivity;
 	private Context mContext;
 	private LinearLayout mainLayout, emotionLayout;
-	private QuickAction qa;
+	private QuickAction qa, shareQa;
 	private List<EventItem> items;
 	private ImageView dialogIcon;
 	private Runnable shareEventThread;
@@ -176,12 +177,48 @@ public class EventDialog extends Dialog {
 //			}
 //		});
 			
+ 		
+ 		final ActionItem other = new ActionItem();
+		other.setIcon(mContext.getResources().getDrawable(R.drawable.share_to_other));
+		other.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Intent shareIntent = new Intent(Intent.ACTION_SEND);
+				shareIntent.setType("text/plain");
+		        shareIntent.putExtra(Intent.EXTRA_SUBJECT, ((SimpleNote) items.get(Integer.parseInt(mEvent.getId()))).getNoteTitle()); 
+		        shareIntent.putExtra(Intent.EXTRA_TEXT, ((SimpleNote)items.get(Integer.parseInt(mEvent.getId()))).getNoteText()); 
+
+				mContext.startActivity(Intent.createChooser(shareIntent, mContext.getString(R.string.Share_note_label)));
+				mActivity.finish();
+			}
+		});
+		
+		final ActionItem reflectionSpace = new ActionItem();
+		reflectionSpace.setIcon(mContext.getResources().getDrawable(R.drawable.share_to_spaces));
+		reflectionSpace.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				ReflectionSpaceHandler.insertToReflectionSpace(mContext, ((SimpleNote)items.get(Integer.parseInt(mEvent.getId()))).getNoteText());
+				mActivity.finish();
+			}
+		});
  		final Button shareButton = (Button) findViewById(R.id.PopupShareButton);
  		if(mEvent.getEventItems().size()==1){
 			if(mEvent.getEventItems().get(0) instanceof SimpleNote || mEvent.getEventItems().get(0) instanceof ReflectionNote){
 				shareButton.setVisibility(View.VISIBLE);
 			}
  		}
+ 		shareButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				shareQa = new QuickAction(v);
+				
+		 		shareQa.addActionItem(other);
+		 		shareQa.addActionItem(reflectionSpace);
+		 		shareQa.setAnimStyle(QuickAction.ANIM_AUTO);
+		 		shareQa.show();
+			}
+		});
+ 		
+ 		
+ 		
  		
  		ImageButton deleteButton = (ImageButton)findViewById(R.id.popupDeleteButton);
  		deleteButton.setTag(event);
@@ -325,7 +362,7 @@ public class EventDialog extends Dialog {
 			noteIntent.putExtra(Intent.EXTRA_SUBJECT, ((SimpleNote)items.get(item.getItemId())).getNoteTitle()); 
 			noteIntent.putExtra(Intent.EXTRA_TEXT, ((SimpleNote)items.get(item.getItemId())).getNoteText());
 			noteIntent.putExtra(Constants.REQUEST_CODE, Constants.EDIT_NOTE);
-			
+			noteIntent.putExtra(Intent.EXTRA_TEXT, ((SimpleNote)items.get(item.getItemId())).getNoteText());
 			mActivity.startActivityForResult(noteIntent, Constants.EDIT_NOTE); 
 			return true;
 			

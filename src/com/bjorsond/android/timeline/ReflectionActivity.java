@@ -80,15 +80,6 @@ public class ReflectionActivity extends SwarmActivity {
 	
 	
 	private void setupAddButtonQuickAction() {
-		final ActionItem facebook = new ActionItem();
-		
-		facebook.setIcon(getResources().getDrawable(R.drawable.swarm_facebook));
-		facebook.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				
-			}
-		});
-		
 		final ActionItem other = new ActionItem();
 		
 		other.setIcon(getResources().getDrawable(R.drawable.share_to_other));
@@ -117,7 +108,6 @@ public class ReflectionActivity extends SwarmActivity {
 			public void onClick(View v) {
 				qa = new QuickAction(v);
 				
-				qa.addActionItem(facebook);
 				qa.addActionItem(other);
 				qa.addActionItem(reflectionSpace);
 				qa.setAnimStyle(QuickAction.ANIM_AUTO);
