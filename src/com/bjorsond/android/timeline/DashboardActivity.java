@@ -853,10 +853,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			
 			
 		//GAMIFICATION: Swarm menu
-//		case R.id.SWARM_MENU_BUTTON:
-//	        SwarmAchievement.unlock(10839);
-//	        startActivity(swarmIntent);
-//			
+		case R.id.TUTORIAL:
+	        startActivity(swarmIntent);
+			
 		default:
 			break;
 		}
