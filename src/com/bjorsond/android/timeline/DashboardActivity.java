@@ -101,6 +101,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private Intent spacesIntent;
 	private Intent swarmIntent, profileIntent;
 	private Intent achievementsIntent;
+	private Intent tutorialIntent;
 	private ContentAdder contentAdder;
 	private ContentLoader contentLoader;
 	private Account creator;
@@ -852,9 +853,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			return true;
 			
 			
-		//GAMIFICATION: Swarm menu
+		//TODO TUTORIAL
 		case R.id.TUTORIAL:
-	        startActivity(swarmIntent);
+	        startActivity(tutorialIntent);
 			
 		default:
 			break;
