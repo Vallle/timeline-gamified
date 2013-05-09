@@ -18,15 +18,13 @@
             android:layout_width="fill_parent" 
             android:id="@+id/ReflectionTitleEditText" 
             android:hint="@string/Reflection_title_hint">
-        </EditText>
-      <!--  
+        </EditText> 
         <EditText android:layout_height="wrap_content" 
             android:layout_width="fill_parent" 
             android:id="@+id/ReflectionTextEditText" 
             android:hint="@string/Reflection_text_hint" 
             android:layout_below="@+id/ReflectionTitleEditText">
         </EditText>
-       --> 
     </RelativeLayout>
 </ScrollView>
 

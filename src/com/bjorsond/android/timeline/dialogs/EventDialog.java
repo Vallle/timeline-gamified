@@ -180,36 +180,53 @@ public class EventDialog extends Dialog {
  		
  		final ActionItem other = new ActionItem();
 		other.setIcon(mContext.getResources().getDrawable(R.drawable.share_to_other));
-		other.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Intent shareIntent = new Intent(Intent.ACTION_SEND);
-				shareIntent.setType("text/plain");
-		        shareIntent.putExtra(Intent.EXTRA_SUBJECT, ((SimpleNote) items.get(Integer.parseInt(mEvent.getId()))).getNoteTitle()); 
-		        shareIntent.putExtra(Intent.EXTRA_TEXT, ((SimpleNote)items.get(Integer.parseInt(mEvent.getId()))).getNoteText()); 
-
-				mContext.startActivity(Intent.createChooser(shareIntent, mContext.getString(R.string.Share_note_label)));
-				mActivity.finish();
-			}
-		});
-		
 		final ActionItem reflectionSpace = new ActionItem();
 		reflectionSpace.setIcon(mContext.getResources().getDrawable(R.drawable.share_to_spaces));
-		reflectionSpace.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				ReflectionSpaceHandler.insertToReflectionSpace(mContext, ((SimpleNote)items.get(Integer.parseInt(mEvent.getId()))).getNoteText());
-				mActivity.finish();
-			}
-		});
+		
  		final Button shareButton = (Button) findViewById(R.id.PopupShareButton);
  		if(mEvent.getEventItems().size()==1){
 			if(mEvent.getEventItems().get(0) instanceof SimpleNote || mEvent.getEventItems().get(0) instanceof ReflectionNote){
 				shareButton.setVisibility(View.VISIBLE);
+				if(mEvent.getEventItems().get(0) instanceof SimpleNote){
+					other.setOnClickListener(new View.OnClickListener() {
+						public void onClick(View v) {
+							Intent shareIntent = new Intent(Intent.ACTION_SEND);
+							shareIntent.setType("text/plain");
+					        shareIntent.putExtra(Intent.EXTRA_SUBJECT, ((SimpleNote)mEvent.getEventItems().get(0)).getNoteTitle()); 
+					        shareIntent.putExtra(Intent.EXTRA_TEXT, ((SimpleNote)mEvent.getEventItems().get(0)).getNoteText()); 
+							mContext.startActivity(Intent.createChooser(shareIntent, mContext.getString(R.string.Share_note_label)));
+						}
+					});
+					
+					reflectionSpace.setOnClickListener(new View.OnClickListener() {
+						public void onClick(View v) {
+							ReflectionSpaceHandler.insertToReflectionSpace(mContext, ((SimpleNote)mEvent.getEventItems().get(0)).getNoteText());
+						}
+					});
+				}
+				
+				else if(mEvent.getEventItems().get(0) instanceof ReflectionNote){
+					other.setOnClickListener(new View.OnClickListener() {
+						public void onClick(View v) {
+							Intent shareIntent = new Intent(Intent.ACTION_SEND);
+							shareIntent.setType("text/plain");
+					        shareIntent.putExtra(Intent.EXTRA_SUBJECT, ((ReflectionNote)mEvent.getEventItems().get(0)).getReflectionTitle()); 
+					        shareIntent.putExtra(Intent.EXTRA_TEXT, ((ReflectionNote)mEvent.getEventItems().get(0)).getReflectionText()); 
+							mContext.startActivity(Intent.createChooser(shareIntent, mContext.getString(R.string.Share_reflection_label)));
+						}
+					});
+					
+					reflectionSpace.setOnClickListener(new View.OnClickListener() {
+						public void onClick(View v) {
+							ReflectionSpaceHandler.insertToReflectionSpace(mContext, ((ReflectionNote)mEvent.getEventItems().get(0)).getReflectionTitle());
+						}
+					});
+				}
 			}
  		}
  		shareButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				shareQa = new QuickAction(v);
-				
 		 		shareQa.addActionItem(other);
 		 		shareQa.addActionItem(reflectionSpace);
 		 		shareQa.setAnimStyle(QuickAction.ANIM_AUTO);
