@@ -1,313 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent" android:layout_height="fill_parent"
-	android:background="@color/White" android:weightSum="100">
-
-
-
-	<TableRow android:id="@+id/dash_header_row"
-		android:layout_width="fill_parent" android:background="@color/Header" android:layout_weight="10" android:layout_height="0dip">
-		<ImageButton android:background="@drawable/header_home_button"
-			android:id="@+id/profileHeaderHomeButton"
-			android:focusable="false" android:layout_height="fill_parent" android:layout_width="fill_parent"></ImageButton>
-	</TableRow>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:background="@color/White"
+	>
 	
-
-	<TableRow android:id="@+id/DashTableRow01"
-		android:layout_width="fill_parent"
-		android:paddingTop="0dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="0">
-
-		<LinearLayout
-		    android:id="@+id/LinearLayout01"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:layout_weight="1" >
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout02"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:layout_weight="0.37"
-		        android:paddingLeft="80dip"
-		        android:paddingRight="30dip" >
-
-		        <TextView
-		            android:id="@+id/textView1"
-		            android:layout_width="wrap_content"
-		            android:layout_height="wrap_content"
-		            android:text="TextView" />
-
-		    </LinearLayout>
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout02"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:paddingLeft="20dip"
-		        android:paddingRight="20dip" >
-		    </LinearLayout>
-		</LinearLayout>
-
-	</TableRow>
-	<TableRow android:id="@+id/DashTableRow02"
-		android:layout_width="fill_parent"
-		android:paddingTop="0dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="0">
-
-		<LinearLayout
-		    android:id="@+id/LinearLayout01"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:layout_weight="1" >
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout02"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:layout_weight="0.37"
-		        android:paddingLeft="80dip"
-		        android:paddingRight="30dip" >
-		    </LinearLayout>
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout02"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:paddingLeft="20dip"
-		        android:paddingRight="20dip" >
-		    </LinearLayout>
-		</LinearLayout>
-
-	</TableRow>
-
-	<TableRow android:id="@+id/DashTableRow03"
-		android:layout_width="fill_parent"
-		android:paddingTop="0dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="0">
-
-		<LinearLayout
-		    android:id="@+id/LinearLayout01"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:layout_weight="1" >
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout03"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:layout_weight="0.37"
-		        android:paddingLeft="80dip"
-		        android:paddingRight="30dip" >
-		    </LinearLayout>
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout03"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:paddingLeft="20dip"
-		        android:paddingRight="20dip" >
-		    </LinearLayout>
-		</LinearLayout>
-
-	</TableRow>
-	<TableRow android:id="@+id/DashTableRow04" android:layout_height="0dip" android:layout_weight="0" android:layout_width="fill_parent" android:gravity="center_horizontal">
-		<LinearLayout
-		    android:id="@+id/LinearLayout04"
-		    android:layout_width="wrap_content"
-		    android:layout_height="fill_parent"
-		    android:paddingLeft="20dip"
-		    android:paddingRight="10dip" >
-			
-		    <LinearLayout
-			    android:id="@+id/LinearLayout04"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:paddingLeft="20dip"
-			    android:paddingRight="0dip"
-	    		android:orientation="vertical" >
-			</LinearLayout>
-			
-		    <LinearLayout
-			    android:id="@+id/LinearLayout04"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:paddingLeft="0dip"
-			    android:paddingRight="0dip"
-	    		android:orientation="vertical" >
-			</LinearLayout>
-		</LinearLayout>
-	</TableRow>
-	
-	<TableRow android:id="@+id/DashTableRow05" android:layout_height="0dip" android:layout_weight="0" android:layout_width="fill_parent" android:gravity="center_horizontal">
-		<LinearLayout
-		    android:id="@+id/LinearLayout04"
-		    android:layout_width="wrap_content"
-		    android:layout_height="fill_parent"
-		    android:paddingLeft="20dip"
-		    android:paddingRight="10dip" >
-			
-		    <LinearLayout
-			    android:id="@+id/LinearLayout05"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:paddingLeft="20dip"
-			    android:paddingRight="0dip"
-	    		android:orientation="vertical" >
-			</LinearLayout>
-			
-		    <LinearLayout
-			    android:id="@+id/LinearLayout05"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:paddingLeft="0dip"
-			    android:paddingRight="0dip"
-	    		android:orientation="vertical" >
-			</LinearLayout>
-		</LinearLayout>
-	</TableRow>
-
-	
-	<TableRow android:id="@+id/DashTableRow06"
-		android:layout_width="fill_parent"
-		android:paddingTop="0dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="0">
-
-		<LinearLayout
-		    android:id="@+id/LinearLayout06"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:layout_weight="1" >
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout06"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:layout_weight="0.37"
-		        android:paddingLeft="80dip"
-		        android:paddingRight="30dip" >
-		    </LinearLayout>
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout06"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:paddingLeft="20dip"
-		        android:paddingRight="20dip" >
-		    </LinearLayout>
-		</LinearLayout>
-
-	</TableRow>
-	<TableRow android:id="@+id/DashTableRow07"
-		android:layout_width="fill_parent"
-		android:paddingTop="0dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="0">
-
-		<LinearLayout
-		    android:id="@+id/LinearLayout07"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:layout_weight="1" >
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout07"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:layout_weight="0.37"
-		        android:paddingLeft="80dip"
-		        android:paddingRight="30dip" >
-		    </LinearLayout>
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout07"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:paddingLeft="20dip"
-		        android:paddingRight="20dip" >
-		    </LinearLayout>
-		</LinearLayout>
-
-	</TableRow>
-
-	<TableRow android:id="@+id/DashTableRow08"
-		android:layout_width="fill_parent"
-		android:paddingTop="0dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="0">
-
-		<LinearLayout
-		    android:id="@+id/LinearLayout08"
-		    android:layout_width="fill_parent"
-		    android:layout_height="fill_parent"
-		    android:layout_weight="1" >
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout08"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:layout_weight="0.37"
-		        android:paddingLeft="80dip"
-		        android:paddingRight="30dip" >
-		    </LinearLayout>
-
-		    <LinearLayout
-		        android:id="@+id/LinearLayout08"
-		        android:layout_width="wrap_content"
-		        android:layout_height="fill_parent"
-		        android:paddingLeft="20dip"
-		        android:paddingRight="20dip" >
-		    </LinearLayout>
-		</LinearLayout>
-
-	</TableRow>
-	<TableRow android:id="@+id/DashTableRow09" android:layout_height="0dip" android:layout_weight="0" android:layout_width="fill_parent" android:gravity="center_horizontal">
-		<LinearLayout
-		    android:id="@+id/LinearLayout04"
-		    android:layout_width="wrap_content"
-		    android:layout_height="fill_parent"
-		    android:paddingLeft="20dip"
-		    android:paddingRight="10dip" >
-			
-		    <LinearLayout
-			    android:id="@+id/LinearLayout09"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:paddingLeft="20dip"
-			    android:paddingRight="0dip"
-	    		android:orientation="vertical" >
-			</LinearLayout>
-			
-		    <LinearLayout
-			    android:id="@+id/LinearLayout09"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:paddingLeft="0dip"
-			    android:paddingRight="0dip"
-	    		android:orientation="vertical" >
-			</LinearLayout>
-		</LinearLayout>
-	</TableRow>
-	
-	<TableRow android:id="@+id/DashTableRow10" android:layout_height="0dip" android:layout_weight="0" android:layout_width="fill_parent" android:gravity="center_horizontal">
-		<LinearLayout
-		    android:id="@+id/LinearLayout10"
-		    android:layout_width="wrap_content"
-		    android:layout_height="fill_parent"
-		    android:paddingLeft="20dip"
-		    android:paddingRight="10dip" >
-			
-		    <LinearLayout
-			    android:id="@+id/LinearLayout10"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:paddingLeft="20dip"
-			    android:paddingRight="0dip"
-	    		android:orientation="vertical" >
-			</LinearLayout>
-			
-		    <LinearLayout
-			    android:id="@+id/LinearLayout10"
-			    android:layout_width="wrap_content"
-			    android:layout_height="fill_parent"
-			    android:paddingLeft="0dip"
-			    android:paddingRight="0dip"
-	    		android:orientation="vertical" >
-			</LinearLayout>
-		</LinearLayout>
-	</TableRow>
-	
-
-</TableLayout>
+		<View 
+		    android:id="@+id/leaderboardHeader"
+	    	android:layout_width="fill_parent"
+		    android:layout_height="63dip"
+		    android:background="@color/Green"
+		    />
+		
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/header_text"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="5dip"
+	        />
+	    
+	    <ListView 
+	        android:id="@+id/leaderboard_items_list"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/leaderboardHeader"
+	        android:cacheColorHint="@android:color/transparent"
+	        android:layout_marginLeft="30dp"
+	        android:layout_marginRight="30dp"
+	        android:layout_marginTop="15dp"
+	        android:layout_marginBottom="15dp"
+	        android:padding="2dp"
+	        />
+	    
+</RelativeLayout>
