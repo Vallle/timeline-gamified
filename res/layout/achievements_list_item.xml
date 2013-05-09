@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/achievements_status"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/achievements_completed" />
 
@@ -19,7 +19,7 @@
         android:layout_width="0dip"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dip"
-        android:textSize="28sp" 
+        android:textSize="10sp" 
         android:textColor="@color/list_labels_color"
         timeline:outlineColor="@color/list_labels_color_outline"/>
 
@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dip"
-        android:textSize="28sp"
+        android:textSize="8sp"
         android:textColor="@color/list_labels_color"
         android:inputType="text"
         android:ellipsize="end"
