@@ -51,6 +51,7 @@ public class AchievementsAdapter extends ArrayAdapter<SwarmAchievement> {
 
         titleTextView.setText(achievement.title);
         descriptionTextView.setText(achievement.description);
+//        titleTextView.set
         
         achievement.isUnlocked(new AchievementUnlockedCB() {
 

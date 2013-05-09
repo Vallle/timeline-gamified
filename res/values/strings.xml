@@ -177,7 +177,53 @@
 	<string name="average_timeline_mood">See average timeline mood</string>
 	<string name="email_title">Send activity report!</string>
 	<string name="tutorial">Tutorial</string>
+	<string name="done">Done</string>
+	<string name="back">Back</string>
+	<string name="tutorial_title">Tutorial</string>
+	<string name="tutorial_general_information">
+	    							Timeline is an application that can be used to save different pictures, video, audio, mood and kinds of notes. 
+	    							These elements are shown in a timeline, hence the name. By adding these elements, the user can look back at an 
+	    							earlier event, and the information at hand, to make reflectoins. By reflecting,  the user can gain insight that 
+	    							makes him or her better at the task that was performed, or at handling such trials again.
 
+	</string>
+	<string name="tutorial_dashboard">
+									Dashboard:<br />
+									new timeline - enables the user to create a new timeline.<br />
+									my timelines - enables the user to choose between different timelines.<br />
+									my tags - makes it easier to sort information, by tagging it with classifications.<br />
+									reflection spaces - here users can create their own user for the reflection spaces, as well as see the latest input 
+									to the spaces through a feed.<br />
+									achievements - here the different achievements are shown, and the user can see which is completed and which is not.<br />
+									friends - here the user can add friends, as well as see the number of their completed achievements.<br />
+									messages - the user can send messages to his/her friends.<br />
+									leaderborad - a leaderboard showing how many points the different users have acquired.<br />
+									profile - shows the users profile, with levels, points needed for next level, profile picture and number of achievements 
+									completed.
+	</string>
+	<string name="tutorial_timeline">
+									Timeline:<br />
+									When the user chooses a timeline, he/she will be transferred to a timeline view. Elements can be added through the bar in
+									 the bottom left corner. The buttons are made as to show what kind of element will be added if pressed. First off is a 
+									 normal note, going through pictures, video, audio, mood and ending with reflection note.<br /><br />
+									
+									The elements will be added with the current time and position (GPS location). Days containing elements are shown as 
+									green instead of black. Zooming is possible through selecting dates,
+									or time. To zoom back, use the native android back button.
+	</string>
+	<string name="tutorial_moving_app">
+									The back button can also be used to exit the timeline, and go back to the dashboard. The "timeline" icon in the upper 
+									left corner can also be used to go to the dashboard.
+	</string>
+	<string name="tutorial_notes_refNotes">
+									Notes and reflection notes can be edited at a later time. By holding a finger on the text for a few seconds, it will 
+									become possible to edit the text.<br /><br />
+									
+									If the user has created a user for the refletion spaces, he/she can use share notes and reflection notes on to the 
+									shared space. This is to encurage people to learn from each other and similar experiences. This also creates a kind of 
+									knowledge base for the users. 
+	</string>
+	
 
 	<!-- Everything that follows is Swarm-related -->
 	

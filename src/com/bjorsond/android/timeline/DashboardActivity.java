@@ -23,9 +23,11 @@ import org.jivesoftware.smack.util.collections.ResettableIterator;
 import android.accounts.Account;
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,6 +38,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -855,12 +858,71 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			
 		//TODO TUTORIAL
 		case R.id.TUTORIAL:
-	        startActivity(tutorialIntent);
+//	        startActivity(tutorialIntent);
+			setChooseTutorialDialog();
 			
 		default:
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	private void setChooseTutorialDialog(){
+		// Instantiate an AlertDialog.Builder with its constructor
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		// Chain together various setter methods to set the dialog characteristics
+		builder.setTitle(R.string.tutorial_title);
+		builder.setItems(R.array.tutorial_array, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            setTutorialDialog(which);
+            }
+		});
+		// Set "Next" button
+//		builder.setPositiveButton(R.string.next, new DialogInterface.OnClickListener() {
+//			public void onClick(DialogInterface dialog, int id) {
+//				// User clicked DONE button
+//				dialog.cancel();
+//				setTutorialDialog();
+//			}
+//		});
+		// Set "Cancel" button
+		builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				// User clicked cancel button
+				dialog.cancel();
+			}
+		});
+		// Get the AlertDialog from create()
+		AlertDialog dialog = builder.create();
+		dialog.show();
+	}
+	
+	private void setTutorialDialog(int number){
+		// Instantiate an AlertDialog.Builder with its constructor
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		// Chain together various setter methods to set the dialog characteristics
+		if (number == 0)builder.setMessage(R.string.tutorial_general_information);
+		if (number == 1)builder.setMessage(R.string.tutorial_dashboard);
+		if (number == 2)builder.setMessage(R.string.tutorial_timeline);
+		if (number == 3)builder.setMessage(R.string.tutorial_moving_app);
+		if (number == 4)builder.setMessage(R.string.tutorial_notes_refNotes);
+		builder.setTitle(R.string.tutorial_title);
+
+		// Set "Done" button
+		builder.setNegativeButton(R.string.back, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				// User clicked DONE button
+				dialog.cancel();
+				setChooseTutorialDialog();
+				
+				
+			}
+		});
+		// Get the AlertDialog from create()
+		AlertDialog dialog = builder.create();
+//		dialog.getWindow().setFlags(LayoutParams.FLAG_FULLSCREEN, LayoutParams.FLAG_FULLSCREEN); //added for full screen
+		dialog.show();
 	}
 	
 	//TODO oneOfEach()

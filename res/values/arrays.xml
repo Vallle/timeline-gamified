@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>  
+    <resources>  
+     	<array name="tutorial_array">  
+   		 	<item>General information</item>  
+		    <item>Dashboard</item>  
+		    <item>Timeline</item>  
+		    <item>Manouvering through the application</item>  
+		    <item>Notes and Reflection notes</item>  
+    	 </array>
+    </resources>
