@@ -57,7 +57,7 @@ public class ReflectionActivity extends SwarmActivity {
 
 		Swarm.setActive(this);
 		setupViews();
-		setupAddButtonQuickAction();
+//		setupAddButtonQuickAction();
 	}
 
 	/**
@@ -68,6 +68,15 @@ public class ReflectionActivity extends SwarmActivity {
 	private void setupViews() {
 		saveButton = (Button)findViewById(R.id.SaveReflectionButton);
 		discardButton = (Button)findViewById(R.id.DiscardReflectionButton);
+		
+		shareButton = (Button)findViewById(R.id.ShareReflectionButton);
+		shareButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				saveReflection();
+				shareReflection();
+				finish();
+			}
+		});
 		
 		reflectionTitle = (EditText)findViewById(R.id.ReflectionTitleEditText);
 		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
@@ -85,56 +94,56 @@ public class ReflectionActivity extends SwarmActivity {
 	}
 	
 	
-	private void setupAddButtonQuickAction() {
-		final ActionItem other = new ActionItem();
+//	private void setupAddButtonQuickAction() {
+//		final ActionItem other = new ActionItem();
 		
-		other.setIcon(getResources().getDrawable(R.drawable.share_to_other));
-		other.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				saveReflection();
-				shareReflection();
-				finish();
-			}
-		});
+//		other.setIcon(getResources().getDrawable(R.drawable.share_to_other));
+//		other.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				saveReflection();
+//				shareReflection();
+//				finish();
+//			}
+//		});
 
-		final MSFHelper refSpace = new MSFHelper(getBaseContext());
-		final ActionItem reflectionSpace = new ActionItem();
+//		final MSFHelper refSpace = new MSFHelper(getBaseContext());
+//		final ActionItem reflectionSpace = new ActionItem();
+//		
+//		reflectionSpace.setIcon(getResources().getDrawable(R.drawable.share_to_spaces));
+//		reflectionSpace.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				Log.i("BUTTON PRESSED", "");
+//				saveReflection();
+//				refSpace.publishElementToSpace(reflectionTitle.getText().toString() + "\n" +  reflectionText.getText().toString());
+//				refSpace.disconnect();
+//				finish();
+//			}
+//		});
 		
-		reflectionSpace.setIcon(getResources().getDrawable(R.drawable.share_to_spaces));
-		reflectionSpace.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Log.i("BUTTON PRESSED", "");
-				saveReflection();
-				refSpace.publishElementToSpace(reflectionTitle.getText().toString() + "\n" +  reflectionText.getText().toString());
-				refSpace.disconnect();
-				finish();
-			}
-		});
-		
-		final ActionItem getObjects = new ActionItem();
-		
-		getObjects.setIcon(getResources().getDrawable(R.drawable.share_to_spaces));
-		getObjects.setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				Log.i("BUTTON PRESSED", "");
-				refSpace.listData("team#76");
-			}
-		});
-		
-		shareButton = (Button)findViewById(R.id.ShareReflectionButton);
-		shareButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				qa = new QuickAction(v);
-				
-				qa.addActionItem(other);
-				qa.addActionItem(reflectionSpace);
-				qa.addActionItem(getObjects);
-				qa.setAnimStyle(QuickAction.ANIM_AUTO);
-				qa.show();
-			}
-		});
-		
-	}
+//		final ActionItem getObjects = new ActionItem();
+//		
+//		getObjects.setIcon(getResources().getDrawable(R.drawable.share_to_spaces));
+//		getObjects.setOnClickListener(new View.OnClickListener() {
+//			public void onClick(View v) {
+//				Log.i("BUTTON PRESSED", "");
+//				refSpace.listData("team#76");
+//			}
+//		});
+//		
+//		shareButton = (Button)findViewById(R.id.ShareReflectionButton);
+//		shareButton.setOnClickListener(new OnClickListener() {
+//			public void onClick(View v) {
+//				qa = new QuickAction(v);
+//				
+//				qa.addActionItem(other);
+//				qa.addActionItem(reflectionSpace);
+//				qa.addActionItem(getObjects);
+//				qa.setAnimStyle(QuickAction.ANIM_AUTO);
+//				qa.show();
+//			}
+//		});
+//		
+//	}
 	
 	
 	
