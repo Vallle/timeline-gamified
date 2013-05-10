@@ -16,7 +16,8 @@
 	        android:id="@+id/achievements_status"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:src="@drawable/achievements_completed" />
+	        />
+<!-- 	        android:src="@drawable/achievements_completed" -->
     	
 	    <com.bjorsond.android.timeline.widgets.OutlineTextView
 	        android:id="@+id/achievements_title"

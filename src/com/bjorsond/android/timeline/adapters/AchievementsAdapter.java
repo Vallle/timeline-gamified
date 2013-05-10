@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bjorsond.android.timeline.R;
+import com.bjorsond.android.timeline.R.drawable;
 import com.swarmconnect.SwarmAchievement;
 import com.swarmconnect.SwarmAchievement.AchievementUnlockedCB;
 
@@ -49,7 +50,7 @@ public class AchievementsAdapter extends ArrayAdapter<SwarmAchievement> {
         descriptionTextView.setTypeface(font);
 //        descriptionTextView.setWidth(100);
        
-        
+       
         final ImageView statusTextView = (ImageView) v.findViewById(R.id.achievements_status);
 
         titleTextView.setText(achievement.title);
@@ -61,9 +62,9 @@ public class AchievementsAdapter extends ArrayAdapter<SwarmAchievement> {
         	@Override
         	public void achievementUnlocked(boolean unlocked, Date date) {
         		if (unlocked) {
-        			statusTextView.setVisibility(View.VISIBLE);
+        			statusTextView.setBackgroundResource(drawable.achievements_is_completed);
         		} else {
-        			statusTextView.setVisibility(View.INVISIBLE);
+        			statusTextView.setBackgroundResource(drawable.achievements_not_completed);
         		}
         	}
         });
