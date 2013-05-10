@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:timeline="http://schemas.android.com/apk/res/com.bjorsond.android.timeline"
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="3dip"
@@ -14,7 +14,7 @@
 		android:paddingTop="2dp" android:paddingBottom="2dp" android:layout_height="0dip" android:layout_weight="30">
 		<ImageView
 	        android:id="@+id/achievements_status"
-	        android:layout_width="wrap_content"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/achievements_completed" />
     	
