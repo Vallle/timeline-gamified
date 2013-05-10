@@ -10,6 +10,9 @@
  ******************************************************************************/
 package com.bjorsond.android.timeline;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import net.sondbjor.android.ActionItem;
 import net.sondbjor.android.QuickAction;
 import android.content.Context;
@@ -22,6 +25,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.bjorsond.android.timeline.reflectionspace.MSFHelper;
 import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceHandler;
 import com.bjorsond.android.timeline.reflectionspace.ReflectionSpaceHandler;
 import com.bjorsond.android.timeline.utilities.Constants;
@@ -44,7 +48,7 @@ public class ReflectionActivity extends SwarmActivity {
 	private Button saveButton, discardButton, shareButton;
 	private EditText reflectionTitle;
 	private QuickAction qa;
-//	private EditText reflectionText;
+	private EditText reflectionText;
 	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +70,14 @@ public class ReflectionActivity extends SwarmActivity {
 		discardButton = (Button)findViewById(R.id.DiscardReflectionButton);
 		
 		reflectionTitle = (EditText)findViewById(R.id.ReflectionTitleEditText);
-//		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
+		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
 		
-		reflectionTitle.setText(getString(R.string.Refleqtion_question_one) + "\n\n" + getString(R.string.Refleqtion_question_two) + "\n");
+		reflectionTitle.setText("Reflection " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(Calendar.getInstance().getTime()));
+		reflectionText.setText(getString(R.string.Refleqtion_question_one) + "\n\n" + getString(R.string.Refleqtion_question_two) + "\n");
 		
 		if(Constants.EDIT_REFLECTION == getIntent().getExtras().getInt(Constants.REQUEST_CODE)){
 			reflectionTitle.setText(getIntent().getExtras().getString(Intent.EXTRA_SUBJECT));
-//			reflectionText.setText(getIntent().getExtras().getString(Intent.EXTRA_TEXT));
+			reflectionText.setText(getIntent().getExtras().getString(Intent.EXTRA_TEXT));
 		}
 		
 		saveButton.setOnClickListener(saveReflectionListener);
@@ -91,7 +96,8 @@ public class ReflectionActivity extends SwarmActivity {
 				finish();
 			}
 		});
-		
+
+		final MSFHelper refSpace = new MSFHelper(getBaseContext());
 		final ActionItem reflectionSpace = new ActionItem();
 		
 		reflectionSpace.setIcon(getResources().getDrawable(R.drawable.share_to_spaces));
@@ -99,8 +105,19 @@ public class ReflectionActivity extends SwarmActivity {
 			public void onClick(View v) {
 				Log.i("BUTTON PRESSED", "");
 				saveReflection();
-				ReflectionSpaceHandler.insertToReflectionSpace(getBaseContext(), reflectionTitle.getText().toString());
+				refSpace.publishElementToSpace(reflectionTitle.getText().toString() + "\n" +  reflectionText.getText().toString());
+				refSpace.disconnect();
 				finish();
+			}
+		});
+		
+		final ActionItem getObjects = new ActionItem();
+		
+		getObjects.setIcon(getResources().getDrawable(R.drawable.share_to_spaces));
+		getObjects.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Log.i("BUTTON PRESSED", "");
+				refSpace.listData("team#76");
 			}
 		});
 		
@@ -111,6 +128,7 @@ public class ReflectionActivity extends SwarmActivity {
 				
 				qa.addActionItem(other);
 				qa.addActionItem(reflectionSpace);
+				qa.addActionItem(getObjects);
 				qa.setAnimStyle(QuickAction.ANIM_AUTO);
 				qa.show();
 			}
@@ -147,7 +165,7 @@ public class ReflectionActivity extends SwarmActivity {
 		Intent saveReflectionIntent = new Intent();
 		saveReflectionIntent.putExtra("REFLECTION_ID", getIntent().getExtras().getInt("REFLECTION_ID")); 
         saveReflectionIntent.putExtra(Intent.EXTRA_SUBJECT, reflectionTitle.getText().toString()); 
-//        saveReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString());
+        saveReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString());
         setResult(RESULT_OK, saveReflectionIntent);
 	}
 	
@@ -155,7 +173,7 @@ public class ReflectionActivity extends SwarmActivity {
 		Intent shareReflectionIntent = new Intent(Intent.ACTION_SEND);
 		shareReflectionIntent.setType("text/plain");
         shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionTitle.getText().toString()); 
-//        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString()); 
+        shareReflectionIntent.putExtra(Intent.EXTRA_TEXT, reflectionText.getText().toString()); 
 
         String clip = reflectionTitle.getText().toString();
         
