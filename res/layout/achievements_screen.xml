@@ -14,7 +14,7 @@
 		    />
 		
 	    <ImageView 
-	        android:layout_width="wrap_content"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/header_text"
 	        android:layout_alignParentTop="true"
@@ -24,7 +24,7 @@
 	    
 	    <ListView 
 	        android:id="@+id/achievements_items_list"
-	        android:layout_width="wrap_content"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_below="@id/header"
 	        android:cacheColorHint="@android:color/transparent"
