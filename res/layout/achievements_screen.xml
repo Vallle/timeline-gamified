@@ -35,6 +35,7 @@
 	        android:padding="2dp"
 	        android:divider="@color/Black"
     		android:dividerHeight="1dp"
+    		android:inputType="textMultiLine"
 	        />
 	    
 </RelativeLayout>
