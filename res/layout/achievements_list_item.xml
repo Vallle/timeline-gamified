@@ -29,13 +29,14 @@
 	        android:textSize="16sp"
 	        android:ellipsize="none"
 	        android:scrollHorizontally="false"
-	        timeline:outlineColor="@color/list_labels_color_outline" />
+	        timeline:outlineColor="@color/list_labels_color_outline" /> 
+	        
 	</TableRow>
 	
     <TableRow android:id="@+id/DashTableRow002"
 		android:layout_width="fill_parent"
 		android:paddingTop="2dp" android:paddingBottom="2dp" android:layout_height="0dip" android:layout_weight="30">
-	    <com.bjorsond.android.timeline.widgets.OutlineTextView
+	    <!-- <com.bjorsond.android.timeline.widgets.OutlineTextView
 	        android:id="@+id/achievements_description"
 	        android:layout_width="0dp"
 	        android:layout_height="wrap_content"
@@ -47,7 +48,18 @@
 	        android:scrollHorizontally="false"
 	        android:textColor="@color/list_labels_color"
 	        android:textSize="12sp"
-	        timeline:outlineColor="@color/list_labels_color_outline" />
+	        timeline:outlineColor="@color/list_labels_color_outline" />-->
+	        
+	        <TextView 
+	            android:id="@+id/achievements_description"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dip"
+		        android:layout_weight="1"
+		        android:ellipsize="none" 
+		        android:scrollHorizontally="false"
+		        android:textColor="@color/list_labels_color"
+		        android:textSize="12sp"/>
 	    <!-- ellipsize : end -->
 	</TableRow>
 </TableLayout>
