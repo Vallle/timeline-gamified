@@ -36,7 +36,7 @@ public class OutlineTextView extends TextView{
         final TypedArray a = context.obtainStyledAttributes(attrs,
                 R.styleable.OutlineTextView, defStyle, 0);
         
-        outlineColor = a.getInt(R.styleable.OutlineTextView_outlineColor, 0xffB3F1FB);
+        outlineColor = a.getInt(R.styleable.OutlineTextView_outlineColor, 0x00000000); //0xffB3F1FB
         a.recycle();
         init();
     }
@@ -53,7 +53,8 @@ public class OutlineTextView extends TextView{
     
     private void init(){
         
-//        setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/kperry.ttf"));
+//    	setTypeface(Typeface.createFromAsset(getContext().getAssets(), "fonts/kperry.ttf"));
+        setTypeface(Typeface.MONOSPACE);
         strokePaint = new TextPaint();
         strokePaint.setColor(outlineColor);
         strokePaint.setAntiAlias(true);
@@ -62,7 +63,7 @@ public class OutlineTextView extends TextView{
         strokePaint.setTextSize(getTextSize());
         strokePaint.setTypeface(getTypeface());
         strokePaint.setStyle(Paint.Style.STROKE);
-        strokePaint.setStrokeWidth(3);
+        strokePaint.setStrokeWidth(1);
 
         textPaint = new TextPaint();
         textPaint.setColor(getTextColors().getDefaultColor());
@@ -73,7 +74,7 @@ public class OutlineTextView extends TextView{
         textPaint.setTypeface(getTypeface());
     }
     
-    @Override
+    @Override	
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
     	
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);

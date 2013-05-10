@@ -28,6 +28,7 @@ public class AchievementsScreen extends SwarmActivity {
 		
 		listView = (ListView)findViewById(R.id.achievements_items_list);
 		
+		
 		// Call to Swarm to get the game's Achievements Map
 		SwarmAchievement.getAchievementsMap(achievementsCallback); 
 	}

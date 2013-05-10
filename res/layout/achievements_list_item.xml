@@ -1,37 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:timeline="http://schemas.android.com/apk/res/com.bjorsond.android.timeline"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="3dip"
-    android:gravity="center_vertical" >
-
-    <ImageView
-        android:id="@+id/achievements_status"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/achievements_completed" />
-
-    <com.bjorsond.android.timeline.widgets.OutlineTextView
-        android:layout_weight="1"
-        android:id="@+id/achievements_title"
-        android:layout_width="0dip"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:textSize="10sp" 
-        android:textColor="@color/list_labels_color"
-        timeline:outlineColor="@color/list_labels_color_outline"/>
-
-    <com.bjorsond.android.timeline.widgets.OutlineTextView
-        android:id="@+id/achievements_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dip"
-        android:textSize="8sp"
-        android:textColor="@color/list_labels_color"
-        android:inputType="text"
-        android:ellipsize="end"
-        timeline:outlineColor="@color/list_labels_color_outline" />
-
-</LinearLayout>
+    android:gravity="center_vertical"
+    android:background="@color/White"
+    android:shrinkColumns="*" >
+    
+    <TableRow android:id="@+id/DashTableRow001"
+		android:layout_width="fill_parent"
+		android:paddingTop="2dp" android:paddingBottom="2dp" android:layout_height="0dip" android:layout_weight="30">
+		<ImageView
+	        android:id="@+id/achievements_status"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/achievements_completed" />
+    	
+	    <com.bjorsond.android.timeline.widgets.OutlineTextView
+	        android:id="@+id/achievements_title"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:layout_weight="1"
+	        android:singleLine="false"
+	        android:textColor="@color/list_labels_color"
+	        android:textSize="16sp"
+	        android:ellipsize="none"
+	        android:scrollHorizontally="false"
+	        timeline:outlineColor="@color/list_labels_color_outline" />
+	</TableRow>
+	
+    <TableRow android:id="@+id/DashTableRow002"
+		android:layout_width="fill_parent"
+		android:paddingTop="2dp" android:paddingBottom="2dp" android:layout_height="0dip" android:layout_weight="30">
+	    <com.bjorsond.android.timeline.widgets.OutlineTextView
+	        android:id="@+id/achievements_description"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dip"
+	        android:layout_weight="1"
+	        android:singleLine="false"
+	        android:ellipsize="none" 
+	        android:inputType="text"
+	        android:scrollHorizontally="false"
+	        android:textColor="@color/list_labels_color"
+	        android:textSize="12sp"
+	        timeline:outlineColor="@color/list_labels_color_outline" />
+	    <!-- ellipsize : end -->
+	</TableRow>
+</TableLayout>

@@ -43,9 +43,12 @@ public class AchievementsAdapter extends ArrayAdapter<SwarmAchievement> {
         SwarmAchievement achievement = getItem(position);
         TextView titleTextView = (TextView) v.findViewById(R.id.achievements_title);
         titleTextView.setTypeface(font);
+//        titleTextView.setWidth(100);
         
         TextView descriptionTextView = (TextView) v.findViewById(R.id.achievements_description);
         descriptionTextView.setTypeface(font);
+//        descriptionTextView.setWidth(100);
+       
         
         final ImageView statusTextView = (ImageView) v.findViewById(R.id.achievements_status);
 
