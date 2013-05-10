@@ -59,7 +59,8 @@
 		        android:ellipsize="none" 
 		        android:scrollHorizontally="false"
 		        android:textColor="@color/list_labels_color"
-		        android:textSize="12sp"/>
+		        android:textSize="14sp"
+		        android:textStyle="bold"/>
 	    <!-- ellipsize : end -->
 	</TableRow>
 </TableLayout>
