@@ -103,7 +103,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private Intent tagsIntent;
 	private Intent spacesIntent;
 	private Intent swarmIntent, profileIntent;
-	private Intent achievementsIntent;
+	private Intent achievementsIntent, leaderboardIntent;
 	private Intent tutorialIntent;
 	private ContentAdder contentAdder;
 	private ContentLoader contentLoader;
@@ -433,7 +433,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	//  POINTS
 	public static void addPointsCounter(int number) {
 		pointsCounter += number;
-		SwarmLeaderboard.submitScore(Constants.leaderboardID, pointsCounter);
+		if(!Swarm.user.isGuestAccount()){
+			SwarmLeaderboard.submitScore(Constants.leaderboardID, pointsCounter);
+		}
 	}
 	
 	public void setPointsCounter(int number) {
@@ -1028,7 +1030,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	
 	private OnClickListener leaderboardListener = new OnClickListener() {
 		public void onClick(View v) {
-			SwarmLeaderboard.showLeaderboard(Constants.leaderboardID);
+//			SwarmLeaderboard.showLeaderboard(Constants.leaderboardID);
+			startActivity(leaderboardIntent);
 		}
 	};
 	
@@ -1057,6 +1060,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		profileIntent = new Intent(this, ProfileActivity.class);
 		spacesIntent = new Intent(this, ReflectionSpaceUserActivity.class);
 		achievementsIntent = new Intent(this, AchievementsScreen.class);
+		leaderboardIntent = new Intent(this, LeaderboardActivity.class);
 		
 		swarmIntent = new Intent(this, MySwarmActivity.class);
 	}

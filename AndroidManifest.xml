@@ -44,6 +44,9 @@
       
         <activity android:label="@string/app_name"
             android:name="com.bjorsond.android.timeline.AchievementsScreen" android:screenOrientation="portrait"/>
+      
+        <activity android:label="@string/app_name"
+            android:name="com.bjorsond.android.timeline.LeaderboardActivity" android:screenOrientation="portrait"/>
         
         <activity android:label="@string/create_reflection_name"
             android:name="com.bjorsond.android.timeline.ReflectionActivity" android:screenOrientation="landscape"/>

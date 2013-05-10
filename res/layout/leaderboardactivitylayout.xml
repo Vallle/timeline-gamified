@@ -2,37 +2,43 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
     android:background="@color/White"
-	>
-	
-		<View 
-		    android:id="@+id/leaderboardHeader"
-	    	android:layout_width="fill_parent"
-		    android:layout_height="63dip"
-		    android:background="@color/Green"
-		    />
-		
-	    <ImageView 
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:src="@drawable/header_text"
-	        android:layout_alignParentTop="true"
-	        android:layout_centerHorizontal="true"
-	        android:layout_marginTop="5dip"
-	        />
-	    
-	    <ListView 
-	        android:id="@+id/leaderboard_items_list"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@id/leaderboardHeader"
-	        android:cacheColorHint="@android:color/transparent"
-	        android:layout_marginLeft="30dp"
-	        android:layout_marginRight="30dp"
-	        android:layout_marginTop="15dp"
-	        android:layout_marginBottom="15dp"
-	        android:padding="2dp"
-	        />
-	    
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="63dip"
+        android:background="@color/Green" />
+
+    <ImageView
+        android:id="@+id/leaderboardHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dip"
+        android:src="@drawable/header_text" />
+
+    <TextView
+        android:id="@+id/leaderboardText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/leaderboard_items_list"
+        android:layout_below="@+id/leaderboardHeader"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ListView
+        android:id="@+id/leaderboard_items_list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/leaderboardText"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:padding="2dp" />
+
 </RelativeLayout>
