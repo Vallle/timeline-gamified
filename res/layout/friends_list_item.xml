@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:timeline="http://schemas.android.com/apk/res/com.bjorsond.android.timeline"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="3dip"
+    android:gravity="center_vertical" >
+
+    <ImageView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/swarm_trophy_gold_sm"
+	        android:layout_alignParentTop="true"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="5dip"
+	        />
+    
+    <com.bjorsond.android.timeline.widgets.OutlineTextView
+        android:layout_weight="1"
+        android:id="@+id/number_of_achievements"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:textSize="12sp" 
+        android:textColor="@color/list_labels_color"
+        timeline:outlineColor="@color/list_labels_color_outline"/>
+
+    <com.bjorsond.android.timeline.widgets.OutlineTextView
+        android:id="@+id/friend_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dip"
+        android:textSize="12sp"
+        android:textColor="@color/list_labels_color"
+        android:inputType="text"
+        android:ellipsize="end"
+        timeline:outlineColor="@color/list_labels_color_outline" />
+
+</LinearLayout>
