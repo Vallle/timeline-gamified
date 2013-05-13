@@ -121,13 +121,6 @@ public class LeaderboardActivity extends SwarmActivity{
     }
 	
 	
-	//LISTENER
-	private OnClickListener createUserListener = new OnClickListener() {
-		public void onClick(View v) {
-			
-		}
-	};
-	
 	private void setupViews(){
 		listView = (ListView)findViewById(R.id.leaderboard_items_list);
 		
