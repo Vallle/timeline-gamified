@@ -43,6 +43,7 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.LinearLayout.LayoutParams;
 
+import com.bjorsond.android.timeline.DashboardActivity;
 import com.bjorsond.android.timeline.MyTagsActivity;
 import com.bjorsond.android.timeline.NoteActivity;
 import com.bjorsond.android.timeline.ReflectionActivity;
@@ -64,6 +65,7 @@ import com.bjorsond.android.timeline.utilities.Constants;
 import com.bjorsond.android.timeline.utilities.MyLocation;
 import com.bjorsond.android.timeline.utilities.Utilities;
 import com.bjorsond.android.timeline.R;
+import com.swarmconnect.SwarmAchievement;
 
 /**
  * 
@@ -550,6 +552,15 @@ public class EventDialog extends Dialog {
 		like.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
+				DashboardActivity.addMoodCounter();
+				if (DashboardActivity.getMoodCounter() >= 1){
+					SwarmAchievement.unlock(Constants.FirstMoodAchievement);
+				}
+				if (DashboardActivity.getMoodCounter() >= 10){
+					SwarmAchievement.unlock(Constants.TenthMoodAchievement);
+				}
+				if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
+
 				Emotion emo = new Emotion(EmotionEnum.LIKE);
 				((Event)v.getTag()).addEmotion(emo);
 				((TimelineActivity)mActivity).getContentAdder().addEmotionToDatabase((Event) v.getTag(), emo);
@@ -567,6 +578,15 @@ public class EventDialog extends Dialog {
 		cool.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
+				DashboardActivity.addMoodCounter();
+				if (DashboardActivity.getMoodCounter() >= 1){
+					SwarmAchievement.unlock(Constants.FirstMoodAchievement);
+				}
+				if (DashboardActivity.getMoodCounter() >= 10){
+					SwarmAchievement.unlock(Constants.TenthMoodAchievement);
+				}
+				if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
+
 				Emotion emo = new Emotion(EmotionEnum.COOL);
 				((Event)v.getTag()).addEmotion(emo);
 				((TimelineActivity)mActivity).getContentAdder().addEmotionToDatabase((Event) v.getTag(), emo);
@@ -583,6 +603,14 @@ public class EventDialog extends Dialog {
 		dislike.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
+				DashboardActivity.addMoodCounter();
+				if (DashboardActivity.getMoodCounter() >= 1){
+					SwarmAchievement.unlock(Constants.FirstMoodAchievement);
+				}
+				if (DashboardActivity.getMoodCounter() >= 10){
+					SwarmAchievement.unlock(Constants.TenthMoodAchievement);
+				}
+				if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
 				Emotion emo = new Emotion(EmotionEnum.DISLIKE);
 				((Event)v.getTag()).addEmotion(emo);
 				((TimelineActivity)mActivity).getContentAdder().addEmotionToDatabase((Event) v.getTag(), emo);
@@ -599,6 +627,15 @@ public class EventDialog extends Dialog {
 		sad.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
+				DashboardActivity.addMoodCounter();
+				if (DashboardActivity.getMoodCounter() >= 1){
+					SwarmAchievement.unlock(Constants.FirstMoodAchievement);
+				}
+				if (DashboardActivity.getMoodCounter() >= 10){
+					SwarmAchievement.unlock(Constants.TenthMoodAchievement);
+				}
+				if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
+
 				Emotion emo = new Emotion(EmotionEnum.SAD);
 				((Event)v.getTag()).addEmotion(emo);
 				((TimelineActivity)mActivity).getContentAdder().addEmotionToDatabase((Event) v.getTag(), emo);

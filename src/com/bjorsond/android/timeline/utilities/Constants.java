@@ -115,6 +115,8 @@ public class Constants {
 	final public static int FirstMoodAchievement = 10959;
 	final public static int TenthMoodAchievement = 10977;
 	final public static int AchievementsFound = 12145;
+	final public static int FirstTimelineAchievement = 10983;	
+	final public static int AllrounderAchievement = 10961;	
 	
 	
 	//Points

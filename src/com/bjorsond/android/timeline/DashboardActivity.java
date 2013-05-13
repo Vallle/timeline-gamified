@@ -91,7 +91,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private ImageButton tagsButton;
 	private ImageButton myGroupsButton;
 	private ImageButton syncronizeButton;
-	private ImageButton spacesButton;
+	private ImageButton tutorialButton;
 	private ImageButton achievementsButton;
 	private ImageButton friendsButton;
 	private ImageButton messagesButton;
@@ -101,10 +101,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	private Intent timelineIntent;
 	private Intent myGroupsIntent;
 	private Intent tagsIntent;
-	private Intent spacesIntent;
 	private Intent swarmIntent, profileIntent;
 	private Intent achievementsIntent, leaderboardIntent;
-	private Intent tutorialIntent;
 	private ContentAdder contentAdder;
 	private ContentLoader contentLoader;
 	private Account creator;
@@ -580,7 +578,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 
 		if (dialog.getNumberOfTimelinesSaved() != 0) {
 			dialog.show();
-			SwarmAchievement.unlock(10983);
 		} else {
 			switch (shared) {
 			case Constants.SHARED_TRUE:
@@ -858,11 +855,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 			return true;
 			
 			
-		//TODO TUTORIAL
-		case R.id.TUTORIAL:
-//	        startActivity(tutorialIntent);
-			setChooseTutorialDialog();
-			
 		default:
 			break;
 		}
@@ -928,7 +920,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	}
 	
 	//TODO oneOfEach()
-	public static boolean onOfEach(){
+	public static boolean oneOfEach(){
 		if(noteCounter > 0 &&
 				audioCounter > 0 &&
 				pictureCounter > 0 &&
@@ -1041,9 +1033,9 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		}
 	};
 	
-	private OnClickListener spacesListener = new OnClickListener() {
+	private OnClickListener tutorialListener = new OnClickListener() {
 		public void onClick(View v) {
-			startActivity(spacesIntent);
+			setChooseTutorialDialog();
 		}
 	};
 	
@@ -1058,7 +1050,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		timelineIntent.setAction(Constants.INTENT_ACTION_NEW_TIMELINE); //Default Intent action for TimelineActivity is to create/open a timeline.
 		tagsIntent = new Intent(this, MyTagsActivity.class);
 		profileIntent = new Intent(this, ProfileActivity.class);
-		spacesIntent = new Intent(this, ReflectionSpaceUserActivity.class);
 		achievementsIntent = new Intent(this, AchievementsScreen.class);
 		leaderboardIntent = new Intent(this, LeaderboardActivity.class);
 		
@@ -1109,8 +1100,8 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		achievementsButton.setOnClickListener(achievementsListener);
 		leaderboardButton = (ImageButton)findViewById(R.id.leaderboard);
 		leaderboardButton.setOnClickListener(leaderboardListener);
-		spacesButton = (ImageButton)findViewById(R.id.spaces_login_button);
-		spacesButton.setOnClickListener(spacesListener);
+		tutorialButton = (ImageButton)findViewById(R.id.tutorial_button);
+		tutorialButton.setOnClickListener(tutorialListener);
 //		browseSharedTimelinesButton = (ImageButton) findViewById(R.id.dash_shared_timelines);
 //		browseSharedTimelinesButton.setOnClickListener(browseSharedTimeLinesListener);
 //		syncronizeButton = (ImageButton)findViewById(R.id.dash_sync);
