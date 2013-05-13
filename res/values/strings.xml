@@ -182,9 +182,9 @@
 	<string name="back">Back</string>
 	<string name="tutorial_title">Tutorial</string>
 	<string name="tutorial_general_information">
-	    							Timeline is an application that can be used to save different pictures, video, audio, mood and kinds of notes. 
-	    							These elements are shown in a timeline, hence the name. By adding these elements, the user can look back at an 
-	    							earlier event, and the information at hand, to make reflectoins. By reflecting,  the user can gain insight that 
+	    							Timeline is an application that can be used to save different kinds of notes, pictures, video, audio, and moods. 
+	    							These elements are shown in a timeline, hence the name of the app. By adding these elements, the user can look back at an 
+	    							earlier event, and the information at hand, to make reflectoins. By reflecting, the user can gain insight that 
 	    							makes him or her better at the task that was performed, or at handling such trials again.
 
 	</string>
@@ -192,10 +192,8 @@
 									Dashboard: \n
 									new timeline - enables the user to create a new timeline.\n
 									my timelines - enables the user to choose between different timelines.\n
-									my tags - makes it easier to sort information, by tagging it with classifications.\n
-									reflection spaces - here users can create their own user for the reflection spaces, as well as see the latest input 
-									to the spaces through a feed.\n
-									achievements - here the different achievements are shown, and the user can see which is completed and which is not.\n
+									my tags - makes it easier to sort information, by making tags that work in a similar way to hashtags.\n
+									achievements - here the different achievements are shown, and the user can see which are completed and which are not.\n
 									friends - here the user can add friends, as well as see the number of their completed achievements.\n
 									messages - the user can send messages to his/her friends.\n
 									leaderborad - a leaderboard showing how many points the different users have acquired.\n

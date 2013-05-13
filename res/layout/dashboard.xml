@@ -120,7 +120,7 @@
 
 	<TableRow android:id="@+id/DashTableRow03"
 		android:layout_width="fill_parent"
-		android:paddingTop="20dip" android:paddingBottom="20dip" android:layout_height="0dip" android:layout_weight="25">
+		android:paddingTop="35dip" android:paddingBottom="10dip" android:layout_height="0dip" android:layout_weight="25">
 		<LinearLayout android:layout_weight="1"
 			android:layout_width="fill_parent" android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 
@@ -168,14 +168,15 @@
 	
 	<TableRow android:id="@+id/DashTableRow04"
 		android:layout_width="fill_parent"
-		android:paddingTop="20dp" android:paddingBottom="20dp" android:layout_height="0dip" android:layout_weight="30">
+		android:paddingTop="10dp" android:paddingBottom="25dp" android:layout_height="0dip" android:layout_weight="30">
 		<LinearLayout android:paddingTop="20dp"
 			android:layout_weight="1" android:paddingBottom="10dp" android:layout_width="fill_parent"
 			android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
-			<LinearLayout android:paddingRight="10dip"
-				android:layout_weight="3" android:layout_height="wrap_content"
+			<LinearLayout android:paddingRight="0dip"
+			    android:paddingBottom="12dp" android:paddingTop="12dp"
+				android:layout_weight="3" android:layout_height="fill_parent"
 				android:layout_width="0dp" android:id="@+id/LinearLayout03"
-				android:paddingLeft="10dip">
+				android:paddingLeft="0dip">
 				<ImageButton android:layout_width="fill_parent" 
 				    android:background="@drawable/friends" 
 				    android:layout_height="fill_parent" 
@@ -183,9 +184,10 @@
 				    android:scaleType="centerInside">
 				</ImageButton>
 			</LinearLayout>
-			<LinearLayout android:paddingRight="15dip"
-				android:layout_weight="3" android:layout_height="wrap_content"
-				android:paddingLeft="15dip" android:layout_width="0dp"
+			<LinearLayout android:paddingRight="4dip"
+			    android:paddingBottom="12dp" android:paddingTop="18dp"
+				android:layout_weight="3" android:layout_height="fill_parent"
+				android:paddingLeft="4dip" android:layout_width="0dp"
 				android:id="@+id/LinearLayout03">
 				<ImageButton android:layout_width="fill_parent" 
 				    android:background="@drawable/messages" 
@@ -194,14 +196,15 @@
 				    android:scaleType="centerInside">
 				</ImageButton>
 			</LinearLayout>
-			<LinearLayout android:paddingRight="15dip"
-				android:layout_weight="3" android:layout_height="wrap_content"
-				android:paddingLeft="15dip" android:layout_width="0dp"
+			<LinearLayout android:paddingRight="4dip"
+			    android:paddingBottom="12dp" android:paddingTop="12dp"
+				android:layout_weight="3" android:layout_height="fill_parent"
+				android:paddingLeft="4dip" android:layout_width="0dp"
 				android:id="@+id/LinearLayout03">
 				
 				<ImageButton android:scaleType="centerInside"
 					android:layout_width="fill_parent" 
-					android:layout_height="wrap_content"
+					android:layout_height="fill_parent"
 					android:id="@+id/tutorial_button" 
 					android:background="@drawable/tutorial">
 				</ImageButton>
