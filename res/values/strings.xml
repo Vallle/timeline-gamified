@@ -68,10 +68,18 @@
 	<string name="Login_reflection_space_user_text_label">Login to the reflection space</string>
 	<string name="Leaderboard_headline_label">Best of the bunch</string>
 	
-	<string name="Refleqtion_question_one">Write a short summary of your day:</string> <!-- ADDED FOR REFLECTION NOTE -->
-	<string name="Refleqtion_question_two">After reflecting over today\'s incidents, would you have done anything differently?</string> <!-- ADDED FOR REFLECTION NOTE -->
-	<string name="Refleqtion_question_three"></string> <!-- ADDED FOR REFLECTION NOTE -->
-	
+	<string name="Refleqtion_question">Q:Write a summary of your day:\n
+					A:\n
+					Q:What have you done well?\n
+					A:\n
+					Q:What could you have done better?\n
+					A:\n
+					Q:Anything you would have done differently?\n
+					A:\n
+					Q:Have you learned anything new?\n
+					A:\n
+</string> <!-- ADDED FOR REFLECTION NOTE -->
+
 	<string name="Not_registered">Not registered. Registering user.</string>
 	<string name="Checking_user">Checking user against server ...</string>
 	<string name="Could_not_sync">Couldn\'t retrieve last synced time</string>
