@@ -20,8 +20,8 @@ public class TimeAlarm extends BroadcastReceiver {
 	public void onReceive(Context context, Intent paramIntent) {
 		Calendar c = Calendar.getInstance();
 		Log.i("CALENDAR TESTING", "in TimeAlarm");
-		if (	(paramIntent.getAction().equals("notify")) //&&
-//				c.get(Calendar.DAY_OF_WEEK) != DashboardActivity.getLastRefDate().get(Calendar.DAY_OF_WEEK)
+		if (	(paramIntent.getAction().equals("notify")) &&
+				c.get(Calendar.DAY_OF_WEEK) != DashboardActivity.getLastRefDate().get(Calendar.DAY_OF_WEEK)
 			) notification(context, paramIntent);
 		
 		
