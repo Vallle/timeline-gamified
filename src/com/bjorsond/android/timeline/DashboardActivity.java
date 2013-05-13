@@ -208,36 +208,36 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 	public static int checkReflectionDate() {
 		Calendar c = Calendar.getInstance();
 		c.setTimeInMillis(System.currentTimeMillis());
-//		if (
-//			(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && //NULL POINTER PÅ DENNE LINJA med feilmelding ResultInfo{who=null, request=10, result=-1, data=intent}
-//			(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK)-1)) &&
-//			(c.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY || 
-//				c.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)
-//			) return 0;
-//	
-//		else if (
-//				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == (c.get(Calendar.WEEK_OF_YEAR)-1)) && 
-//				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK)+4)) &&
-//				(c.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) &&
-//				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)			
-//				) return 0;
-//			 
-//		else if (
-//				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && 
-//				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK))) &&
-//				((c.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) ||
-//						(c.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) ||
-//						(c.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) ||
-//						(c.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY))
-//				) return 1;
-//		
-//		
-//		else if (
-//				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && 
-//				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK))) &&
-//				((c.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY))
-//				) return 3;
-		if (true) return 0;
+		if (
+			(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && //NULL POINTER PÅ DENNE LINJA med feilmelding ResultInfo{who=null, request=10, result=-1, data=intent}
+			(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK)-1)) &&
+			(c.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY || 
+				c.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY || c.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)
+			) return 0;
+	
+		else if (
+				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == (c.get(Calendar.WEEK_OF_YEAR)-1)) && 
+				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK)+4)) &&
+				(c.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) &&
+				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY)			
+				) return 0;
+			 
+		else if (
+				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && 
+				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK))) &&
+				((c.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY) ||
+						(c.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.TUESDAY) ||
+						(c.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY) ||
+						(c.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.THURSDAY))
+				) return 1;
+		
+		
+		else if (
+				(lastReflectionDate.get(Calendar.WEEK_OF_YEAR) == c.get(Calendar.WEEK_OF_YEAR)) && 
+				(lastReflectionDate.get(Calendar.DAY_OF_WEEK) == (c.get(Calendar.DAY_OF_WEEK))) &&
+				((c.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY) && (lastReflectionDate.get(Calendar.DAY_OF_WEEK) == Calendar.FRIDAY))
+				) return 3;
+//		if (true) return 0;
 		
 		
 			 
@@ -655,7 +655,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 //			fos.write(lastSynced.getBytes());
 			fos.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -681,7 +680,6 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 //		        strContent.append((char)ch);
 //			fis.close();
 //		} catch (IOException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //		return Long.valueOf(strContent.toString());
