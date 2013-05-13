@@ -114,6 +114,7 @@ public class Constants {
 	final public static int FirstElementAchievement = 10987;
 	final public static int FirstMoodAchievement = 10959;
 	final public static int TenthMoodAchievement = 10977;
+	final public static int AchievementsFound = 12145;
 	
 	
 	//Points

@@ -7,13 +7,13 @@
 	>
 	
 		<View 
-		    android:id="@+id/header"
 	    	android:layout_width="fill_parent"
 		    android:layout_height="63dip"
 		    android:background="@color/Green"
 		    />
 		
 	    <ImageView 
+		    android:id="@+id/achievement_header"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/header_text"
@@ -26,7 +26,7 @@
 	        android:id="@+id/achievements_items_list"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_below="@id/header"
+	        android:layout_below="@id/achievement_header"
 	        android:cacheColorHint="@android:color/transparent"
 	        android:layout_marginLeft="5dp"
 	        android:layout_marginRight="5dp"

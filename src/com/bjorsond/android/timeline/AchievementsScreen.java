@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +21,7 @@ public class AchievementsScreen extends SwarmActivity {
 	
 	protected static Map<Integer, SwarmAchievement> achievements;
 	private ListView listView;
+	private ImageView homeButton;
 
 	
 	@Override
@@ -27,7 +31,13 @@ public class AchievementsScreen extends SwarmActivity {
 		setContentView(R.layout.achievements_screen);
 		
 		listView = (ListView)findViewById(R.id.achievements_items_list);
-		
+
+		homeButton = (ImageView)findViewById(R.id.achievement_header);
+		homeButton.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				finish();
+			}
+		});
 		
 		// Call to Swarm to get the game's Achievements Map
 		SwarmAchievement.getAchievementsMap(achievementsCallback); 

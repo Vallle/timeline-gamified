@@ -150,7 +150,7 @@ public class Experience {
 
 	public void setSharingGroupObject(Group sharingGroupObject) {
 		this.sharingGroupObject = sharingGroupObject;
-		this.sharingGroup = sharingGroupObject.getId();
+//		this.sharingGroup = sharingGroupObject.getId();
 	}
 
 
