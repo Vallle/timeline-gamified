@@ -173,9 +173,6 @@ public TimelineBrowserDialog(Context context, Intent receivedIntent, int shared)
 					else
 						menu.add(R.id.MENU_OPEN_TIMELINE, 0, 0, R.string.Open_timeline_label);
 					menu.add(R.id.MENU_DELETE_TIMELINE, 0,0, R.string.Delete_timeline_label);
-					if(!selectedTimeline.isShared()){
-						menu.add(R.id.MENU_SHARE_TIMELINE, 0,0, R.string.ShareTimeline_label);
-					}
 				}
 			});
 			

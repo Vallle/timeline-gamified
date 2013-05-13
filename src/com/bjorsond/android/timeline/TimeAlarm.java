@@ -41,7 +41,7 @@ public class TimeAlarm extends BroadcastReceiver {
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 		 
 		// Create the notification
-		Notification notification = new Notification(R.drawable.ic_menu_sumday, "Time to reflect?", System.currentTimeMillis());
+		Notification notification = new Notification(R.drawable.reflect_notification, "Time to reflect?", System.currentTimeMillis());
 		notification.setLatestEventInfo(context, "Time to reflect", "To keep the consecutive bonus, add a new reflection!",pendingIntent);
 		// Hide the notification after its selected
 	    notification.flags |= Notification.FLAG_AUTO_CANCEL;
