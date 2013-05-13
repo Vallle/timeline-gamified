@@ -169,11 +169,11 @@
 	<TableRow android:id="@+id/DashTableRow04"
 		android:layout_width="fill_parent"
 		android:paddingTop="20dp" android:paddingBottom="20dp" android:layout_height="0dip" android:layout_weight="30">
-		<LinearLayout android:paddingTop="10dp"
+		<LinearLayout android:paddingTop="20dp"
 			android:layout_weight="1" android:paddingBottom="10dp" android:layout_width="fill_parent"
 			android:id="@+id/LinearLayout01" android:layout_height="fill_parent">
 			<LinearLayout android:paddingRight="10dip"
-				android:layout_weight="2" android:layout_height="fill_parent"
+				android:layout_weight="3" android:layout_height="wrap_content"
 				android:layout_width="0dp" android:id="@+id/LinearLayout03"
 				android:paddingLeft="10dip">
 				<ImageButton android:layout_width="fill_parent" 
@@ -184,7 +184,7 @@
 				</ImageButton>
 			</LinearLayout>
 			<LinearLayout android:paddingRight="15dip"
-				android:layout_weight="2" android:layout_height="fill_parent"
+				android:layout_weight="3" android:layout_height="wrap_content"
 				android:paddingLeft="15dip" android:layout_width="0dp"
 				android:id="@+id/LinearLayout03">
 				<ImageButton android:layout_width="fill_parent" 
@@ -195,13 +195,13 @@
 				</ImageButton>
 			</LinearLayout>
 			<LinearLayout android:paddingRight="15dip"
-				android:layout_weight="2" android:layout_height="fill_parent"
+				android:layout_weight="3" android:layout_height="wrap_content"
 				android:paddingLeft="15dip" android:layout_width="0dp"
 				android:id="@+id/LinearLayout03">
 				
 				<ImageButton android:scaleType="centerInside"
 					android:layout_width="fill_parent" 
-					android:layout_height="fill_parent"
+					android:layout_height="wrap_content"
 					android:id="@+id/tutorial_button" 
 					android:background="@drawable/tutorial">
 				</ImageButton>
@@ -209,12 +209,6 @@
 		</LinearLayout>
 
 
-	</TableRow>
-	
-	<TableRow android:id="@+id/DashTableRow" android:layout_height="0dip" android:layout_weight="5" android:layout_width="fill_parent" android:gravity="center_horizontal">
-		<!-- <TextView android:layout_height="wrap_content" android:id="@+id/DashLastSyncedTextView"
-			android:gravity="center" android:layout_width="fill_parent"
-			android:text="@string/Last_synced_label" android:textSize="16dip"></TextView> -->
 	</TableRow>
 
 
