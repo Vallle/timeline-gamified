@@ -127,11 +127,12 @@
 			<LinearLayout android:layout_width="0dp" android:id="@+id/LinearLayout03"
 				android:layout_height="fill_parent" android:layout_weight="2"
 				android:paddingLeft="15dip" android:paddingRight="15dip">
-				<ImageButton android:scaleType="centerInside"
-					android:layout_width="fill_parent" 
-					android:layout_height="fill_parent"
-					android:id="@+id/spaces_login_button" 
-					android:background="@drawable/spaces_login">
+				
+				<ImageButton android:layout_width="fill_parent" 
+				    android:background="@drawable/profile" 
+				    android:id="@+id/profile" 
+				    android:layout_height="fill_parent" 
+				    android:scaleType="centerInside">
 				</ImageButton>
 			</LinearLayout>
 
@@ -155,9 +156,9 @@
 				android:layout_height="fill_parent" android:layout_weight="2"
 				android:paddingLeft="10dip" android:paddingRight="10dip">
 				<ImageButton android:layout_width="fill_parent" 
-				    android:background="@drawable/friends" 
+				    android:background="@drawable/leaderboard" 
+				    android:id="@+id/leaderboard" 
 				    android:layout_height="fill_parent" 
-				    android:id="@+id/friends" 
 				    android:scaleType="centerInside">
 				</ImageButton>
 			</LinearLayout>
@@ -176,6 +177,17 @@
 				android:layout_width="0dp" android:id="@+id/LinearLayout03"
 				android:paddingLeft="10dip">
 				<ImageButton android:layout_width="fill_parent" 
+				    android:background="@drawable/friends" 
+				    android:layout_height="fill_parent" 
+				    android:id="@+id/friends" 
+				    android:scaleType="centerInside">
+				</ImageButton>
+			</LinearLayout>
+			<LinearLayout android:paddingRight="15dip"
+				android:layout_weight="2" android:layout_height="fill_parent"
+				android:paddingLeft="15dip" android:layout_width="0dp"
+				android:id="@+id/LinearLayout03">
+				<ImageButton android:layout_width="fill_parent" 
 				    android:background="@drawable/messages" 
 				    android:id="@+id/messages" 
 				    android:layout_height="fill_parent" 
@@ -186,22 +198,12 @@
 				android:layout_weight="2" android:layout_height="fill_parent"
 				android:paddingLeft="15dip" android:layout_width="0dp"
 				android:id="@+id/LinearLayout03">
-				<ImageButton android:layout_width="fill_parent" 
-				    android:background="@drawable/leaderboard" 
-				    android:id="@+id/leaderboard" 
-				    android:layout_height="fill_parent" 
-				    android:scaleType="centerInside">
-				</ImageButton>
-			</LinearLayout>
-			<LinearLayout android:paddingRight="15dip"
-				android:layout_weight="2" android:layout_height="fill_parent"
-				android:paddingLeft="15dip" android:layout_width="0dp"
-				android:id="@+id/LinearLayout03">
-				<ImageButton android:layout_width="fill_parent" 
-				    android:background="@drawable/profile" 
-				    android:id="@+id/profile" 
-				    android:layout_height="fill_parent" 
-				    android:scaleType="centerInside">
+				
+				<ImageButton android:scaleType="centerInside"
+					android:layout_width="fill_parent" 
+					android:layout_height="fill_parent"
+					android:id="@+id/tutorial_button" 
+					android:background="@drawable/tutorial">
 				</ImageButton>
 			</LinearLayout>
 		</LinearLayout>

@@ -65,6 +65,7 @@ import com.bjorsond.android.timeline.database.contentmanagers.ContentUpdater;
 import com.bjorsond.android.timeline.dialogs.AttachmentAdder;
 import com.bjorsond.android.timeline.dialogs.EventDialog;
 import com.bjorsond.android.timeline.dialogs.MoodDialog;
+import com.bjorsond.android.timeline.dialogs.TimelineBrowserDialog;
 import com.bjorsond.android.timeline.exceptions.MaxZoomedOutException;
 import com.bjorsond.android.timeline.map.TimelineMapView;
 import com.bjorsond.android.timeline.models.BaseEvent;
@@ -180,6 +181,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
         //setting this activity active -- Swarm
 		Swarm.setActive(this);
 		Swarm.setAchievementNotificationsEnabled(true);
+		SwarmAchievement.unlock(Constants.FirstTimelineAchievement);
 		
 		setupViews(); 
         setupMoodButtonQuickAction();
@@ -212,7 +214,6 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
         		}
         	}
         }
-        
     }
     
 	private void setupZoom() {
@@ -352,7 +353,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				   if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
+				   if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
 				   
 	    	    	addPictureToTimeline(intentFilename);
 	    	    	intentFilename="";
@@ -389,7 +390,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
+				if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
 				
 	   	    	videoUri = data.getData();
     			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(videoUri, this));
@@ -428,7 +429,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				   if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
+				   if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
 					
 				    audioUri = data.getData();
 	       			String filename =(Utilities.getUserAccount(this).name+new Date().getTime()).hashCode()+Utilities.getExtension(Utilities.getRealPathFromURI(audioUri, this));
@@ -471,7 +472,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				   if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
+				   if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
 					
 	    	    addNoteToTimeline(data);
 
@@ -520,7 +521,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 					   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 					   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 				   }
-				if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
+				if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
 				
 				addReflectionToTimeline(data);
 				
@@ -1091,20 +1092,21 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			   + Constants.MoodPoints
 					   );
 		DashboardActivity.addPointsCounter(points);
+		DashboardActivity.addMoodCounter();
 		Toast.makeText(this, getString(R.string.Mood_added_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 		if (DashboardActivity.getPointsCounter() == points){
 			   SwarmAchievement.unlock(Constants.FirstElementAchievement);
 			   Toast.makeText(this, R.string.Element_added_achi_toast, Toast.LENGTH_LONG).show();
 		   }
-		if (DashboardActivity.getMoodCounter() == 1){
+		if (DashboardActivity.getMoodCounter() >= 1){
 			SwarmAchievement.unlock(Constants.FirstMoodAchievement);
-			Toast.makeText(this, R.string.First_mood_achi_toast, Toast.LENGTH_LONG).show();
+//			Toast.makeText(this, R.string.First_mood_achi_toast, Toast.LENGTH_LONG).show();
 		}
-		if (DashboardActivity.getMoodCounter() == 10){
+		if (DashboardActivity.getMoodCounter() >= 10){
 			SwarmAchievement.unlock(Constants.TenthMoodAchievement);
-			Toast.makeText(this, R.string.Tenth_mood_achi_toast, Toast.LENGTH_LONG).show();
+//			Toast.makeText(this, R.string.Tenth_mood_achi_toast, Toast.LENGTH_LONG).show();
 		}
-		if (DashboardActivity.onOfEach()) SwarmAchievement.unlock(10963);
+		if (DashboardActivity.oneOfEach()) SwarmAchievement.unlock(Constants.AllrounderAchievement);
 	}
 	
 	/**
