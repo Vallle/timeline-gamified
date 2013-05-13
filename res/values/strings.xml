@@ -68,16 +68,16 @@
 	<string name="Login_reflection_space_user_text_label">Login to the reflection space</string>
 	<string name="Leaderboard_headline_label">Best of the bunch</string>
 	
-	<string name="Refleqtion_question">Q:Write a summary of your day:\n
-					A:\n
-					Q:What have you done well?\n
-					A:\n
-					Q:What could you have done better?\n
-					A:\n
-					Q:Anything you would have done differently?\n
-					A:\n
-					Q:Have you learned anything new?\n
-					A:\n
+	<string name="Refleqtion_question">Q:Write a summary of your day:
+					\nA:
+					\nQ:What have you done well?
+					\nA:
+					\nQ:What could you have done better?
+					\nA:
+					\nQ:Anything you would have done differently?
+					\nA:
+					\nQ:Have you learned anything new?
+					\nA:
 </string> <!-- ADDED FOR REFLECTION NOTE -->
 
 	<string name="Not_registered">Not registered. Registering user.</string>
