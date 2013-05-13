@@ -203,7 +203,7 @@
 					android:layout_width="fill_parent" 
 					android:layout_height="fill_parent"
 					android:id="@+id/tutorial_button" 
-					android:background="@drawable/spaces_login">
+					android:background="@drawable/tutorial">
 				</ImageButton>
 			</LinearLayout>
 		</LinearLayout>
