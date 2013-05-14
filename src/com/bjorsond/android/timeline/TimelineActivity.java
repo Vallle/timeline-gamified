@@ -330,8 +330,12 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 	 */
 	public boolean hasLeveled(int points){
 		int[] array = DashboardActivity.getLevelAndPoints();
-		
-		if(points < array[1]){
+		Log.i("LEVEL/POINTS ARRAY 0", Integer.toString(array[0]));
+		Log.i("LEVEL/POINTS ARRAY 1", Integer.toString(array[1]));
+		Log.i("LEVEL/POINTS ARRAY 2", Integer.toString(array[2]));
+		Log.i("POINTS PARAMETER", Integer.toString(points));
+		if(points >= array[1]){
+			Log.i("INSIDE IF", "sup");
 			if(array[0] == 5) SwarmAchievement.unlock(Constants.LevelFiveAchievement);
 			else if(array[0] == 10) SwarmAchievement.unlock(Constants.LevelTenAchievement);
 			Toast.makeText(getApplicationContext(), "You have reached level "+array[0]+"! You are awesome!", Toast.LENGTH_LONG).show();
@@ -520,6 +524,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				DashboardActivity.addReflectionCounter();
 				//Adding points
 				int points = DashboardActivity.checkAndSetRefNotePoints();
+				hasLeveled(points);
 								
 				Toast.makeText(this, getString(R.string.Reflection_added_toast) + " " + getString(R.string.Points_rewarded_toast)+points, Toast.LENGTH_SHORT).show();
 				//Setting date and time for ref note
