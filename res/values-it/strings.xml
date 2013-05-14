@@ -221,6 +221,11 @@
 									shared space. This is to encurage people to learn from each other and similar experiences. This also creates a kind of 
 									knowledge base for the users. 
 	</string>
+	<string name="tutorial_bonuses">
+									There are two ways to receive bonuses.\n
+									The first way is to add reflection notes each workday. You will then receive a stacking consequtive bonus.\n
+									The second way is to vary the input, since you will get bonus points for elements added that have not been added for a while. 
+	</string>
 
 	<!-- Everything that follows is Swarm-related -->
 	
