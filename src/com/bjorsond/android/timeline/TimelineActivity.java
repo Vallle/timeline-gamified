@@ -322,6 +322,26 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 //	}
 //	
 	
+	/**
+	 * Returns true if the user has leveled, false if not
+	 * @param points number of points the user has received from his input
+	 * @param context
+	 * @return
+	 */
+	public boolean hasLeveled(int points){
+		int[] array = DashboardActivity.getLevelAndPoints();
+		
+		if(points < array[1]){
+			if(array[0] == 5) SwarmAchievement.unlock(Constants.LevelFiveAchievement);
+			else if(array[0] == 10) SwarmAchievement.unlock(Constants.LevelTenAchievement);
+			Toast.makeText(getApplicationContext(), "You have reached level "+array[0]+"! You are awesome!", Toast.LENGTH_LONG).show();
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	
 	
 	@Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -339,6 +359,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 						   + Constants.PicturePoints
 								   );
 				   DashboardActivity.addPointsCounter(points);
+				   hasLeveled(points);
 				   Toast.makeText(this, getString(R.string.Pic_created_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   if (DashboardActivity.getPictureCounter() == 1){
@@ -376,6 +397,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 						   + Constants.VideoPoints
 								   );
 				DashboardActivity.addPointsCounter(points);
+				hasLeveled(points);
 				Toast.makeText(this, getString(R.string.Video_created_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 				//Adding achievement
 				if (DashboardActivity.getVideoCounter() == 1){
@@ -415,6 +437,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 						   + Constants.AudioPoints
 								   );
 				   DashboardActivity.addPointsCounter(points);
+				   hasLeveled(points);
 				   Toast.makeText(this, getString(R.string.Audio_created_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   if (DashboardActivity.getAudioCounter() == 1){
@@ -458,6 +481,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 						   + Constants.NotePoints
 								   );
 				   DashboardActivity.addPointsCounter(points);
+				   hasLeveled(points);
 				   Toast.makeText(this, getString(R.string.Note_created_toast) + " " + getString(R.string.Points_rewarded_toast) + points, Toast.LENGTH_SHORT).show();
 				   //Adding achievement
 				   if (DashboardActivity.getNoteCounter() == 1){

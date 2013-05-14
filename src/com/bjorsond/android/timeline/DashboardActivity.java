@@ -342,14 +342,15 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		}
 		array[0] = level;  		//GIVES THE LEVEL OF THE USER
 		array[1] = temp;		//GIVES THE REMAINING POINTS OF THE USER
-		array[2] = levelPoints;	//GIVES THE REMAINING POINTS OF THE USER
+		array[2] = levelPoints;	//GIVES THE POINTS FOR NEXT LEVEL
 		return array;
 	}
-	
-	
 	/*
 	* METHOD FOR LEVEL CALCULATION --- END
 	*/
+	
+	
+	
 	
 	//TODO GETTERS AND SETTERS
 	/*
@@ -899,6 +900,7 @@ public class DashboardActivity extends SwarmActivity implements ProgressDialogAc
 		if (number == 2)builder.setMessage(R.string.tutorial_timeline);
 		if (number == 3)builder.setMessage(R.string.tutorial_moving_app);
 		if (number == 4)builder.setMessage(R.string.tutorial_notes_refNotes);
+		if (number == 5)builder.setMessage(R.string.tutorial_bonuses);
 		builder.setTitle(R.string.tutorial_title);
 
 		// Set "Done" button

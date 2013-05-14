@@ -57,10 +57,19 @@
 	<string name="Reflection_title_hint">Inserisci titolo riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Reflection_text_hint">Inserire il testo di riflessione</string>  <!-- ADDED FOR REFLECTION NOTE -->
 	<string name="Profile_user_name_label">User name</string>
+	<string name="Profile_achievement_points_label">Achievement points:</string>
+	<string name="Profile_achievement_count_label">Number of achievements:</string>
+	<string name="Create_new_reflection_space_user_label">Create new user</string>
+	<string name="Create_new_reflection_space_user_your_name_label">Your name:</string>
+	<string name="Create_new_reflection_space_user_text_label">Create new user on the reflection space</string>
+	<string name="Login_reflection_space_user_text_label">Login to the reflection space</string>
+	<string name="Leaderboard_headline_label">Best of the bunch</string>
+	<string name="Share_label">Share</string>
+	<string name="Shared_with_label">Shared with: </string>
+	<string name="Private_timeline_label">Private timeline</string>
+	
 		
-	<string name="Refleqtion_question_one">Scrivi un breve riassunto della giornata:</string> <!-- ADDED FOR REFLECTION NOTE -->
-	<string name="Refleqtion_question_two">Dopo aver riflettuto su incidenti di oggi, avrebbe fatto qualcosa di diverso?</string> <!-- ADDED FOR REFLECTION NOTE -->
-	<string name="Refleqtion_question_three">Share reflection</string> <!-- ADDED FOR REFLECTION NOTE -->
+	<string name="Reflection_question">Scrivi un breve riassunto della giornata:\nDopo aver riflettuto su incidenti di oggi, avrebbe fatto qualcosa di diverso?</string> <!-- ADDED FOR REFLECTION NOTE -->
 	
 	<string name="Not_registered">Non registrato. Registrazione utente.</string>
 	<string name="Checking_user">Controllo utente da server ...</string>
@@ -125,6 +134,9 @@
 	<string name="Reflection_not_added_toast">Riflessione non aggiunto</string>
 	<string name="Reflection_edited_toast">Riflessione modificato</string>
 	<string name="Reflection_not_edited_toast">Riflessione non modificato</string>
+	<string name="User_created_toast">The user was created! Please log in.</string>
+	<string name="User_logged_in_toast">You are now logged into the reflection space server</string>
+	<string name="Points_rewarded_toast"> Points rewarded: </string>
 	
 	<string name="First_pic_achi_toast">Congratulazioni! Hai preso la tua foto prima diario!</string>
 	<string name="Tenth_pic_achi_toast">Hai preso dieci foto con diario! Continuate così!</string>
@@ -136,10 +148,16 @@
 	<string name="Tenth_note_achi_toast">Lei ha scritto dieci note! Speriamo che apprezzi di qualità tanto quanto te quantità.</string>
 	<string name="First_reflection_achi_toast">Congratulazioni! Hai aggiunto il tuo riflesso prima diario!</string>
 	<string name="Tenth_reflection_achi_toast">Quello era il tuo riflesso decimo! L\'apprendimento è un tesoro che seguirà il suo proprietario ovunque.</string>
+	<string name="First_mood_achi_toast">Congratulations! You have added your first mood in Timeline!</string>
+	<string name="Tenth_mood_achi_toast">You have added your mood for the tenth time! You must have many mood rings..</string>
+	<string name="Element_added_achi_toast">You just added your first element!</string>
 
     <string name="new_timeline">Inserisci il nome della timeline</string>
       
     <string name="no_events_toast">Non ci sono eventi in questo giorno</string>
+    
+    <string name="connection_to_swarm_failed_check_your_network_connection">Connection to swarm failed. Check your internet connection.</string>
+    <string name="no_achievements_found">No achievements found.</string>
     
 <color name="Grey">#666666</color>
 <color name="White">#FFF</color>
@@ -158,7 +176,51 @@
 	<string name="map_view">Mappa aperta</string>
 	<string name="average_timeline_mood">Vedi umore medio del diario</string>
 	<string name="email_title">Rapporto attivita\'</string>
-	<string name="swarm_menu">Menu utente</string>
+	<string name="tutorial">Tutorial</string>
+	<string name="done">Done</string>
+	<string name="back">Back</string>
+	<string name="tutorial_title">Tutorial</string>
+	<string name="tutorial_general_information">
+	    							Timeline is an application that can be used to save different kinds of notes, pictures, video, audio, and moods. 
+	    							These elements are shown in a timeline, hence the name of the app. By adding these elements, the user can look back at an 
+	    							earlier event, and the information at hand, to make reflectoins. By reflecting, the user can gain insight that 
+	    							makes him or her better at the task that was performed, or at handling such trials again.
+
+	</string>
+	<string name="tutorial_dashboard">
+									Dashboard: \n
+									new timeline - enables the user to create a new timeline.\n
+									my timelines - enables the user to choose between different timelines.\n
+									my tags - makes it easier to sort information, by making tags that work in a similar way to hashtags.\n
+									achievements - here the different achievements are shown, and the user can see which are completed and which are not.\n
+									friends - here the user can add friends, as well as see the number of their completed achievements.\n
+									messages - the user can send messages to his/her friends.\n
+									leaderborad - a leaderboard showing how many points the different users have acquired.\n
+									profile - shows the users profile, with levels, points needed for next level, profile picture and number of achievements 
+									completed.
+	</string>
+	<string name="tutorial_timeline">
+									Timeline:\n
+									When the user chooses a timeline, he/she will be transferred to a timeline view. Elements can be added through the bar in
+									 the bottom left corner. The buttons are made as to show what kind of element will be added if pressed. First off is a 
+									 normal note, going through pictures, video, audio, mood and ending with reflection note.\n\n
+									
+									The elements will be added with the current time and position (GPS location). Days containing elements are shown as 
+									green instead of black. Zooming is possible through selecting dates,
+									or time. To zoom back, use the native android back button.
+	</string>
+	<string name="tutorial_moving_app">
+									The back button can also be used to exit the timeline, and go back to the dashboard. The "timeline" icon in the upper 
+									left corner can also be used to go to the dashboard.
+	</string>
+	<string name="tutorial_notes_refNotes">
+									Notes and reflection notes can be edited at a later time. By holding a finger on the text for a few seconds, it will 
+									become possible to edit the text.\n\n
+									
+									If the user has created a user for the refletion spaces, he/she can use share notes and reflection notes on to the 
+									shared space. This is to encurage people to learn from each other and similar experiences. This also creates a kind of 
+									knowledge base for the users. 
+	</string>
 
 	<!-- Everything that follows is Swarm-related -->
 	

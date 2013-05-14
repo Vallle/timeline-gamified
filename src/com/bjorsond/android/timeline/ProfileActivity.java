@@ -33,6 +33,7 @@ import com.swarmconnect.SwarmActivity;
 
 public class ProfileActivity extends SwarmActivity{
 
+	private Intent achievementsIntent;
 	private ImageView profilePicture, levelImage;
 	private ImageButton homeButton;
 	private TextView showPointsAboveProgressBar, userNameField, numberOfAchievements;
@@ -51,6 +52,7 @@ public class ProfileActivity extends SwarmActivity{
 		
 		setupViews();
 		setupLevelAndPoints();
+		achievementsIntent = new Intent(this, AchievementsScreen.class);
 	}
 	
 	
@@ -147,6 +149,11 @@ public class ProfileActivity extends SwarmActivity{
 	}
 	
 	
+	private OnClickListener achievementsListener = new OnClickListener() {
+		public void onClick(View v) {
+			startActivity(achievementsIntent);
+		}
+	};
 	
 	
 	private void setupViews() {
@@ -157,6 +164,7 @@ public class ProfileActivity extends SwarmActivity{
 		
 		numberOfAchievements = (TextView) findViewById(R.id.ProfileAchievementCountNumber);
 		numberOfAchievements.setText("" + Swarm.user.points);
+		numberOfAchievements.setOnClickListener(achievementsListener);
 		
 		homeButton = (ImageButton) findViewById(R.id.profileHeaderHomeButton);
 		homeButton.setOnClickListener(new OnClickListener() {

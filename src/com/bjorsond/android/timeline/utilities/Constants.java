@@ -117,6 +117,8 @@ public class Constants {
 	final public static int AchievementsFound = 12145;
 	final public static int FirstTimelineAchievement = 10983;	
 	final public static int AllrounderAchievement = 10961;	
+	final public static int LevelFiveAchievement = 13847;	
+	final public static int LevelTenAchievement = 13849;	
 	
 	
 	//Points

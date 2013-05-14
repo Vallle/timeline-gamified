@@ -82,7 +82,7 @@ public class ReflectionActivity extends SwarmActivity {
 		reflectionText = (EditText)findViewById(R.id.ReflectionTextEditText);
 		
 		reflectionTitle.setText("Reflection " + new SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(Calendar.getInstance().getTime()));
-		reflectionText.setText(getString(R.string.Refleqtion_question));
+		reflectionText.setText(getString(R.string.Reflection_question));
 		
 		if(Constants.EDIT_REFLECTION == getIntent().getExtras().getInt(Constants.REQUEST_CODE)){
 			reflectionTitle.setText(getIntent().getExtras().getString(Intent.EXTRA_SUBJECT));
