@@ -254,11 +254,12 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			
 			// Setting time for alarm/notification
 			calendar.add(Calendar.DAY_OF_MONTH, days);
-//			calendar.add(Calendar.MINUTE, -1);
-			calendar.set(Calendar.MINUTE, 0);
-			calendar.set(Calendar.SECOND, 0);
-			calendar.set(Calendar.MILLISECOND, 0);
+			calendar.add(Calendar.MINUTE, 10);
+//			calendar.set(Calendar.MINUTE, 0);
+//			calendar.set(Calendar.SECOND, 0);
+//			calendar.set(Calendar.MILLISECOND, 0);
 			calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
+//			calendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
 
 			//	else calendar.add(Calendar.MINUTE, 3);
 		
@@ -531,11 +532,12 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 				Calendar calendar = Calendar.getInstance();
 				calendar.setTimeInMillis(System.currentTimeMillis());
 				DashboardActivity.setLastRefDate(calendar);
+				int temp = DashboardActivity.checkReflectionDate();
 				//Setting alarm for notification			
-				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 12);
-				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 14);
-				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 16);
-				createScheduledNotification(DashboardActivity.checkReflectionDate(), "notify", 18);
+				createScheduledNotification(temp, "notify", 12);
+				createScheduledNotification(temp, "notify", 14);
+				createScheduledNotification(temp, "notify", 16);
+				createScheduledNotification(temp, "notify", 18);
 				
 				//Adding achievement
 				if (DashboardActivity.getReflectionCounter() == 1){
