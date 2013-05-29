@@ -253,7 +253,7 @@ public class TimelineActivity extends SwarmActivity implements SimpleGestureList
 			Calendar calendar = Calendar.getInstance();
 			
 			// Setting time for alarm/notification
-			calendar.add(Calendar.DAY_OF_MONTH, days);
+//			calendar.add(Calendar.DAY_OF_MONTH, days);
 			calendar.add(Calendar.MINUTE, 10);
 //			calendar.set(Calendar.MINUTE, 0);
 //			calendar.set(Calendar.SECOND, 0);
